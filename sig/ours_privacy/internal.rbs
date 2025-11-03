@@ -1,0 +1,9 @@
+module OursPrivacy
+  module Internal
+    extend OursPrivacy::Internal::Util::SorbetRuntimeSupport
+
+    type file_input = Pathname | StringIO | IO | String | OursPrivacy::FilePart
+
+    OMIT: Object
+  end
+end

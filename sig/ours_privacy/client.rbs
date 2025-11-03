@@ -1,0 +1,25 @@
+module OursPrivacy
+  class Client < OursPrivacy::Internal::Transport::BaseClient
+    DEFAULT_MAX_RETRIES: 2
+
+    DEFAULT_TIMEOUT_IN_SECONDS: Float
+
+    DEFAULT_INITIAL_RETRY_DELAY: Float
+
+    DEFAULT_MAX_RETRY_DELAY: Float
+
+    attr_reader track: OursPrivacy::Resources::Track
+
+    attr_reader visitor: OursPrivacy::Resources::Visitor
+
+    def base_url_overridden?: -> bool
+
+    def initialize: (
+      ?base_url: String?,
+      ?max_retries: Integer,
+      ?timeout: Float,
+      ?initial_retry_delay: Float,
+      ?max_retry_delay: Float
+    ) -> void
+  end
+end
