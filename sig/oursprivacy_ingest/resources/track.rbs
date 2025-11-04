@@ -1,0 +1,21 @@
+module OursprivacyIngest
+  module Resources
+    class Track
+      def event: (
+        token: String,
+        event: String,
+        ?default_properties: OursprivacyIngest::TrackEventParams::DefaultProperties?,
+        ?distinct_id: String?,
+        ?email: String?,
+        ?event_properties: ::Hash[Symbol, top?]?,
+        ?external_id: String?,
+        ?time: Float?,
+        ?user_id: String?,
+        ?user_properties: OursprivacyIngest::TrackEventParams::UserProperties?,
+        ?request_options: OursprivacyIngest::request_opts
+      ) -> OursprivacyIngest::Models::TrackEventResponse
+
+      def initialize: (client: OursprivacyIngest::Client) -> void
+    end
+  end
+end

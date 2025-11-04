@@ -40,9 +40,9 @@ Layout/LineLength:
   AllowedPatterns:
     - "^\\s*#.*$"
     - ^require(_relative)?
-    - "OursPrivacy::Internal::Type::BaseModel$"
+    - "OursprivacyIngest::Internal::Type::BaseModel$"
     - "^\\s*[A-Z0-9_]+ = :"
-    - "OursPrivacy::(Models|Resources|Test)::"
+    - "OursprivacyIngest::(Models|Resources|Test)::"
   Max: 110
 
 Layout/MultilineArrayLineBreaks:

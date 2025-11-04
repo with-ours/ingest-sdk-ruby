@@ -1,0 +1,3 @@
+module OursprivacyIngest
+  VERSION: String
+end
