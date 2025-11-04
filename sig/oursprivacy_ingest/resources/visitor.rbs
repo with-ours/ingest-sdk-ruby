@@ -1,0 +1,17 @@
+module OursprivacyIngest
+  module Resources
+    class Visitor
+      def upsert: (
+        token: String,
+        user_properties: OursprivacyIngest::VisitorUpsertParams::UserProperties,
+        ?default_properties: OursprivacyIngest::VisitorUpsertParams::DefaultProperties?,
+        ?email: String?,
+        ?external_id: String?,
+        ?user_id: String?,
+        ?request_options: OursprivacyIngest::request_opts
+      ) -> OursprivacyIngest::Models::VisitorUpsertResponse
+
+      def initialize: (client: OursprivacyIngest::Client) -> void
+    end
+  end
+end

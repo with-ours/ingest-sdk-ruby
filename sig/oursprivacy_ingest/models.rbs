@@ -1,0 +1,5 @@
+module OursprivacyIngest
+  class TrackEventParams = OursprivacyIngest::Models::TrackEventParams
+
+  class VisitorUpsertParams = OursprivacyIngest::Models::VisitorUpsertParams
+end

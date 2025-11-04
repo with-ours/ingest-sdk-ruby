@@ -60,7 +60,7 @@
     }
   ],
   "release-type": "ruby",
-  "version-file": "lib/ours_privacy/version.rb",
+  "version-file": "lib/oursprivacy_ingest/version.rb",
   "extra-files": [
     {
       "type": "ruby-readme",

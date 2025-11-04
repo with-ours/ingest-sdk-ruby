@@ -1,0 +1,673 @@
+module OursprivacyIngest
+  module Models
+    type track_event_params =
+      {
+        token: String,
+        event: String,
+        default_properties: OursprivacyIngest::TrackEventParams::DefaultProperties?,
+        distinct_id: String?,
+        email: String?,
+        event_properties: ::Hash[Symbol, top?]?,
+        external_id: String?,
+        time: Float?,
+        user_id: String?,
+        user_properties: OursprivacyIngest::TrackEventParams::UserProperties?
+      }
+      & OursprivacyIngest::Internal::Type::request_parameters
+
+    class TrackEventParams < OursprivacyIngest::Internal::Type::BaseModel
+      extend OursprivacyIngest::Internal::Type::RequestParameters::Converter
+      include OursprivacyIngest::Internal::Type::RequestParameters
+
+      attr_accessor token: String
+
+      attr_accessor event: String
+
+      attr_accessor default_properties: OursprivacyIngest::TrackEventParams::DefaultProperties?
+
+      attr_accessor distinct_id: String?
+
+      attr_accessor email: String?
+
+      attr_accessor event_properties: ::Hash[Symbol, top?]?
+
+      attr_accessor external_id: String?
+
+      attr_accessor time: Float?
+
+      attr_accessor user_id: String?
+
+      attr_accessor user_properties: OursprivacyIngest::TrackEventParams::UserProperties?
+
+      def initialize: (
+        token: String,
+        event: String,
+        ?default_properties: OursprivacyIngest::TrackEventParams::DefaultProperties?,
+        ?distinct_id: String?,
+        ?email: String?,
+        ?event_properties: ::Hash[Symbol, top?]?,
+        ?external_id: String?,
+        ?time: Float?,
+        ?user_id: String?,
+        ?user_properties: OursprivacyIngest::TrackEventParams::UserProperties?,
+        ?request_options: OursprivacyIngest::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        token: String,
+        event: String,
+        default_properties: OursprivacyIngest::TrackEventParams::DefaultProperties?,
+        distinct_id: String?,
+        email: String?,
+        event_properties: ::Hash[Symbol, top?]?,
+        external_id: String?,
+        time: Float?,
+        user_id: String?,
+        user_properties: OursprivacyIngest::TrackEventParams::UserProperties?,
+        request_options: OursprivacyIngest::RequestOptions
+      }
+
+      type default_properties =
+        {
+          active_duration: Float?,
+          ad_id: String?,
+          adset_id: String?,
+          browser_language: String?,
+          browser_name: String?,
+          browser_version: String?,
+          campaign_id: String?,
+          clickid: String?,
+          clid: String?,
+          cpu_architecture: String?,
+          current_url: String?,
+          dclid: String?,
+          device_model: String?,
+          device_type: String?,
+          device_vendor: String?,
+          duration: Float?,
+          encoding: String?,
+          engine_name: String?,
+          engine_version: String?,
+          epik: String?,
+          fbc: String?,
+          fbclid: String?,
+          fbp: String?,
+          fv: bool?,
+          gad_source: String?,
+          gbraid: String?,
+          gclid: String?,
+          host: String?,
+          iframe: bool?,
+          ip: String?,
+          is_bot: top,
+          li_fat_id: String?,
+          msclkid: String?,
+          ndclid: String?,
+          new_s: bool?,
+          os_name: String?,
+          os_version: String?,
+          page_hash: Float?,
+          pathname: String?,
+          qclid: String?,
+          rdt_cid: String?,
+          received_at: String?,
+          referrer: String?,
+          sacid: String?,
+          sccid: String?,
+          screen_height: Float?,
+          screen_width: Float?,
+          session_count: Float?,
+          sid: String?,
+          sr: String?,
+          title: String?,
+          ttclid: String?,
+          twclid: String?,
+          uafvl: String?,
+          user_agent: String?,
+          utm_campaign: String?,
+          utm_content: String?,
+          utm_medium: String?,
+          utm_name: String?,
+          utm_source: String?,
+          utm_term: String?,
+          version: String?,
+          wbraid: String?,
+          webview: bool?
+        }
+
+      class DefaultProperties < OursprivacyIngest::Internal::Type::BaseModel
+        attr_accessor active_duration: Float?
+
+        attr_accessor ad_id: String?
+
+        attr_accessor adset_id: String?
+
+        attr_accessor browser_language: String?
+
+        attr_accessor browser_name: String?
+
+        attr_accessor browser_version: String?
+
+        attr_accessor campaign_id: String?
+
+        attr_accessor clickid: String?
+
+        attr_accessor clid: String?
+
+        attr_accessor cpu_architecture: String?
+
+        attr_accessor current_url: String?
+
+        attr_accessor dclid: String?
+
+        attr_accessor device_model: String?
+
+        attr_accessor device_type: String?
+
+        attr_accessor device_vendor: String?
+
+        attr_accessor duration: Float?
+
+        attr_accessor encoding: String?
+
+        attr_accessor engine_name: String?
+
+        attr_accessor engine_version: String?
+
+        attr_accessor epik: String?
+
+        attr_accessor fbc: String?
+
+        attr_accessor fbclid: String?
+
+        attr_accessor fbp: String?
+
+        attr_accessor fv: bool?
+
+        attr_accessor gad_source: String?
+
+        attr_accessor gbraid: String?
+
+        attr_accessor gclid: String?
+
+        attr_accessor host: String?
+
+        attr_accessor iframe: bool?
+
+        attr_accessor ip: String?
+
+        attr_reader is_bot: top?
+
+        def is_bot=: (top) -> top
+
+        attr_accessor li_fat_id: String?
+
+        attr_accessor msclkid: String?
+
+        attr_accessor ndclid: String?
+
+        attr_accessor new_s: bool?
+
+        attr_accessor os_name: String?
+
+        attr_accessor os_version: String?
+
+        attr_accessor page_hash: Float?
+
+        attr_accessor pathname: String?
+
+        attr_accessor qclid: String?
+
+        attr_accessor rdt_cid: String?
+
+        attr_accessor received_at: String?
+
+        attr_accessor referrer: String?
+
+        attr_accessor sacid: String?
+
+        attr_accessor sccid: String?
+
+        attr_accessor screen_height: Float?
+
+        attr_accessor screen_width: Float?
+
+        attr_accessor session_count: Float?
+
+        attr_accessor sid: String?
+
+        attr_accessor sr: String?
+
+        attr_accessor title: String?
+
+        attr_accessor ttclid: String?
+
+        attr_accessor twclid: String?
+
+        attr_accessor uafvl: String?
+
+        attr_accessor user_agent: String?
+
+        attr_accessor utm_campaign: String?
+
+        attr_accessor utm_content: String?
+
+        attr_accessor utm_medium: String?
+
+        attr_accessor utm_name: String?
+
+        attr_accessor utm_source: String?
+
+        attr_accessor utm_term: String?
+
+        attr_accessor version: String?
+
+        attr_accessor wbraid: String?
+
+        attr_accessor webview: bool?
+
+        def initialize: (
+          ?active_duration: Float?,
+          ?ad_id: String?,
+          ?adset_id: String?,
+          ?browser_language: String?,
+          ?browser_name: String?,
+          ?browser_version: String?,
+          ?campaign_id: String?,
+          ?clickid: String?,
+          ?clid: String?,
+          ?cpu_architecture: String?,
+          ?current_url: String?,
+          ?dclid: String?,
+          ?device_model: String?,
+          ?device_type: String?,
+          ?device_vendor: String?,
+          ?duration: Float?,
+          ?encoding: String?,
+          ?engine_name: String?,
+          ?engine_version: String?,
+          ?epik: String?,
+          ?fbc: String?,
+          ?fbclid: String?,
+          ?fbp: String?,
+          ?fv: bool?,
+          ?gad_source: String?,
+          ?gbraid: String?,
+          ?gclid: String?,
+          ?host: String?,
+          ?iframe: bool?,
+          ?ip: String?,
+          ?is_bot: top,
+          ?li_fat_id: String?,
+          ?msclkid: String?,
+          ?ndclid: String?,
+          ?new_s: bool?,
+          ?os_name: String?,
+          ?os_version: String?,
+          ?page_hash: Float?,
+          ?pathname: String?,
+          ?qclid: String?,
+          ?rdt_cid: String?,
+          ?received_at: String?,
+          ?referrer: String?,
+          ?sacid: String?,
+          ?sccid: String?,
+          ?screen_height: Float?,
+          ?screen_width: Float?,
+          ?session_count: Float?,
+          ?sid: String?,
+          ?sr: String?,
+          ?title: String?,
+          ?ttclid: String?,
+          ?twclid: String?,
+          ?uafvl: String?,
+          ?user_agent: String?,
+          ?utm_campaign: String?,
+          ?utm_content: String?,
+          ?utm_medium: String?,
+          ?utm_name: String?,
+          ?utm_source: String?,
+          ?utm_term: String?,
+          ?version: String?,
+          ?wbraid: String?,
+          ?webview: bool?
+        ) -> void
+
+        def to_hash: -> {
+          active_duration: Float?,
+          ad_id: String?,
+          adset_id: String?,
+          browser_language: String?,
+          browser_name: String?,
+          browser_version: String?,
+          campaign_id: String?,
+          clickid: String?,
+          clid: String?,
+          cpu_architecture: String?,
+          current_url: String?,
+          dclid: String?,
+          device_model: String?,
+          device_type: String?,
+          device_vendor: String?,
+          duration: Float?,
+          encoding: String?,
+          engine_name: String?,
+          engine_version: String?,
+          epik: String?,
+          fbc: String?,
+          fbclid: String?,
+          fbp: String?,
+          fv: bool?,
+          gad_source: String?,
+          gbraid: String?,
+          gclid: String?,
+          host: String?,
+          iframe: bool?,
+          ip: String?,
+          is_bot: top,
+          li_fat_id: String?,
+          msclkid: String?,
+          ndclid: String?,
+          new_s: bool?,
+          os_name: String?,
+          os_version: String?,
+          page_hash: Float?,
+          pathname: String?,
+          qclid: String?,
+          rdt_cid: String?,
+          received_at: String?,
+          referrer: String?,
+          sacid: String?,
+          sccid: String?,
+          screen_height: Float?,
+          screen_width: Float?,
+          session_count: Float?,
+          sid: String?,
+          sr: String?,
+          title: String?,
+          ttclid: String?,
+          twclid: String?,
+          uafvl: String?,
+          user_agent: String?,
+          utm_campaign: String?,
+          utm_content: String?,
+          utm_medium: String?,
+          utm_name: String?,
+          utm_source: String?,
+          utm_term: String?,
+          version: String?,
+          wbraid: String?,
+          webview: bool?
+        }
+      end
+
+      type user_properties =
+        {
+          ad_id: String?,
+          adset_id: String?,
+          campaign_id: String?,
+          city: String?,
+          clickid: String?,
+          clid: String?,
+          company_name: String?,
+          consent: ::Hash[Symbol, top?]?,
+          country: String?,
+          custom_properties: ::Hash[Symbol, top?]?,
+          date_of_birth: String?,
+          dclid: String?,
+          email: String?,
+          epik: String?,
+          external_id: String?,
+          fbc: String?,
+          fbclid: String?,
+          fbp: String?,
+          first_name: String?,
+          gad_source: String?,
+          gbraid: String?,
+          gclid: String?,
+          gender: String?,
+          ip: String?,
+          is_bot: top,
+          job_title: String?,
+          last_name: String?,
+          li_fat_id: String?,
+          msclkid: String?,
+          ndclid: String?,
+          phone_number: top,
+          qclid: String?,
+          rdt_cid: String?,
+          referrer: String?,
+          sacid: String?,
+          sccid: String?,
+          sid: String?,
+          state: String?,
+          ttclid: String?,
+          twclid: String?,
+          user_agent: String?,
+          user_agent_full_list: String?,
+          utm_campaign: String?,
+          utm_content: String?,
+          utm_medium: String?,
+          utm_name: String?,
+          utm_source: String?,
+          utm_term: String?,
+          wbraid: String?,
+          zip: top
+        }
+
+      class UserProperties < OursprivacyIngest::Internal::Type::BaseModel
+        attr_accessor ad_id: String?
+
+        attr_accessor adset_id: String?
+
+        attr_accessor campaign_id: String?
+
+        attr_accessor city: String?
+
+        attr_accessor clickid: String?
+
+        attr_accessor clid: String?
+
+        attr_accessor company_name: String?
+
+        attr_accessor consent: ::Hash[Symbol, top?]?
+
+        attr_accessor country: String?
+
+        attr_accessor custom_properties: ::Hash[Symbol, top?]?
+
+        attr_accessor date_of_birth: String?
+
+        attr_accessor dclid: String?
+
+        attr_accessor email: String?
+
+        attr_accessor epik: String?
+
+        attr_accessor external_id: String?
+
+        attr_accessor fbc: String?
+
+        attr_accessor fbclid: String?
+
+        attr_accessor fbp: String?
+
+        attr_accessor first_name: String?
+
+        attr_accessor gad_source: String?
+
+        attr_accessor gbraid: String?
+
+        attr_accessor gclid: String?
+
+        attr_accessor gender: String?
+
+        attr_accessor ip: String?
+
+        attr_reader is_bot: top?
+
+        def is_bot=: (top) -> top
+
+        attr_accessor job_title: String?
+
+        attr_accessor last_name: String?
+
+        attr_accessor li_fat_id: String?
+
+        attr_accessor msclkid: String?
+
+        attr_accessor ndclid: String?
+
+        attr_reader phone_number: top?
+
+        def phone_number=: (top) -> top
+
+        attr_accessor qclid: String?
+
+        attr_accessor rdt_cid: String?
+
+        attr_accessor referrer: String?
+
+        attr_accessor sacid: String?
+
+        attr_accessor sccid: String?
+
+        attr_accessor sid: String?
+
+        attr_accessor state: String?
+
+        attr_accessor ttclid: String?
+
+        attr_accessor twclid: String?
+
+        attr_accessor user_agent: String?
+
+        attr_accessor user_agent_full_list: String?
+
+        attr_accessor utm_campaign: String?
+
+        attr_accessor utm_content: String?
+
+        attr_accessor utm_medium: String?
+
+        attr_accessor utm_name: String?
+
+        attr_accessor utm_source: String?
+
+        attr_accessor utm_term: String?
+
+        attr_accessor wbraid: String?
+
+        attr_reader zip: top?
+
+        def zip=: (top) -> top
+
+        def initialize: (
+          ?ad_id: String?,
+          ?adset_id: String?,
+          ?campaign_id: String?,
+          ?city: String?,
+          ?clickid: String?,
+          ?clid: String?,
+          ?company_name: String?,
+          ?consent: ::Hash[Symbol, top?]?,
+          ?country: String?,
+          ?custom_properties: ::Hash[Symbol, top?]?,
+          ?date_of_birth: String?,
+          ?dclid: String?,
+          ?email: String?,
+          ?epik: String?,
+          ?external_id: String?,
+          ?fbc: String?,
+          ?fbclid: String?,
+          ?fbp: String?,
+          ?first_name: String?,
+          ?gad_source: String?,
+          ?gbraid: String?,
+          ?gclid: String?,
+          ?gender: String?,
+          ?ip: String?,
+          ?is_bot: top,
+          ?job_title: String?,
+          ?last_name: String?,
+          ?li_fat_id: String?,
+          ?msclkid: String?,
+          ?ndclid: String?,
+          ?phone_number: top,
+          ?qclid: String?,
+          ?rdt_cid: String?,
+          ?referrer: String?,
+          ?sacid: String?,
+          ?sccid: String?,
+          ?sid: String?,
+          ?state: String?,
+          ?ttclid: String?,
+          ?twclid: String?,
+          ?user_agent: String?,
+          ?user_agent_full_list: String?,
+          ?utm_campaign: String?,
+          ?utm_content: String?,
+          ?utm_medium: String?,
+          ?utm_name: String?,
+          ?utm_source: String?,
+          ?utm_term: String?,
+          ?wbraid: String?,
+          ?zip: top
+        ) -> void
+
+        def to_hash: -> {
+          ad_id: String?,
+          adset_id: String?,
+          campaign_id: String?,
+          city: String?,
+          clickid: String?,
+          clid: String?,
+          company_name: String?,
+          consent: ::Hash[Symbol, top?]?,
+          country: String?,
+          custom_properties: ::Hash[Symbol, top?]?,
+          date_of_birth: String?,
+          dclid: String?,
+          email: String?,
+          epik: String?,
+          external_id: String?,
+          fbc: String?,
+          fbclid: String?,
+          fbp: String?,
+          first_name: String?,
+          gad_source: String?,
+          gbraid: String?,
+          gclid: String?,
+          gender: String?,
+          ip: String?,
+          is_bot: top,
+          job_title: String?,
+          last_name: String?,
+          li_fat_id: String?,
+          msclkid: String?,
+          ndclid: String?,
+          phone_number: top,
+          qclid: String?,
+          rdt_cid: String?,
+          referrer: String?,
+          sacid: String?,
+          sccid: String?,
+          sid: String?,
+          state: String?,
+          ttclid: String?,
+          twclid: String?,
+          user_agent: String?,
+          user_agent_full_list: String?,
+          utm_campaign: String?,
+          utm_content: String?,
+          utm_medium: String?,
+          utm_name: String?,
+          utm_source: String?,
+          utm_term: String?,
+          wbraid: String?,
+          zip: top
+        }
+      end
+    end
+  end
+end

@@ -1,0 +1,28 @@
+module OursprivacyIngest
+  module Models
+    type track_event_response =
+      { success: OursprivacyIngest::Models::TrackEventResponse::success }
+
+    class TrackEventResponse < OursprivacyIngest::Internal::Type::BaseModel
+      attr_accessor success: OursprivacyIngest::Models::TrackEventResponse::success
+
+      def initialize: (
+        success: OursprivacyIngest::Models::TrackEventResponse::success
+      ) -> void
+
+      def to_hash: -> {
+        success: OursprivacyIngest::Models::TrackEventResponse::success
+      }
+
+      type success = true
+
+      module Success
+        extend OursprivacyIngest::Internal::Type::Enum
+
+        TRUE: true
+
+        def self?.values: -> ::Array[OursprivacyIngest::Models::TrackEventResponse::success]
+      end
+    end
+  end
+end

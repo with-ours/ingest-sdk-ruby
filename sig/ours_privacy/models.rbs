@@ -1,5 +1,0 @@
-module OursPrivacy
-  class TrackEventParams = OursPrivacy::Models::TrackEventParams
-
-  class VisitorUpsertParams = OursPrivacy::Models::VisitorUpsertParams
-end

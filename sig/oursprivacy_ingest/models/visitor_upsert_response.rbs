@@ -1,0 +1,28 @@
+module OursprivacyIngest
+  module Models
+    type visitor_upsert_response =
+      { success: OursprivacyIngest::Models::VisitorUpsertResponse::success }
+
+    class VisitorUpsertResponse < OursprivacyIngest::Internal::Type::BaseModel
+      attr_accessor success: OursprivacyIngest::Models::VisitorUpsertResponse::success
+
+      def initialize: (
+        success: OursprivacyIngest::Models::VisitorUpsertResponse::success
+      ) -> void
+
+      def to_hash: -> {
+        success: OursprivacyIngest::Models::VisitorUpsertResponse::success
+      }
+
+      type success = true
+
+      module Success
+        extend OursprivacyIngest::Internal::Type::Enum
+
+        TRUE: true
+
+        def self?.values: -> ::Array[OursprivacyIngest::Models::VisitorUpsertResponse::success]
+      end
+    end
+  end
+end

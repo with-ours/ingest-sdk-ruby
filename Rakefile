@@ -162,7 +162,7 @@ multitask(:"build:gem") do
     sig/*
   GLOB
 
-  sh(*%w[gem build -- ours_privacy.gemspec])
+  sh(*%w[gem build -- oursprivacy_ingest.gemspec])
   rm_rf(ignore_file)
 end
 

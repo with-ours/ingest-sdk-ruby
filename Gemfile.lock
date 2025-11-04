@@ -11,7 +11,7 @@ GIT
 PATH
   remote: .
   specs:
-    ours-privacy (0.0.1)
+    oursprivacy-ingest (0.0.1)
       connection_pool
 
 GEM
@@ -208,7 +208,7 @@ DEPENDENCIES
   minitest-hooks
   minitest-proveit
   minitest-rg
-  ours-privacy!
+  oursprivacy-ingest!
   rake
   rbs
   redcarpet

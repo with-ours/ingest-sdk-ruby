@@ -1,0 +1,10 @@
+module OursprivacyIngest
+  module Internal
+    extend OursprivacyIngest::Internal::Util::SorbetRuntimeSupport
+
+    type file_input =
+      Pathname | StringIO | IO | String | OursprivacyIngest::FilePart
+
+    OMIT: Object
+  end
+end
