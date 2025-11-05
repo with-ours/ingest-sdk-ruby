@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.1 (2025-11-05)
+
+Full Changelog: [v0.1.0...v0.1.1](https://github.com/with-ours/ingest-sdk-ruby/compare/v0.1.0...v0.1.1)
+
+### Bug Fixes
+
+* better thread safety via early initializing SSL store during HTTP client creation ([79ddf73](https://github.com/with-ours/ingest-sdk-ruby/commit/79ddf73cd5777c353993c04da8e12db82dc182c2))
+
 ## 0.1.0 (2025-11-04)
 
 Full Changelog: [v0.0.1...v0.1.0](https://github.com/with-ours/ingest-sdk-ruby/compare/v0.0.1...v0.1.0)
