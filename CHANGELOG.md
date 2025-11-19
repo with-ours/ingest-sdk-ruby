@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.2.0 (2025-11-19)
+
+Full Changelog: [v0.1.1...v0.2.0](https://github.com/with-ours/ingest-sdk-ruby/compare/v0.1.1...v0.2.0)
+
+### Features
+
+* **api:** manual updates ([bb46f5a](https://github.com/with-ours/ingest-sdk-ruby/commit/bb46f5a6c89dfa233f3957d6f90726d1e2419346))
+
 ## 0.1.1 (2025-11-05)
 
 Full Changelog: [v0.1.0...v0.1.1](https://github.com/with-ours/ingest-sdk-ruby/compare/v0.1.0...v0.1.1)
