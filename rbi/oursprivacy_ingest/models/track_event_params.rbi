@@ -362,6 +362,10 @@ module OursprivacyIngest
         sig { returns(T.nilable(String)) }
         attr_accessor :referrer
 
+        # The referring domain of the current page
+        sig { returns(T.nilable(String)) }
+        attr_accessor :referring_domain
+
         # The StackAdapt Tracking ID. Ex: sacid123
         sig { returns(T.nilable(String)) }
         attr_accessor :sacid
@@ -495,6 +499,7 @@ module OursprivacyIngest
             rdt_cid: T.nilable(String),
             received_at: T.nilable(String),
             referrer: T.nilable(String),
+            referring_domain: T.nilable(String),
             sacid: T.nilable(String),
             sccid: T.nilable(String),
             screen_height: T.nilable(Float),
@@ -613,6 +618,8 @@ module OursprivacyIngest
           received_at: nil,
           # The referrer URL of the current page
           referrer: nil,
+          # The referring domain of the current page
+          referring_domain: nil,
           # The StackAdapt Tracking ID. Ex: sacid123
           sacid: nil,
           # The SnapChat Click ID. Ex: sccid123
@@ -706,6 +713,7 @@ module OursprivacyIngest
               rdt_cid: T.nilable(String),
               received_at: T.nilable(String),
               referrer: T.nilable(String),
+              referring_domain: T.nilable(String),
               sacid: T.nilable(String),
               sccid: T.nilable(String),
               screen_height: T.nilable(Float),
@@ -856,6 +864,9 @@ module OursprivacyIngest
         attr_accessor :referrer
 
         sig { returns(T.nilable(String)) }
+        attr_accessor :referring_domain
+
+        sig { returns(T.nilable(String)) }
         attr_accessor :sacid
 
         sig { returns(T.nilable(String)) }
@@ -946,6 +957,7 @@ module OursprivacyIngest
             qclid: T.nilable(String),
             rdt_cid: T.nilable(String),
             referrer: T.nilable(String),
+            referring_domain: T.nilable(String),
             sacid: T.nilable(String),
             sccid: T.nilable(String),
             sid: T.nilable(String),
@@ -1001,6 +1013,7 @@ module OursprivacyIngest
           qclid: nil,
           rdt_cid: nil,
           referrer: nil,
+          referring_domain: nil,
           sacid: nil,
           sccid: nil,
           sid: nil,
@@ -1059,6 +1072,7 @@ module OursprivacyIngest
               qclid: T.nilable(String),
               rdt_cid: T.nilable(String),
               referrer: T.nilable(String),
+              referring_domain: T.nilable(String),
               sacid: T.nilable(String),
               sccid: T.nilable(String),
               sid: T.nilable(String),
