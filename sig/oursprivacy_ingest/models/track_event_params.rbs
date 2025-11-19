@@ -113,6 +113,7 @@ module OursprivacyIngest
           rdt_cid: String?,
           received_at: String?,
           referrer: String?,
+          referring_domain: String?,
           sacid: String?,
           sccid: String?,
           screen_height: Float?,
@@ -227,6 +228,8 @@ module OursprivacyIngest
 
         attr_accessor referrer: String?
 
+        attr_accessor referring_domain: String?
+
         attr_accessor sacid: String?
 
         attr_accessor sccid: String?
@@ -314,6 +317,7 @@ module OursprivacyIngest
           ?rdt_cid: String?,
           ?received_at: String?,
           ?referrer: String?,
+          ?referring_domain: String?,
           ?sacid: String?,
           ?sccid: String?,
           ?screen_height: Float?,
@@ -382,6 +386,7 @@ module OursprivacyIngest
           rdt_cid: String?,
           received_at: String?,
           referrer: String?,
+          referring_domain: String?,
           sacid: String?,
           sccid: String?,
           screen_height: Float?,
@@ -443,6 +448,7 @@ module OursprivacyIngest
           qclid: String?,
           rdt_cid: String?,
           referrer: String?,
+          referring_domain: String?,
           sacid: String?,
           sccid: String?,
           sid: String?,
@@ -536,6 +542,8 @@ module OursprivacyIngest
 
         attr_accessor referrer: String?
 
+        attr_accessor referring_domain: String?
+
         attr_accessor sacid: String?
 
         attr_accessor sccid: String?
@@ -606,6 +614,7 @@ module OursprivacyIngest
           ?qclid: String?,
           ?rdt_cid: String?,
           ?referrer: String?,
+          ?referring_domain: String?,
           ?sacid: String?,
           ?sccid: String?,
           ?sid: String?,
@@ -660,6 +669,7 @@ module OursprivacyIngest
           qclid: String?,
           rdt_cid: String?,
           referrer: String?,
+          referring_domain: String?,
           sacid: String?,
           sccid: String?,
           sid: String?,
