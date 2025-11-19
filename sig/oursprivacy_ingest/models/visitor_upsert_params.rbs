@@ -73,6 +73,7 @@ module OursprivacyIngest
           gclid: String?,
           gender: String?,
           ip: String?,
+          irclickid: String?,
           is_bot: top,
           job_title: String?,
           last_name: String?,
@@ -149,6 +150,8 @@ module OursprivacyIngest
         attr_accessor gender: String?
 
         attr_accessor ip: String?
+
+        attr_accessor irclickid: String?
 
         attr_reader is_bot: top?
 
@@ -233,6 +236,7 @@ module OursprivacyIngest
           ?gclid: String?,
           ?gender: String?,
           ?ip: String?,
+          ?irclickid: String?,
           ?is_bot: top,
           ?job_title: String?,
           ?last_name: String?,
@@ -286,6 +290,7 @@ module OursprivacyIngest
           gclid: String?,
           gender: String?,
           ip: String?,
+          irclickid: String?,
           is_bot: top,
           job_title: String?,
           last_name: String?,
@@ -347,6 +352,7 @@ module OursprivacyIngest
           host: String?,
           iframe: bool?,
           ip: String?,
+          irclickid: String?,
           is_bot: top,
           li_fat_id: String?,
           msclkid: String?,
@@ -443,6 +449,8 @@ module OursprivacyIngest
         attr_accessor iframe: bool?
 
         attr_accessor ip: String?
+
+        attr_accessor irclickid: String?
 
         attr_reader is_bot: top?
 
@@ -545,6 +553,7 @@ module OursprivacyIngest
           ?host: String?,
           ?iframe: bool?,
           ?ip: String?,
+          ?irclickid: String?,
           ?is_bot: top,
           ?li_fat_id: String?,
           ?msclkid: String?,
@@ -612,6 +621,7 @@ module OursprivacyIngest
           host: String?,
           iframe: bool?,
           ip: String?,
+          irclickid: String?,
           is_bot: top,
           li_fat_id: String?,
           msclkid: String?,
