@@ -203,6 +203,11 @@ module OursprivacyIngest
         #   @return [String, nil]
         optional :ip, String, nil?: true
 
+        # @!attribute irclickid
+        #
+        #   @return [String, nil]
+        optional :irclickid, String, nil?: true
+
         # @!attribute is_bot
         #
         #   @return [Object, nil]
@@ -333,7 +338,7 @@ module OursprivacyIngest
         #   @return [Object, nil]
         optional :zip, OursprivacyIngest::Internal::Type::Unknown
 
-        # @!method initialize(ad_id: nil, adset_id: nil, campaign_id: nil, city: nil, clickid: nil, clid: nil, company_name: nil, consent: nil, country: nil, custom_properties: nil, date_of_birth: nil, dclid: nil, email: nil, epik: nil, external_id: nil, fbc: nil, fbclid: nil, fbp: nil, first_name: nil, gad_source: nil, gbraid: nil, gclid: nil, gender: nil, ip: nil, is_bot: nil, job_title: nil, last_name: nil, li_fat_id: nil, msclkid: nil, ndclid: nil, phone_number: nil, qclid: nil, rdt_cid: nil, referrer: nil, sacid: nil, sccid: nil, sid: nil, state: nil, ttclid: nil, twclid: nil, user_agent: nil, user_agent_full_list: nil, utm_campaign: nil, utm_content: nil, utm_medium: nil, utm_name: nil, utm_source: nil, utm_term: nil, wbraid: nil, zip: nil)
+        # @!method initialize(ad_id: nil, adset_id: nil, campaign_id: nil, city: nil, clickid: nil, clid: nil, company_name: nil, consent: nil, country: nil, custom_properties: nil, date_of_birth: nil, dclid: nil, email: nil, epik: nil, external_id: nil, fbc: nil, fbclid: nil, fbp: nil, first_name: nil, gad_source: nil, gbraid: nil, gclid: nil, gender: nil, ip: nil, irclickid: nil, is_bot: nil, job_title: nil, last_name: nil, li_fat_id: nil, msclkid: nil, ndclid: nil, phone_number: nil, qclid: nil, rdt_cid: nil, referrer: nil, sacid: nil, sccid: nil, sid: nil, state: nil, ttclid: nil, twclid: nil, user_agent: nil, user_agent_full_list: nil, utm_campaign: nil, utm_content: nil, utm_medium: nil, utm_name: nil, utm_source: nil, utm_term: nil, wbraid: nil, zip: nil)
         #   User properties to associate with this user. The existing user properties will
         #   be updated. And all future events will have these properties associated with
         #   them.
@@ -385,6 +390,8 @@ module OursprivacyIngest
         #   @param gender [String, nil]
         #
         #   @param ip [String, nil] The IP address of the user
+        #
+        #   @param irclickid [String, nil]
         #
         #   @param is_bot [Object]
         #
@@ -625,6 +632,12 @@ module OursprivacyIngest
         #   @return [String, nil]
         optional :ip, String, nil?: true
 
+        # @!attribute irclickid
+        #   The Impact Click ID. Ex: irclickid123
+        #
+        #   @return [String, nil]
+        optional :irclickid, String, nil?: true
+
         # @!attribute is_bot
         #   Whether we have detected that the user is a bot. This is set automatically by
         #   the Ours server primarily for events tracked through the web SDK.
@@ -831,7 +844,7 @@ module OursprivacyIngest
         #   @return [Boolean, nil]
         optional :webview, OursprivacyIngest::Internal::Type::Boolean, nil?: true
 
-        # @!method initialize(active_duration: nil, ad_id: nil, adset_id: nil, browser_language: nil, browser_name: nil, browser_version: nil, campaign_id: nil, clickid: nil, clid: nil, cpu_architecture: nil, current_url: nil, dclid: nil, device_model: nil, device_type: nil, device_vendor: nil, duration: nil, encoding: nil, engine_name: nil, engine_version: nil, epik: nil, fbc: nil, fbclid: nil, fbp: nil, fv: nil, gad_source: nil, gbraid: nil, gclid: nil, host: nil, iframe: nil, ip: nil, is_bot: nil, li_fat_id: nil, msclkid: nil, ndclid: nil, new_s: nil, os_name: nil, os_version: nil, page_hash: nil, pathname: nil, qclid: nil, rdt_cid: nil, received_at: nil, referrer: nil, sacid: nil, sccid: nil, screen_height: nil, screen_width: nil, session_count: nil, sid: nil, sr: nil, title: nil, ttclid: nil, twclid: nil, uafvl: nil, user_agent: nil, utm_campaign: nil, utm_content: nil, utm_medium: nil, utm_name: nil, utm_source: nil, utm_term: nil, version: nil, wbraid: nil, webview: nil)
+        # @!method initialize(active_duration: nil, ad_id: nil, adset_id: nil, browser_language: nil, browser_name: nil, browser_version: nil, campaign_id: nil, clickid: nil, clid: nil, cpu_architecture: nil, current_url: nil, dclid: nil, device_model: nil, device_type: nil, device_vendor: nil, duration: nil, encoding: nil, engine_name: nil, engine_version: nil, epik: nil, fbc: nil, fbclid: nil, fbp: nil, fv: nil, gad_source: nil, gbraid: nil, gclid: nil, host: nil, iframe: nil, ip: nil, irclickid: nil, is_bot: nil, li_fat_id: nil, msclkid: nil, ndclid: nil, new_s: nil, os_name: nil, os_version: nil, page_hash: nil, pathname: nil, qclid: nil, rdt_cid: nil, received_at: nil, referrer: nil, sacid: nil, sccid: nil, screen_height: nil, screen_width: nil, session_count: nil, sid: nil, sr: nil, title: nil, ttclid: nil, twclid: nil, uafvl: nil, user_agent: nil, utm_campaign: nil, utm_content: nil, utm_medium: nil, utm_name: nil, utm_source: nil, utm_term: nil, version: nil, wbraid: nil, webview: nil)
         #   Some parameter documentations has been truncated, see
         #   {OursprivacyIngest::Models::VisitorUpsertParams::DefaultProperties} for more
         #   details.
@@ -898,6 +911,8 @@ module OursprivacyIngest
         #   @param iframe [Boolean, nil] Whether the user is in an iframe. Ex: true
         #
         #   @param ip [String, nil] The IP address of the user. Ex: 127.0.0.1
+        #
+        #   @param irclickid [String, nil] The Impact Click ID. Ex: irclickid123
         #
         #   @param is_bot [Object] Whether we have detected that the user is a bot. This is set automatically by th
         #
