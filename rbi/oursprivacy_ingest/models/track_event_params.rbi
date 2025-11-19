@@ -302,6 +302,10 @@ module OursprivacyIngest
         sig { returns(T.nilable(String)) }
         attr_accessor :ip
 
+        # The Impact Click ID. Ex: irclickid123
+        sig { returns(T.nilable(String)) }
+        attr_accessor :irclickid
+
         # Whether we have detected that the user is a bot. This is set automatically by
         # the Ours server primarily for events tracked through the web SDK.
         sig { returns(T.nilable(T.anything)) }
@@ -477,6 +481,7 @@ module OursprivacyIngest
             host: T.nilable(String),
             iframe: T.nilable(T::Boolean),
             ip: T.nilable(String),
+            irclickid: T.nilable(String),
             is_bot: T.anything,
             li_fat_id: T.nilable(String),
             msclkid: T.nilable(String),
@@ -579,6 +584,8 @@ module OursprivacyIngest
           iframe: nil,
           # The IP address of the user. Ex: 127.0.0.1
           ip: nil,
+          # The Impact Click ID. Ex: irclickid123
+          irclickid: nil,
           # Whether we have detected that the user is a bot. This is set automatically by
           # the Ours server primarily for events tracked through the web SDK.
           is_bot: nil,
@@ -685,6 +692,7 @@ module OursprivacyIngest
               host: T.nilable(String),
               iframe: T.nilable(T::Boolean),
               ip: T.nilable(String),
+              irclickid: T.nilable(String),
               is_bot: T.anything,
               li_fat_id: T.nilable(String),
               msclkid: T.nilable(String),
@@ -808,6 +816,9 @@ module OursprivacyIngest
         sig { returns(T.nilable(String)) }
         attr_accessor :ip
 
+        sig { returns(T.nilable(String)) }
+        attr_accessor :irclickid
+
         sig { returns(T.nilable(T.anything)) }
         attr_reader :is_bot
 
@@ -924,6 +935,7 @@ module OursprivacyIngest
             gclid: T.nilable(String),
             gender: T.nilable(String),
             ip: T.nilable(String),
+            irclickid: T.nilable(String),
             is_bot: T.anything,
             job_title: T.nilable(String),
             last_name: T.nilable(String),
@@ -978,6 +990,7 @@ module OursprivacyIngest
           gender: nil,
           # The IP address of the user
           ip: nil,
+          irclickid: nil,
           is_bot: nil,
           job_title: nil,
           last_name: nil,
@@ -1035,6 +1048,7 @@ module OursprivacyIngest
               gclid: T.nilable(String),
               gender: T.nilable(String),
               ip: T.nilable(String),
+              irclickid: T.nilable(String),
               is_bot: T.anything,
               job_title: T.nilable(String),
               last_name: T.nilable(String),
