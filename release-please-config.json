@@ -59,6 +59,9 @@
       "hidden": true
     }
   ],
+  "reviewers": [
+    "tylerzey"
+  ],
   "release-type": "ruby",
   "version-file": "lib/oursprivacy_ingest/version.rb",
   "extra-files": [
