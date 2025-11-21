@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.3.0 (2025-11-21)
+
+Full Changelog: [v0.2.0...v0.3.0](https://github.com/with-ours/ingest-sdk-ruby/compare/v0.2.0...v0.3.0)
+
+### Features
+
+* **api:** api update ([fa6630a](https://github.com/with-ours/ingest-sdk-ruby/commit/fa6630a4c94741148f9e8e3871d5e1c643f7a59d))
+* **api:** api update ([530c7b7](https://github.com/with-ours/ingest-sdk-ruby/commit/530c7b70a30f02da2c9ce0a7cfb2de9f7501ade4))
+
+
+### Chores
+
+* explicitly require "base64" gem ([df2507c](https://github.com/with-ours/ingest-sdk-ruby/commit/df2507c16311559c20db6f3de9d37919b8c4a3e8))
+
 ## 0.2.0 (2025-11-19)
 
 Full Changelog: [v0.1.1...v0.2.0](https://github.com/with-ours/ingest-sdk-ruby/compare/v0.1.1...v0.2.0)
