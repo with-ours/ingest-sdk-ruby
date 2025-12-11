@@ -190,6 +190,10 @@ module OursprivacyIngest
         sig { returns(T.nilable(String)) }
         attr_accessor :adset_id
 
+        # The Basis DSP Click ID. Ex: basis_cid123
+        sig { returns(T.nilable(String)) }
+        attr_accessor :basis_cid
+
         # The language of the browser. Ex: en-US
         sig { returns(T.nilable(String)) }
         attr_accessor :browser_language
@@ -297,6 +301,10 @@ module OursprivacyIngest
         # Whether the user is in an iframe. Ex: true
         sig { returns(T.nilable(T::Boolean)) }
         attr_accessor :iframe
+
+        # The Impact Click ID reference. Ex: im_ref123
+        sig { returns(T.nilable(String)) }
+        attr_accessor :im_ref
 
         # The IP address of the user. Ex: 127.0.0.1
         sig { returns(T.nilable(String)) }
@@ -458,6 +466,7 @@ module OursprivacyIngest
             active_duration: T.nilable(Float),
             ad_id: T.nilable(String),
             adset_id: T.nilable(String),
+            basis_cid: T.nilable(String),
             browser_language: T.nilable(String),
             browser_name: T.nilable(String),
             browser_version: T.nilable(String),
@@ -484,6 +493,7 @@ module OursprivacyIngest
             gclid: T.nilable(String),
             host: T.nilable(String),
             iframe: T.nilable(T::Boolean),
+            im_ref: T.nilable(String),
             ip: T.nilable(String),
             irclickid: T.nilable(String),
             is_bot: T.anything,
@@ -531,6 +541,8 @@ module OursprivacyIngest
           # The adset id for detected in the session. This is set by the web sdk
           # automatically.
           adset_id: nil,
+          # The Basis DSP Click ID. Ex: basis_cid123
+          basis_cid: nil,
           # The language of the browser. Ex: en-US
           browser_language: nil,
           # The name of the browser. Ex: Chrome
@@ -587,6 +599,8 @@ module OursprivacyIngest
           host: nil,
           # Whether the user is in an iframe. Ex: true
           iframe: nil,
+          # The Impact Click ID reference. Ex: im_ref123
+          im_ref: nil,
           # The IP address of the user. Ex: 127.0.0.1
           ip: nil,
           # The Impact Click ID. Ex: irclickid123
@@ -672,6 +686,7 @@ module OursprivacyIngest
               active_duration: T.nilable(Float),
               ad_id: T.nilable(String),
               adset_id: T.nilable(String),
+              basis_cid: T.nilable(String),
               browser_language: T.nilable(String),
               browser_name: T.nilable(String),
               browser_version: T.nilable(String),
@@ -698,6 +713,7 @@ module OursprivacyIngest
               gclid: T.nilable(String),
               host: T.nilable(String),
               iframe: T.nilable(T::Boolean),
+              im_ref: T.nilable(String),
               ip: T.nilable(String),
               irclickid: T.nilable(String),
               is_bot: T.anything,
@@ -756,6 +772,9 @@ module OursprivacyIngest
 
         sig { returns(T.nilable(String)) }
         attr_accessor :adset_id
+
+        sig { returns(T.nilable(String)) }
+        attr_accessor :basis_cid
 
         sig { returns(T.nilable(String)) }
         attr_accessor :campaign_id
@@ -819,6 +838,9 @@ module OursprivacyIngest
 
         sig { returns(T.nilable(String)) }
         attr_accessor :gender
+
+        sig { returns(T.nilable(String)) }
+        attr_accessor :im_ref
 
         # The IP address of the user
         sig { returns(T.nilable(String)) }
@@ -923,6 +945,7 @@ module OursprivacyIngest
           params(
             ad_id: T.nilable(String),
             adset_id: T.nilable(String),
+            basis_cid: T.nilable(String),
             campaign_id: T.nilable(String),
             city: T.nilable(String),
             clickid: T.nilable(String),
@@ -945,6 +968,7 @@ module OursprivacyIngest
             gbraid: T.nilable(String),
             gclid: T.nilable(String),
             gender: T.nilable(String),
+            im_ref: T.nilable(String),
             ip: T.nilable(String),
             irclickid: T.nilable(String),
             is_bot: T.anything,
@@ -979,6 +1003,7 @@ module OursprivacyIngest
         def self.new(
           ad_id: nil,
           adset_id: nil,
+          basis_cid: nil,
           campaign_id: nil,
           city: nil,
           clickid: nil,
@@ -1000,6 +1025,7 @@ module OursprivacyIngest
           gbraid: nil,
           gclid: nil,
           gender: nil,
+          im_ref: nil,
           # The IP address of the user
           ip: nil,
           irclickid: nil,
@@ -1038,6 +1064,7 @@ module OursprivacyIngest
             {
               ad_id: T.nilable(String),
               adset_id: T.nilable(String),
+              basis_cid: T.nilable(String),
               campaign_id: T.nilable(String),
               city: T.nilable(String),
               clickid: T.nilable(String),
@@ -1060,6 +1087,7 @@ module OursprivacyIngest
               gbraid: T.nilable(String),
               gclid: T.nilable(String),
               gender: T.nilable(String),
+              im_ref: T.nilable(String),
               ip: T.nilable(String),
               irclickid: T.nilable(String),
               is_bot: T.anything,
