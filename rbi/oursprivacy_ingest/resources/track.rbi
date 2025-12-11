@@ -17,7 +17,7 @@ module OursprivacyIngest
             ),
           distinct_id: T.nilable(String),
           email: T.nilable(String),
-          event_properties: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
+          event_properties: T.nilable(T::Hash[Symbol, T.nilable(String)]),
           external_id: T.nilable(String),
           time: T.nilable(Float),
           user_id: T.nilable(String),
