@@ -51,6 +51,7 @@ module OursprivacyIngest
         {
           ad_id: String?,
           adset_id: String?,
+          basis_cid: String?,
           campaign_id: String?,
           city: String?,
           clickid: String?,
@@ -72,6 +73,7 @@ module OursprivacyIngest
           gbraid: String?,
           gclid: String?,
           gender: String?,
+          im_ref: String?,
           ip: String?,
           irclickid: String?,
           is_bot: top,
@@ -107,6 +109,8 @@ module OursprivacyIngest
         attr_accessor ad_id: String?
 
         attr_accessor adset_id: String?
+
+        attr_accessor basis_cid: String?
 
         attr_accessor campaign_id: String?
 
@@ -149,6 +153,8 @@ module OursprivacyIngest
         attr_accessor gclid: String?
 
         attr_accessor gender: String?
+
+        attr_accessor im_ref: String?
 
         attr_accessor ip: String?
 
@@ -217,6 +223,7 @@ module OursprivacyIngest
         def initialize: (
           ?ad_id: String?,
           ?adset_id: String?,
+          ?basis_cid: String?,
           ?campaign_id: String?,
           ?city: String?,
           ?clickid: String?,
@@ -238,6 +245,7 @@ module OursprivacyIngest
           ?gbraid: String?,
           ?gclid: String?,
           ?gender: String?,
+          ?im_ref: String?,
           ?ip: String?,
           ?irclickid: String?,
           ?is_bot: top,
@@ -272,6 +280,7 @@ module OursprivacyIngest
         def to_hash: -> {
           ad_id: String?,
           adset_id: String?,
+          basis_cid: String?,
           campaign_id: String?,
           city: String?,
           clickid: String?,
@@ -293,6 +302,7 @@ module OursprivacyIngest
           gbraid: String?,
           gclid: String?,
           gender: String?,
+          im_ref: String?,
           ip: String?,
           irclickid: String?,
           is_bot: top,
@@ -330,6 +340,7 @@ module OursprivacyIngest
           active_duration: Float?,
           ad_id: String?,
           adset_id: String?,
+          basis_cid: String?,
           browser_language: String?,
           browser_name: String?,
           browser_version: String?,
@@ -356,6 +367,7 @@ module OursprivacyIngest
           gclid: String?,
           host: String?,
           iframe: bool?,
+          im_ref: String?,
           ip: String?,
           irclickid: String?,
           is_bot: top,
@@ -401,6 +413,8 @@ module OursprivacyIngest
         attr_accessor ad_id: String?
 
         attr_accessor adset_id: String?
+
+        attr_accessor basis_cid: String?
 
         attr_accessor browser_language: String?
 
@@ -453,6 +467,8 @@ module OursprivacyIngest
         attr_accessor host: String?
 
         attr_accessor iframe: bool?
+
+        attr_accessor im_ref: String?
 
         attr_accessor ip: String?
 
@@ -534,6 +550,7 @@ module OursprivacyIngest
           ?active_duration: Float?,
           ?ad_id: String?,
           ?adset_id: String?,
+          ?basis_cid: String?,
           ?browser_language: String?,
           ?browser_name: String?,
           ?browser_version: String?,
@@ -560,6 +577,7 @@ module OursprivacyIngest
           ?gclid: String?,
           ?host: String?,
           ?iframe: bool?,
+          ?im_ref: String?,
           ?ip: String?,
           ?irclickid: String?,
           ?is_bot: top,
@@ -603,6 +621,7 @@ module OursprivacyIngest
           active_duration: Float?,
           ad_id: String?,
           adset_id: String?,
+          basis_cid: String?,
           browser_language: String?,
           browser_name: String?,
           browser_version: String?,
@@ -629,6 +648,7 @@ module OursprivacyIngest
           gclid: String?,
           host: String?,
           iframe: bool?,
+          im_ref: String?,
           ip: String?,
           irclickid: String?,
           is_bot: top,
