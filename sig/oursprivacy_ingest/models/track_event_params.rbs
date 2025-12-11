@@ -7,7 +7,7 @@ module OursprivacyIngest
         default_properties: OursprivacyIngest::TrackEventParams::DefaultProperties?,
         distinct_id: String?,
         email: String?,
-        event_properties: ::Hash[Symbol, top?]?,
+        event_properties: ::Hash[Symbol, String?]?,
         external_id: String?,
         time: Float?,
         user_id: String?,
@@ -29,7 +29,7 @@ module OursprivacyIngest
 
       attr_accessor email: String?
 
-      attr_accessor event_properties: ::Hash[Symbol, top?]?
+      attr_accessor event_properties: ::Hash[Symbol, String?]?
 
       attr_accessor external_id: String?
 
@@ -45,7 +45,7 @@ module OursprivacyIngest
         ?default_properties: OursprivacyIngest::TrackEventParams::DefaultProperties?,
         ?distinct_id: String?,
         ?email: String?,
-        ?event_properties: ::Hash[Symbol, top?]?,
+        ?event_properties: ::Hash[Symbol, String?]?,
         ?external_id: String?,
         ?time: Float?,
         ?user_id: String?,
@@ -59,7 +59,7 @@ module OursprivacyIngest
         default_properties: OursprivacyIngest::TrackEventParams::DefaultProperties?,
         distinct_id: String?,
         email: String?,
-        event_properties: ::Hash[Symbol, top?]?,
+        event_properties: ::Hash[Symbol, String?]?,
         external_id: String?,
         time: Float?,
         user_id: String?,
@@ -102,7 +102,7 @@ module OursprivacyIngest
           im_ref: String?,
           ip: String?,
           irclickid: String?,
-          is_bot: top,
+          is_bot: String?,
           li_fat_id: String?,
           msclkid: String?,
           ndclid: String?,
@@ -206,9 +206,7 @@ module OursprivacyIngest
 
         attr_accessor irclickid: String?
 
-        attr_reader is_bot: top?
-
-        def is_bot=: (top) -> top
+        attr_accessor is_bot: String?
 
         attr_accessor li_fat_id: String?
 
@@ -312,7 +310,7 @@ module OursprivacyIngest
           ?im_ref: String?,
           ?ip: String?,
           ?irclickid: String?,
-          ?is_bot: top,
+          ?is_bot: String?,
           ?li_fat_id: String?,
           ?msclkid: String?,
           ?ndclid: String?,
@@ -383,7 +381,7 @@ module OursprivacyIngest
           im_ref: String?,
           ip: String?,
           irclickid: String?,
-          is_bot: top,
+          is_bot: String?,
           li_fat_id: String?,
           msclkid: String?,
           ndclid: String?,
@@ -431,9 +429,9 @@ module OursprivacyIngest
           clickid: String?,
           clid: String?,
           company_name: String?,
-          consent: ::Hash[Symbol, top?]?,
+          consent: ::Hash[Symbol, String?]?,
           country: String?,
-          custom_properties: ::Hash[Symbol, top?]?,
+          custom_properties: ::Hash[Symbol, String?]?,
           date_of_birth: String?,
           dclid: String?,
           email: String?,
@@ -450,13 +448,13 @@ module OursprivacyIngest
           im_ref: String?,
           ip: String?,
           irclickid: String?,
-          is_bot: top,
+          is_bot: String?,
           job_title: String?,
           last_name: String?,
           li_fat_id: String?,
           msclkid: String?,
           ndclid: String?,
-          phone_number: top,
+          phone_number: String?,
           qclid: String?,
           rdt_cid: String?,
           referrer: String?,
@@ -476,7 +474,7 @@ module OursprivacyIngest
           utm_source: String?,
           utm_term: String?,
           wbraid: String?,
-          zip: top
+          zip: String?
         }
 
       class UserProperties < OursprivacyIngest::Internal::Type::BaseModel
@@ -496,11 +494,11 @@ module OursprivacyIngest
 
         attr_accessor company_name: String?
 
-        attr_accessor consent: ::Hash[Symbol, top?]?
+        attr_accessor consent: ::Hash[Symbol, String?]?
 
         attr_accessor country: String?
 
-        attr_accessor custom_properties: ::Hash[Symbol, top?]?
+        attr_accessor custom_properties: ::Hash[Symbol, String?]?
 
         attr_accessor date_of_birth: String?
 
@@ -534,9 +532,7 @@ module OursprivacyIngest
 
         attr_accessor irclickid: String?
 
-        attr_reader is_bot: top?
-
-        def is_bot=: (top) -> top
+        attr_accessor is_bot: String?
 
         attr_accessor job_title: String?
 
@@ -548,9 +544,7 @@ module OursprivacyIngest
 
         attr_accessor ndclid: String?
 
-        attr_reader phone_number: top?
-
-        def phone_number=: (top) -> top
+        attr_accessor phone_number: String?
 
         attr_accessor qclid: String?
 
@@ -590,9 +584,7 @@ module OursprivacyIngest
 
         attr_accessor wbraid: String?
 
-        attr_reader zip: top?
-
-        def zip=: (top) -> top
+        attr_accessor zip: String?
 
         def initialize: (
           ?ad_id: String?,
@@ -603,9 +595,9 @@ module OursprivacyIngest
           ?clickid: String?,
           ?clid: String?,
           ?company_name: String?,
-          ?consent: ::Hash[Symbol, top?]?,
+          ?consent: ::Hash[Symbol, String?]?,
           ?country: String?,
-          ?custom_properties: ::Hash[Symbol, top?]?,
+          ?custom_properties: ::Hash[Symbol, String?]?,
           ?date_of_birth: String?,
           ?dclid: String?,
           ?email: String?,
@@ -622,13 +614,13 @@ module OursprivacyIngest
           ?im_ref: String?,
           ?ip: String?,
           ?irclickid: String?,
-          ?is_bot: top,
+          ?is_bot: String?,
           ?job_title: String?,
           ?last_name: String?,
           ?li_fat_id: String?,
           ?msclkid: String?,
           ?ndclid: String?,
-          ?phone_number: top,
+          ?phone_number: String?,
           ?qclid: String?,
           ?rdt_cid: String?,
           ?referrer: String?,
@@ -648,7 +640,7 @@ module OursprivacyIngest
           ?utm_source: String?,
           ?utm_term: String?,
           ?wbraid: String?,
-          ?zip: top
+          ?zip: String?
         ) -> void
 
         def to_hash: -> {
@@ -660,9 +652,9 @@ module OursprivacyIngest
           clickid: String?,
           clid: String?,
           company_name: String?,
-          consent: ::Hash[Symbol, top?]?,
+          consent: ::Hash[Symbol, String?]?,
           country: String?,
-          custom_properties: ::Hash[Symbol, top?]?,
+          custom_properties: ::Hash[Symbol, String?]?,
           date_of_birth: String?,
           dclid: String?,
           email: String?,
@@ -679,13 +671,13 @@ module OursprivacyIngest
           im_ref: String?,
           ip: String?,
           irclickid: String?,
-          is_bot: top,
+          is_bot: String?,
           job_title: String?,
           last_name: String?,
           li_fat_id: String?,
           msclkid: String?,
           ndclid: String?,
-          phone_number: top,
+          phone_number: String?,
           qclid: String?,
           rdt_cid: String?,
           referrer: String?,
@@ -705,7 +697,7 @@ module OursprivacyIngest
           utm_source: String?,
           utm_term: String?,
           wbraid: String?,
-          zip: top
+          zip: String?
         }
       end
     end

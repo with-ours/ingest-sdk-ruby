@@ -118,11 +118,8 @@ module OursprivacyIngest
 
         # @!attribute consent
         #
-        #   @return [Hash{Symbol=>Object, nil}, nil]
-        optional :consent,
-                 OursprivacyIngest::Internal::Type::HashOf[OursprivacyIngest::Internal::Type::Unknown,
-                                                           nil?: true],
-                 nil?: true
+        #   @return [Hash{Symbol=>String, nil}, nil]
+        optional :consent, OursprivacyIngest::Internal::Type::HashOf[String, nil?: true], nil?: true
 
         # @!attribute country
         #
@@ -131,11 +128,8 @@ module OursprivacyIngest
 
         # @!attribute custom_properties
         #
-        #   @return [Hash{Symbol=>Object, nil}, nil]
-        optional :custom_properties,
-                 OursprivacyIngest::Internal::Type::HashOf[OursprivacyIngest::Internal::Type::Unknown,
-                                                           nil?: true],
-                 nil?: true
+        #   @return [Hash{Symbol=>String, nil}, nil]
+        optional :custom_properties, OursprivacyIngest::Internal::Type::HashOf[String, nil?: true], nil?: true
 
         # @!attribute date_of_birth
         #
@@ -220,8 +214,8 @@ module OursprivacyIngest
 
         # @!attribute is_bot
         #
-        #   @return [Object, nil]
-        optional :is_bot, OursprivacyIngest::Internal::Type::Unknown
+        #   @return [String, nil]
+        optional :is_bot, String, nil?: true
 
         # @!attribute job_title
         #
@@ -250,8 +244,8 @@ module OursprivacyIngest
 
         # @!attribute phone_number
         #
-        #   @return [Object, nil]
-        optional :phone_number, OursprivacyIngest::Internal::Type::Unknown
+        #   @return [String, nil]
+        optional :phone_number, String, nil?: true
 
         # @!attribute qclid
         #
@@ -350,8 +344,8 @@ module OursprivacyIngest
 
         # @!attribute zip
         #
-        #   @return [Object, nil]
-        optional :zip, OursprivacyIngest::Internal::Type::Unknown
+        #   @return [String, nil]
+        optional :zip, String, nil?: true
 
         # @!method initialize(ad_id: nil, adset_id: nil, basis_cid: nil, campaign_id: nil, city: nil, clickid: nil, clid: nil, company_name: nil, consent: nil, country: nil, custom_properties: nil, date_of_birth: nil, dclid: nil, email: nil, epik: nil, external_id: nil, fbc: nil, fbclid: nil, fbp: nil, first_name: nil, gad_source: nil, gbraid: nil, gclid: nil, gender: nil, im_ref: nil, ip: nil, irclickid: nil, is_bot: nil, job_title: nil, last_name: nil, li_fat_id: nil, msclkid: nil, ndclid: nil, phone_number: nil, qclid: nil, rdt_cid: nil, referrer: nil, referring_domain: nil, sacid: nil, sccid: nil, sid: nil, state: nil, ttclid: nil, twclid: nil, user_agent: nil, user_agent_full_list: nil, utm_campaign: nil, utm_content: nil, utm_medium: nil, utm_name: nil, utm_source: nil, utm_term: nil, wbraid: nil, zip: nil)
         #   User properties to associate with this user. The existing user properties will
@@ -374,11 +368,11 @@ module OursprivacyIngest
         #
         #   @param company_name [String, nil]
         #
-        #   @param consent [Hash{Symbol=>Object, nil}, nil]
+        #   @param consent [Hash{Symbol=>String, nil}, nil]
         #
         #   @param country [String, nil]
         #
-        #   @param custom_properties [Hash{Symbol=>Object, nil}, nil]
+        #   @param custom_properties [Hash{Symbol=>String, nil}, nil]
         #
         #   @param date_of_birth [String, nil]
         #
@@ -412,7 +406,7 @@ module OursprivacyIngest
         #
         #   @param irclickid [String, nil]
         #
-        #   @param is_bot [Object]
+        #   @param is_bot [String, nil]
         #
         #   @param job_title [String, nil]
         #
@@ -424,7 +418,7 @@ module OursprivacyIngest
         #
         #   @param ndclid [String, nil]
         #
-        #   @param phone_number [Object]
+        #   @param phone_number [String, nil]
         #
         #   @param qclid [String, nil]
         #
@@ -464,7 +458,7 @@ module OursprivacyIngest
         #
         #   @param wbraid [String, nil]
         #
-        #   @param zip [Object]
+        #   @param zip [String, nil]
       end
 
       class DefaultProperties < OursprivacyIngest::Internal::Type::BaseModel
@@ -675,8 +669,8 @@ module OursprivacyIngest
         #   Whether we have detected that the user is a bot. This is set automatically by
         #   the Ours server primarily for events tracked through the web SDK.
         #
-        #   @return [Object, nil]
-        optional :is_bot, OursprivacyIngest::Internal::Type::Unknown
+        #   @return [String, nil]
+        optional :is_bot, String, nil?: true
 
         # @!attribute li_fat_id
         #   The LinkedIn Click ID. Ex: li_fat_id123
@@ -957,7 +951,7 @@ module OursprivacyIngest
         #
         #   @param irclickid [String, nil] The Impact Click ID. Ex: irclickid123
         #
-        #   @param is_bot [Object] Whether we have detected that the user is a bot. This is set automatically by th
+        #   @param is_bot [String, nil] Whether we have detected that the user is a bot. This is set automatically by th
         #
         #   @param li_fat_id [String, nil] The LinkedIn Click ID. Ex: li_fat_id123
         #
