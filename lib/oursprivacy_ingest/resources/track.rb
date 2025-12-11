@@ -23,7 +23,7 @@ module OursprivacyIngest
       #
       # @param email [String, nil] The email address of a user. We will associate this event with the user or creat
       #
-      # @param event_properties [Hash{Symbol=>Object, nil}, nil] Any additional event properties you want to pass along.
+      # @param event_properties [Hash{Symbol=>String, nil}, nil] Any additional event properties you want to pass along.
       #
       # @param external_id [String, nil] The externalId (the ID in your system) of a user. We will associate this event w
       #

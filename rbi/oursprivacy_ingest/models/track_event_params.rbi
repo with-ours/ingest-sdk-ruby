@@ -53,7 +53,7 @@ module OursprivacyIngest
       attr_accessor :email
 
       # Any additional event properties you want to pass along.
-      sig { returns(T.nilable(T::Hash[Symbol, T.nilable(T.anything)])) }
+      sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
       attr_accessor :event_properties
 
       # The externalId (the ID in your system) of a user. We will associate this event
@@ -100,7 +100,7 @@ module OursprivacyIngest
             ),
           distinct_id: T.nilable(String),
           email: T.nilable(String),
-          event_properties: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
+          event_properties: T.nilable(T::Hash[Symbol, T.nilable(String)]),
           external_id: T.nilable(String),
           time: T.nilable(Float),
           user_id: T.nilable(String),
@@ -155,7 +155,7 @@ module OursprivacyIngest
               T.nilable(OursprivacyIngest::TrackEventParams::DefaultProperties),
             distinct_id: T.nilable(String),
             email: T.nilable(String),
-            event_properties: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
+            event_properties: T.nilable(T::Hash[Symbol, T.nilable(String)]),
             external_id: T.nilable(String),
             time: T.nilable(Float),
             user_id: T.nilable(String),
@@ -316,11 +316,8 @@ module OursprivacyIngest
 
         # Whether we have detected that the user is a bot. This is set automatically by
         # the Ours server primarily for events tracked through the web SDK.
-        sig { returns(T.nilable(T.anything)) }
-        attr_reader :is_bot
-
-        sig { params(is_bot: T.anything).void }
-        attr_writer :is_bot
+        sig { returns(T.nilable(String)) }
+        attr_accessor :is_bot
 
         # The LinkedIn Click ID. Ex: li_fat_id123
         sig { returns(T.nilable(String)) }
@@ -496,7 +493,7 @@ module OursprivacyIngest
             im_ref: T.nilable(String),
             ip: T.nilable(String),
             irclickid: T.nilable(String),
-            is_bot: T.anything,
+            is_bot: T.nilable(String),
             li_fat_id: T.nilable(String),
             msclkid: T.nilable(String),
             ndclid: T.nilable(String),
@@ -716,7 +713,7 @@ module OursprivacyIngest
               im_ref: T.nilable(String),
               ip: T.nilable(String),
               irclickid: T.nilable(String),
-              is_bot: T.anything,
+              is_bot: T.nilable(String),
               li_fat_id: T.nilable(String),
               msclkid: T.nilable(String),
               ndclid: T.nilable(String),
@@ -791,13 +788,13 @@ module OursprivacyIngest
         sig { returns(T.nilable(String)) }
         attr_accessor :company_name
 
-        sig { returns(T.nilable(T::Hash[Symbol, T.nilable(T.anything)])) }
+        sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
         attr_accessor :consent
 
         sig { returns(T.nilable(String)) }
         attr_accessor :country
 
-        sig { returns(T.nilable(T::Hash[Symbol, T.nilable(T.anything)])) }
+        sig { returns(T.nilable(T::Hash[Symbol, T.nilable(String)])) }
         attr_accessor :custom_properties
 
         sig { returns(T.nilable(String)) }
@@ -849,11 +846,8 @@ module OursprivacyIngest
         sig { returns(T.nilable(String)) }
         attr_accessor :irclickid
 
-        sig { returns(T.nilable(T.anything)) }
-        attr_reader :is_bot
-
-        sig { params(is_bot: T.anything).void }
-        attr_writer :is_bot
+        sig { returns(T.nilable(String)) }
+        attr_accessor :is_bot
 
         sig { returns(T.nilable(String)) }
         attr_accessor :job_title
@@ -870,11 +864,8 @@ module OursprivacyIngest
         sig { returns(T.nilable(String)) }
         attr_accessor :ndclid
 
-        sig { returns(T.nilable(T.anything)) }
-        attr_reader :phone_number
-
-        sig { params(phone_number: T.anything).void }
-        attr_writer :phone_number
+        sig { returns(T.nilable(String)) }
+        attr_accessor :phone_number
 
         sig { returns(T.nilable(String)) }
         attr_accessor :qclid
@@ -933,11 +924,8 @@ module OursprivacyIngest
         sig { returns(T.nilable(String)) }
         attr_accessor :wbraid
 
-        sig { returns(T.nilable(T.anything)) }
-        attr_reader :zip
-
-        sig { params(zip: T.anything).void }
-        attr_writer :zip
+        sig { returns(T.nilable(String)) }
+        attr_accessor :zip
 
         # Properties to set on the visitor. (optional) You can also update these
         # properties via the identify endpoint.
@@ -951,10 +939,9 @@ module OursprivacyIngest
             clickid: T.nilable(String),
             clid: T.nilable(String),
             company_name: T.nilable(String),
-            consent: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
+            consent: T.nilable(T::Hash[Symbol, T.nilable(String)]),
             country: T.nilable(String),
-            custom_properties:
-              T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
+            custom_properties: T.nilable(T::Hash[Symbol, T.nilable(String)]),
             date_of_birth: T.nilable(String),
             dclid: T.nilable(String),
             email: T.nilable(String),
@@ -971,13 +958,13 @@ module OursprivacyIngest
             im_ref: T.nilable(String),
             ip: T.nilable(String),
             irclickid: T.nilable(String),
-            is_bot: T.anything,
+            is_bot: T.nilable(String),
             job_title: T.nilable(String),
             last_name: T.nilable(String),
             li_fat_id: T.nilable(String),
             msclkid: T.nilable(String),
             ndclid: T.nilable(String),
-            phone_number: T.anything,
+            phone_number: T.nilable(String),
             qclid: T.nilable(String),
             rdt_cid: T.nilable(String),
             referrer: T.nilable(String),
@@ -997,7 +984,7 @@ module OursprivacyIngest
             utm_source: T.nilable(String),
             utm_term: T.nilable(String),
             wbraid: T.nilable(String),
-            zip: T.anything
+            zip: T.nilable(String)
           ).returns(T.attached_class)
         end
         def self.new(
@@ -1070,10 +1057,9 @@ module OursprivacyIngest
               clickid: T.nilable(String),
               clid: T.nilable(String),
               company_name: T.nilable(String),
-              consent: T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
+              consent: T.nilable(T::Hash[Symbol, T.nilable(String)]),
               country: T.nilable(String),
-              custom_properties:
-                T.nilable(T::Hash[Symbol, T.nilable(T.anything)]),
+              custom_properties: T.nilable(T::Hash[Symbol, T.nilable(String)]),
               date_of_birth: T.nilable(String),
               dclid: T.nilable(String),
               email: T.nilable(String),
@@ -1090,13 +1076,13 @@ module OursprivacyIngest
               im_ref: T.nilable(String),
               ip: T.nilable(String),
               irclickid: T.nilable(String),
-              is_bot: T.anything,
+              is_bot: T.nilable(String),
               job_title: T.nilable(String),
               last_name: T.nilable(String),
               li_fat_id: T.nilable(String),
               msclkid: T.nilable(String),
               ndclid: T.nilable(String),
-              phone_number: T.anything,
+              phone_number: T.nilable(String),
               qclid: T.nilable(String),
               rdt_cid: T.nilable(String),
               referrer: T.nilable(String),
@@ -1116,7 +1102,7 @@ module OursprivacyIngest
               utm_source: T.nilable(String),
               utm_term: T.nilable(String),
               wbraid: T.nilable(String),
-              zip: T.anything
+              zip: T.nilable(String)
             }
           )
         end
