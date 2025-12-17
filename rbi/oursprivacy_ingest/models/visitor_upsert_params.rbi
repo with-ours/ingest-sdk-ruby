@@ -146,6 +146,12 @@ module OursprivacyIngest
         attr_accessor :adset_id
 
         sig { returns(T.nilable(String)) }
+        attr_accessor :alart
+
+        sig { returns(T.nilable(String)) }
+        attr_accessor :aleid
+
+        sig { returns(T.nilable(String)) }
         attr_accessor :basis_cid
 
         sig { returns(T.nilable(String)) }
@@ -309,6 +315,8 @@ module OursprivacyIngest
           params(
             ad_id: T.nilable(String),
             adset_id: T.nilable(String),
+            alart: T.nilable(String),
+            aleid: T.nilable(String),
             basis_cid: T.nilable(String),
             campaign_id: T.nilable(String),
             city: T.nilable(String),
@@ -366,6 +374,8 @@ module OursprivacyIngest
         def self.new(
           ad_id: nil,
           adset_id: nil,
+          alart: nil,
+          aleid: nil,
           basis_cid: nil,
           campaign_id: nil,
           city: nil,
@@ -427,6 +437,8 @@ module OursprivacyIngest
             {
               ad_id: T.nilable(String),
               adset_id: T.nilable(String),
+              alart: T.nilable(String),
+              aleid: T.nilable(String),
               basis_cid: T.nilable(String),
               campaign_id: T.nilable(String),
               city: T.nilable(String),
@@ -507,6 +519,14 @@ module OursprivacyIngest
         # automatically.
         sig { returns(T.nilable(String)) }
         attr_accessor :adset_id
+
+        # The AppLovin alart query parameter. Ex: alart123
+        sig { returns(T.nilable(String)) }
+        attr_accessor :alart
+
+        # The AppLovin aleid query parameter. Ex: aleid123
+        sig { returns(T.nilable(String)) }
+        attr_accessor :aleid
 
         # The Basis DSP Click ID. Ex: basis_cid123
         sig { returns(T.nilable(String)) }
@@ -781,6 +801,8 @@ module OursprivacyIngest
             active_duration: T.nilable(Float),
             ad_id: T.nilable(String),
             adset_id: T.nilable(String),
+            alart: T.nilable(String),
+            aleid: T.nilable(String),
             basis_cid: T.nilable(String),
             browser_language: T.nilable(String),
             browser_name: T.nilable(String),
@@ -856,6 +878,10 @@ module OursprivacyIngest
           # The adset id for detected in the session. This is set by the web sdk
           # automatically.
           adset_id: nil,
+          # The AppLovin alart query parameter. Ex: alart123
+          alart: nil,
+          # The AppLovin aleid query parameter. Ex: aleid123
+          aleid: nil,
           # The Basis DSP Click ID. Ex: basis_cid123
           basis_cid: nil,
           # The language of the browser. Ex: en-US
@@ -1001,6 +1027,8 @@ module OursprivacyIngest
               active_duration: T.nilable(Float),
               ad_id: T.nilable(String),
               adset_id: T.nilable(String),
+              alart: T.nilable(String),
+              aleid: T.nilable(String),
               basis_cid: T.nilable(String),
               browser_language: T.nilable(String),
               browser_name: T.nilable(String),

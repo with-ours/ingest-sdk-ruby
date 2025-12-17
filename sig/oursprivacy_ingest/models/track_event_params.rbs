@@ -72,6 +72,8 @@ module OursprivacyIngest
           active_duration: Float?,
           ad_id: String?,
           adset_id: String?,
+          alart: String?,
+          aleid: String?,
           basis_cid: String?,
           browser_language: String?,
           browser_name: String?,
@@ -145,6 +147,10 @@ module OursprivacyIngest
         attr_accessor ad_id: String?
 
         attr_accessor adset_id: String?
+
+        attr_accessor alart: String?
+
+        attr_accessor aleid: String?
 
         attr_accessor basis_cid: String?
 
@@ -280,6 +286,8 @@ module OursprivacyIngest
           ?active_duration: Float?,
           ?ad_id: String?,
           ?adset_id: String?,
+          ?alart: String?,
+          ?aleid: String?,
           ?basis_cid: String?,
           ?browser_language: String?,
           ?browser_name: String?,
@@ -351,6 +359,8 @@ module OursprivacyIngest
           active_duration: Float?,
           ad_id: String?,
           adset_id: String?,
+          alart: String?,
+          aleid: String?,
           basis_cid: String?,
           browser_language: String?,
           browser_name: String?,
@@ -423,6 +433,8 @@ module OursprivacyIngest
         {
           ad_id: String?,
           adset_id: String?,
+          alart: String?,
+          aleid: String?,
           basis_cid: String?,
           campaign_id: String?,
           city: String?,
@@ -481,6 +493,10 @@ module OursprivacyIngest
         attr_accessor ad_id: String?
 
         attr_accessor adset_id: String?
+
+        attr_accessor alart: String?
+
+        attr_accessor aleid: String?
 
         attr_accessor basis_cid: String?
 
@@ -589,6 +605,8 @@ module OursprivacyIngest
         def initialize: (
           ?ad_id: String?,
           ?adset_id: String?,
+          ?alart: String?,
+          ?aleid: String?,
           ?basis_cid: String?,
           ?campaign_id: String?,
           ?city: String?,
@@ -646,6 +664,8 @@ module OursprivacyIngest
         def to_hash: -> {
           ad_id: String?,
           adset_id: String?,
+          alart: String?,
+          aleid: String?,
           basis_cid: String?,
           campaign_id: String?,
           city: String?,
