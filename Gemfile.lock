@@ -11,7 +11,7 @@ GIT
 PATH
   remote: .
   specs:
-    oursprivacy-ingest (0.4.0)
+    oursprivacy-ingest (0.4.1)
       connection_pool
 
 GEM
