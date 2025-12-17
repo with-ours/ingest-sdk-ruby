@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.4.1 (2025-12-17)
+
+Full Changelog: [v0.4.0...v0.4.1](https://github.com/with-ours/ingest-sdk-ruby/compare/v0.4.0...v0.4.1)
+
+### Bug Fixes
+
+* calling `break` out of streams should be instantaneous ([cd7e203](https://github.com/with-ours/ingest-sdk-ruby/commit/cd7e20302b13e8c9d6fce341216304a2a1cb53d0))
+
 ## 0.4.0 (2025-12-11)
 
 Full Changelog: [v0.3.0...v0.4.0](https://github.com/with-ours/ingest-sdk-ruby/compare/v0.3.0...v0.4.0)
