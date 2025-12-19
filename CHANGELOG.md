@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.5.1 (2025-12-19)
+
+Full Changelog: [v0.5.0...v0.5.1](https://github.com/with-ours/ingest-sdk-ruby/compare/v0.5.0...v0.5.1)
+
+### Bug Fixes
+
+* issue where json.parse errors when receiving HTTP 204 with nobody ([2c5237e](https://github.com/with-ours/ingest-sdk-ruby/commit/2c5237ead971440171efa8e9a676a2c5231f63b5))
+
 ## 0.5.0 (2025-12-17)
 
 Full Changelog: [v0.4.1...v0.5.0](https://github.com/with-ours/ingest-sdk-ruby/compare/v0.4.1...v0.5.0)
