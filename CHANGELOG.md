@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.5.2 (2026-01-06)
+
+Full Changelog: [v0.5.1...v0.5.2](https://github.com/with-ours/ingest-sdk-ruby/compare/v0.5.1...v0.5.2)
+
+### Chores
+
+* **internal:** codegen related update ([d599fff](https://github.com/with-ours/ingest-sdk-ruby/commit/d599fffc3bbc150f78bf9f58dea2348352b625f8))
+
 ## 0.5.1 (2025-12-19)
 
 Full Changelog: [v0.5.0...v0.5.1](https://github.com/with-ours/ingest-sdk-ruby/compare/v0.5.0...v0.5.1)
