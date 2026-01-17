@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.5.3 (2026-01-17)
+
+Full Changelog: [v0.5.2...v0.5.3](https://github.com/with-ours/ingest-sdk-ruby/compare/v0.5.2...v0.5.3)
+
+### Chores
+
+* **internal:** update `actions/checkout` version ([2c4d38a](https://github.com/with-ours/ingest-sdk-ruby/commit/2c4d38a50c182446eaeac7bb36bef5060d840a1e))
+* move `cgi` into dependencies for ruby 4 ([4595ebe](https://github.com/with-ours/ingest-sdk-ruby/commit/4595ebe7c1ea71e88bb7f4b17746decc47276e21))
+
 ## 0.5.2 (2026-01-06)
 
 Full Changelog: [v0.5.1...v0.5.2](https://github.com/with-ours/ingest-sdk-ruby/compare/v0.5.1...v0.5.2)
