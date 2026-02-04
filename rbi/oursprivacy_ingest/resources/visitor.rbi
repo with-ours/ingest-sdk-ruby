@@ -22,7 +22,7 @@ module OursprivacyIngest
         ).returns(OursprivacyIngest::Models::VisitorUpsertResponse)
       end
       def upsert(
-        # The token for your Ours Privacy Source. You can find this in the Ours dashboard.
+        # The token for your Source. You can find this in the dashboard.
         token:,
         # User properties to associate with this user. The existing user properties will
         # be updated. And all future events will have these properties associated with

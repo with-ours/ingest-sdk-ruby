@@ -14,7 +14,7 @@ module OursprivacyIngest
           )
         end
 
-      # The token for your Ours Privacy Source. You can find this in the Ours dashboard.
+      # The token for your Source. You can find this in the dashboard.
       sig { returns(String) }
       attr_accessor :token
 
@@ -85,7 +85,7 @@ module OursprivacyIngest
         ).returns(T.attached_class)
       end
       def self.new(
-        # The token for your Ours Privacy Source. You can find this in the Ours dashboard.
+        # The token for your Source. You can find this in the dashboard.
         token:,
         # User properties to associate with this user. The existing user properties will
         # be updated. And all future events will have these properties associated with
