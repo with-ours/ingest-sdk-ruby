@@ -12,7 +12,7 @@ module OursprivacyIngest
       #
       # @overload upsert(token:, user_properties:, default_properties: nil, email: nil, external_id: nil, user_id: nil, request_options: {})
       #
-      # @param token [String] The token for your Ours Privacy Source. You can find this in the Ours dashboard.
+      # @param token [String] The token for your Source. You can find this in the dashboard.
       #
       # @param user_properties [OursprivacyIngest::Models::VisitorUpsertParams::UserProperties] User properties to associate with this user. The existing user properties will b
       #

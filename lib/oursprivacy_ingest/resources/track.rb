@@ -13,7 +13,7 @@ module OursprivacyIngest
       #
       # @overload event(token:, event:, default_properties: nil, distinct_id: nil, email: nil, event_properties: nil, external_id: nil, time: nil, user_id: nil, user_properties: nil, request_options: {})
       #
-      # @param token [String] The token for your Ours Privacy Source. You can find this in the Ours dashboard.
+      # @param token [String] The token for your Source. You can find this in the dashboard.
       #
       # @param event [String] The name of the event you're tracking. This must be whitelisted in the Ours dash
       #

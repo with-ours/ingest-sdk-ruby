@@ -8,7 +8,7 @@ module OursprivacyIngest
       include OursprivacyIngest::Internal::Type::RequestParameters
 
       # @!attribute token
-      #   The token for your Ours Privacy Source. You can find this in the Ours dashboard.
+      #   The token for your Source. You can find this in the dashboard.
       #
       #   @return [String]
       required :token, String
@@ -90,7 +90,7 @@ module OursprivacyIngest
       #   Some parameter documentations has been truncated, see
       #   {OursprivacyIngest::Models::TrackEventParams} for more details.
       #
-      #   @param token [String] The token for your Ours Privacy Source. You can find this in the Ours dashboard.
+      #   @param token [String] The token for your Source. You can find this in the dashboard.
       #
       #   @param event [String] The name of the event you're tracking. This must be whitelisted in the Ours dash
       #
