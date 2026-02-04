@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.6.0 (2026-02-04)
+
+Full Changelog: [v0.5.3...v0.6.0](https://github.com/with-ours/ingest-sdk-ruby/compare/v0.5.3...v0.6.0)
+
+### Features
+
+* **api:** api update ([c897e73](https://github.com/with-ours/ingest-sdk-ruby/commit/c897e73b41d03ed59d3b16695ac593444a1de033))
+
+
+### Bug Fixes
+
+* **client:** always add content-length to post body, even when empty ([dbd2c0d](https://github.com/with-ours/ingest-sdk-ruby/commit/dbd2c0d48f21a6dfb3a5376fae25acd27b16e765))
+
+
+### Chores
+
+* **docs:** remove www prefix ([4558817](https://github.com/with-ours/ingest-sdk-ruby/commit/45588178bcce89a6136eb025efc7d0db66e33a24))
+
 ## 0.5.3 (2026-01-17)
 
 Full Changelog: [v0.5.2...v0.5.3](https://github.com/with-ours/ingest-sdk-ruby/compare/v0.5.2...v0.5.3)
