@@ -14,7 +14,7 @@ module OursprivacyIngest
           )
         end
 
-      # The token for your Ours Privacy Source. You can find this in the Ours dashboard.
+      # The token for your Source. You can find this in the dashboard.
       sig { returns(String) }
       attr_accessor :token
 
@@ -112,7 +112,7 @@ module OursprivacyIngest
         ).returns(T.attached_class)
       end
       def self.new(
-        # The token for your Ours Privacy Source. You can find this in the Ours dashboard.
+        # The token for your Source. You can find this in the dashboard.
         token:,
         # The name of the event you're tracking. This must be whitelisted in the Ours
         # dashboard.
