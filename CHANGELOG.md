@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.6.1 (2026-02-07)
+
+Full Changelog: [v0.6.0...v0.6.1](https://github.com/with-ours/ingest-sdk-ruby/compare/v0.6.0...v0.6.1)
+
+### Bug Fixes
+
+* **client:** loosen json header parsing ([9a86501](https://github.com/with-ours/ingest-sdk-ruby/commit/9a865017b427fb2163d1d0e25b8b048a489ff05c))
+
 ## 0.6.0 (2026-02-04)
 
 Full Changelog: [v0.5.3...v0.6.0](https://github.com/with-ours/ingest-sdk-ruby/compare/v0.5.3...v0.6.0)
