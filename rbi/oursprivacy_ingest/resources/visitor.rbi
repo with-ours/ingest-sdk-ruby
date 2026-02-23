@@ -3,9 +3,8 @@
 module OursprivacyIngest
   module Resources
     class Visitor
-      # Define visitor properties on an existing visitor or create a new visitor. Note:
-      # This does not fire an event. If you want to fire an event, use the track method
-      # and include properties for the visitor.
+      # Define visitor properties on an existing visitor or create a new visitor. This
+      # fires a $identify event, making the call visible in the event stream.
       sig do
         params(
           token: String,
