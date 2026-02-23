@@ -6,9 +6,8 @@ module OursprivacyIngest
       # Some parameter documentations has been truncated, see
       # {OursprivacyIngest::Models::VisitorUpsertParams} for more details.
       #
-      # Define visitor properties on an existing visitor or create a new visitor. Note:
-      # This does not fire an event. If you want to fire an event, use the track method
-      # and include properties for the visitor.
+      # Define visitor properties on an existing visitor or create a new visitor. This
+      # fires a $identify event, making the call visible in the event stream.
       #
       # @overload upsert(token:, user_properties:, default_properties: nil, email: nil, external_id: nil, user_id: nil, request_options: {})
       #
