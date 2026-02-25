@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.0.0 (2026-02-25)
+
+Full Changelog: [v0.6.1...v1.0.0](https://github.com/with-ours/ingest-sdk-ruby/compare/v0.6.1...v1.0.0)
+
+### Features
+
+* **api:** api update ([b7747dc](https://github.com/with-ours/ingest-sdk-ruby/commit/b7747dce53e856befe7b39431b0550d2e708a36b))
+
+
+### Chores
+
+* **internal:** remove mock server code ([bdf4b78](https://github.com/with-ours/ingest-sdk-ruby/commit/bdf4b78b5941481c0d04e680f6b94b53e096a6e6))
+* update mock server docs ([8603cee](https://github.com/with-ours/ingest-sdk-ruby/commit/8603ceeef4a21e20f122cd74384db92409ff768e))
+
 ## 0.6.1 (2026-02-07)
 
 Full Changelog: [v0.6.0...v0.6.1](https://github.com/with-ours/ingest-sdk-ruby/compare/v0.6.0...v0.6.1)
