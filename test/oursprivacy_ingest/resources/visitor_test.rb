@@ -4,7 +4,7 @@ require_relative "../test_helper"
 
 class OursprivacyIngest::Test::Resources::VisitorTest < OursprivacyIngest::Test::ResourceTest
   def test_upsert_required_params
-    skip("Prism tests are disabled")
+    skip("Mock server tests are disabled")
 
     response = @ours_privacy.visitor.upsert(token: "x", user_properties: {})
 
