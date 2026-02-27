@@ -93,19 +93,21 @@ class OursprivacyIngestTest < Minitest::Test
   end
 
   def test_client_retry_after_date
+    time_now = Time.now
+
     stub_request(:post, "http://localhost/track").to_return_json(
       status: 500,
-      headers: {"retry-after" => (Time.now + 10).httpdate},
+      headers: {"retry-after" => (time_now + 10).httpdate},
       body: {}
     )
 
     ours_privacy = OursprivacyIngest::Client.new(base_url: "http://localhost", max_retries: 1)
 
+    Thread.current.thread_variable_set(:time_now, time_now)
     assert_raises(OursprivacyIngest::Errors::InternalServerError) do
-      Thread.current.thread_variable_set(:time_now, Time.now)
       ours_privacy.track.event(token: "x", event: "x")
-      Thread.current.thread_variable_set(:time_now, nil)
     end
+    Thread.current.thread_variable_set(:time_now, nil)
 
     assert_requested(:any, /./, times: 2)
     assert_in_delta(10, Thread.current.thread_variable_get(:mock_sleep).last, 1.0)

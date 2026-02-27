@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.0.1 (2026-02-27)
+
+Full Changelog: [v1.0.0...v1.0.1](https://github.com/with-ours/ingest-sdk-ruby/compare/v1.0.0...v1.0.1)
+
+### Bug Fixes
+
+* properly mock time in ruby ci tests ([c6284cc](https://github.com/with-ours/ingest-sdk-ruby/commit/c6284cce35b59141034382207798cdad49cde62e))
+
 ## 1.0.0 (2026-02-25)
 
 Full Changelog: [v0.6.1...v1.0.0](https://github.com/with-ours/ingest-sdk-ruby/compare/v0.6.1...v1.0.0)
