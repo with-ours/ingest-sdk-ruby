@@ -11,7 +11,7 @@ module OursprivacyIngest
       # users. For all fields, null values unset the property and undefined values do
       # not unset existing properties.
       #
-      # @overload event(token:, event:, default_properties: nil, distinct_id: nil, email: nil, event_properties: nil, external_id: nil, time: nil, user_id: nil, user_properties: nil, request_options: {})
+      # @overload event(token:, event:, default_properties: nil, distinct_id: nil, email: nil, event_properties: nil, external_id: nil, identity_context: nil, time: nil, user_id: nil, user_properties: nil, request_options: {})
       #
       # @param token [String] The token for your Source. You can find this in the dashboard.
       #
@@ -26,6 +26,8 @@ module OursprivacyIngest
       # @param event_properties [Hash{Symbol=>String, nil}, nil] Any additional event properties you want to pass along.
       #
       # @param external_id [String, nil] The externalId (the ID in your system) of a user. We will associate this event w
+      #
+      # @param identity_context [OursprivacyIngest::Models::TrackEventParams::IdentityContext, nil] End-user network context for server-side calls. Required for probabilistic ident
       #
       # @param time [Float, nil] The time at which the event occurred in milliseconds since UTC epoch. The time m
       #

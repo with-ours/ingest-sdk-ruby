@@ -16,6 +16,10 @@ module OursprivacyIngest
             ),
           email: T.nilable(String),
           external_id: T.nilable(String),
+          identity_context:
+            T.nilable(
+              OursprivacyIngest::VisitorUpsertParams::IdentityContext::OrHash
+            ),
           user_id: T.nilable(String),
           request_options: OursprivacyIngest::RequestOptions::OrHash
         ).returns(OursprivacyIngest::Models::VisitorUpsertResponse)
@@ -38,6 +42,10 @@ module OursprivacyIngest
         # with the user or create a user. If included in the request, email lookup is
         # ignored.
         external_id: nil,
+        # End-user network context for server-side calls. Required for probabilistic
+        # identity resolution when the caller is a backend server rather than an end-user
+        # browser.
+        identity_context: nil,
         # The Ours user id stored in local storage and cookies on your web properties. If
         # userId is included in the request, we do not lookup the user by email or
         # externalId.

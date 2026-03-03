@@ -9,7 +9,7 @@ module OursprivacyIngest
       # Define visitor properties on an existing visitor or create a new visitor. This
       # fires a $identify event, making the call visible in the event stream.
       #
-      # @overload upsert(token:, user_properties:, default_properties: nil, email: nil, external_id: nil, user_id: nil, request_options: {})
+      # @overload upsert(token:, user_properties:, default_properties: nil, email: nil, external_id: nil, identity_context: nil, user_id: nil, request_options: {})
       #
       # @param token [String] The token for your Source. You can find this in the dashboard.
       #
@@ -20,6 +20,8 @@ module OursprivacyIngest
       # @param email [String, nil] The email address of a user. We will associate this event with the user or creat
       #
       # @param external_id [String, nil] The externalId (the ID in your system) of a user. We will associate this event w
+      #
+      # @param identity_context [OursprivacyIngest::Models::VisitorUpsertParams::IdentityContext, nil] End-user network context for server-side calls. Required for probabilistic ident
       #
       # @param user_id [String, nil] The Ours user id stored in local storage and cookies on your web properties. If
       #
