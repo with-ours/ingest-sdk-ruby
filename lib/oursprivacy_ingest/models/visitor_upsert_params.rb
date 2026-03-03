@@ -49,6 +49,17 @@ module OursprivacyIngest
       #   @return [String, nil]
       optional :external_id, String, api_name: :externalId, nil?: true
 
+      # @!attribute identity_context
+      #   End-user network context for server-side calls. Required for probabilistic
+      #   identity resolution when the caller is a backend server rather than an end-user
+      #   browser.
+      #
+      #   @return [OursprivacyIngest::Models::VisitorUpsertParams::IdentityContext, nil]
+      optional :identity_context,
+               -> { OursprivacyIngest::VisitorUpsertParams::IdentityContext },
+               api_name: :identityContext,
+               nil?: true
+
       # @!attribute user_id
       #   The Ours user id stored in local storage and cookies on your web properties. If
       #   userId is included in the request, we do not lookup the user by email or
@@ -57,7 +68,7 @@ module OursprivacyIngest
       #   @return [String, nil]
       optional :user_id, String, api_name: :userId, nil?: true
 
-      # @!method initialize(token:, user_properties:, default_properties: nil, email: nil, external_id: nil, user_id: nil, request_options: {})
+      # @!method initialize(token:, user_properties:, default_properties: nil, email: nil, external_id: nil, identity_context: nil, user_id: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {OursprivacyIngest::Models::VisitorUpsertParams} for more details.
       #
@@ -70,6 +81,8 @@ module OursprivacyIngest
       #   @param email [String, nil] The email address of a user. We will associate this event with the user or creat
       #
       #   @param external_id [String, nil] The externalId (the ID in your system) of a user. We will associate this event w
+      #
+      #   @param identity_context [OursprivacyIngest::Models::VisitorUpsertParams::IdentityContext, nil] End-user network context for server-side calls. Required for probabilistic ident
       #
       #   @param user_id [String, nil] The Ours user id stored in local storage and cookies on your web properties. If
       #
@@ -1050,6 +1063,29 @@ module OursprivacyIngest
         #   @param wbraid [String, nil] The WBRAID Identifier. The web SDK automatically captures this from the query pa
         #
         #   @param webview [Boolean, nil] Whether the user is in a webview. Ex: true
+      end
+
+      class IdentityContext < OursprivacyIngest::Internal::Type::BaseModel
+        # @!attribute ip
+        #   The end-user IP address (not the server IP).
+        #
+        #   @return [String]
+        required :ip, String
+
+        # @!attribute user_agent
+        #   The end-user User-Agent string (not the server UA).
+        #
+        #   @return [String]
+        required :user_agent, String, api_name: :userAgent
+
+        # @!method initialize(ip:, user_agent:)
+        #   End-user network context for server-side calls. Required for probabilistic
+        #   identity resolution when the caller is a backend server rather than an end-user
+        #   browser.
+        #
+        #   @param ip [String] The end-user IP address (not the server IP).
+        #
+        #   @param user_agent [String] The end-user User-Agent string (not the server UA).
       end
     end
   end

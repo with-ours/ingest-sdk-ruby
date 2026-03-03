@@ -19,6 +19,10 @@ module OursprivacyIngest
           email: T.nilable(String),
           event_properties: T.nilable(T::Hash[Symbol, T.nilable(String)]),
           external_id: T.nilable(String),
+          identity_context:
+            T.nilable(
+              OursprivacyIngest::TrackEventParams::IdentityContext::OrHash
+            ),
           time: T.nilable(Float),
           user_id: T.nilable(String),
           user_properties:
@@ -49,6 +53,10 @@ module OursprivacyIngest
         # with the user or create a user. If included in the request, email lookup is
         # ignored.
         external_id: nil,
+        # End-user network context for server-side calls. Required for probabilistic
+        # identity resolution when the caller is a backend server rather than an end-user
+        # browser.
+        identity_context: nil,
         # The time at which the event occurred in milliseconds since UTC epoch. The time
         # must be in the past and within the last 7 days.
         time: nil,

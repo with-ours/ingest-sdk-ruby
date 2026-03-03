@@ -7,6 +7,7 @@ module OursprivacyIngest
         ?default_properties: OursprivacyIngest::VisitorUpsertParams::DefaultProperties?,
         ?email: String?,
         ?external_id: String?,
+        ?identity_context: OursprivacyIngest::VisitorUpsertParams::IdentityContext?,
         ?user_id: String?,
         ?request_options: OursprivacyIngest::request_opts
       ) -> OursprivacyIngest::Models::VisitorUpsertResponse

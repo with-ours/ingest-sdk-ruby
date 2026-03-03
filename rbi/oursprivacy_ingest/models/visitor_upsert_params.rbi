@@ -63,6 +63,26 @@ module OursprivacyIngest
       sig { returns(T.nilable(String)) }
       attr_accessor :external_id
 
+      # End-user network context for server-side calls. Required for probabilistic
+      # identity resolution when the caller is a backend server rather than an end-user
+      # browser.
+      sig do
+        returns(
+          T.nilable(OursprivacyIngest::VisitorUpsertParams::IdentityContext)
+        )
+      end
+      attr_reader :identity_context
+
+      sig do
+        params(
+          identity_context:
+            T.nilable(
+              OursprivacyIngest::VisitorUpsertParams::IdentityContext::OrHash
+            )
+        ).void
+      end
+      attr_writer :identity_context
+
       # The Ours user id stored in local storage and cookies on your web properties. If
       # userId is included in the request, we do not lookup the user by email or
       # externalId.
@@ -80,6 +100,10 @@ module OursprivacyIngest
             ),
           email: T.nilable(String),
           external_id: T.nilable(String),
+          identity_context:
+            T.nilable(
+              OursprivacyIngest::VisitorUpsertParams::IdentityContext::OrHash
+            ),
           user_id: T.nilable(String),
           request_options: OursprivacyIngest::RequestOptions::OrHash
         ).returns(T.attached_class)
@@ -102,6 +126,10 @@ module OursprivacyIngest
         # with the user or create a user. If included in the request, email lookup is
         # ignored.
         external_id: nil,
+        # End-user network context for server-side calls. Required for probabilistic
+        # identity resolution when the caller is a backend server rather than an end-user
+        # browser.
+        identity_context: nil,
         # The Ours user id stored in local storage and cookies on your web properties. If
         # userId is included in the request, we do not lookup the user by email or
         # externalId.
@@ -122,6 +150,10 @@ module OursprivacyIngest
               ),
             email: T.nilable(String),
             external_id: T.nilable(String),
+            identity_context:
+              T.nilable(
+                OursprivacyIngest::VisitorUpsertParams::IdentityContext
+              ),
             user_id: T.nilable(String),
             request_options: OursprivacyIngest::RequestOptions
           }
@@ -1097,6 +1129,40 @@ module OursprivacyIngest
             }
           )
         end
+        def to_hash
+        end
+      end
+
+      class IdentityContext < OursprivacyIngest::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(
+              OursprivacyIngest::VisitorUpsertParams::IdentityContext,
+              OursprivacyIngest::Internal::AnyHash
+            )
+          end
+
+        # The end-user IP address (not the server IP).
+        sig { returns(String) }
+        attr_accessor :ip
+
+        # The end-user User-Agent string (not the server UA).
+        sig { returns(String) }
+        attr_accessor :user_agent
+
+        # End-user network context for server-side calls. Required for probabilistic
+        # identity resolution when the caller is a backend server rather than an end-user
+        # browser.
+        sig { params(ip: String, user_agent: String).returns(T.attached_class) }
+        def self.new(
+          # The end-user IP address (not the server IP).
+          ip:,
+          # The end-user User-Agent string (not the server UA).
+          user_agent:
+        )
+        end
+
+        sig { override.returns({ ip: String, user_agent: String }) }
         def to_hash
         end
       end
