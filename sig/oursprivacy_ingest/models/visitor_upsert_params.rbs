@@ -7,6 +7,7 @@ module OursprivacyIngest
         default_properties: OursprivacyIngest::VisitorUpsertParams::DefaultProperties?,
         email: String?,
         external_id: String?,
+        identity_context: OursprivacyIngest::VisitorUpsertParams::IdentityContext?,
         user_id: String?
       }
       & OursprivacyIngest::Internal::Type::request_parameters
@@ -25,6 +26,8 @@ module OursprivacyIngest
 
       attr_accessor external_id: String?
 
+      attr_accessor identity_context: OursprivacyIngest::VisitorUpsertParams::IdentityContext?
+
       attr_accessor user_id: String?
 
       def initialize: (
@@ -33,6 +36,7 @@ module OursprivacyIngest
         ?default_properties: OursprivacyIngest::VisitorUpsertParams::DefaultProperties?,
         ?email: String?,
         ?external_id: String?,
+        ?identity_context: OursprivacyIngest::VisitorUpsertParams::IdentityContext?,
         ?user_id: String?,
         ?request_options: OursprivacyIngest::request_opts
       ) -> void
@@ -43,6 +47,7 @@ module OursprivacyIngest
         default_properties: OursprivacyIngest::VisitorUpsertParams::DefaultProperties?,
         email: String?,
         external_id: String?,
+        identity_context: OursprivacyIngest::VisitorUpsertParams::IdentityContext?,
         user_id: String?,
         request_options: OursprivacyIngest::RequestOptions
       }
@@ -699,6 +704,18 @@ module OursprivacyIngest
           wbraid: String?,
           webview: bool?
         }
+      end
+
+      type identity_context = { ip: String, user_agent: String }
+
+      class IdentityContext < OursprivacyIngest::Internal::Type::BaseModel
+        attr_accessor ip: String
+
+        attr_accessor user_agent: String
+
+        def initialize: (ip: String, user_agent: String) -> void
+
+        def to_hash: -> { ip: String, user_agent: String }
       end
     end
   end

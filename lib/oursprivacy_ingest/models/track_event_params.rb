@@ -61,6 +61,17 @@ module OursprivacyIngest
       #   @return [String, nil]
       optional :external_id, String, api_name: :externalId, nil?: true
 
+      # @!attribute identity_context
+      #   End-user network context for server-side calls. Required for probabilistic
+      #   identity resolution when the caller is a backend server rather than an end-user
+      #   browser.
+      #
+      #   @return [OursprivacyIngest::Models::TrackEventParams::IdentityContext, nil]
+      optional :identity_context,
+               -> { OursprivacyIngest::TrackEventParams::IdentityContext },
+               api_name: :identityContext,
+               nil?: true
+
       # @!attribute time
       #   The time at which the event occurred in milliseconds since UTC epoch. The time
       #   must be in the past and within the last 7 days.
@@ -86,7 +97,7 @@ module OursprivacyIngest
                api_name: :userProperties,
                nil?: true
 
-      # @!method initialize(token:, event:, default_properties: nil, distinct_id: nil, email: nil, event_properties: nil, external_id: nil, time: nil, user_id: nil, user_properties: nil, request_options: {})
+      # @!method initialize(token:, event:, default_properties: nil, distinct_id: nil, email: nil, event_properties: nil, external_id: nil, identity_context: nil, time: nil, user_id: nil, user_properties: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {OursprivacyIngest::Models::TrackEventParams} for more details.
       #
@@ -103,6 +114,8 @@ module OursprivacyIngest
       #   @param event_properties [Hash{Symbol=>String, nil}, nil] Any additional event properties you want to pass along.
       #
       #   @param external_id [String, nil] The externalId (the ID in your system) of a user. We will associate this event w
+      #
+      #   @param identity_context [OursprivacyIngest::Models::TrackEventParams::IdentityContext, nil] End-user network context for server-side calls. Required for probabilistic ident
       #
       #   @param time [Float, nil] The time at which the event occurred in milliseconds since UTC epoch. The time m
       #
@@ -687,6 +700,29 @@ module OursprivacyIngest
         #   @param wbraid [String, nil] The WBRAID Identifier. The web SDK automatically captures this from the query pa
         #
         #   @param webview [Boolean, nil] Whether the user is in a webview. Ex: true
+      end
+
+      class IdentityContext < OursprivacyIngest::Internal::Type::BaseModel
+        # @!attribute ip
+        #   The end-user IP address (not the server IP).
+        #
+        #   @return [String]
+        required :ip, String
+
+        # @!attribute user_agent
+        #   The end-user User-Agent string (not the server UA).
+        #
+        #   @return [String]
+        required :user_agent, String, api_name: :userAgent
+
+        # @!method initialize(ip:, user_agent:)
+        #   End-user network context for server-side calls. Required for probabilistic
+        #   identity resolution when the caller is a backend server rather than an end-user
+        #   browser.
+        #
+        #   @param ip [String] The end-user IP address (not the server IP).
+        #
+        #   @param user_agent [String] The end-user User-Agent string (not the server UA).
       end
 
       class UserProperties < OursprivacyIngest::Internal::Type::BaseModel
