@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.1.1 (2026-03-08)
+
+Full Changelog: [v1.1.0...v1.1.1](https://github.com/with-ours/ingest-sdk-ruby/compare/v1.1.0...v1.1.1)
+
+### Chores
+
+* **ci:** skip uploading artifacts on stainless-internal branches ([0d21553](https://github.com/with-ours/ingest-sdk-ruby/commit/0d21553717b207836d2bd5f6716911810e1268dd))
+
 ## 1.1.0 (2026-03-05)
 
 Full Changelog: [v1.0.1...v1.1.0](https://github.com/with-ours/ingest-sdk-ruby/compare/v1.0.1...v1.1.0)
