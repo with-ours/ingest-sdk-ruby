@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.1.2 (2026-03-17)
+
+Full Changelog: [v1.1.1...v1.1.2](https://github.com/with-ours/ingest-sdk-ruby/compare/v1.1.1...v1.1.2)
+
+### Chores
+
+* **internal:** tweak CI branches ([70b961a](https://github.com/with-ours/ingest-sdk-ruby/commit/70b961a15dee74733e55f8b60479883d1338d7d3))
+
 ## 1.1.1 (2026-03-08)
 
 Full Changelog: [v1.1.0...v1.1.1](https://github.com/with-ours/ingest-sdk-ruby/compare/v1.1.0...v1.1.1)
