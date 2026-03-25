@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.1.3 (2026-03-25)
+
+Full Changelog: [v1.1.2...v1.1.3](https://github.com/with-ours/ingest-sdk-ruby/compare/v1.1.2...v1.1.3)
+
+### Chores
+
+* **ci:** skip lint on metadata-only changes ([c0da270](https://github.com/with-ours/ingest-sdk-ruby/commit/c0da270a1036ce87a017a17299080348eaccf5c0))
+* **internal:** update gitignore ([d326529](https://github.com/with-ours/ingest-sdk-ruby/commit/d3265294f9c477eded2e919b10976f2488d227e1))
+
 ## 1.1.2 (2026-03-17)
 
 Full Changelog: [v1.1.1...v1.1.2](https://github.com/with-ours/ingest-sdk-ruby/compare/v1.1.1...v1.1.2)
