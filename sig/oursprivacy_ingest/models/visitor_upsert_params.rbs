@@ -58,6 +58,7 @@ module OursprivacyIngest
           adset_id: String?,
           alart: String?,
           aleid: String?,
+          axwrt: String?,
           basis_cid: String?,
           campaign_id: String?,
           city: String?,
@@ -120,6 +121,8 @@ module OursprivacyIngest
         attr_accessor alart: String?
 
         attr_accessor aleid: String?
+
+        attr_accessor axwrt: String?
 
         attr_accessor basis_cid: String?
 
@@ -230,6 +233,7 @@ module OursprivacyIngest
           ?adset_id: String?,
           ?alart: String?,
           ?aleid: String?,
+          ?axwrt: String?,
           ?basis_cid: String?,
           ?campaign_id: String?,
           ?city: String?,
@@ -289,6 +293,7 @@ module OursprivacyIngest
           adset_id: String?,
           alart: String?,
           aleid: String?,
+          axwrt: String?,
           basis_cid: String?,
           campaign_id: String?,
           city: String?,
@@ -351,6 +356,7 @@ module OursprivacyIngest
           adset_id: String?,
           alart: String?,
           aleid: String?,
+          axwrt: String?,
           basis_cid: String?,
           browser_language: String?,
           browser_name: String?,
@@ -428,6 +434,8 @@ module OursprivacyIngest
         attr_accessor alart: String?
 
         attr_accessor aleid: String?
+
+        attr_accessor axwrt: String?
 
         attr_accessor basis_cid: String?
 
@@ -565,6 +573,7 @@ module OursprivacyIngest
           ?adset_id: String?,
           ?alart: String?,
           ?aleid: String?,
+          ?axwrt: String?,
           ?basis_cid: String?,
           ?browser_language: String?,
           ?browser_name: String?,
@@ -638,6 +647,7 @@ module OursprivacyIngest
           adset_id: String?,
           alart: String?,
           aleid: String?,
+          axwrt: String?,
           basis_cid: String?,
           browser_language: String?,
           browser_name: String?,
