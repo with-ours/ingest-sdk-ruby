@@ -17,7 +17,7 @@ To use this gem, install via Bundler by adding the following to your application
 <!-- x-release-please-start-version -->
 
 ```ruby
-gem "oursprivacy-ingest", "~> 1.1.3"
+gem "oursprivacy-ingest", "~> 1.2.0"
 ```
 
 <!-- x-release-please-end -->

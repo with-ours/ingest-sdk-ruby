@@ -1,5 +1,23 @@
 # Changelog
 
+## 1.2.0 (2026-03-28)
+
+Full Changelog: [v1.1.3...v1.2.0](https://github.com/with-ours/ingest-sdk-ruby/compare/v1.1.3...v1.2.0)
+
+### Features
+
+* **api:** api update ([ad794cf](https://github.com/with-ours/ingest-sdk-ruby/commit/ad794cf098081e7d48cc92784e77a34ac2714044))
+
+
+### Bug Fixes
+
+* **internal:** correct multipart form field name encoding ([b52a0a0](https://github.com/with-ours/ingest-sdk-ruby/commit/b52a0a02de05377a9420446553f4b42aa7ca94d5))
+
+
+### Chores
+
+* **ci:** support opting out of skipping builds on metadata-only commits ([3aa53c0](https://github.com/with-ours/ingest-sdk-ruby/commit/3aa53c031bcd290bb5f4970da64227257fee7736))
+
 ## 1.1.3 (2026-03-25)
 
 Full Changelog: [v1.1.2...v1.1.3](https://github.com/with-ours/ingest-sdk-ruby/compare/v1.1.2...v1.1.3)
