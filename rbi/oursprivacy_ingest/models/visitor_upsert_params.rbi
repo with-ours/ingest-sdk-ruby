@@ -184,6 +184,9 @@ module OursprivacyIngest
         attr_accessor :aleid
 
         sig { returns(T.nilable(String)) }
+        attr_accessor :axwrt
+
+        sig { returns(T.nilable(String)) }
         attr_accessor :basis_cid
 
         sig { returns(T.nilable(String)) }
@@ -349,6 +352,7 @@ module OursprivacyIngest
             adset_id: T.nilable(String),
             alart: T.nilable(String),
             aleid: T.nilable(String),
+            axwrt: T.nilable(String),
             basis_cid: T.nilable(String),
             campaign_id: T.nilable(String),
             city: T.nilable(String),
@@ -408,6 +412,7 @@ module OursprivacyIngest
           adset_id: nil,
           alart: nil,
           aleid: nil,
+          axwrt: nil,
           basis_cid: nil,
           campaign_id: nil,
           city: nil,
@@ -471,6 +476,7 @@ module OursprivacyIngest
               adset_id: T.nilable(String),
               alart: T.nilable(String),
               aleid: T.nilable(String),
+              axwrt: T.nilable(String),
               basis_cid: T.nilable(String),
               campaign_id: T.nilable(String),
               city: T.nilable(String),
@@ -559,6 +565,10 @@ module OursprivacyIngest
         # The AppLovin aleid query parameter. Ex: aleid123
         sig { returns(T.nilable(String)) }
         attr_accessor :aleid
+
+        # The AppLovin Axon pixel cookie value (\_axwrt). Web-only.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :axwrt
 
         # The Basis DSP Click ID. Ex: basis_cid123
         sig { returns(T.nilable(String)) }
@@ -835,6 +845,7 @@ module OursprivacyIngest
             adset_id: T.nilable(String),
             alart: T.nilable(String),
             aleid: T.nilable(String),
+            axwrt: T.nilable(String),
             basis_cid: T.nilable(String),
             browser_language: T.nilable(String),
             browser_name: T.nilable(String),
@@ -914,6 +925,8 @@ module OursprivacyIngest
           alart: nil,
           # The AppLovin aleid query parameter. Ex: aleid123
           aleid: nil,
+          # The AppLovin Axon pixel cookie value (\_axwrt). Web-only.
+          axwrt: nil,
           # The Basis DSP Click ID. Ex: basis_cid123
           basis_cid: nil,
           # The language of the browser. Ex: en-US
@@ -1061,6 +1074,7 @@ module OursprivacyIngest
               adset_id: T.nilable(String),
               alart: T.nilable(String),
               aleid: T.nilable(String),
+              axwrt: T.nilable(String),
               basis_cid: T.nilable(String),
               browser_language: T.nilable(String),
               browser_name: T.nilable(String),
