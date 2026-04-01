@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.2.1 (2026-04-01)
+
+Full Changelog: [v1.2.0...v1.2.1](https://github.com/with-ours/ingest-sdk-ruby/compare/v1.2.0...v1.2.1)
+
+### Bug Fixes
+
+* align path encoding with RFC 3986 section 3.3 ([0580237](https://github.com/with-ours/ingest-sdk-ruby/commit/0580237426058ddfc9b8d38d85158ac159fe8182))
+* variable name typo ([ff3f737](https://github.com/with-ours/ingest-sdk-ruby/commit/ff3f7376cb0a2d34c318b83e14c22ae8b19ba615))
+
 ## 1.2.0 (2026-03-28)
 
 Full Changelog: [v1.1.3...v1.2.0](https://github.com/with-ours/ingest-sdk-ruby/compare/v1.1.3...v1.2.0)
