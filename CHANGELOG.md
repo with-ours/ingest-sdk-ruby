@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.2.2 (2026-04-09)
+
+Full Changelog: [v1.2.1...v1.2.2](https://github.com/with-ours/ingest-sdk-ruby/compare/v1.2.1...v1.2.2)
+
+### Bug Fixes
+
+* multipart encoding for file arrays ([0378b02](https://github.com/with-ours/ingest-sdk-ruby/commit/0378b020b9fb46ee608033b8ed0b085985c808d0))
+
 ## 1.2.1 (2026-04-01)
 
 Full Changelog: [v1.2.0...v1.2.1](https://github.com/with-ours/ingest-sdk-ruby/compare/v1.2.0...v1.2.1)
