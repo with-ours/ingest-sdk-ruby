@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.2.3 (2026-04-23)
+
+Full Changelog: [v1.2.2...v1.2.3](https://github.com/with-ours/ingest-sdk-ruby/compare/v1.2.2...v1.2.3)
+
+### Chores
+
+* **internal:** more robust bootstrap script ([f53feae](https://github.com/with-ours/ingest-sdk-ruby/commit/f53feae2cea3b5cf4deba70ad0e1dd99d208fe44))
+
 ## 1.2.2 (2026-04-09)
 
 Full Changelog: [v1.2.1...v1.2.2](https://github.com/with-ours/ingest-sdk-ruby/compare/v1.2.1...v1.2.2)
