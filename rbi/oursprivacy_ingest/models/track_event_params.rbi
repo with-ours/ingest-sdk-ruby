@@ -213,6 +213,10 @@ module OursprivacyIngest
         sig { returns(T.nilable(String)) }
         attr_accessor :ad_id
 
+        # The Admitad (Mitgo) affiliate Click ID. Ex: admitad_uid_abc123
+        sig { returns(T.nilable(String)) }
+        attr_accessor :admitad_uid
+
         # The adset id for detected in the session. This is set by the web sdk
         # automatically.
         sig { returns(T.nilable(String)) }
@@ -502,6 +506,7 @@ module OursprivacyIngest
           params(
             active_duration: T.nilable(Float),
             ad_id: T.nilable(String),
+            admitad_uid: T.nilable(String),
             adset_id: T.nilable(String),
             alart: T.nilable(String),
             aleid: T.nilable(String),
@@ -578,6 +583,8 @@ module OursprivacyIngest
           active_duration: nil,
           # The ad id for detected in the session. This is set by the web sdk automatically.
           ad_id: nil,
+          # The Admitad (Mitgo) affiliate Click ID. Ex: admitad_uid_abc123
+          admitad_uid: nil,
           # The adset id for detected in the session. This is set by the web sdk
           # automatically.
           adset_id: nil,
@@ -731,6 +738,7 @@ module OursprivacyIngest
             {
               active_duration: T.nilable(Float),
               ad_id: T.nilable(String),
+              admitad_uid: T.nilable(String),
               adset_id: T.nilable(String),
               alart: T.nilable(String),
               aleid: T.nilable(String),
@@ -852,6 +860,9 @@ module OursprivacyIngest
 
         sig { returns(T.nilable(String)) }
         attr_accessor :ad_id
+
+        sig { returns(T.nilable(String)) }
+        attr_accessor :admitad_uid
 
         sig { returns(T.nilable(String)) }
         attr_accessor :adset_id
@@ -1027,6 +1038,7 @@ module OursprivacyIngest
         sig do
           params(
             ad_id: T.nilable(String),
+            admitad_uid: T.nilable(String),
             adset_id: T.nilable(String),
             alart: T.nilable(String),
             aleid: T.nilable(String),
@@ -1087,6 +1099,7 @@ module OursprivacyIngest
         end
         def self.new(
           ad_id: nil,
+          admitad_uid: nil,
           adset_id: nil,
           alart: nil,
           aleid: nil,
@@ -1151,6 +1164,7 @@ module OursprivacyIngest
           override.returns(
             {
               ad_id: T.nilable(String),
+              admitad_uid: T.nilable(String),
               adset_id: T.nilable(String),
               alart: T.nilable(String),
               aleid: T.nilable(String),

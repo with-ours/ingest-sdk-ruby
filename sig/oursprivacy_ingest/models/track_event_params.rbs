@@ -76,6 +76,7 @@ module OursprivacyIngest
         {
           active_duration: Float?,
           ad_id: String?,
+          admitad_uid: String?,
           adset_id: String?,
           alart: String?,
           aleid: String?,
@@ -151,6 +152,8 @@ module OursprivacyIngest
         attr_accessor active_duration: Float?
 
         attr_accessor ad_id: String?
+
+        attr_accessor admitad_uid: String?
 
         attr_accessor adset_id: String?
 
@@ -293,6 +296,7 @@ module OursprivacyIngest
         def initialize: (
           ?active_duration: Float?,
           ?ad_id: String?,
+          ?admitad_uid: String?,
           ?adset_id: String?,
           ?alart: String?,
           ?aleid: String?,
@@ -367,6 +371,7 @@ module OursprivacyIngest
         def to_hash: -> {
           active_duration: Float?,
           ad_id: String?,
+          admitad_uid: String?,
           adset_id: String?,
           alart: String?,
           aleid: String?,
@@ -454,6 +459,7 @@ module OursprivacyIngest
       type user_properties =
         {
           ad_id: String?,
+          admitad_uid: String?,
           adset_id: String?,
           alart: String?,
           aleid: String?,
@@ -514,6 +520,8 @@ module OursprivacyIngest
 
       class UserProperties < OursprivacyIngest::Internal::Type::BaseModel
         attr_accessor ad_id: String?
+
+        attr_accessor admitad_uid: String?
 
         attr_accessor adset_id: String?
 
@@ -629,6 +637,7 @@ module OursprivacyIngest
 
         def initialize: (
           ?ad_id: String?,
+          ?admitad_uid: String?,
           ?adset_id: String?,
           ?alart: String?,
           ?aleid: String?,
@@ -689,6 +698,7 @@ module OursprivacyIngest
 
         def to_hash: -> {
           ad_id: String?,
+          admitad_uid: String?,
           adset_id: String?,
           alart: String?,
           aleid: String?,
