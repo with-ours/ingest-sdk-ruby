@@ -138,6 +138,12 @@ module OursprivacyIngest
         #   @return [String, nil]
         optional :ad_id, String, nil?: true
 
+        # @!attribute admitad_uid
+        #   The Admitad (Mitgo) affiliate Click ID. Ex: admitad_uid_abc123
+        #
+        #   @return [String, nil]
+        optional :admitad_uid, String, nil?: true
+
         # @!attribute adset_id
         #   The adset id for detected in the session. This is set by the web sdk
         #   automatically.
@@ -559,7 +565,7 @@ module OursprivacyIngest
         #   @return [Boolean, nil]
         optional :webview, OursprivacyIngest::Internal::Type::Boolean, nil?: true
 
-        # @!method initialize(active_duration: nil, ad_id: nil, adset_id: nil, alart: nil, aleid: nil, axwrt: nil, basis_cid: nil, browser_language: nil, browser_name: nil, browser_version: nil, campaign_id: nil, clickid: nil, clid: nil, cpu_architecture: nil, current_url: nil, dclid: nil, device_model: nil, device_type: nil, device_vendor: nil, duration: nil, encoding: nil, engine_name: nil, engine_version: nil, epik: nil, fbc: nil, fbclid: nil, fbp: nil, fv: nil, gad_source: nil, gbraid: nil, gclid: nil, host: nil, iframe: nil, im_ref: nil, ip: nil, irclickid: nil, is_bot: nil, li_fat_id: nil, msclkid: nil, ndclid: nil, new_s: nil, os_name: nil, os_version: nil, page_hash: nil, pathname: nil, qclid: nil, rdt_cid: nil, received_at: nil, referrer: nil, referring_domain: nil, sacid: nil, sccid: nil, screen_height: nil, screen_width: nil, session_count: nil, sid: nil, sr: nil, title: nil, ttclid: nil, twclid: nil, uafvl: nil, user_agent: nil, utm_campaign: nil, utm_content: nil, utm_medium: nil, utm_name: nil, utm_source: nil, utm_term: nil, version: nil, wbraid: nil, webview: nil)
+        # @!method initialize(active_duration: nil, ad_id: nil, admitad_uid: nil, adset_id: nil, alart: nil, aleid: nil, axwrt: nil, basis_cid: nil, browser_language: nil, browser_name: nil, browser_version: nil, campaign_id: nil, clickid: nil, clid: nil, cpu_architecture: nil, current_url: nil, dclid: nil, device_model: nil, device_type: nil, device_vendor: nil, duration: nil, encoding: nil, engine_name: nil, engine_version: nil, epik: nil, fbc: nil, fbclid: nil, fbp: nil, fv: nil, gad_source: nil, gbraid: nil, gclid: nil, host: nil, iframe: nil, im_ref: nil, ip: nil, irclickid: nil, is_bot: nil, li_fat_id: nil, msclkid: nil, ndclid: nil, new_s: nil, os_name: nil, os_version: nil, page_hash: nil, pathname: nil, qclid: nil, rdt_cid: nil, received_at: nil, referrer: nil, referring_domain: nil, sacid: nil, sccid: nil, screen_height: nil, screen_width: nil, session_count: nil, sid: nil, sr: nil, title: nil, ttclid: nil, twclid: nil, uafvl: nil, user_agent: nil, utm_campaign: nil, utm_content: nil, utm_medium: nil, utm_name: nil, utm_source: nil, utm_term: nil, version: nil, wbraid: nil, webview: nil)
         #   Some parameter documentations has been truncated, see
         #   {OursprivacyIngest::Models::TrackEventParams::DefaultProperties} for more
         #   details.
@@ -570,6 +576,8 @@ module OursprivacyIngest
         #   @param active_duration [Float, nil] The active time in milliseconds that the user had this tab active
         #
         #   @param ad_id [String, nil] The ad id for detected in the session. This is set by the web sdk automatically.
+        #
+        #   @param admitad_uid [String, nil] The Admitad (Mitgo) affiliate Click ID. Ex: admitad_uid_abc123
         #
         #   @param adset_id [String, nil] The adset id for detected in the session. This is set by the web sdk automatical
         #
@@ -738,6 +746,11 @@ module OursprivacyIngest
         #
         #   @return [String, nil]
         optional :ad_id, String, nil?: true
+
+        # @!attribute admitad_uid
+        #
+        #   @return [String, nil]
+        optional :admitad_uid, String, nil?: true
 
         # @!attribute adset_id
         #
@@ -1020,11 +1033,13 @@ module OursprivacyIngest
         #   @return [String, nil]
         optional :zip, String, nil?: true
 
-        # @!method initialize(ad_id: nil, adset_id: nil, alart: nil, aleid: nil, axwrt: nil, basis_cid: nil, campaign_id: nil, city: nil, clickid: nil, clid: nil, company_name: nil, consent: nil, country: nil, custom_properties: nil, date_of_birth: nil, dclid: nil, email: nil, epik: nil, external_id: nil, fbc: nil, fbclid: nil, fbp: nil, first_name: nil, gad_source: nil, gbraid: nil, gclid: nil, gender: nil, im_ref: nil, ip: nil, irclickid: nil, is_bot: nil, job_title: nil, last_name: nil, li_fat_id: nil, msclkid: nil, ndclid: nil, phone_number: nil, qclid: nil, rdt_cid: nil, referrer: nil, referring_domain: nil, sacid: nil, sccid: nil, sid: nil, state: nil, ttclid: nil, twclid: nil, user_agent: nil, user_agent_full_list: nil, utm_campaign: nil, utm_content: nil, utm_medium: nil, utm_name: nil, utm_source: nil, utm_term: nil, wbraid: nil, zip: nil)
+        # @!method initialize(ad_id: nil, admitad_uid: nil, adset_id: nil, alart: nil, aleid: nil, axwrt: nil, basis_cid: nil, campaign_id: nil, city: nil, clickid: nil, clid: nil, company_name: nil, consent: nil, country: nil, custom_properties: nil, date_of_birth: nil, dclid: nil, email: nil, epik: nil, external_id: nil, fbc: nil, fbclid: nil, fbp: nil, first_name: nil, gad_source: nil, gbraid: nil, gclid: nil, gender: nil, im_ref: nil, ip: nil, irclickid: nil, is_bot: nil, job_title: nil, last_name: nil, li_fat_id: nil, msclkid: nil, ndclid: nil, phone_number: nil, qclid: nil, rdt_cid: nil, referrer: nil, referring_domain: nil, sacid: nil, sccid: nil, sid: nil, state: nil, ttclid: nil, twclid: nil, user_agent: nil, user_agent_full_list: nil, utm_campaign: nil, utm_content: nil, utm_medium: nil, utm_name: nil, utm_source: nil, utm_term: nil, wbraid: nil, zip: nil)
         #   Properties to set on the visitor. (optional) You can also update these
         #   properties via the identify endpoint.
         #
         #   @param ad_id [String, nil]
+        #
+        #   @param admitad_uid [String, nil]
         #
         #   @param adset_id [String, nil]
         #
