@@ -11,7 +11,7 @@ GIT
 PATH
   remote: .
   specs:
-    oursprivacy-ingest (1.2.3)
+    oursprivacy-ingest (1.3.0)
       cgi
       connection_pool
 
