@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.3.0 (2026-04-29)
+
+Full Changelog: [v1.2.3...v1.3.0](https://github.com/with-ours/ingest-sdk-ruby/compare/v1.2.3...v1.3.0)
+
+### Features
+
+* **api:** api update ([c4d41a9](https://github.com/with-ours/ingest-sdk-ruby/commit/c4d41a951927262d4dcbb35f03ea6bb126550484))
+* **api:** api update ([888ebc1](https://github.com/with-ours/ingest-sdk-ruby/commit/888ebc1a6528a9f8303e7e6246b3959611672c9e))
+* support setting headers via env ([c8e291b](https://github.com/with-ours/ingest-sdk-ruby/commit/c8e291b6cf982a820551fde0e7e91ac6951ca5bc))
+
 ## 1.2.3 (2026-04-23)
 
 Full Changelog: [v1.2.2...v1.2.3](https://github.com/with-ours/ingest-sdk-ruby/compare/v1.2.2...v1.2.3)
