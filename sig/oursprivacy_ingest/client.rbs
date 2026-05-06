@@ -12,6 +12,8 @@ module OursprivacyIngest
 
     attr_reader visitor: OursprivacyIngest::Resources::Visitor
 
+    attr_reader batch: OursprivacyIngest::Resources::Batch
+
     def base_url_overridden?: -> bool
 
     def initialize: (

@@ -1,0 +1,87 @@
+module OursprivacyIngest
+  module Models
+    type batch_create_response =
+      {
+        accepted: Integer,
+        failed: OursprivacyIngest::Models::BatchCreateResponse::failed,
+        results: ::Array[OursprivacyIngest::Models::BatchCreateResponse::Result],
+        success: OursprivacyIngest::Models::BatchCreateResponse::success
+      }
+
+    class BatchCreateResponse < OursprivacyIngest::Internal::Type::BaseModel
+      attr_accessor accepted: Integer
+
+      attr_accessor failed: OursprivacyIngest::Models::BatchCreateResponse::failed
+
+      attr_accessor results: ::Array[OursprivacyIngest::Models::BatchCreateResponse::Result]
+
+      attr_accessor success: OursprivacyIngest::Models::BatchCreateResponse::success
+
+      def initialize: (
+        accepted: Integer,
+        failed: OursprivacyIngest::Models::BatchCreateResponse::failed,
+        results: ::Array[OursprivacyIngest::Models::BatchCreateResponse::Result],
+        success: OursprivacyIngest::Models::BatchCreateResponse::success
+      ) -> void
+
+      def to_hash: -> {
+        accepted: Integer,
+        failed: OursprivacyIngest::Models::BatchCreateResponse::failed,
+        results: ::Array[OursprivacyIngest::Models::BatchCreateResponse::Result],
+        success: OursprivacyIngest::Models::BatchCreateResponse::success
+      }
+
+      type failed = Float
+
+      module Failed
+        extend OursprivacyIngest::Internal::Type::Enum
+
+        FAILED_0: 0
+
+        def self?.values: -> ::Array[OursprivacyIngest::Models::BatchCreateResponse::failed]
+      end
+
+      type result =
+        {
+          index: Integer,
+          success: OursprivacyIngest::Models::BatchCreateResponse::Result::success
+        }
+
+      class Result < OursprivacyIngest::Internal::Type::BaseModel
+        attr_accessor index: Integer
+
+        attr_accessor success: OursprivacyIngest::Models::BatchCreateResponse::Result::success
+
+        def initialize: (
+          index: Integer,
+          success: OursprivacyIngest::Models::BatchCreateResponse::Result::success
+        ) -> void
+
+        def to_hash: -> {
+          index: Integer,
+          success: OursprivacyIngest::Models::BatchCreateResponse::Result::success
+        }
+
+        type success = true
+
+        module Success
+          extend OursprivacyIngest::Internal::Type::Enum
+
+          TRUE: true
+
+          def self?.values: -> ::Array[OursprivacyIngest::Models::BatchCreateResponse::Result::success]
+        end
+      end
+
+      type success = true
+
+      module Success
+        extend OursprivacyIngest::Internal::Type::Enum
+
+        TRUE: true
+
+        def self?.values: -> ::Array[OursprivacyIngest::Models::BatchCreateResponse::success]
+      end
+    end
+  end
+end
