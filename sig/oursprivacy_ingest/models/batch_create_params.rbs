@@ -29,10 +29,9 @@ module OursprivacyIngest
 
       type event =
         {
+          distinct_id: String,
           event: String,
-          token: String,
           default_properties: OursprivacyIngest::BatchCreateParams::Event::DefaultProperties?,
-          distinct_id: String?,
           email: String?,
           event_properties: ::Hash[Symbol, String?]?,
           external_id: String?,
@@ -43,15 +42,11 @@ module OursprivacyIngest
         }
 
       class Event < OursprivacyIngest::Internal::Type::BaseModel
+        attr_accessor distinct_id: String
+
         attr_accessor event: String
 
-        attr_reader token: String?
-
-        def token=: (String) -> String
-
         attr_accessor default_properties: OursprivacyIngest::BatchCreateParams::Event::DefaultProperties?
-
-        attr_accessor distinct_id: String?
 
         attr_accessor email: String?
 
@@ -68,10 +63,9 @@ module OursprivacyIngest
         attr_accessor user_properties: OursprivacyIngest::BatchCreateParams::Event::UserProperties?
 
         def initialize: (
+          distinct_id: String,
           event: String,
-          ?token: String,
           ?default_properties: OursprivacyIngest::BatchCreateParams::Event::DefaultProperties?,
-          ?distinct_id: String?,
           ?email: String?,
           ?event_properties: ::Hash[Symbol, String?]?,
           ?external_id: String?,
@@ -82,10 +76,9 @@ module OursprivacyIngest
         ) -> void
 
         def to_hash: -> {
+          distinct_id: String,
           event: String,
-          token: String,
           default_properties: OursprivacyIngest::BatchCreateParams::Event::DefaultProperties?,
-          distinct_id: String?,
           email: String?,
           event_properties: ::Hash[Symbol, String?]?,
           external_id: String?,
