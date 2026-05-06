@@ -10,14 +10,14 @@ module OursprivacyIngest
 
     DEFAULT_MAX_RETRY_DELAY = T.let(8.0, Float)
 
+    sig { returns(OursprivacyIngest::Resources::Batch) }
+    attr_reader :batch
+
     sig { returns(OursprivacyIngest::Resources::Track) }
     attr_reader :track
 
     sig { returns(OursprivacyIngest::Resources::Visitor) }
     attr_reader :visitor
-
-    sig { returns(OursprivacyIngest::Resources::Batch) }
-    attr_reader :batch
 
     # @api private
     sig { returns(T::Boolean) }
