@@ -8,11 +8,11 @@ module OursprivacyIngest
 
     DEFAULT_MAX_RETRY_DELAY: Float
 
+    attr_reader batch: OursprivacyIngest::Resources::Batch
+
     attr_reader track: OursprivacyIngest::Resources::Track
 
     attr_reader visitor: OursprivacyIngest::Resources::Visitor
-
-    attr_reader batch: OursprivacyIngest::Resources::Batch
 
     def base_url_overridden?: -> bool
 
