@@ -16,6 +16,9 @@ module OursprivacyIngest
     sig { returns(OursprivacyIngest::Resources::Visitor) }
     attr_reader :visitor
 
+    sig { returns(OursprivacyIngest::Resources::Batch) }
+    attr_reader :batch
+
     # @api private
     sig { returns(T::Boolean) }
     def base_url_overridden?
