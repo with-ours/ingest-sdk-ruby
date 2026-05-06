@@ -443,9 +443,11 @@ module OursprivacyIngest
         # @return [Hash{Symbol=>Object}]
         #
         # @example
-        #   # `track_event_response` is a `OursprivacyIngest::Models::TrackEventResponse`
-        #   track_event_response => {
-        #     success: success
+        #   # `batch_create_response` is a `OursprivacyIngest::Models::BatchCreateResponse`
+        #   batch_create_response => {
+        #     accepted: accepted,
+        #     failed: failed,
+        #     results: results
         #   }
         def deconstruct_keys(keys)
           (keys || self.class.known_fields.keys)
