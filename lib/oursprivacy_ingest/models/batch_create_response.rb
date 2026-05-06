@@ -11,70 +11,112 @@ module OursprivacyIngest
 
       # @!attribute failed
       #
-      #   @return [Float, OursprivacyIngest::Models::BatchCreateResponse::Failed]
-      required :failed, enum: -> { OursprivacyIngest::Models::BatchCreateResponse::Failed }
+      #   @return [Integer]
+      required :failed, Integer
 
       # @!attribute results
       #
-      #   @return [Array<OursprivacyIngest::Models::BatchCreateResponse::Result>]
+      #   @return [Array<OursprivacyIngest::Models::BatchCreateResponse::Result::UnionMember0, OursprivacyIngest::Models::BatchCreateResponse::Result::UnionMember1>]
       required :results,
-               -> { OursprivacyIngest::Internal::Type::ArrayOf[OursprivacyIngest::Models::BatchCreateResponse::Result] }
+               -> { OursprivacyIngest::Internal::Type::ArrayOf[union: OursprivacyIngest::Models::BatchCreateResponse::Result] }
 
       # @!attribute success
       #
-      #   @return [Boolean, OursprivacyIngest::Models::BatchCreateResponse::Success]
-      required :success, enum: -> { OursprivacyIngest::Models::BatchCreateResponse::Success }
+      #   @return [Boolean]
+      required :success, OursprivacyIngest::Internal::Type::Boolean
 
       # @!method initialize(accepted:, failed:, results:, success:)
       #   @param accepted [Integer]
-      #   @param failed [Float, OursprivacyIngest::Models::BatchCreateResponse::Failed]
-      #   @param results [Array<OursprivacyIngest::Models::BatchCreateResponse::Result>]
-      #   @param success [Boolean, OursprivacyIngest::Models::BatchCreateResponse::Success]
+      #   @param failed [Integer]
+      #   @param results [Array<OursprivacyIngest::Models::BatchCreateResponse::Result::UnionMember0, OursprivacyIngest::Models::BatchCreateResponse::Result::UnionMember1>]
+      #   @param success [Boolean]
 
-      # @see OursprivacyIngest::Models::BatchCreateResponse#failed
-      module Failed
-        extend OursprivacyIngest::Internal::Type::Enum
+      module Result
+        extend OursprivacyIngest::Internal::Type::Union
 
-        FAILED_0 = 0
+        variant -> { OursprivacyIngest::Models::BatchCreateResponse::Result::UnionMember0 }
 
-        # @!method self.values
-        #   @return [Array<Float>]
-      end
+        variant -> { OursprivacyIngest::Models::BatchCreateResponse::Result::UnionMember1 }
 
-      class Result < OursprivacyIngest::Internal::Type::BaseModel
-        # @!attribute index
-        #
-        #   @return [Integer]
-        required :index, Integer
+        class UnionMember0 < OursprivacyIngest::Internal::Type::BaseModel
+          # @!attribute index
+          #
+          #   @return [Integer]
+          required :index, Integer
 
-        # @!attribute success
-        #
-        #   @return [Boolean, OursprivacyIngest::Models::BatchCreateResponse::Result::Success]
-        required :success, enum: -> { OursprivacyIngest::Models::BatchCreateResponse::Result::Success }
+          # @!attribute success
+          #
+          #   @return [Boolean, OursprivacyIngest::Models::BatchCreateResponse::Result::UnionMember0::Success]
+          required :success,
+                   enum: -> { OursprivacyIngest::Models::BatchCreateResponse::Result::UnionMember0::Success }
 
-        # @!method initialize(index:, success:)
-        #   @param index [Integer]
-        #   @param success [Boolean, OursprivacyIngest::Models::BatchCreateResponse::Result::Success]
+          # @!method initialize(index:, success:)
+          #   @param index [Integer]
+          #   @param success [Boolean, OursprivacyIngest::Models::BatchCreateResponse::Result::UnionMember0::Success]
 
-        # @see OursprivacyIngest::Models::BatchCreateResponse::Result#success
-        module Success
-          extend OursprivacyIngest::Internal::Type::Enum
+          # @see OursprivacyIngest::Models::BatchCreateResponse::Result::UnionMember0#success
+          module Success
+            extend OursprivacyIngest::Internal::Type::Enum
 
-          TRUE = true
+            TRUE = true
 
-          # @!method self.values
-          #   @return [Array<Boolean>]
+            # @!method self.values
+            #   @return [Array<Boolean>]
+          end
         end
-      end
 
-      # @see OursprivacyIngest::Models::BatchCreateResponse#success
-      module Success
-        extend OursprivacyIngest::Internal::Type::Enum
+        class UnionMember1 < OursprivacyIngest::Internal::Type::BaseModel
+          # @!attribute code
+          #
+          #   @return [Symbol, OursprivacyIngest::Models::BatchCreateResponse::Result::UnionMember1::Code]
+          required :code, enum: -> { OursprivacyIngest::Models::BatchCreateResponse::Result::UnionMember1::Code }
 
-        TRUE = true
+          # @!attribute index
+          #
+          #   @return [Integer]
+          required :index, Integer
 
-        # @!method self.values
-        #   @return [Array<Boolean>]
+          # @!attribute message
+          #
+          #   @return [String]
+          required :message, String
+
+          # @!attribute success
+          #
+          #   @return [Boolean, OursprivacyIngest::Models::BatchCreateResponse::Result::UnionMember1::Success]
+          required :success,
+                   enum: -> { OursprivacyIngest::Models::BatchCreateResponse::Result::UnionMember1::Success }
+
+          # @!method initialize(code:, index:, message:, success:)
+          #   @param code [Symbol, OursprivacyIngest::Models::BatchCreateResponse::Result::UnionMember1::Code]
+          #   @param index [Integer]
+          #   @param message [String]
+          #   @param success [Boolean, OursprivacyIngest::Models::BatchCreateResponse::Result::UnionMember1::Success]
+
+          # @see OursprivacyIngest::Models::BatchCreateResponse::Result::UnionMember1#code
+          module Code
+            extend OursprivacyIngest::Internal::Type::Enum
+
+            INVALID_EVENT = :invalid_event
+            QUEUE_FAILED = :queue_failed
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # @see OursprivacyIngest::Models::BatchCreateResponse::Result::UnionMember1#success
+          module Success
+            extend OursprivacyIngest::Internal::Type::Enum
+
+            FALSE = false
+
+            # @!method self.values
+            #   @return [Array<Boolean>]
+          end
+        end
+
+        # @!method self.variants
+        #   @return [Array(OursprivacyIngest::Models::BatchCreateResponse::Result::UnionMember0, OursprivacyIngest::Models::BatchCreateResponse::Result::UnionMember1)]
       end
     end
   end
