@@ -21,6 +21,9 @@ module OursprivacyIngest
     # @return [OursprivacyIngest::Resources::Visitor]
     attr_reader :visitor
 
+    # @return [OursprivacyIngest::Resources::Batch]
+    attr_reader :batch
+
     # @api private
     #
     # @return [Boolean]
@@ -73,6 +76,7 @@ module OursprivacyIngest
 
       @track = OursprivacyIngest::Resources::Track.new(client: self)
       @visitor = OursprivacyIngest::Resources::Visitor.new(client: self)
+      @batch = OursprivacyIngest::Resources::Batch.new(client: self)
     end
   end
 end
