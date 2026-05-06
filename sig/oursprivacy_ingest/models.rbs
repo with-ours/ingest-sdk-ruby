@@ -1,4 +1,6 @@
 module OursprivacyIngest
+  class BatchCreateParams = OursprivacyIngest::Models::BatchCreateParams
+
   class TrackEventParams = OursprivacyIngest::Models::TrackEventParams
 
   class VisitorUpsertParams = OursprivacyIngest::Models::VisitorUpsertParams

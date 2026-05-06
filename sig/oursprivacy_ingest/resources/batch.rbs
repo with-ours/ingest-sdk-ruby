@@ -1,0 +1,13 @@
+module OursprivacyIngest
+  module Resources
+    class Batch
+      def create: (
+        token: String,
+        events: ::Array[OursprivacyIngest::BatchCreateParams::Event],
+        ?request_options: OursprivacyIngest::request_opts
+      ) -> OursprivacyIngest::Models::BatchCreateResponse
+
+      def initialize: (client: OursprivacyIngest::Client) -> void
+    end
+  end
+end

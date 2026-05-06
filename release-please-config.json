@@ -60,7 +60,9 @@
     }
   ],
   "reviewers": [
-    "tylerzey"
+    "tylerzey",
+    "victorcastilloharrington",
+    "robertlaprise"
   ],
   "release-type": "ruby",
   "version-file": "lib/oursprivacy_ingest/version.rb",

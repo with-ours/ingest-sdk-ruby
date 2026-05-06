@@ -42,6 +42,8 @@ module OursprivacyIngest
     mod.define_sorbet_constant!(const) { T.type_alias { mod.to_sorbet_type } }
   end
 
+  BatchCreateParams = OursprivacyIngest::Models::BatchCreateParams
+
   TrackEventParams = OursprivacyIngest::Models::TrackEventParams
 
   VisitorUpsertParams = OursprivacyIngest::Models::VisitorUpsertParams

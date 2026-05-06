@@ -15,6 +15,9 @@ module OursprivacyIngest
     # Default max retry delay in seconds.
     DEFAULT_MAX_RETRY_DELAY = 8.0
 
+    # @return [OursprivacyIngest::Resources::Batch]
+    attr_reader :batch
+
     # @return [OursprivacyIngest::Resources::Track]
     attr_reader :track
 
@@ -71,6 +74,7 @@ module OursprivacyIngest
         headers: headers
       )
 
+      @batch = OursprivacyIngest::Resources::Batch.new(client: self)
       @track = OursprivacyIngest::Resources::Track.new(client: self)
       @visitor = OursprivacyIngest::Resources::Visitor.new(client: self)
     end
