@@ -6,7 +6,7 @@ class OursprivacyIngest::Test::Resources::BatchTest < OursprivacyIngest::Test::R
   def test_create_required_params
     skip("Mock server tests are disabled")
 
-    response = @ours_privacy.batch.create(token: "x", events: [{event: "x"}])
+    response = @ours_privacy.batch.create(token: "x", events: [{distinctId: "x", event: "x"}])
 
     assert_pattern do
       response => OursprivacyIngest::Models::BatchCreateResponse
@@ -15,9 +15,9 @@ class OursprivacyIngest::Test::Resources::BatchTest < OursprivacyIngest::Test::R
     assert_pattern do
       response => {
         accepted: Integer,
-        failed: OursprivacyIngest::Models::BatchCreateResponse::Failed,
-        results: ^(OursprivacyIngest::Internal::Type::ArrayOf[OursprivacyIngest::Models::BatchCreateResponse::Result]),
-        success: OursprivacyIngest::Models::BatchCreateResponse::Success
+        failed: Integer,
+        results: ^(OursprivacyIngest::Internal::Type::ArrayOf[union: OursprivacyIngest::Models::BatchCreateResponse::Result]),
+        success: OursprivacyIngest::Internal::Type::Boolean
       }
     end
   end

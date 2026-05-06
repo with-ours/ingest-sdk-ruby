@@ -59,17 +59,14 @@ module OursprivacyIngest
             )
           end
 
+        # A unique identifier for the event. This helps prevent duplicate events.
+        sig { returns(String) }
+        attr_accessor :distinct_id
+
         # The name of the event you're tracking. This must be whitelisted in the Ours
         # dashboard.
         sig { returns(String) }
         attr_accessor :event
-
-        # The token for your Source. You can find this in the dashboard.
-        sig { returns(T.nilable(String)) }
-        attr_reader :token
-
-        sig { params(token: String).void }
-        attr_writer :token
 
         # These properties are used throughout the Ours app to pass known values onto
         # destinations
@@ -91,10 +88,6 @@ module OursprivacyIngest
           ).void
         end
         attr_writer :default_properties
-
-        # A unique identifier for the event. This helps prevent duplicate events.
-        sig { returns(T.nilable(String)) }
-        attr_accessor :distinct_id
 
         # The email address of a user. We will associate this event with the user or
         # create a user. Used for lookup if externalId and userId are not included in the
@@ -168,13 +161,12 @@ module OursprivacyIngest
 
         sig do
           params(
+            distinct_id: String,
             event: String,
-            token: String,
             default_properties:
               T.nilable(
                 OursprivacyIngest::BatchCreateParams::Event::DefaultProperties::OrHash
               ),
-            distinct_id: T.nilable(String),
             email: T.nilable(String),
             event_properties: T.nilable(T::Hash[Symbol, T.nilable(String)]),
             external_id: T.nilable(String),
@@ -191,16 +183,14 @@ module OursprivacyIngest
           ).returns(T.attached_class)
         end
         def self.new(
+          # A unique identifier for the event. This helps prevent duplicate events.
+          distinct_id:,
           # The name of the event you're tracking. This must be whitelisted in the Ours
           # dashboard.
           event:,
-          # The token for your Source. You can find this in the dashboard.
-          token: nil,
           # These properties are used throughout the Ours app to pass known values onto
           # destinations
           default_properties: nil,
-          # A unique identifier for the event. This helps prevent duplicate events.
-          distinct_id: nil,
           # The email address of a user. We will associate this event with the user or
           # create a user. Used for lookup if externalId and userId are not included in the
           # request.
@@ -231,13 +221,12 @@ module OursprivacyIngest
         sig do
           override.returns(
             {
+              distinct_id: String,
               event: String,
-              token: String,
               default_properties:
                 T.nilable(
                   OursprivacyIngest::BatchCreateParams::Event::DefaultProperties
                 ),
-              distinct_id: T.nilable(String),
               email: T.nilable(String),
               event_properties: T.nilable(T::Hash[Symbol, T.nilable(String)]),
               external_id: T.nilable(String),

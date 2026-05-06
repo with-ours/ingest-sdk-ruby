@@ -14,38 +14,33 @@ module OursprivacyIngest
       sig { returns(Integer) }
       attr_accessor :accepted
 
-      sig do
-        returns(
-          OursprivacyIngest::Models::BatchCreateResponse::Failed::TaggedFloat
-        )
-      end
+      sig { returns(Integer) }
       attr_accessor :failed
 
       sig do
         returns(
-          T::Array[OursprivacyIngest::Models::BatchCreateResponse::Result]
+          T::Array[
+            OursprivacyIngest::Models::BatchCreateResponse::Result::Variants
+          ]
         )
       end
       attr_accessor :results
 
-      sig do
-        returns(
-          OursprivacyIngest::Models::BatchCreateResponse::Success::TaggedBoolean
-        )
-      end
+      sig { returns(T::Boolean) }
       attr_accessor :success
 
       sig do
         params(
           accepted: Integer,
-          failed:
-            OursprivacyIngest::Models::BatchCreateResponse::Failed::OrFloat,
+          failed: Integer,
           results:
             T::Array[
-              OursprivacyIngest::Models::BatchCreateResponse::Result::OrHash
+              T.any(
+                OursprivacyIngest::Models::BatchCreateResponse::Result::UnionMember0::OrHash,
+                OursprivacyIngest::Models::BatchCreateResponse::Result::UnionMember1::OrHash
+              )
             ],
-          success:
-            OursprivacyIngest::Models::BatchCreateResponse::Success::OrBoolean
+          success: T::Boolean
         ).returns(T.attached_class)
       end
       def self.new(accepted:, failed:, results:, success:)
@@ -55,141 +50,229 @@ module OursprivacyIngest
         override.returns(
           {
             accepted: Integer,
-            failed:
-              OursprivacyIngest::Models::BatchCreateResponse::Failed::TaggedFloat,
+            failed: Integer,
             results:
-              T::Array[OursprivacyIngest::Models::BatchCreateResponse::Result],
-            success:
-              OursprivacyIngest::Models::BatchCreateResponse::Success::TaggedBoolean
+              T::Array[
+                OursprivacyIngest::Models::BatchCreateResponse::Result::Variants
+              ],
+            success: T::Boolean
           }
         )
       end
       def to_hash
       end
 
-      module Failed
-        extend OursprivacyIngest::Internal::Type::Enum
+      module Result
+        extend OursprivacyIngest::Internal::Type::Union
 
-        TaggedFloat =
-          T.type_alias do
-            T.all(Float, OursprivacyIngest::Models::BatchCreateResponse::Failed)
-          end
-        OrFloat = T.type_alias { Float }
-
-        FAILED_0 =
-          T.let(
-            0,
-            OursprivacyIngest::Models::BatchCreateResponse::Failed::TaggedFloat
-          )
-
-        sig do
-          override.returns(
-            T::Array[
-              OursprivacyIngest::Models::BatchCreateResponse::Failed::TaggedFloat
-            ]
-          )
-        end
-        def self.values
-        end
-      end
-
-      class Result < OursprivacyIngest::Internal::Type::BaseModel
-        OrHash =
+        Variants =
           T.type_alias do
             T.any(
-              OursprivacyIngest::Models::BatchCreateResponse::Result,
-              OursprivacyIngest::Internal::AnyHash
+              OursprivacyIngest::Models::BatchCreateResponse::Result::UnionMember0,
+              OursprivacyIngest::Models::BatchCreateResponse::Result::UnionMember1
             )
           end
 
-        sig { returns(Integer) }
-        attr_accessor :index
-
-        sig do
-          returns(
-            OursprivacyIngest::Models::BatchCreateResponse::Result::Success::TaggedBoolean
-          )
-        end
-        attr_accessor :success
-
-        sig do
-          params(
-            index: Integer,
-            success:
-              OursprivacyIngest::Models::BatchCreateResponse::Result::Success::OrBoolean
-          ).returns(T.attached_class)
-        end
-        def self.new(index:, success:)
-        end
-
-        sig do
-          override.returns(
-            {
-              index: Integer,
-              success:
-                OursprivacyIngest::Models::BatchCreateResponse::Result::Success::TaggedBoolean
-            }
-          )
-        end
-        def to_hash
-        end
-
-        module Success
-          extend OursprivacyIngest::Internal::Type::Enum
-
-          TaggedBoolean =
+        class UnionMember0 < OursprivacyIngest::Internal::Type::BaseModel
+          OrHash =
             T.type_alias do
-              T.all(
-                T::Boolean,
-                OursprivacyIngest::Models::BatchCreateResponse::Result::Success
+              T.any(
+                OursprivacyIngest::Models::BatchCreateResponse::Result::UnionMember0,
+                OursprivacyIngest::Internal::AnyHash
               )
             end
-          OrBoolean = T.type_alias { T::Boolean }
 
-          TRUE =
-            T.let(
-              true,
-              OursprivacyIngest::Models::BatchCreateResponse::Result::Success::TaggedBoolean
+          sig { returns(Integer) }
+          attr_accessor :index
+
+          sig do
+            returns(
+              OursprivacyIngest::Models::BatchCreateResponse::Result::UnionMember0::Success::TaggedBoolean
             )
+          end
+          attr_accessor :success
+
+          sig do
+            params(
+              index: Integer,
+              success:
+                OursprivacyIngest::Models::BatchCreateResponse::Result::UnionMember0::Success::OrBoolean
+            ).returns(T.attached_class)
+          end
+          def self.new(index:, success:)
+          end
 
           sig do
             override.returns(
-              T::Array[
-                OursprivacyIngest::Models::BatchCreateResponse::Result::Success::TaggedBoolean
-              ]
+              {
+                index: Integer,
+                success:
+                  OursprivacyIngest::Models::BatchCreateResponse::Result::UnionMember0::Success::TaggedBoolean
+              }
             )
           end
-          def self.values
+          def to_hash
+          end
+
+          module Success
+            extend OursprivacyIngest::Internal::Type::Enum
+
+            TaggedBoolean =
+              T.type_alias do
+                T.all(
+                  T::Boolean,
+                  OursprivacyIngest::Models::BatchCreateResponse::Result::UnionMember0::Success
+                )
+              end
+            OrBoolean = T.type_alias { T::Boolean }
+
+            TRUE =
+              T.let(
+                true,
+                OursprivacyIngest::Models::BatchCreateResponse::Result::UnionMember0::Success::TaggedBoolean
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  OursprivacyIngest::Models::BatchCreateResponse::Result::UnionMember0::Success::TaggedBoolean
+                ]
+              )
+            end
+            def self.values
+            end
           end
         end
-      end
 
-      module Success
-        extend OursprivacyIngest::Internal::Type::Enum
+        class UnionMember1 < OursprivacyIngest::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias do
+              T.any(
+                OursprivacyIngest::Models::BatchCreateResponse::Result::UnionMember1,
+                OursprivacyIngest::Internal::AnyHash
+              )
+            end
 
-        TaggedBoolean =
-          T.type_alias do
-            T.all(
-              T::Boolean,
-              OursprivacyIngest::Models::BatchCreateResponse::Success
+          sig do
+            returns(
+              OursprivacyIngest::Models::BatchCreateResponse::Result::UnionMember1::Code::TaggedSymbol
             )
           end
-        OrBoolean = T.type_alias { T::Boolean }
+          attr_accessor :code
 
-        TRUE =
-          T.let(
-            true,
-            OursprivacyIngest::Models::BatchCreateResponse::Success::TaggedBoolean
-          )
+          sig { returns(Integer) }
+          attr_accessor :index
+
+          sig { returns(String) }
+          attr_accessor :message
+
+          sig do
+            returns(
+              OursprivacyIngest::Models::BatchCreateResponse::Result::UnionMember1::Success::TaggedBoolean
+            )
+          end
+          attr_accessor :success
+
+          sig do
+            params(
+              code:
+                OursprivacyIngest::Models::BatchCreateResponse::Result::UnionMember1::Code::OrSymbol,
+              index: Integer,
+              message: String,
+              success:
+                OursprivacyIngest::Models::BatchCreateResponse::Result::UnionMember1::Success::OrBoolean
+            ).returns(T.attached_class)
+          end
+          def self.new(code:, index:, message:, success:)
+          end
+
+          sig do
+            override.returns(
+              {
+                code:
+                  OursprivacyIngest::Models::BatchCreateResponse::Result::UnionMember1::Code::TaggedSymbol,
+                index: Integer,
+                message: String,
+                success:
+                  OursprivacyIngest::Models::BatchCreateResponse::Result::UnionMember1::Success::TaggedBoolean
+              }
+            )
+          end
+          def to_hash
+          end
+
+          module Code
+            extend OursprivacyIngest::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  OursprivacyIngest::Models::BatchCreateResponse::Result::UnionMember1::Code
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            INVALID_EVENT =
+              T.let(
+                :invalid_event,
+                OursprivacyIngest::Models::BatchCreateResponse::Result::UnionMember1::Code::TaggedSymbol
+              )
+            QUEUE_FAILED =
+              T.let(
+                :queue_failed,
+                OursprivacyIngest::Models::BatchCreateResponse::Result::UnionMember1::Code::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  OursprivacyIngest::Models::BatchCreateResponse::Result::UnionMember1::Code::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+
+          module Success
+            extend OursprivacyIngest::Internal::Type::Enum
+
+            TaggedBoolean =
+              T.type_alias do
+                T.all(
+                  T::Boolean,
+                  OursprivacyIngest::Models::BatchCreateResponse::Result::UnionMember1::Success
+                )
+              end
+            OrBoolean = T.type_alias { T::Boolean }
+
+            FALSE =
+              T.let(
+                false,
+                OursprivacyIngest::Models::BatchCreateResponse::Result::UnionMember1::Success::TaggedBoolean
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  OursprivacyIngest::Models::BatchCreateResponse::Result::UnionMember1::Success::TaggedBoolean
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+        end
 
         sig do
           override.returns(
             T::Array[
-              OursprivacyIngest::Models::BatchCreateResponse::Success::TaggedBoolean
+              OursprivacyIngest::Models::BatchCreateResponse::Result::Variants
             ]
           )
         end
-        def self.values
+        def self.variants
         end
       end
     end
