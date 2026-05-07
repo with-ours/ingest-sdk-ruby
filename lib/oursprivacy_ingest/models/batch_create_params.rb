@@ -29,7 +29,10 @@ module OursprivacyIngest
 
       class Event < OursprivacyIngest::Internal::Type::BaseModel
         # @!attribute distinct_id
-        #   A unique identifier for the event. This helps prevent duplicate events.
+        #   A unique identifier for this event used for deduplication. Highly recommended —
+        #   if omitted, Ours will generate one for you, but supplying your own gives you
+        #   stronger idempotency guarantees (e.g. a Stripe payment intent ID or your
+        #   internal order ID).
         #
         #   @return [String]
         required :distinct_id, String, api_name: :distinctId
@@ -52,9 +55,9 @@ module OursprivacyIngest
                  nil?: true
 
         # @!attribute email
-        #   The email address of a user. We will associate this event with the user or
-        #   create a user. Used for lookup if externalId and userId are not included in the
-        #   request.
+        #   The email address of a user. Used as a fallback lookup when neither userId nor
+        #   externalId is provided. We search your account for a visitor with this email and
+        #   attach the event to them. If no match is found, a new visitor is created.
         #
         #   @return [String, nil]
         optional :email, String, nil?: true
@@ -69,9 +72,11 @@ module OursprivacyIngest
                  nil?: true
 
         # @!attribute external_id
-        #   The externalId (the ID in your system) of a user. We will associate this event
-        #   with the user or create a user. If included in the request, email lookup is
-        #   ignored.
+        #   Your system's unique identifier for this user. We search your account for an
+        #   existing visitor with this externalId and attach the event to them (resolving to
+        #   their Ours Visitor ID). If no match is found, a new visitor is created. When
+        #   present, email lookup is skipped. If you also have the userId from cookies or
+        #   local storage, send both — it removes the lookup round-trip.
         #
         #   @return [String, nil]
         optional :external_id, String, api_name: :externalId, nil?: true
@@ -95,9 +100,10 @@ module OursprivacyIngest
         optional :time, Float, nil?: true
 
         # @!attribute user_id
-        #   The Ours user id stored in local storage and cookies on your web properties. If
-        #   userId is included in the request, we do not lookup the user by email or
-        #   externalId.
+        #   The Ours Visitor ID stored in local storage and cookies on your web properties.
+        #   When present, this is used directly — no lookup by externalId or email is
+        #   performed. If you have both a userId and an externalId, send both so the event
+        #   is attached to the right visitor without any lookup overhead.
         #
         #   @return [String, nil]
         optional :user_id, String, api_name: :userId, nil?: true
@@ -116,23 +122,23 @@ module OursprivacyIngest
         #   Some parameter documentations has been truncated, see
         #   {OursprivacyIngest::Models::BatchCreateParams::Event} for more details.
         #
-        #   @param distinct_id [String] A unique identifier for the event. This helps prevent duplicate events.
+        #   @param distinct_id [String] A unique identifier for this event used for deduplication. Highly recommended —
         #
         #   @param event [String] The name of the event you're tracking. This must be whitelisted in the Ours dash
         #
         #   @param default_properties [OursprivacyIngest::Models::BatchCreateParams::Event::DefaultProperties, nil] These properties are used throughout the Ours app to pass known values onto dest
         #
-        #   @param email [String, nil] The email address of a user. We will associate this event with the user or creat
+        #   @param email [String, nil] The email address of a user. Used as a fallback lookup when neither userId nor e
         #
         #   @param event_properties [Hash{Symbol=>String, nil}, nil] Any additional event properties you want to pass along.
         #
-        #   @param external_id [String, nil] The externalId (the ID in your system) of a user. We will associate this event w
+        #   @param external_id [String, nil] Your system's unique identifier for this user. We search your account for an exi
         #
         #   @param identity_context [OursprivacyIngest::Models::BatchCreateParams::Event::IdentityContext, nil] End-user network context for server-side calls. Required for probabilistic ident
         #
         #   @param time [Float, nil] The time at which the event occurred in milliseconds since UTC epoch. The time m
         #
-        #   @param user_id [String, nil] The Ours user id stored in local storage and cookies on your web properties. If
+        #   @param user_id [String, nil] The Ours Visitor ID stored in local storage and cookies on your web properties.
         #
         #   @param user_properties [OursprivacyIngest::Models::BatchCreateParams::Event::UserProperties, nil] Properties to set on the visitor. (optional) You can also update these propertie
 
