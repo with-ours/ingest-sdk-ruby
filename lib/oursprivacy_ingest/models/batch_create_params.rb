@@ -28,18 +28,18 @@ module OursprivacyIngest
       #   @param request_options [OursprivacyIngest::RequestOptions, Hash{Symbol=>Object}]
 
       class Event < OursprivacyIngest::Internal::Type::BaseModel
+        # @!attribute distinct_id
+        #   A unique identifier for the event. This helps prevent duplicate events.
+        #
+        #   @return [String]
+        required :distinct_id, String, api_name: :distinctId
+
         # @!attribute event
         #   The name of the event you're tracking. This must be whitelisted in the Ours
         #   dashboard.
         #
         #   @return [String]
         required :event, String
-
-        # @!attribute token
-        #   The token for your Source. You can find this in the dashboard.
-        #
-        #   @return [String, nil]
-        optional :token, String
 
         # @!attribute default_properties
         #   These properties are used throughout the Ours app to pass known values onto
@@ -50,12 +50,6 @@ module OursprivacyIngest
                  -> { OursprivacyIngest::BatchCreateParams::Event::DefaultProperties },
                  api_name: :defaultProperties,
                  nil?: true
-
-        # @!attribute distinct_id
-        #   A unique identifier for the event. This helps prevent duplicate events.
-        #
-        #   @return [String, nil]
-        optional :distinct_id, String, api_name: :distinctId, nil?: true
 
         # @!attribute email
         #   The email address of a user. We will associate this event with the user or
@@ -118,17 +112,15 @@ module OursprivacyIngest
                  api_name: :userProperties,
                  nil?: true
 
-        # @!method initialize(event:, token: nil, default_properties: nil, distinct_id: nil, email: nil, event_properties: nil, external_id: nil, identity_context: nil, time: nil, user_id: nil, user_properties: nil)
+        # @!method initialize(distinct_id:, event:, default_properties: nil, email: nil, event_properties: nil, external_id: nil, identity_context: nil, time: nil, user_id: nil, user_properties: nil)
         #   Some parameter documentations has been truncated, see
         #   {OursprivacyIngest::Models::BatchCreateParams::Event} for more details.
         #
+        #   @param distinct_id [String] A unique identifier for the event. This helps prevent duplicate events.
+        #
         #   @param event [String] The name of the event you're tracking. This must be whitelisted in the Ours dash
         #
-        #   @param token [String] The token for your Source. You can find this in the dashboard.
-        #
         #   @param default_properties [OursprivacyIngest::Models::BatchCreateParams::Event::DefaultProperties, nil] These properties are used throughout the Ours app to pass known values onto dest
-        #
-        #   @param distinct_id [String, nil] A unique identifier for the event. This helps prevent duplicate events.
         #
         #   @param email [String, nil] The email address of a user. We will associate this event with the user or creat
         #
