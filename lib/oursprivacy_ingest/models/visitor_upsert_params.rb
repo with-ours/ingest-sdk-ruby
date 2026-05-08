@@ -92,6 +92,11 @@ module OursprivacyIngest
       #   @param request_options [OursprivacyIngest::RequestOptions, Hash{Symbol=>Object}]
 
       class UserProperties < OursprivacyIngest::Internal::Type::BaseModel
+        # @!attribute _ef_transaction_id
+        #
+        #   @return [String, nil]
+        optional :_ef_transaction_id, String, nil?: true
+
         # @!attribute ad_id
         #
         #   @return [String, nil]
@@ -383,10 +388,12 @@ module OursprivacyIngest
         #   @return [String, nil]
         optional :zip, String, nil?: true
 
-        # @!method initialize(ad_id: nil, admitad_uid: nil, adset_id: nil, alart: nil, aleid: nil, axwrt: nil, basis_cid: nil, campaign_id: nil, city: nil, clickid: nil, clid: nil, company_name: nil, consent: nil, country: nil, custom_properties: nil, date_of_birth: nil, dclid: nil, email: nil, epik: nil, external_id: nil, fbc: nil, fbclid: nil, fbp: nil, first_name: nil, gad_source: nil, gbraid: nil, gclid: nil, gender: nil, im_ref: nil, ip: nil, irclickid: nil, is_bot: nil, job_title: nil, last_name: nil, li_fat_id: nil, msclkid: nil, ndclid: nil, phone_number: nil, qclid: nil, rdt_cid: nil, referrer: nil, referring_domain: nil, sacid: nil, sccid: nil, sid: nil, state: nil, ttclid: nil, twclid: nil, user_agent: nil, user_agent_full_list: nil, utm_campaign: nil, utm_content: nil, utm_medium: nil, utm_name: nil, utm_source: nil, utm_term: nil, wbraid: nil, zip: nil)
+        # @!method initialize(_ef_transaction_id: nil, ad_id: nil, admitad_uid: nil, adset_id: nil, alart: nil, aleid: nil, axwrt: nil, basis_cid: nil, campaign_id: nil, city: nil, clickid: nil, clid: nil, company_name: nil, consent: nil, country: nil, custom_properties: nil, date_of_birth: nil, dclid: nil, email: nil, epik: nil, external_id: nil, fbc: nil, fbclid: nil, fbp: nil, first_name: nil, gad_source: nil, gbraid: nil, gclid: nil, gender: nil, im_ref: nil, ip: nil, irclickid: nil, is_bot: nil, job_title: nil, last_name: nil, li_fat_id: nil, msclkid: nil, ndclid: nil, phone_number: nil, qclid: nil, rdt_cid: nil, referrer: nil, referring_domain: nil, sacid: nil, sccid: nil, sid: nil, state: nil, ttclid: nil, twclid: nil, user_agent: nil, user_agent_full_list: nil, utm_campaign: nil, utm_content: nil, utm_medium: nil, utm_name: nil, utm_source: nil, utm_term: nil, wbraid: nil, zip: nil)
         #   User properties to associate with this user. The existing user properties will
         #   be updated. And all future events will have these properties associated with
         #   them.
+        #
+        #   @param _ef_transaction_id [String, nil]
         #
         #   @param ad_id [String, nil]
         #
@@ -506,6 +513,13 @@ module OursprivacyIngest
       end
 
       class DefaultProperties < OursprivacyIngest::Internal::Type::BaseModel
+        # @!attribute _ef_transaction_id
+        #   The Everflow affiliate Click (Transaction) ID, captured from the
+        #   `_ef_transaction_id` URL parameter. Ex: ef_click_abc123
+        #
+        #   @return [String, nil]
+        optional :_ef_transaction_id, String, nil?: true
+
         # @!attribute active_duration
         #   The active time in milliseconds that the user had this tab active
         #
@@ -945,13 +959,16 @@ module OursprivacyIngest
         #   @return [Boolean, nil]
         optional :webview, OursprivacyIngest::Internal::Type::Boolean, nil?: true
 
-        # @!method initialize(active_duration: nil, ad_id: nil, admitad_uid: nil, adset_id: nil, alart: nil, aleid: nil, axwrt: nil, basis_cid: nil, browser_language: nil, browser_name: nil, browser_version: nil, campaign_id: nil, clickid: nil, clid: nil, cpu_architecture: nil, current_url: nil, dclid: nil, device_model: nil, device_type: nil, device_vendor: nil, duration: nil, encoding: nil, engine_name: nil, engine_version: nil, epik: nil, fbc: nil, fbclid: nil, fbp: nil, fv: nil, gad_source: nil, gbraid: nil, gclid: nil, host: nil, iframe: nil, im_ref: nil, ip: nil, irclickid: nil, is_bot: nil, li_fat_id: nil, msclkid: nil, ndclid: nil, new_s: nil, os_name: nil, os_version: nil, page_hash: nil, pathname: nil, qclid: nil, rdt_cid: nil, received_at: nil, referrer: nil, referring_domain: nil, sacid: nil, sccid: nil, screen_height: nil, screen_width: nil, session_count: nil, sid: nil, sr: nil, title: nil, ttclid: nil, twclid: nil, uafvl: nil, user_agent: nil, utm_campaign: nil, utm_content: nil, utm_medium: nil, utm_name: nil, utm_source: nil, utm_term: nil, version: nil, wbraid: nil, webview: nil)
+        # @!method initialize(_ef_transaction_id: nil, active_duration: nil, ad_id: nil, admitad_uid: nil, adset_id: nil, alart: nil, aleid: nil, axwrt: nil, basis_cid: nil, browser_language: nil, browser_name: nil, browser_version: nil, campaign_id: nil, clickid: nil, clid: nil, cpu_architecture: nil, current_url: nil, dclid: nil, device_model: nil, device_type: nil, device_vendor: nil, duration: nil, encoding: nil, engine_name: nil, engine_version: nil, epik: nil, fbc: nil, fbclid: nil, fbp: nil, fv: nil, gad_source: nil, gbraid: nil, gclid: nil, host: nil, iframe: nil, im_ref: nil, ip: nil, irclickid: nil, is_bot: nil, li_fat_id: nil, msclkid: nil, ndclid: nil, new_s: nil, os_name: nil, os_version: nil, page_hash: nil, pathname: nil, qclid: nil, rdt_cid: nil, received_at: nil, referrer: nil, referring_domain: nil, sacid: nil, sccid: nil, screen_height: nil, screen_width: nil, session_count: nil, sid: nil, sr: nil, title: nil, ttclid: nil, twclid: nil, uafvl: nil, user_agent: nil, utm_campaign: nil, utm_content: nil, utm_medium: nil, utm_name: nil, utm_source: nil, utm_term: nil, version: nil, wbraid: nil, webview: nil)
         #   Some parameter documentations has been truncated, see
         #   {OursprivacyIngest::Models::VisitorUpsertParams::DefaultProperties} for more
         #   details.
         #
         #   These properties are used throughout the Ours app to pass known values onto
         #   destinations
+        #
+        #   @param _ef_transaction_id [String, nil] The Everflow affiliate Click (Transaction) ID, captured from the
+        #   `\_ef_transactio
         #
         #   @param active_duration [Float, nil] The active time in milliseconds that the user had this tab active
         #

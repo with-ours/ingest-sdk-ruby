@@ -54,6 +54,7 @@ module OursprivacyIngest
 
       type user_properties =
         {
+          _ef_transaction_id: String?,
           ad_id: String?,
           admitad_uid: String?,
           adset_id: String?,
@@ -115,6 +116,8 @@ module OursprivacyIngest
         }
 
       class UserProperties < OursprivacyIngest::Internal::Type::BaseModel
+        attr_accessor _ef_transaction_id: String?
+
         attr_accessor ad_id: String?
 
         attr_accessor admitad_uid: String?
@@ -232,6 +235,7 @@ module OursprivacyIngest
         attr_accessor zip: String?
 
         def initialize: (
+          ?_ef_transaction_id: String?,
           ?ad_id: String?,
           ?admitad_uid: String?,
           ?adset_id: String?,
@@ -293,6 +297,7 @@ module OursprivacyIngest
         ) -> void
 
         def to_hash: -> {
+          _ef_transaction_id: String?,
           ad_id: String?,
           admitad_uid: String?,
           adset_id: String?,
@@ -356,6 +361,7 @@ module OursprivacyIngest
 
       type default_properties =
         {
+          _ef_transaction_id: String?,
           active_duration: Float?,
           ad_id: String?,
           admitad_uid: String?,
@@ -431,6 +437,8 @@ module OursprivacyIngest
         }
 
       class DefaultProperties < OursprivacyIngest::Internal::Type::BaseModel
+        attr_accessor _ef_transaction_id: String?
+
         attr_accessor active_duration: Float?
 
         attr_accessor ad_id: String?
@@ -576,6 +584,7 @@ module OursprivacyIngest
         attr_accessor webview: bool?
 
         def initialize: (
+          ?_ef_transaction_id: String?,
           ?active_duration: Float?,
           ?ad_id: String?,
           ?admitad_uid: String?,
@@ -651,6 +660,7 @@ module OursprivacyIngest
         ) -> void
 
         def to_hash: -> {
+          _ef_transaction_id: String?,
           active_duration: Float?,
           ad_id: String?,
           admitad_uid: String?,
