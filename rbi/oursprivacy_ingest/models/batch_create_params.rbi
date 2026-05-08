@@ -267,6 +267,11 @@ module OursprivacyIngest
               )
             end
 
+          # The Everflow affiliate Click (Transaction) ID, captured from the
+          # `_ef_transaction_id` URL parameter. Ex: ef_click_abc123
+          sig { returns(T.nilable(String)) }
+          attr_accessor :_ef_transaction_id
+
           # The active time in milliseconds that the user had this tab active
           sig { returns(T.nilable(Float)) }
           attr_accessor :active_duration
@@ -566,6 +571,7 @@ module OursprivacyIngest
           # destinations
           sig do
             params(
+              _ef_transaction_id: T.nilable(String),
               active_duration: T.nilable(Float),
               ad_id: T.nilable(String),
               admitad_uid: T.nilable(String),
@@ -641,6 +647,9 @@ module OursprivacyIngest
             ).returns(T.attached_class)
           end
           def self.new(
+            # The Everflow affiliate Click (Transaction) ID, captured from the
+            # `_ef_transaction_id` URL parameter. Ex: ef_click_abc123
+            _ef_transaction_id: nil,
             # The active time in milliseconds that the user had this tab active
             active_duration: nil,
             # The ad id for detected in the session. This is set by the web sdk automatically.
@@ -798,6 +807,7 @@ module OursprivacyIngest
           sig do
             override.returns(
               {
+                _ef_transaction_id: T.nilable(String),
                 active_duration: T.nilable(Float),
                 ad_id: T.nilable(String),
                 admitad_uid: T.nilable(String),
@@ -921,6 +931,9 @@ module OursprivacyIngest
                 OursprivacyIngest::Internal::AnyHash
               )
             end
+
+          sig { returns(T.nilable(String)) }
+          attr_accessor :_ef_transaction_id
 
           sig { returns(T.nilable(String)) }
           attr_accessor :ad_id
@@ -1101,6 +1114,7 @@ module OursprivacyIngest
           # properties via the identify endpoint.
           sig do
             params(
+              _ef_transaction_id: T.nilable(String),
               ad_id: T.nilable(String),
               admitad_uid: T.nilable(String),
               adset_id: T.nilable(String),
@@ -1162,6 +1176,7 @@ module OursprivacyIngest
             ).returns(T.attached_class)
           end
           def self.new(
+            _ef_transaction_id: nil,
             ad_id: nil,
             admitad_uid: nil,
             adset_id: nil,
@@ -1227,6 +1242,7 @@ module OursprivacyIngest
           sig do
             override.returns(
               {
+                _ef_transaction_id: T.nilable(String),
                 ad_id: T.nilable(String),
                 admitad_uid: T.nilable(String),
                 adset_id: T.nilable(String),
