@@ -99,6 +99,7 @@ module OursprivacyIngest
             aleid: String?,
             axwrt: String?,
             basis_cid: String?,
+            beeswax_auction_id: String?,
             browser_language: String?,
             browser_name: String?,
             browser_version: String?,
@@ -183,6 +184,8 @@ module OursprivacyIngest
           attr_accessor axwrt: String?
 
           attr_accessor basis_cid: String?
+
+          attr_accessor beeswax_auction_id: String?
 
           attr_accessor browser_language: String?
 
@@ -322,6 +325,7 @@ module OursprivacyIngest
             ?aleid: String?,
             ?axwrt: String?,
             ?basis_cid: String?,
+            ?beeswax_auction_id: String?,
             ?browser_language: String?,
             ?browser_name: String?,
             ?browser_version: String?,
@@ -398,6 +402,7 @@ module OursprivacyIngest
             aleid: String?,
             axwrt: String?,
             basis_cid: String?,
+            beeswax_auction_id: String?,
             browser_language: String?,
             browser_name: String?,
             browser_version: String?,
@@ -487,6 +492,7 @@ module OursprivacyIngest
             aleid: String?,
             axwrt: String?,
             basis_cid: String?,
+            beeswax_auction_id: String?,
             campaign_id: String?,
             city: String?,
             clickid: String?,
@@ -556,6 +562,8 @@ module OursprivacyIngest
           attr_accessor axwrt: String?
 
           attr_accessor basis_cid: String?
+
+          attr_accessor beeswax_auction_id: String?
 
           attr_accessor campaign_id: String?
 
@@ -668,6 +676,7 @@ module OursprivacyIngest
             ?aleid: String?,
             ?axwrt: String?,
             ?basis_cid: String?,
+            ?beeswax_auction_id: String?,
             ?campaign_id: String?,
             ?city: String?,
             ?clickid: String?,
@@ -730,6 +739,7 @@ module OursprivacyIngest
             aleid: String?,
             axwrt: String?,
             basis_cid: String?,
+            beeswax_auction_id: String?,
             campaign_id: String?,
             city: String?,
             clickid: String?,
