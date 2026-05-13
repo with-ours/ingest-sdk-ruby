@@ -132,6 +132,11 @@ module OursprivacyIngest
         #   @return [String, nil]
         optional :basis_cid, String, nil?: true
 
+        # @!attribute beeswax_auction_id
+        #
+        #   @return [String, nil]
+        optional :beeswax_auction_id, String, nil?: true
+
         # @!attribute campaign_id
         #
         #   @return [String, nil]
@@ -388,7 +393,7 @@ module OursprivacyIngest
         #   @return [String, nil]
         optional :zip, String, nil?: true
 
-        # @!method initialize(_ef_transaction_id: nil, ad_id: nil, admitad_uid: nil, adset_id: nil, alart: nil, aleid: nil, axwrt: nil, basis_cid: nil, campaign_id: nil, city: nil, clickid: nil, clid: nil, company_name: nil, consent: nil, country: nil, custom_properties: nil, date_of_birth: nil, dclid: nil, email: nil, epik: nil, external_id: nil, fbc: nil, fbclid: nil, fbp: nil, first_name: nil, gad_source: nil, gbraid: nil, gclid: nil, gender: nil, im_ref: nil, ip: nil, irclickid: nil, is_bot: nil, job_title: nil, last_name: nil, li_fat_id: nil, msclkid: nil, ndclid: nil, phone_number: nil, qclid: nil, rdt_cid: nil, referrer: nil, referring_domain: nil, sacid: nil, sccid: nil, sid: nil, state: nil, ttclid: nil, twclid: nil, user_agent: nil, user_agent_full_list: nil, utm_campaign: nil, utm_content: nil, utm_medium: nil, utm_name: nil, utm_source: nil, utm_term: nil, wbraid: nil, zip: nil)
+        # @!method initialize(_ef_transaction_id: nil, ad_id: nil, admitad_uid: nil, adset_id: nil, alart: nil, aleid: nil, axwrt: nil, basis_cid: nil, beeswax_auction_id: nil, campaign_id: nil, city: nil, clickid: nil, clid: nil, company_name: nil, consent: nil, country: nil, custom_properties: nil, date_of_birth: nil, dclid: nil, email: nil, epik: nil, external_id: nil, fbc: nil, fbclid: nil, fbp: nil, first_name: nil, gad_source: nil, gbraid: nil, gclid: nil, gender: nil, im_ref: nil, ip: nil, irclickid: nil, is_bot: nil, job_title: nil, last_name: nil, li_fat_id: nil, msclkid: nil, ndclid: nil, phone_number: nil, qclid: nil, rdt_cid: nil, referrer: nil, referring_domain: nil, sacid: nil, sccid: nil, sid: nil, state: nil, ttclid: nil, twclid: nil, user_agent: nil, user_agent_full_list: nil, utm_campaign: nil, utm_content: nil, utm_medium: nil, utm_name: nil, utm_source: nil, utm_term: nil, wbraid: nil, zip: nil)
         #   User properties to associate with this user. The existing user properties will
         #   be updated. And all future events will have these properties associated with
         #   them.
@@ -408,6 +413,8 @@ module OursprivacyIngest
         #   @param axwrt [String, nil]
         #
         #   @param basis_cid [String, nil]
+        #
+        #   @param beeswax_auction_id [String, nil]
         #
         #   @param campaign_id [String, nil]
         #
@@ -568,6 +575,13 @@ module OursprivacyIngest
         #
         #   @return [String, nil]
         optional :basis_cid, String, nil?: true
+
+        # @!attribute beeswax_auction_id
+        #   The Beeswax (FreeWheel Buyer Cloud) auction ID, captured from the
+        #   `{{AUCTION_ID}}` macro on creative click URLs. Ex: bx-auc-abc123
+        #
+        #   @return [String, nil]
+        optional :beeswax_auction_id, String, nil?: true
 
         # @!attribute browser_language
         #   The language of the browser. Ex: en-US
@@ -959,7 +973,7 @@ module OursprivacyIngest
         #   @return [Boolean, nil]
         optional :webview, OursprivacyIngest::Internal::Type::Boolean, nil?: true
 
-        # @!method initialize(_ef_transaction_id: nil, active_duration: nil, ad_id: nil, admitad_uid: nil, adset_id: nil, alart: nil, aleid: nil, axwrt: nil, basis_cid: nil, browser_language: nil, browser_name: nil, browser_version: nil, campaign_id: nil, clickid: nil, clid: nil, cpu_architecture: nil, current_url: nil, dclid: nil, device_model: nil, device_type: nil, device_vendor: nil, duration: nil, encoding: nil, engine_name: nil, engine_version: nil, epik: nil, fbc: nil, fbclid: nil, fbp: nil, fv: nil, gad_source: nil, gbraid: nil, gclid: nil, host: nil, iframe: nil, im_ref: nil, ip: nil, irclickid: nil, is_bot: nil, li_fat_id: nil, msclkid: nil, ndclid: nil, new_s: nil, os_name: nil, os_version: nil, page_hash: nil, pathname: nil, qclid: nil, rdt_cid: nil, received_at: nil, referrer: nil, referring_domain: nil, sacid: nil, sccid: nil, screen_height: nil, screen_width: nil, session_count: nil, sid: nil, sr: nil, title: nil, ttclid: nil, twclid: nil, uafvl: nil, user_agent: nil, utm_campaign: nil, utm_content: nil, utm_medium: nil, utm_name: nil, utm_source: nil, utm_term: nil, version: nil, wbraid: nil, webview: nil)
+        # @!method initialize(_ef_transaction_id: nil, active_duration: nil, ad_id: nil, admitad_uid: nil, adset_id: nil, alart: nil, aleid: nil, axwrt: nil, basis_cid: nil, beeswax_auction_id: nil, browser_language: nil, browser_name: nil, browser_version: nil, campaign_id: nil, clickid: nil, clid: nil, cpu_architecture: nil, current_url: nil, dclid: nil, device_model: nil, device_type: nil, device_vendor: nil, duration: nil, encoding: nil, engine_name: nil, engine_version: nil, epik: nil, fbc: nil, fbclid: nil, fbp: nil, fv: nil, gad_source: nil, gbraid: nil, gclid: nil, host: nil, iframe: nil, im_ref: nil, ip: nil, irclickid: nil, is_bot: nil, li_fat_id: nil, msclkid: nil, ndclid: nil, new_s: nil, os_name: nil, os_version: nil, page_hash: nil, pathname: nil, qclid: nil, rdt_cid: nil, received_at: nil, referrer: nil, referring_domain: nil, sacid: nil, sccid: nil, screen_height: nil, screen_width: nil, session_count: nil, sid: nil, sr: nil, title: nil, ttclid: nil, twclid: nil, uafvl: nil, user_agent: nil, utm_campaign: nil, utm_content: nil, utm_medium: nil, utm_name: nil, utm_source: nil, utm_term: nil, version: nil, wbraid: nil, webview: nil)
         #   Some parameter documentations has been truncated, see
         #   {OursprivacyIngest::Models::VisitorUpsertParams::DefaultProperties} for more
         #   details.
@@ -985,6 +999,8 @@ module OursprivacyIngest
         #   @param axwrt [String, nil] The AppLovin Axon pixel cookie value (\_axwrt). Web-only.
         #
         #   @param basis_cid [String, nil] The Basis DSP Click ID. Ex: basis_cid123
+        #
+        #   @param beeswax_auction_id [String, nil] The Beeswax (FreeWheel Buyer Cloud) auction ID, captured from the `{{AUCTION_ID}
         #
         #   @param browser_language [String, nil] The language of the browser. Ex: en-US
         #
