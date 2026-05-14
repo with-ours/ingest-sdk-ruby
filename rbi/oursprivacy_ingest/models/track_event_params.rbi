@@ -255,6 +255,11 @@ module OursprivacyIngest
         sig { returns(T.nilable(String)) }
         attr_accessor :basis_cid
 
+        # The Beeswax (FreeWheel Buyer Cloud) auction ID, captured from the
+        # `{{AUCTION_ID}}` macro on creative click URLs. Ex: bx-auc-abc123
+        sig { returns(T.nilable(String)) }
+        attr_accessor :beeswax_auction_id
+
         # The language of the browser. Ex: en-US
         sig { returns(T.nilable(String)) }
         attr_accessor :browser_language
@@ -530,6 +535,7 @@ module OursprivacyIngest
             aleid: T.nilable(String),
             axwrt: T.nilable(String),
             basis_cid: T.nilable(String),
+            beeswax_auction_id: T.nilable(String),
             browser_language: T.nilable(String),
             browser_name: T.nilable(String),
             browser_version: T.nilable(String),
@@ -617,6 +623,9 @@ module OursprivacyIngest
           axwrt: nil,
           # The Basis DSP Click ID. Ex: basis_cid123
           basis_cid: nil,
+          # The Beeswax (FreeWheel Buyer Cloud) auction ID, captured from the
+          # `{{AUCTION_ID}}` macro on creative click URLs. Ex: bx-auc-abc123
+          beeswax_auction_id: nil,
           # The language of the browser. Ex: en-US
           browser_language: nil,
           # The name of the browser. Ex: Chrome
@@ -766,6 +775,7 @@ module OursprivacyIngest
               aleid: T.nilable(String),
               axwrt: T.nilable(String),
               basis_cid: T.nilable(String),
+              beeswax_auction_id: T.nilable(String),
               browser_language: T.nilable(String),
               browser_name: T.nilable(String),
               browser_version: T.nilable(String),
@@ -903,6 +913,9 @@ module OursprivacyIngest
 
         sig { returns(T.nilable(String)) }
         attr_accessor :basis_cid
+
+        sig { returns(T.nilable(String)) }
+        attr_accessor :beeswax_auction_id
 
         sig { returns(T.nilable(String)) }
         attr_accessor :campaign_id
@@ -1070,6 +1083,7 @@ module OursprivacyIngest
             aleid: T.nilable(String),
             axwrt: T.nilable(String),
             basis_cid: T.nilable(String),
+            beeswax_auction_id: T.nilable(String),
             campaign_id: T.nilable(String),
             city: T.nilable(String),
             clickid: T.nilable(String),
@@ -1132,6 +1146,7 @@ module OursprivacyIngest
           aleid: nil,
           axwrt: nil,
           basis_cid: nil,
+          beeswax_auction_id: nil,
           campaign_id: nil,
           city: nil,
           clickid: nil,
@@ -1198,6 +1213,7 @@ module OursprivacyIngest
               aleid: T.nilable(String),
               axwrt: T.nilable(String),
               basis_cid: T.nilable(String),
+              beeswax_auction_id: T.nilable(String),
               campaign_id: T.nilable(String),
               city: T.nilable(String),
               clickid: T.nilable(String),

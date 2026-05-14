@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.8.0 (2026-05-14)
+
+Full Changelog: [v1.7.0...v1.8.0](https://github.com/with-ours/ingest-sdk-ruby/compare/v1.7.0...v1.8.0)
+
+### Features
+
+* **api:** api update ([8e6e1ea](https://github.com/with-ours/ingest-sdk-ruby/commit/8e6e1ea7e97cd504e9c8f8c3ac8570058abf2d66))
+
+
+### Bug Fixes
+
+* **client:** elide content type header on requests without body ([c2ebcd3](https://github.com/with-ours/ingest-sdk-ruby/commit/c2ebcd3b45059a25d7a961e6621cd5d2b2231ae9))
+
 ## 1.7.0 (2026-05-08)
 
 Full Changelog: [v1.6.0...v1.7.0](https://github.com/with-ours/ingest-sdk-ruby/compare/v1.6.0...v1.7.0)
