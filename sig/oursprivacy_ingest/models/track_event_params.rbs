@@ -146,6 +146,8 @@ module OursprivacyIngest
           utm_source: String?,
           utm_term: String?,
           version: String?,
+          viant_click_id: String?,
+          viant_impression_id: String?,
           wbraid: String?,
           webview: bool?
         }
@@ -295,6 +297,10 @@ module OursprivacyIngest
 
         attr_accessor version: String?
 
+        attr_accessor viant_click_id: String?
+
+        attr_accessor viant_impression_id: String?
+
         attr_accessor wbraid: String?
 
         attr_accessor webview: bool?
@@ -372,6 +378,8 @@ module OursprivacyIngest
           ?utm_source: String?,
           ?utm_term: String?,
           ?version: String?,
+          ?viant_click_id: String?,
+          ?viant_impression_id: String?,
           ?wbraid: String?,
           ?webview: bool?
         ) -> void
@@ -449,6 +457,8 @@ module OursprivacyIngest
           utm_source: String?,
           utm_term: String?,
           version: String?,
+          viant_click_id: String?,
+          viant_impression_id: String?,
           wbraid: String?,
           webview: bool?
         }
@@ -526,6 +536,8 @@ module OursprivacyIngest
           utm_name: String?,
           utm_source: String?,
           utm_term: String?,
+          viant_click_id: String?,
+          viant_impression_id: String?,
           wbraid: String?,
           zip: String?
         }
@@ -647,6 +659,10 @@ module OursprivacyIngest
 
         attr_accessor utm_term: String?
 
+        attr_accessor viant_click_id: String?
+
+        attr_accessor viant_impression_id: String?
+
         attr_accessor wbraid: String?
 
         attr_accessor zip: String?
@@ -710,6 +726,8 @@ module OursprivacyIngest
           ?utm_name: String?,
           ?utm_source: String?,
           ?utm_term: String?,
+          ?viant_click_id: String?,
+          ?viant_impression_id: String?,
           ?wbraid: String?,
           ?zip: String?
         ) -> void
@@ -773,6 +791,8 @@ module OursprivacyIngest
           utm_name: String?,
           utm_source: String?,
           utm_term: String?,
+          viant_click_id: String?,
+          viant_impression_id: String?,
           wbraid: String?,
           zip: String?
         }
