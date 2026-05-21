@@ -353,6 +353,12 @@ module OursprivacyIngest
         attr_accessor :utm_term
 
         sig { returns(T.nilable(String)) }
+        attr_accessor :viant_click_id
+
+        sig { returns(T.nilable(String)) }
+        attr_accessor :viant_impression_id
+
+        sig { returns(T.nilable(String)) }
         attr_accessor :wbraid
 
         sig { returns(T.nilable(String)) }
@@ -421,6 +427,8 @@ module OursprivacyIngest
             utm_name: T.nilable(String),
             utm_source: T.nilable(String),
             utm_term: T.nilable(String),
+            viant_click_id: T.nilable(String),
+            viant_impression_id: T.nilable(String),
             wbraid: T.nilable(String),
             zip: T.nilable(String)
           ).returns(T.attached_class)
@@ -485,6 +493,8 @@ module OursprivacyIngest
           utm_name: nil,
           utm_source: nil,
           utm_term: nil,
+          viant_click_id: nil,
+          viant_impression_id: nil,
           wbraid: nil,
           zip: nil
         )
@@ -551,6 +561,8 @@ module OursprivacyIngest
               utm_name: T.nilable(String),
               utm_source: T.nilable(String),
               utm_term: T.nilable(String),
+              viant_click_id: T.nilable(String),
+              viant_impression_id: T.nilable(String),
               wbraid: T.nilable(String),
               zip: T.nilable(String)
             }
@@ -865,6 +877,18 @@ module OursprivacyIngest
         sig { returns(T.nilable(String)) }
         attr_accessor :version
 
+        # The Viant (Adelphic) Click ID, captured from the `viant_click_id` URL parameter
+        # (Viant `${ADELPHIC_CLICKID}` macro). Sent as `xid` on Viant postbacks. Ex:
+        # viant_click_abc123
+        sig { returns(T.nilable(String)) }
+        attr_accessor :viant_click_id
+
+        # The Viant (Adelphic) Impression ID, captured from the `viant_impression_id` URL
+        # parameter (Viant `${ADELPHIC_IMPRESSIONID}` macro). Sent as `imp_id` on Viant
+        # postbacks for post-view attribution. Ex: viant_imp_abc123
+        sig { returns(T.nilable(String)) }
+        attr_accessor :viant_impression_id
+
         # The WBRAID Identifier. The web SDK automatically captures this from the query
         # params.
         sig { returns(T.nilable(String)) }
@@ -950,6 +974,8 @@ module OursprivacyIngest
             utm_source: T.nilable(String),
             utm_term: T.nilable(String),
             version: T.nilable(String),
+            viant_click_id: T.nilable(String),
+            viant_impression_id: T.nilable(String),
             wbraid: T.nilable(String),
             webview: T.nilable(T::Boolean)
           ).returns(T.attached_class)
@@ -1107,6 +1133,14 @@ module OursprivacyIngest
           utm_term: nil,
           # The version of the web SDK
           version: nil,
+          # The Viant (Adelphic) Click ID, captured from the `viant_click_id` URL parameter
+          # (Viant `${ADELPHIC_CLICKID}` macro). Sent as `xid` on Viant postbacks. Ex:
+          # viant_click_abc123
+          viant_click_id: nil,
+          # The Viant (Adelphic) Impression ID, captured from the `viant_impression_id` URL
+          # parameter (Viant `${ADELPHIC_IMPRESSIONID}` macro). Sent as `imp_id` on Viant
+          # postbacks for post-view attribution. Ex: viant_imp_abc123
+          viant_impression_id: nil,
           # The WBRAID Identifier. The web SDK automatically captures this from the query
           # params.
           wbraid: nil,
@@ -1190,6 +1224,8 @@ module OursprivacyIngest
               utm_source: T.nilable(String),
               utm_term: T.nilable(String),
               version: T.nilable(String),
+              viant_click_id: T.nilable(String),
+              viant_impression_id: T.nilable(String),
               wbraid: T.nilable(String),
               webview: T.nilable(T::Boolean)
             }
