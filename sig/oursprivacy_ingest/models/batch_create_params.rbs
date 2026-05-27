@@ -134,6 +134,7 @@ module OursprivacyIngest
             msclkid: String?,
             ndclid: String?,
             new_s: bool?,
+            oppref: String?,
             os_name: String?,
             os_version: String?,
             page_hash: Float?,
@@ -257,6 +258,8 @@ module OursprivacyIngest
 
           attr_accessor new_s: bool?
 
+          attr_accessor oppref: String?
+
           attr_accessor os_name: String?
 
           attr_accessor os_version: String?
@@ -366,6 +369,7 @@ module OursprivacyIngest
             ?msclkid: String?,
             ?ndclid: String?,
             ?new_s: bool?,
+            ?oppref: String?,
             ?os_name: String?,
             ?os_version: String?,
             ?page_hash: Float?,
@@ -445,6 +449,7 @@ module OursprivacyIngest
             msclkid: String?,
             ndclid: String?,
             new_s: bool?,
+            oppref: String?,
             os_name: String?,
             os_version: String?,
             page_hash: Float?,
@@ -533,6 +538,7 @@ module OursprivacyIngest
             li_fat_id: String?,
             msclkid: String?,
             ndclid: String?,
+            oppref: String?,
             phone_number: String?,
             qclid: String?,
             rdt_cid: String?,
@@ -637,6 +643,8 @@ module OursprivacyIngest
 
           attr_accessor ndclid: String?
 
+          attr_accessor oppref: String?
+
           attr_accessor phone_number: String?
 
           attr_accessor qclid: String?
@@ -723,6 +731,7 @@ module OursprivacyIngest
             ?li_fat_id: String?,
             ?msclkid: String?,
             ?ndclid: String?,
+            ?oppref: String?,
             ?phone_number: String?,
             ?qclid: String?,
             ?rdt_cid: String?,
@@ -788,6 +797,7 @@ module OursprivacyIngest
             li_fat_id: String?,
             msclkid: String?,
             ndclid: String?,
+            oppref: String?,
             phone_number: String?,
             qclid: String?,
             rdt_cid: String?,
