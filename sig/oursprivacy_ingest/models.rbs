@@ -1,6 +1,10 @@
 module OursprivacyIngest
   class BatchCreateParams = OursprivacyIngest::Models::BatchCreateParams
 
+  class ExperimentAssignmentParams = OursprivacyIngest::Models::ExperimentAssignmentParams
+
+  class ExperimentPersonalizationParams = OursprivacyIngest::Models::ExperimentPersonalizationParams
+
   class TrackEventParams = OursprivacyIngest::Models::TrackEventParams
 
   class VisitorUpsertParams = OursprivacyIngest::Models::VisitorUpsertParams

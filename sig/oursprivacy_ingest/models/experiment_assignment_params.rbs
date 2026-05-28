@@ -1,0 +1,58 @@
+module OursprivacyIngest
+  module Models
+    type experiment_assignment_params =
+      {
+        experiment_key: String,
+        token: String,
+        visitor_id: String,
+        context: OursprivacyIngest::ExperimentAssignmentParams::Context?,
+        track_impression: bool?
+      }
+      & OursprivacyIngest::Internal::Type::request_parameters
+
+    class ExperimentAssignmentParams < OursprivacyIngest::Internal::Type::BaseModel
+      extend OursprivacyIngest::Internal::Type::RequestParameters::Converter
+      include OursprivacyIngest::Internal::Type::RequestParameters
+
+      attr_accessor experiment_key: String
+
+      attr_accessor token: String
+
+      attr_accessor visitor_id: String
+
+      attr_accessor context: OursprivacyIngest::ExperimentAssignmentParams::Context?
+
+      attr_accessor track_impression: bool?
+
+      def initialize: (
+        experiment_key: String,
+        token: String,
+        visitor_id: String,
+        ?context: OursprivacyIngest::ExperimentAssignmentParams::Context?,
+        ?track_impression: bool?,
+        ?request_options: OursprivacyIngest::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        experiment_key: String,
+        token: String,
+        visitor_id: String,
+        context: OursprivacyIngest::ExperimentAssignmentParams::Context?,
+        track_impression: bool?,
+        request_options: OursprivacyIngest::RequestOptions
+      }
+
+      type context = { search: String?, url: String? }
+
+      class Context < OursprivacyIngest::Internal::Type::BaseModel
+        attr_accessor search: String?
+
+        attr_accessor url: String?
+
+        def initialize: (?search: String?, ?url: String?) -> void
+
+        def to_hash: -> { search: String?, url: String? }
+      end
+    end
+  end
+end
