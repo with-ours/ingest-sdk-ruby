@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.10.0 (2026-05-27)
+
+Full Changelog: [v1.9.0...v1.10.0](https://github.com/with-ours/ingest-sdk-ruby/compare/v1.9.0...v1.10.0)
+
+### Features
+
+* **api:** api update ([3968b6e](https://github.com/with-ours/ingest-sdk-ruby/commit/3968b6e51b8ef31269c905af417dcde9c8bab383))
+
 ## 1.9.0 (2026-05-21)
 
 Full Changelog: [v1.8.0...v1.9.0](https://github.com/with-ours/ingest-sdk-ruby/compare/v1.8.0...v1.9.0)

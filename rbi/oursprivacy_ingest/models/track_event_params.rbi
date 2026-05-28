@@ -401,6 +401,13 @@ module OursprivacyIngest
         sig { returns(T.nilable(T::Boolean)) }
         attr_accessor :new_s
 
+        # The OpenAI Ads privacy-preserving reference, captured from the `oppref` URL
+        # parameter on landing pages (the OpenAI Pixel also stores it in a `__oppref`
+        # cookie). Sent to OpenAI Ads on Conversions API events for attribution. Ex:
+        # oppref_abc
+        sig { returns(T.nilable(String)) }
+        attr_accessor :oppref
+
         # The name of the operating system. Ex: Windows
         sig { returns(T.nilable(String)) }
         attr_accessor :os_name
@@ -582,6 +589,7 @@ module OursprivacyIngest
             msclkid: T.nilable(String),
             ndclid: T.nilable(String),
             new_s: T.nilable(T::Boolean),
+            oppref: T.nilable(String),
             os_name: T.nilable(String),
             os_version: T.nilable(String),
             page_hash: T.nilable(Float),
@@ -713,6 +721,11 @@ module OursprivacyIngest
           ndclid: nil,
           # Deprecated
           new_s: nil,
+          # The OpenAI Ads privacy-preserving reference, captured from the `oppref` URL
+          # parameter on landing pages (the OpenAI Pixel also stores it in a `__oppref`
+          # cookie). Sent to OpenAI Ads on Conversions API events for attribution. Ex:
+          # oppref_abc
+          oppref: nil,
           # The name of the operating system. Ex: Windows
           os_name: nil,
           # The version of the operating system. Ex: 10.0
@@ -832,6 +845,7 @@ module OursprivacyIngest
               msclkid: T.nilable(String),
               ndclid: T.nilable(String),
               new_s: T.nilable(T::Boolean),
+              oppref: T.nilable(String),
               os_name: T.nilable(String),
               os_version: T.nilable(String),
               page_hash: T.nilable(Float),
@@ -1033,6 +1047,9 @@ module OursprivacyIngest
         attr_accessor :ndclid
 
         sig { returns(T.nilable(String)) }
+        attr_accessor :oppref
+
+        sig { returns(T.nilable(String)) }
         attr_accessor :phone_number
 
         sig { returns(T.nilable(String)) }
@@ -1144,6 +1161,7 @@ module OursprivacyIngest
             li_fat_id: T.nilable(String),
             msclkid: T.nilable(String),
             ndclid: T.nilable(String),
+            oppref: T.nilable(String),
             phone_number: T.nilable(String),
             qclid: T.nilable(String),
             rdt_cid: T.nilable(String),
@@ -1210,6 +1228,7 @@ module OursprivacyIngest
           li_fat_id: nil,
           msclkid: nil,
           ndclid: nil,
+          oppref: nil,
           phone_number: nil,
           qclid: nil,
           rdt_cid: nil,
@@ -1278,6 +1297,7 @@ module OursprivacyIngest
               li_fat_id: T.nilable(String),
               msclkid: T.nilable(String),
               ndclid: T.nilable(String),
+              oppref: T.nilable(String),
               phone_number: T.nilable(String),
               qclid: T.nilable(String),
               rdt_cid: T.nilable(String),
