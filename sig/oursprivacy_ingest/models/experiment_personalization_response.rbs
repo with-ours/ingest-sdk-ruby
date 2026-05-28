@@ -1,0 +1,77 @@
+module OursprivacyIngest
+  module Models
+    type experiment_personalization_response =
+      {
+        personalizations: ::Array[OursprivacyIngest::Models::ExperimentPersonalizationResponse::Personalization],
+        success: OursprivacyIngest::Models::ExperimentPersonalizationResponse::success
+      }
+
+    class ExperimentPersonalizationResponse < OursprivacyIngest::Internal::Type::BaseModel
+      attr_accessor personalizations: ::Array[OursprivacyIngest::Models::ExperimentPersonalizationResponse::Personalization]
+
+      attr_accessor success: OursprivacyIngest::Models::ExperimentPersonalizationResponse::success
+
+      def initialize: (
+        personalizations: ::Array[OursprivacyIngest::Models::ExperimentPersonalizationResponse::Personalization],
+        success: OursprivacyIngest::Models::ExperimentPersonalizationResponse::success
+      ) -> void
+
+      def to_hash: -> {
+        personalizations: ::Array[OursprivacyIngest::Models::ExperimentPersonalizationResponse::Personalization],
+        success: OursprivacyIngest::Models::ExperimentPersonalizationResponse::success
+      }
+
+      type personalization =
+        {
+          assigned_at: Float,
+          experiment_id: String,
+          variant_id: String,
+          experiment_key: String?,
+          experiment_name: String?,
+          variant_name: String?
+        }
+
+      class Personalization < OursprivacyIngest::Internal::Type::BaseModel
+        attr_accessor assigned_at: Float
+
+        attr_accessor experiment_id: String
+
+        attr_accessor variant_id: String
+
+        attr_accessor experiment_key: String?
+
+        attr_accessor experiment_name: String?
+
+        attr_accessor variant_name: String?
+
+        def initialize: (
+          assigned_at: Float,
+          experiment_id: String,
+          variant_id: String,
+          ?experiment_key: String?,
+          ?experiment_name: String?,
+          ?variant_name: String?
+        ) -> void
+
+        def to_hash: -> {
+          assigned_at: Float,
+          experiment_id: String,
+          variant_id: String,
+          experiment_key: String?,
+          experiment_name: String?,
+          variant_name: String?
+        }
+      end
+
+      type success = true
+
+      module Success
+        extend OursprivacyIngest::Internal::Type::Enum
+
+        TRUE: true
+
+        def self?.values: -> ::Array[OursprivacyIngest::Models::ExperimentPersonalizationResponse::success]
+      end
+    end
+  end
+end

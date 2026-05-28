@@ -4,6 +4,17 @@ module OursprivacyIngest
   module Internal
     module Type
       # @api private
+      #
+      # @example
+      #   # `experiment_assignment_response` is a `OursprivacyIngest::Models::ExperimentAssignmentResponse`
+      #   case experiment_assignment_response
+      #   when OursprivacyIngest::Models::ExperimentAssignmentResponse::UnionMember0
+      #     puts(experiment_assignment_response.experiment_id)
+      #   when OursprivacyIngest::Models::ExperimentAssignmentResponse::UnionMember1
+      #     puts(experiment_assignment_response.in_experiment)
+      #   else
+      #     puts(experiment_assignment_response)
+      #   end
       module Union
         include OursprivacyIngest::Internal::Type::Converter
         include OursprivacyIngest::Internal::Util::SorbetRuntimeSupport

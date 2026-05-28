@@ -1,0 +1,28 @@
+module OursprivacyIngest
+  module Models
+    type experiment_personalization_params =
+      { token: String, visitor_id: String }
+      & OursprivacyIngest::Internal::Type::request_parameters
+
+    class ExperimentPersonalizationParams < OursprivacyIngest::Internal::Type::BaseModel
+      extend OursprivacyIngest::Internal::Type::RequestParameters::Converter
+      include OursprivacyIngest::Internal::Type::RequestParameters
+
+      attr_accessor token: String
+
+      attr_accessor visitor_id: String
+
+      def initialize: (
+        token: String,
+        visitor_id: String,
+        ?request_options: OursprivacyIngest::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        token: String,
+        visitor_id: String,
+        request_options: OursprivacyIngest::RequestOptions
+      }
+    end
+  end
+end
