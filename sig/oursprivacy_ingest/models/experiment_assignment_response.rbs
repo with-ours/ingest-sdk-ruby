@@ -1,0 +1,132 @@
+module OursprivacyIngest
+  module Models
+    type experiment_assignment_response =
+      OursprivacyIngest::Models::ExperimentAssignmentResponse::UnionMember0
+      | OursprivacyIngest::Models::ExperimentAssignmentResponse::UnionMember1
+
+    module ExperimentAssignmentResponse
+      extend OursprivacyIngest::Internal::Type::Union
+
+      type union_member0 =
+        {
+          experiment_id: String,
+          in_experiment: OursprivacyIngest::Models::ExperimentAssignmentResponse::UnionMember0::in_experiment,
+          success: OursprivacyIngest::Models::ExperimentAssignmentResponse::UnionMember0::success,
+          variant_id: String,
+          experiment_key: String?,
+          experiment_name: String?,
+          is_control: bool?,
+          type: String?,
+          variant_name: String?
+        }
+
+      class UnionMember0 < OursprivacyIngest::Internal::Type::BaseModel
+        attr_accessor experiment_id: String
+
+        attr_accessor in_experiment: OursprivacyIngest::Models::ExperimentAssignmentResponse::UnionMember0::in_experiment
+
+        attr_accessor success: OursprivacyIngest::Models::ExperimentAssignmentResponse::UnionMember0::success
+
+        attr_accessor variant_id: String
+
+        attr_accessor experiment_key: String?
+
+        attr_accessor experiment_name: String?
+
+        attr_accessor is_control: bool?
+
+        attr_accessor type: String?
+
+        attr_accessor variant_name: String?
+
+        def initialize: (
+          experiment_id: String,
+          in_experiment: OursprivacyIngest::Models::ExperimentAssignmentResponse::UnionMember0::in_experiment,
+          success: OursprivacyIngest::Models::ExperimentAssignmentResponse::UnionMember0::success,
+          variant_id: String,
+          ?experiment_key: String?,
+          ?experiment_name: String?,
+          ?is_control: bool?,
+          ?type: String?,
+          ?variant_name: String?
+        ) -> void
+
+        def to_hash: -> {
+          experiment_id: String,
+          in_experiment: OursprivacyIngest::Models::ExperimentAssignmentResponse::UnionMember0::in_experiment,
+          success: OursprivacyIngest::Models::ExperimentAssignmentResponse::UnionMember0::success,
+          variant_id: String,
+          experiment_key: String?,
+          experiment_name: String?,
+          is_control: bool?,
+          type: String?,
+          variant_name: String?
+        }
+
+        type in_experiment = true
+
+        module InExperiment
+          extend OursprivacyIngest::Internal::Type::Enum
+
+          TRUE: true
+
+          def self?.values: -> ::Array[OursprivacyIngest::Models::ExperimentAssignmentResponse::UnionMember0::in_experiment]
+        end
+
+        type success = true
+
+        module Success
+          extend OursprivacyIngest::Internal::Type::Enum
+
+          TRUE: true
+
+          def self?.values: -> ::Array[OursprivacyIngest::Models::ExperimentAssignmentResponse::UnionMember0::success]
+        end
+      end
+
+      type union_member1 =
+        {
+          in_experiment: OursprivacyIngest::Models::ExperimentAssignmentResponse::UnionMember1::in_experiment,
+          success: OursprivacyIngest::Models::ExperimentAssignmentResponse::UnionMember1::success
+        }
+
+      class UnionMember1 < OursprivacyIngest::Internal::Type::BaseModel
+        attr_accessor in_experiment: OursprivacyIngest::Models::ExperimentAssignmentResponse::UnionMember1::in_experiment
+
+        attr_accessor success: OursprivacyIngest::Models::ExperimentAssignmentResponse::UnionMember1::success
+
+        def initialize: (
+          in_experiment: OursprivacyIngest::Models::ExperimentAssignmentResponse::UnionMember1::in_experiment,
+          success: OursprivacyIngest::Models::ExperimentAssignmentResponse::UnionMember1::success
+        ) -> void
+
+        def to_hash: -> {
+          in_experiment: OursprivacyIngest::Models::ExperimentAssignmentResponse::UnionMember1::in_experiment,
+          success: OursprivacyIngest::Models::ExperimentAssignmentResponse::UnionMember1::success
+        }
+
+        type in_experiment = false
+
+        module InExperiment
+          extend OursprivacyIngest::Internal::Type::Enum
+
+          FALSE: false
+
+          def self?.values: -> ::Array[OursprivacyIngest::Models::ExperimentAssignmentResponse::UnionMember1::in_experiment]
+        end
+
+        type success = true
+
+        module Success
+          extend OursprivacyIngest::Internal::Type::Enum
+
+          TRUE: true
+
+          def self?.values: -> ::Array[OursprivacyIngest::Models::ExperimentAssignmentResponse::UnionMember1::success]
+        end
+      end
+
+      def self?.variants: -> ::Array[OursprivacyIngest::Models::experiment_assignment_response]
+    end
+  end
+end

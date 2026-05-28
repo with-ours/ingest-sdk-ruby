@@ -19,6 +19,9 @@ module OursprivacyIngest
     sig { returns(OursprivacyIngest::Resources::Visitor) }
     attr_reader :visitor
 
+    sig { returns(OursprivacyIngest::Resources::Experiments) }
+    attr_reader :experiments
+
     # @api private
     sig { returns(T::Boolean) }
     def base_url_overridden?
