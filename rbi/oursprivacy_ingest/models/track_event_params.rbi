@@ -401,6 +401,11 @@ module OursprivacyIngest
         sig { returns(T.nilable(T::Boolean)) }
         attr_accessor :new_s
 
+        # The Outbrain click ID, captured from the `ob_click_id` URL parameter (Outbrain
+        # `{{ob_click_id}}` macro) on the landing page. Ex: ob_click_abc123
+        sig { returns(T.nilable(String)) }
+        attr_accessor :ob_click_id
+
         # The OpenAI Ads privacy-preserving reference, captured from the `oppref` URL
         # parameter on landing pages (the OpenAI Pixel also stores it in a `__oppref`
         # cookie). Sent to OpenAI Ads on Conversions API events for attribution. Ex:
@@ -589,6 +594,7 @@ module OursprivacyIngest
             msclkid: T.nilable(String),
             ndclid: T.nilable(String),
             new_s: T.nilable(T::Boolean),
+            ob_click_id: T.nilable(String),
             oppref: T.nilable(String),
             os_name: T.nilable(String),
             os_version: T.nilable(String),
@@ -721,6 +727,9 @@ module OursprivacyIngest
           ndclid: nil,
           # Deprecated
           new_s: nil,
+          # The Outbrain click ID, captured from the `ob_click_id` URL parameter (Outbrain
+          # `{{ob_click_id}}` macro) on the landing page. Ex: ob_click_abc123
+          ob_click_id: nil,
           # The OpenAI Ads privacy-preserving reference, captured from the `oppref` URL
           # parameter on landing pages (the OpenAI Pixel also stores it in a `__oppref`
           # cookie). Sent to OpenAI Ads on Conversions API events for attribution. Ex:
@@ -845,6 +854,7 @@ module OursprivacyIngest
               msclkid: T.nilable(String),
               ndclid: T.nilable(String),
               new_s: T.nilable(T::Boolean),
+              ob_click_id: T.nilable(String),
               oppref: T.nilable(String),
               os_name: T.nilable(String),
               os_version: T.nilable(String),
@@ -1047,6 +1057,9 @@ module OursprivacyIngest
         attr_accessor :ndclid
 
         sig { returns(T.nilable(String)) }
+        attr_accessor :ob_click_id
+
+        sig { returns(T.nilable(String)) }
         attr_accessor :oppref
 
         sig { returns(T.nilable(String)) }
@@ -1161,6 +1174,7 @@ module OursprivacyIngest
             li_fat_id: T.nilable(String),
             msclkid: T.nilable(String),
             ndclid: T.nilable(String),
+            ob_click_id: T.nilable(String),
             oppref: T.nilable(String),
             phone_number: T.nilable(String),
             qclid: T.nilable(String),
@@ -1228,6 +1242,7 @@ module OursprivacyIngest
           li_fat_id: nil,
           msclkid: nil,
           ndclid: nil,
+          ob_click_id: nil,
           oppref: nil,
           phone_number: nil,
           qclid: nil,
@@ -1297,6 +1312,7 @@ module OursprivacyIngest
               li_fat_id: T.nilable(String),
               msclkid: T.nilable(String),
               ndclid: T.nilable(String),
+              ob_click_id: T.nilable(String),
               oppref: T.nilable(String),
               phone_number: T.nilable(String),
               qclid: T.nilable(String),
