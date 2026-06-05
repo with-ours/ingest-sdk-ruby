@@ -593,7 +593,7 @@ module OursprivacyIngest
         optional :aleid, String, nil?: true
 
         # @!attribute axwrt
-        #   The AppLovin Axon pixel cookie value (\_axwrt). Web-only.
+        #   The AppLovin pixel cookie value (\_axwrt). Web-only.
         #
         #   @return [String, nil]
         optional :axwrt, String, nil?: true
@@ -1056,7 +1056,7 @@ module OursprivacyIngest
         #
         #   @param aleid [String, nil] The AppLovin aleid query parameter. Ex: aleid123
         #
-        #   @param axwrt [String, nil] The AppLovin Axon pixel cookie value (\_axwrt). Web-only.
+        #   @param axwrt [String, nil] The AppLovin pixel cookie value (\_axwrt). Web-only.
         #
         #   @param basis_cid [String, nil] The Basis DSP Click ID. Ex: basis_cid123
         #
