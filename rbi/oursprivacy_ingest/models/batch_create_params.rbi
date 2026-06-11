@@ -297,7 +297,7 @@ module OursprivacyIngest
           sig { returns(T.nilable(String)) }
           attr_accessor :aleid
 
-          # The AppLovin Axon pixel cookie value (\_axwrt). Web-only.
+          # The AppLovin pixel cookie value (\_axwrt). Web-only.
           sig { returns(T.nilable(String)) }
           attr_accessor :axwrt
 
@@ -697,7 +697,7 @@ module OursprivacyIngest
             alart: nil,
             # The AppLovin aleid query parameter. Ex: aleid123
             aleid: nil,
-            # The AppLovin Axon pixel cookie value (\_axwrt). Web-only.
+            # The AppLovin pixel cookie value (\_axwrt). Web-only.
             axwrt: nil,
             # The Basis DSP Click ID. Ex: basis_cid123
             basis_cid: nil,
