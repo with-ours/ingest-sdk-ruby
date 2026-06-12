@@ -583,7 +583,7 @@ module OursprivacyIngest
         optional :utm_term, String, nil?: true
 
         # @!attribute version
-        #   The version of the web SDK
+        #   The SDK version (e.g., web SDK or ingest-sdk-\* via Stainless headers)
         #
         #   @return [String, nil]
         optional :version, String, nil?: true
@@ -772,7 +772,7 @@ module OursprivacyIngest
         #
         #   @param utm_term [String, nil] The UTM Term. The web SDK automatically captures this from the query params.
         #
-        #   @param version [String, nil] The version of the web SDK
+        #   @param version [String, nil] The SDK version (e.g., web SDK or ingest-sdk-\* via Stainless headers)
         #
         #   @param viant_click_id [String, nil] The Viant (Adelphic) Click ID, captured from the `viant_click_id` URL parameter
         #
