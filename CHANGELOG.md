@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.14.1 (2026-06-17)
+
+Full Changelog: [v1.14.0...v1.14.1](https://github.com/with-ours/ingest-sdk-ruby/compare/v1.14.0...v1.14.1)
+
+### Bug Fixes
+
+* **client:** send content-type header for requests with an omitted optional body ([cacbd82](https://github.com/with-ours/ingest-sdk-ruby/commit/cacbd82030358c88cee8f403472df372b0151060))
+
 ## 1.14.0 (2026-06-12)
 
 Full Changelog: [v1.13.0...v1.14.0](https://github.com/with-ours/ingest-sdk-ruby/compare/v1.13.0...v1.14.0)
