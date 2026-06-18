@@ -300,7 +300,10 @@ module OursprivacyIngest
               OursprivacyIngest::Internal::Util.deep_merge(*[req[:body], opts[:extra_body]].compact)
             end
 
-          headers.delete("content-type") if body.nil?
+          # Generated methods always pass `req[:body]` for operations that define a
+          # request body, so only elide the content-type header when the operation
+          # has no body at all, not when an optional body param was omitted.
+          headers.delete("content-type") if body.nil? && !req.key?(:body)
 
           url = OursprivacyIngest::Internal::Util.join_parsed_uri(
             @base_url_components,
