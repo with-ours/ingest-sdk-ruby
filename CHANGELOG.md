@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.14.2 (2026-06-24)
+
+Full Changelog: [v1.14.1...v1.14.2](https://github.com/with-ours/ingest-sdk-ruby/compare/v1.14.1...v1.14.2)
+
+### Bug Fixes
+
+* **deps:** patch concurrent-ruby vulnerabilities ([8938d85](https://github.com/with-ours/ingest-sdk-ruby/commit/8938d85ddc185ef05279f74e39ee9625a592ae9d))
+
 ## 1.14.1 (2026-06-17)
 
 Full Changelog: [v1.14.0...v1.14.1](https://github.com/with-ours/ingest-sdk-ruby/compare/v1.14.0...v1.14.1)
