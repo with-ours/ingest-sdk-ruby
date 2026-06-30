@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.14.3 (2026-06-30)
+
+Full Changelog: [v1.14.2...v1.14.3](https://github.com/with-ours/ingest-sdk-ruby/compare/v1.14.2...v1.14.3)
+
+### Chores
+
+* **internal:** bound formatter parallelism to CPU count ([7ce4838](https://github.com/with-ours/ingest-sdk-ruby/commit/7ce4838a9d2664d15e291f0faff3fe2d56f84341))
+
+
+### Build System
+
+* **deps-dev:** bump yard from 0.9.37 to 0.9.44 ([#39](https://github.com/with-ours/ingest-sdk-ruby/issues/39)) ([5e0df3c](https://github.com/with-ours/ingest-sdk-ruby/commit/5e0df3cb5ad9012816b2a296abeaa21a36496291))
+
 ## 1.14.2 (2026-06-24)
 
 Full Changelog: [v1.14.1...v1.14.2](https://github.com/with-ours/ingest-sdk-ruby/compare/v1.14.1...v1.14.2)
