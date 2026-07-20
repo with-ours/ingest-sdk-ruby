@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
 module OursprivacyIngest
-  VERSION = "1.14.3"
+  VERSION = "1.15.0"
 end
