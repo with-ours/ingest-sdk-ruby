@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.15.0 (2026-07-18)
+
+Full Changelog: [v1.14.3...v1.15.0](https://github.com/with-ours/ingest-sdk-ruby/compare/v1.14.3...v1.15.0)
+
+### Features
+
+* **stlc:** configurable CI runner and private-production-repo support in workflow templates ([7215c4a](https://github.com/with-ours/ingest-sdk-ruby/commit/7215c4a38037fdc7f73bca9145568856a56f47f3))
+
 ## 1.14.3 (2026-06-30)
 
 Full Changelog: [v1.14.2...v1.14.3](https://github.com/with-ours/ingest-sdk-ruby/compare/v1.14.2...v1.14.3)
