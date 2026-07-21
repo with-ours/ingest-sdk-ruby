@@ -51,6 +51,13 @@ module OursprivacyIngest
         sig { returns(T.nilable(T::Boolean)) }
         attr_accessor :is_control
 
+        # Redirect destination for redirect (split-URL) variants — a same-domain relative
+        # path or an absolute https:// URL. Present only when the assigned variant is a
+        # redirect; absent for on-page (DOM-modification) variants. Read it straight off
+        # the payload and issue the redirect server-side.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :redirect
+
         sig { returns(T.nilable(String)) }
         attr_accessor :type
 
@@ -68,6 +75,7 @@ module OursprivacyIngest
             experiment_key: T.nilable(String),
             experiment_name: T.nilable(String),
             is_control: T.nilable(T::Boolean),
+            redirect: T.nilable(String),
             type: T.nilable(String),
             variant_name: T.nilable(String)
           ).returns(T.attached_class)
@@ -80,6 +88,11 @@ module OursprivacyIngest
           experiment_key: nil,
           experiment_name: nil,
           is_control: nil,
+          # Redirect destination for redirect (split-URL) variants — a same-domain relative
+          # path or an absolute https:// URL. Present only when the assigned variant is a
+          # redirect; absent for on-page (DOM-modification) variants. Read it straight off
+          # the payload and issue the redirect server-side.
+          redirect: nil,
           type: nil,
           variant_name: nil
         )
@@ -97,6 +110,7 @@ module OursprivacyIngest
               experiment_key: T.nilable(String),
               experiment_name: T.nilable(String),
               is_control: T.nilable(T::Boolean),
+              redirect: T.nilable(String),
               type: T.nilable(String),
               variant_name: T.nilable(String)
             }
