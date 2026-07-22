@@ -48,6 +48,15 @@ module OursprivacyIngest
         #   @return [Boolean, nil]
         optional :is_control, OursprivacyIngest::Internal::Type::Boolean, nil?: true
 
+        # @!attribute redirect
+        #   Redirect destination for redirect (split-URL) variants — a same-domain relative
+        #   path or an absolute https:// URL. Present only when the assigned variant is a
+        #   redirect; absent for on-page (DOM-modification) variants. Read it straight off
+        #   the payload and issue the redirect server-side.
+        #
+        #   @return [String, nil]
+        optional :redirect, String, nil?: true
+
         # @!attribute type
         #
         #   @return [String, nil]
@@ -58,15 +67,29 @@ module OursprivacyIngest
         #   @return [String, nil]
         optional :variant_name, String, nil?: true
 
-        # @!method initialize(experiment_id:, in_experiment:, success:, variant_id:, experiment_key: nil, experiment_name: nil, is_control: nil, type: nil, variant_name: nil)
+        # @!method initialize(experiment_id:, in_experiment:, success:, variant_id:, experiment_key: nil, experiment_name: nil, is_control: nil, redirect: nil, type: nil, variant_name: nil)
+        #   Some parameter documentations has been truncated, see
+        #   {OursprivacyIngest::Models::ExperimentAssignmentResponse::UnionMember0} for more
+        #   details.
+        #
         #   @param experiment_id [String]
+        #
         #   @param in_experiment [Boolean, OursprivacyIngest::Models::ExperimentAssignmentResponse::UnionMember0::InExperiment]
+        #
         #   @param success [Boolean, OursprivacyIngest::Models::ExperimentAssignmentResponse::UnionMember0::Success]
+        #
         #   @param variant_id [String]
+        #
         #   @param experiment_key [String, nil]
+        #
         #   @param experiment_name [String, nil]
+        #
         #   @param is_control [Boolean, nil]
+        #
+        #   @param redirect [String, nil] Redirect destination for redirect (split-URL) variants — a same-domain relative
+        #
         #   @param type [String, nil]
+        #
         #   @param variant_name [String, nil]
 
         # @see OursprivacyIngest::Models::ExperimentAssignmentResponse::UnionMember0#in_experiment

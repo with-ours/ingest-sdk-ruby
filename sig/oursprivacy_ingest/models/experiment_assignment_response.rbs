@@ -16,6 +16,7 @@ module OursprivacyIngest
           experiment_key: String?,
           experiment_name: String?,
           is_control: bool?,
+          redirect: String?,
           type: String?,
           variant_name: String?
         }
@@ -35,6 +36,8 @@ module OursprivacyIngest
 
         attr_accessor is_control: bool?
 
+        attr_accessor redirect: String?
+
         attr_accessor type: String?
 
         attr_accessor variant_name: String?
@@ -47,6 +50,7 @@ module OursprivacyIngest
           ?experiment_key: String?,
           ?experiment_name: String?,
           ?is_control: bool?,
+          ?redirect: String?,
           ?type: String?,
           ?variant_name: String?
         ) -> void
@@ -59,6 +63,7 @@ module OursprivacyIngest
           experiment_key: String?,
           experiment_name: String?,
           is_control: bool?,
+          redirect: String?,
           type: String?,
           variant_name: String?
         }
