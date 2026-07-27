@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.16.1 (2026-07-27)
+
+Full Changelog: [v1.16.0...v1.16.1](https://github.com/with-ours/ingest-sdk-ruby/compare/v1.16.0...v1.16.1)
+
+### Build System
+
+* **deps-dev:** bump json from 2.15.2 to 2.19.9 ([#42](https://github.com/with-ours/ingest-sdk-ruby/issues/42)) ([8a2eb2e](https://github.com/with-ours/ingest-sdk-ruby/commit/8a2eb2ecb360802cb822c15645b8d5a0578b77e8))
+
 ## 1.16.0 (2026-07-21)
 
 Full Changelog: [v1.15.0...v1.16.0](https://github.com/with-ours/ingest-sdk-ruby/compare/v1.15.0...v1.16.0)
