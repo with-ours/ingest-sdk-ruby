@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.16.2 (2026-08-03)
+
+Full Changelog: [v1.16.1...v1.16.2](https://github.com/with-ours/ingest-sdk-ruby/compare/v1.16.1...v1.16.2)
+
+### Chores
+
+* add CODEOWNERS ([#44](https://github.com/with-ours/ingest-sdk-ruby/issues/44)) ([d6254c4](https://github.com/with-ours/ingest-sdk-ruby/commit/d6254c4338389c61db6f75eef8d5e74ba0f3cb11))
+
 ## 1.16.1 (2026-07-27)
 
 Full Changelog: [v1.16.0...v1.16.1](https://github.com/with-ours/ingest-sdk-ruby/compare/v1.16.0...v1.16.1)
