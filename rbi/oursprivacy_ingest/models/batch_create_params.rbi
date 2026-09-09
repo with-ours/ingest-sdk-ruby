@@ -571,7 +571,7 @@ module OursprivacyIngest
           sig { returns(T.nilable(String)) }
           attr_accessor :utm_term
 
-          # The SDK version (e.g., web SDK or ingest-sdk-\* via Stainless headers)
+          # The SDK version (e.g., web SDK or ingest-sdk-\* via generated SDK headers)
           sig { returns(T.nilable(String)) }
           attr_accessor :version
 
@@ -839,7 +839,7 @@ module OursprivacyIngest
             utm_source: nil,
             # The UTM Term. The web SDK automatically captures this from the query params.
             utm_term: nil,
-            # The SDK version (e.g., web SDK or ingest-sdk-\* via Stainless headers)
+            # The SDK version (e.g., web SDK or ingest-sdk-\* via generated SDK headers)
             version: nil,
             # The Viant (Adelphic) Click ID, captured from the `viant_click_id` URL parameter
             # (Viant `${ADELPHIC_CLICKID}` macro). Sent as `xid` on Viant postbacks. Ex:
