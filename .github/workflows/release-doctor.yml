@@ -5,19 +5,24 @@ on:
       - main
   workflow_dispatch:
 
+permissions: {}
+
 jobs:
   release_doctor:
+    permissions:
+      contents: read
     name: release doctor
     runs-on: ubuntu-latest
     if: github.repository == 'with-ours/ingest-sdk-ruby' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch' || startsWith(github.head_ref, 'release-please') || github.head_ref == 'next')
 
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
 
       - name: Check release environment
         run: |
           bash ./bin/check-release-environment
         env:
-          RELEASE_PLEASE_TOKEN: ${{ secrets.RELEASE_PLEASE_TOKEN }}
           RUBYGEMS_HOST: ${{ secrets.OURS_PRIVACY_RUBYGEMS_HOST || secrets.RUBYGEMS_HOST }}
           GEM_HOST_API_KEY: ${{ secrets.OURS_PRIVACY_GEM_HOST_API_KEY || secrets.GEM_HOST_API_KEY }}
