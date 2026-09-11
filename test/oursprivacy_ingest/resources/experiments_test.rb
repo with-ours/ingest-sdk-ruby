@@ -32,6 +32,7 @@ class OursprivacyIngest::Test::Resources::ExperimentsTest < OursprivacyIngest::T
     assert_pattern do
       response => {
         personalizations: ^(OursprivacyIngest::Internal::Type::ArrayOf[OursprivacyIngest::Models::ExperimentPersonalizationResponse::Personalization]),
+        properties: ^(OursprivacyIngest::Internal::Type::HashOf[union: OursprivacyIngest::Models::ExperimentPersonalizationResponse::Property]),
         success: OursprivacyIngest::Models::ExperimentPersonalizationResponse::Success
       }
     end
