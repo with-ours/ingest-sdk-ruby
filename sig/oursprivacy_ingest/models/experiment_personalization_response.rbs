@@ -3,21 +3,26 @@ module OursprivacyIngest
     type experiment_personalization_response =
       {
         personalizations: ::Array[OursprivacyIngest::Models::ExperimentPersonalizationResponse::Personalization],
+        properties: ::Hash[Symbol, OursprivacyIngest::Models::ExperimentPersonalizationResponse::property],
         success: OursprivacyIngest::Models::ExperimentPersonalizationResponse::success
       }
 
     class ExperimentPersonalizationResponse < OursprivacyIngest::Internal::Type::BaseModel
       attr_accessor personalizations: ::Array[OursprivacyIngest::Models::ExperimentPersonalizationResponse::Personalization]
 
+      attr_accessor properties: ::Hash[Symbol, OursprivacyIngest::Models::ExperimentPersonalizationResponse::property]
+
       attr_accessor success: OursprivacyIngest::Models::ExperimentPersonalizationResponse::success
 
       def initialize: (
         personalizations: ::Array[OursprivacyIngest::Models::ExperimentPersonalizationResponse::Personalization],
+        properties: ::Hash[Symbol, OursprivacyIngest::Models::ExperimentPersonalizationResponse::property],
         success: OursprivacyIngest::Models::ExperimentPersonalizationResponse::success
       ) -> void
 
       def to_hash: -> {
         personalizations: ::Array[OursprivacyIngest::Models::ExperimentPersonalizationResponse::Personalization],
+        properties: ::Hash[Symbol, OursprivacyIngest::Models::ExperimentPersonalizationResponse::property],
         success: OursprivacyIngest::Models::ExperimentPersonalizationResponse::success
       }
 
@@ -61,6 +66,14 @@ module OursprivacyIngest
           experiment_name: String?,
           variant_name: String?
         }
+      end
+
+      type property = String | Float | bool
+
+      module Property
+        extend OursprivacyIngest::Internal::Type::Union
+
+        def self?.variants: -> ::Array[OursprivacyIngest::Models::ExperimentPersonalizationResponse::property]
       end
 
       type success = true

@@ -10,13 +10,31 @@ module OursprivacyIngest
       required :personalizations,
                -> { OursprivacyIngest::Internal::Type::ArrayOf[OursprivacyIngest::Models::ExperimentPersonalizationResponse::Personalization] }
 
+      # @!attribute properties
+      #   The visitor traits accumulated by your personalization property rules, keyed by
+      #   property key. Values are always scalars — a string, number, or boolean, or null
+      #   when the captured field was itself empty. Empty for a visitor who has not
+      #   matched any rule yet. These same values are delivered to the visitor's browser
+      #   and are readable by anyone who knows the visitor_id, so never accumulate
+      #   secrets, credentials, PHI, or confidential data into a property.
+      #
+      #   @return [Hash{Symbol=>String, Float, Boolean}]
+      required :properties,
+               -> { OursprivacyIngest::Internal::Type::HashOf[union: OursprivacyIngest::Models::ExperimentPersonalizationResponse::Property] }
+
       # @!attribute success
       #
       #   @return [Boolean, OursprivacyIngest::Models::ExperimentPersonalizationResponse::Success]
       required :success, enum: -> { OursprivacyIngest::Models::ExperimentPersonalizationResponse::Success }
 
-      # @!method initialize(personalizations:, success:)
+      # @!method initialize(personalizations:, properties:, success:)
+      #   Some parameter documentations has been truncated, see
+      #   {OursprivacyIngest::Models::ExperimentPersonalizationResponse} for more details.
+      #
       #   @param personalizations [Array<OursprivacyIngest::Models::ExperimentPersonalizationResponse::Personalization>]
+      #
+      #   @param properties [Hash{Symbol=>String, Float, Boolean}] The visitor traits accumulated by your personalization property rules, keyed by
+      #
       #   @param success [Boolean, OursprivacyIngest::Models::ExperimentPersonalizationResponse::Success]
 
       class Personalization < OursprivacyIngest::Internal::Type::BaseModel
@@ -57,6 +75,19 @@ module OursprivacyIngest
         #   @param experiment_key [String, nil]
         #   @param experiment_name [String, nil]
         #   @param variant_name [String, nil]
+      end
+
+      module Property
+        extend OursprivacyIngest::Internal::Type::Union
+
+        variant String
+
+        variant Float
+
+        variant OursprivacyIngest::Internal::Type::Boolean
+
+        # @!method self.variants
+        #   @return [Array(String, Float, Boolean)]
       end
 
       # @see OursprivacyIngest::Models::ExperimentPersonalizationResponse#success
