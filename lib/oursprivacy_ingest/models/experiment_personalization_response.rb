@@ -4,12 +4,6 @@ module OursprivacyIngest
   module Models
     # @see OursprivacyIngest::Resources::Experiments#personalization
     class ExperimentPersonalizationResponse < OursprivacyIngest::Internal::Type::BaseModel
-      # @!attribute personalizations
-      #
-      #   @return [Array<OursprivacyIngest::Models::ExperimentPersonalizationResponse::Personalization>]
-      required :personalizations,
-               -> { OursprivacyIngest::Internal::Type::ArrayOf[OursprivacyIngest::Models::ExperimentPersonalizationResponse::Personalization] }
-
       # @!attribute properties
       #   The visitor traits accumulated by your personalization property rules, keyed by
       #   property key. Values are always scalars — a string, number, or boolean, or null
@@ -27,15 +21,49 @@ module OursprivacyIngest
       #   @return [Boolean, OursprivacyIngest::Models::ExperimentPersonalizationResponse::Success]
       required :success, enum: -> { OursprivacyIngest::Models::ExperimentPersonalizationResponse::Success }
 
-      # @!method initialize(personalizations:, properties:, success:)
+      # @!attribute personalizations
+      #   @deprecated
+      #
+      #   Deprecated legacy personalization assignments. Current API responses omit this
+      #   field; use properties for accumulated personalization traits. Retained in the
+      #   SDK for callers using older responses.
+      #
+      #   @return [Array<OursprivacyIngest::Models::ExperimentPersonalizationResponse::Personalization>, nil]
+      optional :personalizations,
+               -> { OursprivacyIngest::Internal::Type::ArrayOf[OursprivacyIngest::Models::ExperimentPersonalizationResponse::Personalization] }
+
+      # @!method initialize(properties:, success:, personalizations: nil)
       #   Some parameter documentations has been truncated, see
       #   {OursprivacyIngest::Models::ExperimentPersonalizationResponse} for more details.
-      #
-      #   @param personalizations [Array<OursprivacyIngest::Models::ExperimentPersonalizationResponse::Personalization>]
       #
       #   @param properties [Hash{Symbol=>String, Float, Boolean}] The visitor traits accumulated by your personalization property rules, keyed by
       #
       #   @param success [Boolean, OursprivacyIngest::Models::ExperimentPersonalizationResponse::Success]
+      #
+      #   @param personalizations [Array<OursprivacyIngest::Models::ExperimentPersonalizationResponse::Personalization>] Deprecated legacy personalization assignments. Current API responses omit this f
+
+      module Property
+        extend OursprivacyIngest::Internal::Type::Union
+
+        variant String
+
+        variant Float
+
+        variant OursprivacyIngest::Internal::Type::Boolean
+
+        # @!method self.variants
+        #   @return [Array(String, Float, Boolean)]
+      end
+
+      # @see OursprivacyIngest::Models::ExperimentPersonalizationResponse#success
+      module Success
+        extend OursprivacyIngest::Internal::Type::Enum
+
+        TRUE = true
+
+        # @!method self.values
+        #   @return [Array<Boolean>]
+      end
 
       class Personalization < OursprivacyIngest::Internal::Type::BaseModel
         # @!attribute assigned_at
@@ -75,29 +103,6 @@ module OursprivacyIngest
         #   @param experiment_key [String, nil]
         #   @param experiment_name [String, nil]
         #   @param variant_name [String, nil]
-      end
-
-      module Property
-        extend OursprivacyIngest::Internal::Type::Union
-
-        variant String
-
-        variant Float
-
-        variant OursprivacyIngest::Internal::Type::Boolean
-
-        # @!method self.variants
-        #   @return [Array(String, Float, Boolean)]
-      end
-
-      # @see OursprivacyIngest::Models::ExperimentPersonalizationResponse#success
-      module Success
-        extend OursprivacyIngest::Internal::Type::Enum
-
-        TRUE = true
-
-        # @!method self.values
-        #   @return [Array<Boolean>]
       end
     end
   end
