@@ -9,13 +9,16 @@ module OursprivacyIngest
       # Set or update properties on an existing visitor, or create a new visitor if no
       # match is found. This fires a $identify event, making the call visible in the
       # event stream. Identity resolution runs in priority order: userId (direct, no
-      # lookup) → externalId (lookup by your ID) → email (fallback lookup). When a
-      # visitor is found, their Ours Visitor ID is used going forward so all future
-      # events are attached to the same profile. For top-level visitor properties: null
-      # clears the existing value, while undefined, omitted fields, and empty strings
-      # are ignored. For entries inside custom_properties: null, undefined, and empty
-      # strings are all ignored (custom_properties use merge semantics). See
-      # https://docs.oursprivacy.com/docs/data-types for details and common pitfalls.
+      # lookup) → externalId → email → userProperties.phone_number. Each lookup runs
+      # only if earlier identifiers did not resolve a visitor. Phone matching ignores
+      # common formatting and an international + or 00 prefix, but does not infer a
+      # country code. When a visitor is found, their Ours Visitor ID is used going
+      # forward so all future events are attached to the same profile. For top-level
+      # visitor properties: null clears the existing value, while undefined, omitted
+      # fields, and empty strings are ignored. For entries inside custom_properties:
+      # null, undefined, and empty strings are all ignored (custom_properties use merge
+      # semantics). See https://docs.oursprivacy.com/docs/data-types for details and
+      # common pitfalls.
       #
       # @overload upsert(token:, user_properties:, default_properties: nil, email: nil, external_id: nil, identity_context: nil, user_id: nil, request_options: {})
       #
@@ -25,9 +28,9 @@ module OursprivacyIngest
       #
       # @param default_properties [OursprivacyIngest::Models::VisitorUpsertParams::DefaultProperties, nil] These properties are used throughout the Ours app to pass known values onto dest
       #
-      # @param email [String, nil] The email address of a user. Used as a fallback lookup when neither userId nor e
+      # @param email [String, nil] The email address of a user. When userId is absent and externalId does not resol
       #
-      # @param external_id [String, nil] Your system's unique identifier for this user. We search your account for an exi
+      # @param external_id [String, nil] Your system's unique identifier for this user. When userId is absent, we search
       #
       # @param identity_context [OursprivacyIngest::Models::VisitorUpsertParams::IdentityContext, nil] End-user network context for server-side calls. Required for probabilistic ident
       #
