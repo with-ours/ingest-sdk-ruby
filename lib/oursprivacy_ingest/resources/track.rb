@@ -6,15 +6,18 @@ module OursprivacyIngest
       # Some parameter documentations has been truncated, see
       # {OursprivacyIngest::Models::TrackEventParams} for more details.
       #
-      # Track events from your server. Include at least one of userId, externalId, or
-      # email so the event can be associated with a visitor. Identity resolution runs in
-      # priority order: userId (direct, no lookup) → externalId (lookup by your ID) →
-      # email (fallback lookup). If you know both userId and externalId, send both. For
-      # top-level visitor properties: null clears the existing value, while undefined,
-      # omitted fields, and empty strings are ignored. For entries inside
-      # custom_properties: null, undefined, and empty strings are all ignored
-      # (custom_properties use merge semantics). See
-      # https://docs.oursprivacy.com/docs/data-types for details and common pitfalls.
+      # Track events from your server. Include userId, externalId, email, or
+      # userProperties.phone_number to associate the event with an existing visitor.
+      # Identity resolution runs in priority order: userId (direct, no lookup) →
+      # externalId → email → userProperties.phone_number. Each lookup runs only if
+      # earlier identifiers did not resolve a visitor. Phone matching ignores common
+      # formatting and an international + or 00 prefix, but does not infer a country
+      # code. If you know both userId and externalId, send both. For top-level visitor
+      # properties: null clears the existing value, while undefined, omitted fields, and
+      # empty strings are ignored. For entries inside custom_properties: null,
+      # undefined, and empty strings are all ignored (custom_properties use merge
+      # semantics). See https://docs.oursprivacy.com/docs/data-types for details and
+      # common pitfalls.
       #
       # @overload event(token:, event:, default_properties: nil, distinct_id: nil, email: nil, event_properties: nil, external_id: nil, identity_context: nil, time: nil, user_id: nil, user_properties: nil, request_options: {})
       #
@@ -26,11 +29,11 @@ module OursprivacyIngest
       #
       # @param distinct_id [String, nil] A unique identifier for this event used for deduplication. Highly recommended —
       #
-      # @param email [String, nil] The email address of a user. Used as a fallback lookup when neither userId nor e
+      # @param email [String, nil] The email address of a user. When userId is absent and externalId does not resol
       #
       # @param event_properties [Hash{Symbol=>String, nil}, nil] Any additional event properties you want to pass along.
       #
-      # @param external_id [String, nil] Your system's unique identifier for this user. We search your account for an exi
+      # @param external_id [String, nil] Your system's unique identifier for this user. When userId is absent, we search
       #
       # @param identity_context [OursprivacyIngest::Models::TrackEventParams::IdentityContext, nil] End-user network context for server-side calls. Required for probabilistic ident
       #
