@@ -21,7 +21,9 @@ module OursprivacyIngest
         returns(
           T::Hash[
             Symbol,
-            OursprivacyIngest::Models::ExperimentPersonalizationResponse::Property::Variants
+            T.nilable(
+              OursprivacyIngest::Models::ExperimentPersonalizationResponse::Property::Variants
+            )
           ]
         )
       end
@@ -63,7 +65,9 @@ module OursprivacyIngest
           properties:
             T::Hash[
               Symbol,
-              OursprivacyIngest::Models::ExperimentPersonalizationResponse::Property::Variants
+              T.nilable(
+                OursprivacyIngest::Models::ExperimentPersonalizationResponse::Property::Variants
+              )
             ],
           success:
             OursprivacyIngest::Models::ExperimentPersonalizationResponse::Success::OrBoolean,
@@ -95,7 +99,9 @@ module OursprivacyIngest
             properties:
               T::Hash[
                 Symbol,
-                OursprivacyIngest::Models::ExperimentPersonalizationResponse::Property::Variants
+                T.nilable(
+                  OursprivacyIngest::Models::ExperimentPersonalizationResponse::Property::Variants
+                )
               ],
             success:
               OursprivacyIngest::Models::ExperimentPersonalizationResponse::Success::TaggedBoolean,

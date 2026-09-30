@@ -159,17 +159,18 @@ module OursprivacyIngest
           alternatives = []
           known_variants.each do |_, variant_fn|
             target = variant_fn.call
-            exact = state[:exactness] = {yes: 0, no: 0, maybe: 0}
-            state[:branched] += 1
+            exact = {yes: 0, no: 0, maybe: 0}
+            branch_state = state.merge(exactness: exact, error: nil, branched: state[:branched] + 1)
 
-            coerced = OursprivacyIngest::Internal::Type::Converter.coerce(target, value, state: state)
+            coerced = OursprivacyIngest::Internal::Type::Converter.coerce(target, value, state: branch_state)
+            state[:branched] = branch_state[:branched]
             yes, no, maybe = exact.values
             if (no + maybe).zero? || (!strictness && yes.positive?)
               exact.each { exactness[_1] += _2 }
-              state[:exactness] = exactness
+              state[:error] ||= branch_state[:error]
               return coerced
             elsif maybe.positive?
-              alternatives << [[-yes, -maybe, no], exact, coerced]
+              alternatives << [[-yes, -maybe, no], exact, coerced, branch_state[:error]]
             end
           end
 
@@ -178,13 +179,11 @@ module OursprivacyIngest
             exactness[:no] += 1
             state[:error] = ArgumentError.new("no matching variant for #{value.inspect}")
             value
-          in [[_, exact, coerced], *]
+          in [[_, exact, coerced, error], *]
             exact.each { exactness[_1] += _2 }
+            state[:error] ||= error
             coerced
           end
-            .tap { state[:exactness] = exactness }
-        ensure
-          state[:strictness] = strictness
         end
 
         # @api private

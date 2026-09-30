@@ -12,9 +12,9 @@ module OursprivacyIngest
       #   and are readable by anyone who knows the visitor_id, so never accumulate
       #   secrets, credentials, PHI, or confidential data into a property.
       #
-      #   @return [Hash{Symbol=>String, Float, Boolean}]
+      #   @return [Hash{Symbol=>String, Float, Boolean, nil}]
       required :properties,
-               -> { OursprivacyIngest::Internal::Type::HashOf[union: OursprivacyIngest::Models::ExperimentPersonalizationResponse::Property] }
+               -> { OursprivacyIngest::Internal::Type::HashOf[union: OursprivacyIngest::Models::ExperimentPersonalizationResponse::Property, nil?: true] }
 
       # @!attribute success
       #
@@ -36,7 +36,7 @@ module OursprivacyIngest
       #   Some parameter documentations has been truncated, see
       #   {OursprivacyIngest::Models::ExperimentPersonalizationResponse} for more details.
       #
-      #   @param properties [Hash{Symbol=>String, Float, Boolean}] The visitor traits accumulated by your personalization property rules, keyed by
+      #   @param properties [Hash{Symbol=>String, Float, Boolean, nil}] The visitor traits accumulated by your personalization property rules, keyed by
       #
       #   @param success [Boolean, OursprivacyIngest::Models::ExperimentPersonalizationResponse::Success]
       #

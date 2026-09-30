@@ -149,7 +149,7 @@ module OursprivacyIngest
         def initialize(type_info, spec = {})
           @item_type_fn = OursprivacyIngest::Internal::Type::Converter.type_info(type_info || spec)
           @meta = OursprivacyIngest::Internal::Type::Converter.meta_info(type_info, spec)
-          @nilable = spec.fetch(:nil?, false)
+          @nilable = spec.fetch(:nil?) { type_info.is_a?(Hash) && type_info.fetch(:nil?, false) }
         end
 
         # @api private
