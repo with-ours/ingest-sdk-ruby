@@ -259,6 +259,35 @@ class OursprivacyIngest::Test::EnumModelTest < Minitest::Test
 end
 
 class OursprivacyIngest::Test::CollectionModelTest < Minitest::Test
+  module NullableScalar
+    extend OursprivacyIngest::Internal::Type::Union
+
+    variant String
+    variant Float
+    variant OursprivacyIngest::Internal::Type::Boolean
+  end
+
+  def test_nullable_items_in_inline_type_spec
+    [
+      OursprivacyIngest::Internal::Type::ArrayOf,
+      OursprivacyIngest::Internal::Type::HashOf
+    ].each do |container|
+      input = container == OursprivacyIngest::Internal::Type::ArrayOf ? [nil, false, 0, ""] : {a: nil, b: false, c: 0, d: ""}
+      target = container[union: NullableScalar, nil?: true]
+      state = OursprivacyIngest::Internal::Type::Converter.new_coerce_state
+      assert_equal(input, OursprivacyIngest::Internal::Type::Converter.coerce(target, input, state: state))
+      assert_nil(state[:error])
+      assert_equal(0, state[:exactness][:no])
+
+      # Explicit options override an inline type spec, including false.
+      target = container[{union: NullableScalar, nil?: true}, {nil?: false}]
+      state = OursprivacyIngest::Internal::Type::Converter.new_coerce_state
+      OursprivacyIngest::Internal::Type::Converter.coerce(target, input, state: state)
+      assert_instance_of(ArgumentError, state[:error])
+      assert_equal(1, state[:exactness][:no])
+    end
+  end
+
   A1 = OursprivacyIngest::Internal::Type::ArrayOf[-> { Integer }]
   H1 = OursprivacyIngest::Internal::Type::HashOf[Integer]
 
@@ -472,6 +501,70 @@ class OursprivacyIngest::Test::BaseModelTest < Minitest::Test
 end
 
 class OursprivacyIngest::Test::UnionTest < Minitest::Test
+  def test_scalar_union_branch_errors_are_isolated
+    variants = [String, Float, OursprivacyIngest::Internal::Type::Boolean]
+    variants.permutation.each do |order|
+      [false, true, 0, "", "1.25"].each do |input|
+        state = OursprivacyIngest::Internal::Type::Converter.new_coerce_state
+        result = OursprivacyIngest::Internal::Type::Converter.coerce(U0.new(*order), input, state: state)
+        assert_equal(input, result)
+        assert_instance_of(input.is_a?(Numeric) ? Float : input.class, result)
+        assert_nil(state[:error])
+        assert_equal({yes: 1, no: 0, maybe: 0}, state[:exactness])
+        assert_equal(true, state[:strictness])
+      end
+    end
+  end
+
+  def test_scalar_union_rejects_invalid_values
+    union = U0.new(String, Float, OursprivacyIngest::Internal::Type::Boolean)
+    [nil, [], {}].each do |input|
+      state = OursprivacyIngest::Internal::Type::Converter.new_coerce_state
+      assert_same(input, OursprivacyIngest::Internal::Type::Converter.coerce(union, input, state: state))
+      assert_instance_of(ArgumentError, state[:error])
+      assert_equal({yes: 0, no: 1, maybe: 0}, state[:exactness])
+    end
+  end
+
+  def test_approximate_union_keeps_selected_branch_error
+    [[Float, Integer], [Integer, Float]].each do |order|
+      state = OursprivacyIngest::Internal::Type::Converter.new_coerce_state
+      result = OursprivacyIngest::Internal::Type::Converter.coerce(U0.new(*order), "1.25", state: state)
+      assert_equal(1.25, result)
+      assert_nil(state[:error])
+      assert_equal({yes: 0, no: 0, maybe: 1}, state[:exactness])
+    end
+
+    # The best approximate branch has an invalid member; retain its actual error.
+    target = U0.new(OursprivacyIngest::Internal::Type::ArrayOf[Float], Date)
+    state = OursprivacyIngest::Internal::Type::Converter.new_coerce_state
+    result = OursprivacyIngest::Internal::Type::Converter.coerce(target, ["1.25", false], state: state)
+    assert_equal([1.25, false], result)
+    assert_instance_of(TypeError, state[:error])
+    assert_match(/Float/, state[:error].message)
+  end
+
+  def test_nested_union_map_accessors
+    union = U0.new(String, Float, OursprivacyIngest::Internal::Type::Boolean)
+    map = OursprivacyIngest::Internal::Type::HashOf[union, nil?: true]
+    model = Class.new(OursprivacyIngest::Internal::Type::BaseModel) do
+      required :properties, OursprivacyIngest::Internal::Type::HashOf[map]
+    end
+    model.define_singleton_method(:name) { "NestedUnionMapModel" }
+    values = {flags: {off: false, on: true, zero: 0, empty: "", numeric: "1.25", absent: nil}}
+    assert_equal(values, model.new(properties: values).properties)
+
+    [{flags: {invalid: [], valid: false}}, {flags: {valid: false, invalid: []}}].each do |invalid|
+      assert_raises(OursprivacyIngest::Errors::ConversionError) { model.new(properties: invalid).properties }
+    end
+  end
+
+  def test_discriminated_union_preserves_strictness
+    state = OursprivacyIngest::Internal::Type::Converter.new_coerce_state
+    OursprivacyIngest::Internal::Type::Converter.coerce(U2, {type: :a}, state: state)
+    assert_equal(true, state[:strictness])
+  end
+
   class U0
     include OursprivacyIngest::Internal::Type::Union
 

@@ -2,13 +2,13 @@ module OursprivacyIngest
   module Models
     type experiment_personalization_response =
       {
-        properties: ::Hash[Symbol, OursprivacyIngest::Models::ExperimentPersonalizationResponse::property],
+        properties: ::Hash[Symbol, OursprivacyIngest::Models::ExperimentPersonalizationResponse::property?],
         success: OursprivacyIngest::Models::ExperimentPersonalizationResponse::success,
         personalizations: ::Array[OursprivacyIngest::Models::ExperimentPersonalizationResponse::Personalization]
       }
 
     class ExperimentPersonalizationResponse < OursprivacyIngest::Internal::Type::BaseModel
-      attr_accessor properties: ::Hash[Symbol, OursprivacyIngest::Models::ExperimentPersonalizationResponse::property]
+      attr_accessor properties: ::Hash[Symbol, OursprivacyIngest::Models::ExperimentPersonalizationResponse::property?]
 
       attr_accessor success: OursprivacyIngest::Models::ExperimentPersonalizationResponse::success
 
@@ -19,13 +19,13 @@ module OursprivacyIngest
       ) -> ::Array[OursprivacyIngest::Models::ExperimentPersonalizationResponse::Personalization]
 
       def initialize: (
-        properties: ::Hash[Symbol, OursprivacyIngest::Models::ExperimentPersonalizationResponse::property],
+        properties: ::Hash[Symbol, OursprivacyIngest::Models::ExperimentPersonalizationResponse::property?],
         success: OursprivacyIngest::Models::ExperimentPersonalizationResponse::success,
         ?personalizations: ::Array[OursprivacyIngest::Models::ExperimentPersonalizationResponse::Personalization]
       ) -> void
 
       def to_hash: -> {
-        properties: ::Hash[Symbol, OursprivacyIngest::Models::ExperimentPersonalizationResponse::property],
+        properties: ::Hash[Symbol, OursprivacyIngest::Models::ExperimentPersonalizationResponse::property?],
         success: OursprivacyIngest::Models::ExperimentPersonalizationResponse::success,
         personalizations: ::Array[OursprivacyIngest::Models::ExperimentPersonalizationResponse::Personalization]
       }
