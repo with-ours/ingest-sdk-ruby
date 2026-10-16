@@ -3,6 +3,9 @@
 module OursprivacyIngest
   module Resources
     class Batch
+      # Some parameter documentations has been truncated, see
+      # {OursprivacyIngest::Models::BatchCreateParams} for more details.
+      #
       # Send multiple `/track`-shaped events in a single request. This endpoint is
       # intended for replay, backfill, and asynchronous bulk delivery. The top-level
       # token is authorized once for the full batch. Each batch row must include
@@ -10,7 +13,7 @@ module OursprivacyIngest
       #
       # @overload create(token:, events:, request_options: {})
       #
-      # @param token [String] The token for your Source. You can find this in the dashboard.
+      # @param token [String] The token for your Source. You can find this in the dashboard. Leading and trail
       #
       # @param events [Array<OursprivacyIngest::Models::BatchCreateParams::Event>] A list of `/track`-shaped events to validate and enqueue together.
       #

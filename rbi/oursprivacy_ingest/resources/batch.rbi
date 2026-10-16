@@ -15,7 +15,8 @@ module OursprivacyIngest
         ).returns(OursprivacyIngest::Models::BatchCreateResponse)
       end
       def create(
-        # The token for your Source. You can find this in the dashboard.
+        # The token for your Source. You can find this in the dashboard. Leading and
+        # trailing whitespace is removed before validation.
         token:,
         # A list of `/track`-shaped events to validate and enqueue together.
         events:,

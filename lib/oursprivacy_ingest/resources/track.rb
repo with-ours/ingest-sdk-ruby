@@ -21,7 +21,7 @@ module OursprivacyIngest
       #
       # @overload event(token:, event:, default_properties: nil, distinct_id: nil, email: nil, event_properties: nil, external_id: nil, identity_context: nil, time: nil, user_id: nil, user_properties: nil, request_options: {})
       #
-      # @param token [String] The token for your Source. You can find this in the dashboard.
+      # @param token [String] The token for your Source. You can find this in the dashboard. Leading and trail
       #
       # @param event [String] The name of the event you're tracking. This must be whitelisted in the Ours dash
       #
@@ -31,7 +31,7 @@ module OursprivacyIngest
       #
       # @param email [String, nil] The email address of a user. When userId is absent and externalId does not resol
       #
-      # @param event_properties [Hash{Symbol=>String, nil}, nil] Any additional event properties you want to pass along.
+      # @param event_properties [Hash{Symbol=>String, Float, Boolean, Array<String, Float, Boolean, Array<Object>, Hash{Symbol=>Object}, nil>, Hash{Symbol=>String, Float, Boolean, Array<String, Float, Boolean, Array<Object>, Hash{Symbol=>Object}, nil>, Hash{Symbol=>String, Float, Boolean, Array<String, Float, Boolean, Array<Object>, Hash{Symbol=>Object}, nil>, Hash{Symbol=>String, Float, Boolean, Array<String, Float, Boolean, Array<Object>, Hash{Symbol=>Object}, nil>, Hash{Symbol=>String, Float, Boolean, Array<String, Float, Boolean, Array<Object>, Hash{Symbol=>Object}, nil>, nil}, nil}, nil}, nil}, nil}, nil] Any additional event properties you want to pass along. Use at most 200 nonempty
       #
       # @param external_id [String, nil] Your system's unique identifier for this user. When userId is absent, we search
       #
