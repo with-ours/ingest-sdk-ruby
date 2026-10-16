@@ -6,7 +6,7 @@ class OursprivacyIngest::Test::Resources::VisitorTest < OursprivacyIngest::Test:
   def test_upsert_required_params
     skip("Mock server tests are disabled")
 
-    response = @ours_privacy.visitor.upsert(token: "x", user_properties: {})
+    response = @ours_privacy.visitor.upsert(token: "P", user_properties: {})
 
     assert_pattern do
       response => OursprivacyIngest::Models::VisitorUpsertResponse

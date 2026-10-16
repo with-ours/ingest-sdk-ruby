@@ -30,7 +30,7 @@ module OursprivacyIngest
         personalizations: ::Array[OursprivacyIngest::Models::ExperimentPersonalizationResponse::Personalization]
       }
 
-      type property = String | Float | bool
+      type property = (String | Float | bool)?
 
       module Property
         extend OursprivacyIngest::Internal::Type::Union

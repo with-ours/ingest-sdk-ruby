@@ -7,7 +7,7 @@ module OursprivacyIngest
         default_properties: OursprivacyIngest::TrackEventParams::DefaultProperties?,
         distinct_id: String?,
         email: String?,
-        event_properties: ::Hash[Symbol, String?]?,
+        event_properties: ::Hash[Symbol, OursprivacyIngest::Models::TrackEventParams::event_property?]?,
         external_id: String?,
         identity_context: OursprivacyIngest::TrackEventParams::IdentityContext?,
         time: Float?,
@@ -30,7 +30,7 @@ module OursprivacyIngest
 
       attr_accessor email: String?
 
-      attr_accessor event_properties: ::Hash[Symbol, String?]?
+      attr_accessor event_properties: ::Hash[Symbol, OursprivacyIngest::Models::TrackEventParams::event_property?]?
 
       attr_accessor external_id: String?
 
@@ -48,7 +48,7 @@ module OursprivacyIngest
         ?default_properties: OursprivacyIngest::TrackEventParams::DefaultProperties?,
         ?distinct_id: String?,
         ?email: String?,
-        ?event_properties: ::Hash[Symbol, String?]?,
+        ?event_properties: ::Hash[Symbol, OursprivacyIngest::Models::TrackEventParams::event_property?]?,
         ?external_id: String?,
         ?identity_context: OursprivacyIngest::TrackEventParams::IdentityContext?,
         ?time: Float?,
@@ -63,7 +63,7 @@ module OursprivacyIngest
         default_properties: OursprivacyIngest::TrackEventParams::DefaultProperties?,
         distinct_id: String?,
         email: String?,
-        event_properties: ::Hash[Symbol, String?]?,
+        event_properties: ::Hash[Symbol, OursprivacyIngest::Models::TrackEventParams::event_property?]?,
         external_id: String?,
         identity_context: OursprivacyIngest::TrackEventParams::IdentityContext?,
         time: Float?,
@@ -108,12 +108,14 @@ module OursprivacyIngest
           gad_source: String?,
           gbraid: String?,
           gclid: String?,
+          graid: String?,
+          grclid: String?,
           host: String?,
           iframe: bool?,
           im_ref: String?,
           ip: String?,
           irclickid: String?,
-          is_bot: String?,
+          is_bot: OursprivacyIngest::Models::TrackEventParams::DefaultProperties::is_bot?,
           li_fat_id: String?,
           msclkid: String?,
           ndclid: String?,
@@ -223,6 +225,10 @@ module OursprivacyIngest
 
         attr_accessor gclid: String?
 
+        attr_accessor graid: String?
+
+        attr_accessor grclid: String?
+
         attr_accessor host: String?
 
         attr_accessor iframe: bool?
@@ -233,7 +239,7 @@ module OursprivacyIngest
 
         attr_accessor irclickid: String?
 
-        attr_accessor is_bot: String?
+        attr_accessor is_bot: OursprivacyIngest::Models::TrackEventParams::DefaultProperties::is_bot?
 
         attr_accessor li_fat_id: String?
 
@@ -346,12 +352,14 @@ module OursprivacyIngest
           ?gad_source: String?,
           ?gbraid: String?,
           ?gclid: String?,
+          ?graid: String?,
+          ?grclid: String?,
           ?host: String?,
           ?iframe: bool?,
           ?im_ref: String?,
           ?ip: String?,
           ?irclickid: String?,
-          ?is_bot: String?,
+          ?is_bot: OursprivacyIngest::Models::TrackEventParams::DefaultProperties::is_bot?,
           ?li_fat_id: String?,
           ?msclkid: String?,
           ?ndclid: String?,
@@ -427,12 +435,14 @@ module OursprivacyIngest
           gad_source: String?,
           gbraid: String?,
           gclid: String?,
+          graid: String?,
+          grclid: String?,
           host: String?,
           iframe: bool?,
           im_ref: String?,
           ip: String?,
           irclickid: String?,
-          is_bot: String?,
+          is_bot: OursprivacyIngest::Models::TrackEventParams::DefaultProperties::is_bot?,
           li_fat_id: String?,
           msclkid: String?,
           ndclid: String?,
@@ -472,6 +482,166 @@ module OursprivacyIngest
           wbraid: String?,
           webview: bool?
         }
+
+        type is_bot =
+          (String | Float | bool | ::Array[top] | ::Hash[Symbol, top])?
+
+        module IsBot
+          extend OursprivacyIngest::Internal::Type::Union
+
+          def self?.variants: -> ::Array[OursprivacyIngest::Models::TrackEventParams::DefaultProperties::is_bot]
+
+          UnionMember3Array: OursprivacyIngest::Internal::Type::Converter
+
+          UnionMember4Map: OursprivacyIngest::Internal::Type::Converter
+        end
+      end
+
+      type event_property =
+        (String
+        | Float
+        | bool
+        | ::Array[OursprivacyIngest::Models::TrackEventParams::EventProperty::union_member3?]
+        | ::Hash[Symbol, OursprivacyIngest::Models::TrackEventParams::EventProperty::union_member4?])?
+
+      module EventProperty
+        extend OursprivacyIngest::Internal::Type::Union
+
+        type union_member3 =
+          (String | Float | bool | ::Array[top] | ::Hash[Symbol, top])?
+
+        module UnionMember3
+          extend OursprivacyIngest::Internal::Type::Union
+
+          def self?.variants: -> ::Array[OursprivacyIngest::Models::TrackEventParams::EventProperty::union_member3]
+
+          UnionMember3Array: OursprivacyIngest::Internal::Type::Converter
+
+          UnionMember4Map: OursprivacyIngest::Internal::Type::Converter
+        end
+
+        type union_member4 =
+          (String
+          | Float
+          | bool
+          | ::Array[OursprivacyIngest::Models::TrackEventParams::EventProperty::UnionMember4::union_member3?]
+          | ::Hash[Symbol, OursprivacyIngest::Models::TrackEventParams::EventProperty::UnionMember4::union_member4?])?
+
+        module UnionMember4
+          extend OursprivacyIngest::Internal::Type::Union
+
+          type union_member3 =
+            (String | Float | bool | ::Array[top] | ::Hash[Symbol, top])?
+
+          module UnionMember3
+            extend OursprivacyIngest::Internal::Type::Union
+
+            def self?.variants: -> ::Array[OursprivacyIngest::Models::TrackEventParams::EventProperty::UnionMember4::union_member3]
+
+            UnionMember3Array: OursprivacyIngest::Internal::Type::Converter
+
+            UnionMember4Map: OursprivacyIngest::Internal::Type::Converter
+          end
+
+          type union_member4 =
+            (String
+            | Float
+            | bool
+            | ::Array[OursprivacyIngest::Models::TrackEventParams::EventProperty::UnionMember4::UnionMember4::union_member3?]
+            | ::Hash[Symbol, OursprivacyIngest::Models::TrackEventParams::EventProperty::UnionMember4::UnionMember4::union_member4?])?
+
+          module UnionMember4
+            extend OursprivacyIngest::Internal::Type::Union
+
+            type union_member3 =
+              (String | Float | bool | ::Array[top] | ::Hash[Symbol, top])?
+
+            module UnionMember3
+              extend OursprivacyIngest::Internal::Type::Union
+
+              def self?.variants: -> ::Array[OursprivacyIngest::Models::TrackEventParams::EventProperty::UnionMember4::UnionMember4::union_member3]
+
+              UnionMember3Array: OursprivacyIngest::Internal::Type::Converter
+
+              UnionMember4Map: OursprivacyIngest::Internal::Type::Converter
+            end
+
+            type union_member4 =
+              (String
+              | Float
+              | bool
+              | ::Array[OursprivacyIngest::Models::TrackEventParams::EventProperty::UnionMember4::UnionMember4::UnionMember4::union_member3?]
+              | ::Hash[Symbol, OursprivacyIngest::Models::TrackEventParams::EventProperty::UnionMember4::UnionMember4::UnionMember4::union_member4?])?
+
+            module UnionMember4
+              extend OursprivacyIngest::Internal::Type::Union
+
+              type union_member3 =
+                (String | Float | bool | ::Array[top] | ::Hash[Symbol, top])?
+
+              module UnionMember3
+                extend OursprivacyIngest::Internal::Type::Union
+
+                def self?.variants: -> ::Array[OursprivacyIngest::Models::TrackEventParams::EventProperty::UnionMember4::UnionMember4::UnionMember4::union_member3]
+
+                UnionMember3Array: OursprivacyIngest::Internal::Type::Converter
+
+                UnionMember4Map: OursprivacyIngest::Internal::Type::Converter
+              end
+
+              type union_member4 =
+                (String
+                | Float
+                | bool
+                | ::Array[OursprivacyIngest::Models::TrackEventParams::EventProperty::UnionMember4::UnionMember4::UnionMember4::UnionMember4::union_member3?])?
+
+              module UnionMember4
+                extend OursprivacyIngest::Internal::Type::Union
+
+                type union_member3 =
+                  (String | Float | bool | ::Array[top] | ::Hash[Symbol, top])?
+
+                module UnionMember3
+                  extend OursprivacyIngest::Internal::Type::Union
+
+                  def self?.variants: -> ::Array[OursprivacyIngest::Models::TrackEventParams::EventProperty::UnionMember4::UnionMember4::UnionMember4::UnionMember4::union_member3]
+
+                  UnionMember3Array: OursprivacyIngest::Internal::Type::Converter
+
+                  UnionMember4Map: OursprivacyIngest::Internal::Type::Converter
+                end
+
+                def self?.variants: -> ::Array[OursprivacyIngest::Models::TrackEventParams::EventProperty::UnionMember4::UnionMember4::UnionMember4::union_member4]
+
+                UnionMember3Array: OursprivacyIngest::Internal::Type::Converter
+              end
+
+              def self?.variants: -> ::Array[OursprivacyIngest::Models::TrackEventParams::EventProperty::UnionMember4::UnionMember4::union_member4]
+
+              UnionMember3Array: OursprivacyIngest::Internal::Type::Converter
+
+              UnionMember4Map: OursprivacyIngest::Internal::Type::Converter
+            end
+
+            def self?.variants: -> ::Array[OursprivacyIngest::Models::TrackEventParams::EventProperty::UnionMember4::union_member4]
+
+            UnionMember3Array: OursprivacyIngest::Internal::Type::Converter
+
+            UnionMember4Map: OursprivacyIngest::Internal::Type::Converter
+          end
+
+          def self?.variants: -> ::Array[OursprivacyIngest::Models::TrackEventParams::EventProperty::union_member4]
+
+          UnionMember3Array: OursprivacyIngest::Internal::Type::Converter
+
+          UnionMember4Map: OursprivacyIngest::Internal::Type::Converter
+        end
+
+        def self?.variants: -> ::Array[OursprivacyIngest::Models::TrackEventParams::event_property]
+
+        UnionMember3Array: OursprivacyIngest::Internal::Type::Converter
+
+        UnionMember4Map: OursprivacyIngest::Internal::Type::Converter
       end
 
       type identity_context = { ip: String, user_agent: String }
@@ -502,9 +672,9 @@ module OursprivacyIngest
           clickid: String?,
           clid: String?,
           company_name: String?,
-          consent: ::Hash[Symbol, String?]?,
+          consent: ::Hash[Symbol, OursprivacyIngest::Models::TrackEventParams::UserProperties::consent?]?,
           country: String?,
-          custom_properties: ::Hash[Symbol, String?]?,
+          custom_properties: ::Hash[Symbol, OursprivacyIngest::Models::TrackEventParams::UserProperties::custom_property?]?,
           date_of_birth: String?,
           dclid: String?,
           email: String?,
@@ -518,10 +688,12 @@ module OursprivacyIngest
           gbraid: String?,
           gclid: String?,
           gender: String?,
+          graid: String?,
+          grclid: String?,
           im_ref: String?,
           ip: String?,
           irclickid: String?,
-          is_bot: String?,
+          is_bot: OursprivacyIngest::Models::TrackEventParams::UserProperties::is_bot?,
           job_title: String?,
           last_name: String?,
           li_fat_id: String?,
@@ -529,7 +701,7 @@ module OursprivacyIngest
           ndclid: String?,
           ob_click_id: String?,
           oppref: String?,
-          phone_number: String?,
+          phone_number: OursprivacyIngest::Models::TrackEventParams::UserProperties::phone_number?,
           qclid: String?,
           rdt_cid: String?,
           referrer: String?,
@@ -551,7 +723,7 @@ module OursprivacyIngest
           viant_click_id: String?,
           viant_impression_id: String?,
           wbraid: String?,
-          zip: String?
+          zip: OursprivacyIngest::Models::TrackEventParams::UserProperties::zip?
         }
 
       class UserProperties < OursprivacyIngest::Internal::Type::BaseModel
@@ -583,11 +755,11 @@ module OursprivacyIngest
 
         attr_accessor company_name: String?
 
-        attr_accessor consent: ::Hash[Symbol, String?]?
+        attr_accessor consent: ::Hash[Symbol, OursprivacyIngest::Models::TrackEventParams::UserProperties::consent?]?
 
         attr_accessor country: String?
 
-        attr_accessor custom_properties: ::Hash[Symbol, String?]?
+        attr_accessor custom_properties: ::Hash[Symbol, OursprivacyIngest::Models::TrackEventParams::UserProperties::custom_property?]?
 
         attr_accessor date_of_birth: String?
 
@@ -615,13 +787,17 @@ module OursprivacyIngest
 
         attr_accessor gender: String?
 
+        attr_accessor graid: String?
+
+        attr_accessor grclid: String?
+
         attr_accessor im_ref: String?
 
         attr_accessor ip: String?
 
         attr_accessor irclickid: String?
 
-        attr_accessor is_bot: String?
+        attr_accessor is_bot: OursprivacyIngest::Models::TrackEventParams::UserProperties::is_bot?
 
         attr_accessor job_title: String?
 
@@ -637,7 +813,7 @@ module OursprivacyIngest
 
         attr_accessor oppref: String?
 
-        attr_accessor phone_number: String?
+        attr_accessor phone_number: OursprivacyIngest::Models::TrackEventParams::UserProperties::phone_number?
 
         attr_accessor qclid: String?
 
@@ -681,7 +857,7 @@ module OursprivacyIngest
 
         attr_accessor wbraid: String?
 
-        attr_accessor zip: String?
+        attr_accessor zip: OursprivacyIngest::Models::TrackEventParams::UserProperties::zip?
 
         def initialize: (
           ?_ef_transaction_id: String?,
@@ -698,9 +874,9 @@ module OursprivacyIngest
           ?clickid: String?,
           ?clid: String?,
           ?company_name: String?,
-          ?consent: ::Hash[Symbol, String?]?,
+          ?consent: ::Hash[Symbol, OursprivacyIngest::Models::TrackEventParams::UserProperties::consent?]?,
           ?country: String?,
-          ?custom_properties: ::Hash[Symbol, String?]?,
+          ?custom_properties: ::Hash[Symbol, OursprivacyIngest::Models::TrackEventParams::UserProperties::custom_property?]?,
           ?date_of_birth: String?,
           ?dclid: String?,
           ?email: String?,
@@ -714,10 +890,12 @@ module OursprivacyIngest
           ?gbraid: String?,
           ?gclid: String?,
           ?gender: String?,
+          ?graid: String?,
+          ?grclid: String?,
           ?im_ref: String?,
           ?ip: String?,
           ?irclickid: String?,
-          ?is_bot: String?,
+          ?is_bot: OursprivacyIngest::Models::TrackEventParams::UserProperties::is_bot?,
           ?job_title: String?,
           ?last_name: String?,
           ?li_fat_id: String?,
@@ -725,7 +903,7 @@ module OursprivacyIngest
           ?ndclid: String?,
           ?ob_click_id: String?,
           ?oppref: String?,
-          ?phone_number: String?,
+          ?phone_number: OursprivacyIngest::Models::TrackEventParams::UserProperties::phone_number?,
           ?qclid: String?,
           ?rdt_cid: String?,
           ?referrer: String?,
@@ -747,7 +925,7 @@ module OursprivacyIngest
           ?viant_click_id: String?,
           ?viant_impression_id: String?,
           ?wbraid: String?,
-          ?zip: String?
+          ?zip: OursprivacyIngest::Models::TrackEventParams::UserProperties::zip?
         ) -> void
 
         def to_hash: -> {
@@ -765,9 +943,9 @@ module OursprivacyIngest
           clickid: String?,
           clid: String?,
           company_name: String?,
-          consent: ::Hash[Symbol, String?]?,
+          consent: ::Hash[Symbol, OursprivacyIngest::Models::TrackEventParams::UserProperties::consent?]?,
           country: String?,
-          custom_properties: ::Hash[Symbol, String?]?,
+          custom_properties: ::Hash[Symbol, OursprivacyIngest::Models::TrackEventParams::UserProperties::custom_property?]?,
           date_of_birth: String?,
           dclid: String?,
           email: String?,
@@ -781,10 +959,12 @@ module OursprivacyIngest
           gbraid: String?,
           gclid: String?,
           gender: String?,
+          graid: String?,
+          grclid: String?,
           im_ref: String?,
           ip: String?,
           irclickid: String?,
-          is_bot: String?,
+          is_bot: OursprivacyIngest::Models::TrackEventParams::UserProperties::is_bot?,
           job_title: String?,
           last_name: String?,
           li_fat_id: String?,
@@ -792,7 +972,7 @@ module OursprivacyIngest
           ndclid: String?,
           ob_click_id: String?,
           oppref: String?,
-          phone_number: String?,
+          phone_number: OursprivacyIngest::Models::TrackEventParams::UserProperties::phone_number?,
           qclid: String?,
           rdt_cid: String?,
           referrer: String?,
@@ -814,8 +994,348 @@ module OursprivacyIngest
           viant_click_id: String?,
           viant_impression_id: String?,
           wbraid: String?,
-          zip: String?
+          zip: OursprivacyIngest::Models::TrackEventParams::UserProperties::zip?
         }
+
+        type consent =
+          (String
+          | Float
+          | bool
+          | ::Array[OursprivacyIngest::Models::TrackEventParams::UserProperties::Consent::union_member3?]
+          | ::Hash[Symbol, OursprivacyIngest::Models::TrackEventParams::UserProperties::Consent::union_member4?])?
+
+        module Consent
+          extend OursprivacyIngest::Internal::Type::Union
+
+          type union_member3 =
+            (String | Float | bool | ::Array[top] | ::Hash[Symbol, top])?
+
+          module UnionMember3
+            extend OursprivacyIngest::Internal::Type::Union
+
+            def self?.variants: -> ::Array[OursprivacyIngest::Models::TrackEventParams::UserProperties::Consent::union_member3]
+
+            UnionMember3Array: OursprivacyIngest::Internal::Type::Converter
+
+            UnionMember4Map: OursprivacyIngest::Internal::Type::Converter
+          end
+
+          type union_member4 =
+            (String
+            | Float
+            | bool
+            | ::Array[OursprivacyIngest::Models::TrackEventParams::UserProperties::Consent::UnionMember4::union_member3?]
+            | ::Hash[Symbol, OursprivacyIngest::Models::TrackEventParams::UserProperties::Consent::UnionMember4::union_member4?])?
+
+          module UnionMember4
+            extend OursprivacyIngest::Internal::Type::Union
+
+            type union_member3 =
+              (String | Float | bool | ::Array[top] | ::Hash[Symbol, top])?
+
+            module UnionMember3
+              extend OursprivacyIngest::Internal::Type::Union
+
+              def self?.variants: -> ::Array[OursprivacyIngest::Models::TrackEventParams::UserProperties::Consent::UnionMember4::union_member3]
+
+              UnionMember3Array: OursprivacyIngest::Internal::Type::Converter
+
+              UnionMember4Map: OursprivacyIngest::Internal::Type::Converter
+            end
+
+            type union_member4 =
+              (String
+              | Float
+              | bool
+              | ::Array[OursprivacyIngest::Models::TrackEventParams::UserProperties::Consent::UnionMember4::UnionMember4::union_member3?]
+              | ::Hash[Symbol, OursprivacyIngest::Models::TrackEventParams::UserProperties::Consent::UnionMember4::UnionMember4::union_member4?])?
+
+            module UnionMember4
+              extend OursprivacyIngest::Internal::Type::Union
+
+              type union_member3 =
+                (String | Float | bool | ::Array[top] | ::Hash[Symbol, top])?
+
+              module UnionMember3
+                extend OursprivacyIngest::Internal::Type::Union
+
+                def self?.variants: -> ::Array[OursprivacyIngest::Models::TrackEventParams::UserProperties::Consent::UnionMember4::UnionMember4::union_member3]
+
+                UnionMember3Array: OursprivacyIngest::Internal::Type::Converter
+
+                UnionMember4Map: OursprivacyIngest::Internal::Type::Converter
+              end
+
+              type union_member4 =
+                (String
+                | Float
+                | bool
+                | ::Array[OursprivacyIngest::Models::TrackEventParams::UserProperties::Consent::UnionMember4::UnionMember4::UnionMember4::union_member3?]
+                | ::Hash[Symbol, OursprivacyIngest::Models::TrackEventParams::UserProperties::Consent::UnionMember4::UnionMember4::UnionMember4::union_member4?])?
+
+              module UnionMember4
+                extend OursprivacyIngest::Internal::Type::Union
+
+                type union_member3 =
+                  (String | Float | bool | ::Array[top] | ::Hash[Symbol, top])?
+
+                module UnionMember3
+                  extend OursprivacyIngest::Internal::Type::Union
+
+                  def self?.variants: -> ::Array[OursprivacyIngest::Models::TrackEventParams::UserProperties::Consent::UnionMember4::UnionMember4::UnionMember4::union_member3]
+
+                  UnionMember3Array: OursprivacyIngest::Internal::Type::Converter
+
+                  UnionMember4Map: OursprivacyIngest::Internal::Type::Converter
+                end
+
+                type union_member4 =
+                  (String
+                  | Float
+                  | bool
+                  | ::Array[OursprivacyIngest::Models::TrackEventParams::UserProperties::Consent::UnionMember4::UnionMember4::UnionMember4::UnionMember4::union_member3?])?
+
+                module UnionMember4
+                  extend OursprivacyIngest::Internal::Type::Union
+
+                  type union_member3 =
+                    (String
+                    | Float
+                    | bool
+                    | ::Array[top]
+                    | ::Hash[Symbol, top])?
+
+                  module UnionMember3
+                    extend OursprivacyIngest::Internal::Type::Union
+
+                    def self?.variants: -> ::Array[OursprivacyIngest::Models::TrackEventParams::UserProperties::Consent::UnionMember4::UnionMember4::UnionMember4::UnionMember4::union_member3]
+
+                    UnionMember3Array: OursprivacyIngest::Internal::Type::Converter
+
+                    UnionMember4Map: OursprivacyIngest::Internal::Type::Converter
+                  end
+
+                  def self?.variants: -> ::Array[OursprivacyIngest::Models::TrackEventParams::UserProperties::Consent::UnionMember4::UnionMember4::UnionMember4::union_member4]
+
+                  UnionMember3Array: OursprivacyIngest::Internal::Type::Converter
+                end
+
+                def self?.variants: -> ::Array[OursprivacyIngest::Models::TrackEventParams::UserProperties::Consent::UnionMember4::UnionMember4::union_member4]
+
+                UnionMember3Array: OursprivacyIngest::Internal::Type::Converter
+
+                UnionMember4Map: OursprivacyIngest::Internal::Type::Converter
+              end
+
+              def self?.variants: -> ::Array[OursprivacyIngest::Models::TrackEventParams::UserProperties::Consent::UnionMember4::union_member4]
+
+              UnionMember3Array: OursprivacyIngest::Internal::Type::Converter
+
+              UnionMember4Map: OursprivacyIngest::Internal::Type::Converter
+            end
+
+            def self?.variants: -> ::Array[OursprivacyIngest::Models::TrackEventParams::UserProperties::Consent::union_member4]
+
+            UnionMember3Array: OursprivacyIngest::Internal::Type::Converter
+
+            UnionMember4Map: OursprivacyIngest::Internal::Type::Converter
+          end
+
+          def self?.variants: -> ::Array[OursprivacyIngest::Models::TrackEventParams::UserProperties::consent]
+
+          UnionMember3Array: OursprivacyIngest::Internal::Type::Converter
+
+          UnionMember4Map: OursprivacyIngest::Internal::Type::Converter
+        end
+
+        type custom_property =
+          (String
+          | Float
+          | bool
+          | ::Array[OursprivacyIngest::Models::TrackEventParams::UserProperties::CustomProperty::union_member3?]
+          | ::Hash[Symbol, OursprivacyIngest::Models::TrackEventParams::UserProperties::CustomProperty::union_member4?])?
+
+        module CustomProperty
+          extend OursprivacyIngest::Internal::Type::Union
+
+          type union_member3 =
+            (String | Float | bool | ::Array[top] | ::Hash[Symbol, top])?
+
+          module UnionMember3
+            extend OursprivacyIngest::Internal::Type::Union
+
+            def self?.variants: -> ::Array[OursprivacyIngest::Models::TrackEventParams::UserProperties::CustomProperty::union_member3]
+
+            UnionMember3Array: OursprivacyIngest::Internal::Type::Converter
+
+            UnionMember4Map: OursprivacyIngest::Internal::Type::Converter
+          end
+
+          type union_member4 =
+            (String
+            | Float
+            | bool
+            | ::Array[OursprivacyIngest::Models::TrackEventParams::UserProperties::CustomProperty::UnionMember4::union_member3?]
+            | ::Hash[Symbol, OursprivacyIngest::Models::TrackEventParams::UserProperties::CustomProperty::UnionMember4::union_member4?])?
+
+          module UnionMember4
+            extend OursprivacyIngest::Internal::Type::Union
+
+            type union_member3 =
+              (String | Float | bool | ::Array[top] | ::Hash[Symbol, top])?
+
+            module UnionMember3
+              extend OursprivacyIngest::Internal::Type::Union
+
+              def self?.variants: -> ::Array[OursprivacyIngest::Models::TrackEventParams::UserProperties::CustomProperty::UnionMember4::union_member3]
+
+              UnionMember3Array: OursprivacyIngest::Internal::Type::Converter
+
+              UnionMember4Map: OursprivacyIngest::Internal::Type::Converter
+            end
+
+            type union_member4 =
+              (String
+              | Float
+              | bool
+              | ::Array[OursprivacyIngest::Models::TrackEventParams::UserProperties::CustomProperty::UnionMember4::UnionMember4::union_member3?]
+              | ::Hash[Symbol, OursprivacyIngest::Models::TrackEventParams::UserProperties::CustomProperty::UnionMember4::UnionMember4::union_member4?])?
+
+            module UnionMember4
+              extend OursprivacyIngest::Internal::Type::Union
+
+              type union_member3 =
+                (String | Float | bool | ::Array[top] | ::Hash[Symbol, top])?
+
+              module UnionMember3
+                extend OursprivacyIngest::Internal::Type::Union
+
+                def self?.variants: -> ::Array[OursprivacyIngest::Models::TrackEventParams::UserProperties::CustomProperty::UnionMember4::UnionMember4::union_member3]
+
+                UnionMember3Array: OursprivacyIngest::Internal::Type::Converter
+
+                UnionMember4Map: OursprivacyIngest::Internal::Type::Converter
+              end
+
+              type union_member4 =
+                (String
+                | Float
+                | bool
+                | ::Array[OursprivacyIngest::Models::TrackEventParams::UserProperties::CustomProperty::UnionMember4::UnionMember4::UnionMember4::union_member3?]
+                | ::Hash[Symbol, OursprivacyIngest::Models::TrackEventParams::UserProperties::CustomProperty::UnionMember4::UnionMember4::UnionMember4::union_member4?])?
+
+              module UnionMember4
+                extend OursprivacyIngest::Internal::Type::Union
+
+                type union_member3 =
+                  (String | Float | bool | ::Array[top] | ::Hash[Symbol, top])?
+
+                module UnionMember3
+                  extend OursprivacyIngest::Internal::Type::Union
+
+                  def self?.variants: -> ::Array[OursprivacyIngest::Models::TrackEventParams::UserProperties::CustomProperty::UnionMember4::UnionMember4::UnionMember4::union_member3]
+
+                  UnionMember3Array: OursprivacyIngest::Internal::Type::Converter
+
+                  UnionMember4Map: OursprivacyIngest::Internal::Type::Converter
+                end
+
+                type union_member4 =
+                  (String
+                  | Float
+                  | bool
+                  | ::Array[OursprivacyIngest::Models::TrackEventParams::UserProperties::CustomProperty::UnionMember4::UnionMember4::UnionMember4::UnionMember4::union_member3?])?
+
+                module UnionMember4
+                  extend OursprivacyIngest::Internal::Type::Union
+
+                  type union_member3 =
+                    (String
+                    | Float
+                    | bool
+                    | ::Array[top]
+                    | ::Hash[Symbol, top])?
+
+                  module UnionMember3
+                    extend OursprivacyIngest::Internal::Type::Union
+
+                    def self?.variants: -> ::Array[OursprivacyIngest::Models::TrackEventParams::UserProperties::CustomProperty::UnionMember4::UnionMember4::UnionMember4::UnionMember4::union_member3]
+
+                    UnionMember3Array: OursprivacyIngest::Internal::Type::Converter
+
+                    UnionMember4Map: OursprivacyIngest::Internal::Type::Converter
+                  end
+
+                  def self?.variants: -> ::Array[OursprivacyIngest::Models::TrackEventParams::UserProperties::CustomProperty::UnionMember4::UnionMember4::UnionMember4::union_member4]
+
+                  UnionMember3Array: OursprivacyIngest::Internal::Type::Converter
+                end
+
+                def self?.variants: -> ::Array[OursprivacyIngest::Models::TrackEventParams::UserProperties::CustomProperty::UnionMember4::UnionMember4::union_member4]
+
+                UnionMember3Array: OursprivacyIngest::Internal::Type::Converter
+
+                UnionMember4Map: OursprivacyIngest::Internal::Type::Converter
+              end
+
+              def self?.variants: -> ::Array[OursprivacyIngest::Models::TrackEventParams::UserProperties::CustomProperty::UnionMember4::union_member4]
+
+              UnionMember3Array: OursprivacyIngest::Internal::Type::Converter
+
+              UnionMember4Map: OursprivacyIngest::Internal::Type::Converter
+            end
+
+            def self?.variants: -> ::Array[OursprivacyIngest::Models::TrackEventParams::UserProperties::CustomProperty::union_member4]
+
+            UnionMember3Array: OursprivacyIngest::Internal::Type::Converter
+
+            UnionMember4Map: OursprivacyIngest::Internal::Type::Converter
+          end
+
+          def self?.variants: -> ::Array[OursprivacyIngest::Models::TrackEventParams::UserProperties::custom_property]
+
+          UnionMember3Array: OursprivacyIngest::Internal::Type::Converter
+
+          UnionMember4Map: OursprivacyIngest::Internal::Type::Converter
+        end
+
+        type is_bot =
+          (String | Float | bool | ::Array[top] | ::Hash[Symbol, top])?
+
+        module IsBot
+          extend OursprivacyIngest::Internal::Type::Union
+
+          def self?.variants: -> ::Array[OursprivacyIngest::Models::TrackEventParams::UserProperties::is_bot]
+
+          UnionMember3Array: OursprivacyIngest::Internal::Type::Converter
+
+          UnionMember4Map: OursprivacyIngest::Internal::Type::Converter
+        end
+
+        type phone_number =
+          (String | Float | bool | ::Array[top] | ::Hash[Symbol, top])?
+
+        module PhoneNumber
+          extend OursprivacyIngest::Internal::Type::Union
+
+          def self?.variants: -> ::Array[OursprivacyIngest::Models::TrackEventParams::UserProperties::phone_number]
+
+          UnionMember3Array: OursprivacyIngest::Internal::Type::Converter
+
+          UnionMember4Map: OursprivacyIngest::Internal::Type::Converter
+        end
+
+        type zip = (String | Float | bool | ::Array[top] | ::Hash[Symbol, top])?
+
+        module Zip
+          extend OursprivacyIngest::Internal::Type::Union
+
+          def self?.variants: -> ::Array[OursprivacyIngest::Models::TrackEventParams::UserProperties::zip]
+
+          UnionMember3Array: OursprivacyIngest::Internal::Type::Converter
+
+          UnionMember4Map: OursprivacyIngest::Internal::Type::Converter
+        end
       end
     end
   end

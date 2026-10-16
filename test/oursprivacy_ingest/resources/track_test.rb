@@ -6,7 +6,7 @@ class OursprivacyIngest::Test::Resources::TrackTest < OursprivacyIngest::Test::R
   def test_event_required_params
     skip("Mock server tests are disabled")
 
-    response = @ours_privacy.track.event(token: "x", event: "x")
+    response = @ours_privacy.track.event(token: "P", event: "P")
 
     assert_pattern do
       response => OursprivacyIngest::Models::TrackEventResponse

@@ -7,7 +7,7 @@ module OursprivacyIngest
         ?default_properties: OursprivacyIngest::TrackEventParams::DefaultProperties?,
         ?distinct_id: String?,
         ?email: String?,
-        ?event_properties: ::Hash[Symbol, String?]?,
+        ?event_properties: ::Hash[Symbol, OursprivacyIngest::Models::TrackEventParams::event_property?]?,
         ?external_id: String?,
         ?identity_context: OursprivacyIngest::TrackEventParams::IdentityContext?,
         ?time: Float?,
