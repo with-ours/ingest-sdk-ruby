@@ -3,6 +3,13 @@
 require_relative "../test_helper"
 
 class OursprivacyIngest::Test::UtilDataHandlingTest < Minitest::Test
+  def test_query_array_values_preserve_nested_array_strings
+    assert_equal(
+      {"values" => '["a", "b"],c'},
+      OursprivacyIngest::Internal::Util.encode_query_params({"values" => [%w[a b], "c"]})
+    )
+  end
+
   def test_left_map
     assert_pattern do
       OursprivacyIngest::Internal::Util.deep_merge({a: 1}, nil) => nil
@@ -205,9 +212,8 @@ class OursprivacyIngest::Test::UtilFormDataEncodingTest < Minitest::Test
     def initialize(headers, io)
       encoded = io.to_a
       @ctype = headers["content-type"]
-      # rubocop:disable Lint/EmptyBlock
+      # rubocop:disable-next Lint/EmptyBlock
       @io = OursprivacyIngest::Internal::Util::ReadIOAdapter.new(encoded.to_enum) {}
-      # rubocop:enable Lint/EmptyBlock
       @c_len = encoded.join.bytesize.to_s
       super()
     end
@@ -299,9 +305,8 @@ class OursprivacyIngest::Test::UtilIOAdapterTest < Minitest::Test
     }
     cases.each do |input, expected|
       io = StringIO.new
-      # rubocop:disable Lint/EmptyBlock
+      # rubocop:disable-next Lint/EmptyBlock
       adapter = OursprivacyIngest::Internal::Util::ReadIOAdapter.new(input) {}
-      # rubocop:enable Lint/EmptyBlock
       IO.copy_stream(adapter, io)
       assert_equal(expected, io.string)
     end

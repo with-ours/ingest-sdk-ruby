@@ -529,6 +529,8 @@ module OursprivacyIngest
               write_query_param_element!(collection, "#{key}[#{name}]", value)
             end
           in Array
+            # Array#join flattens nested arrays; stringify each element to preserve query values.
+            # rubocop:disable-next Style/MapJoin
             collection[key] = element.map(&:to_s).join(",")
           else
             collection[key] = element.to_s
@@ -770,9 +772,8 @@ module OursprivacyIngest
         def close_fused!(enum)
           return unless enum.is_a?(Enumerator)
 
-          # rubocop:disable Lint/UnreachableLoop
+          # rubocop:disable-next Lint/UnreachableLoop
           enum.rewind.each { break }
-          # rubocop:enable Lint/UnreachableLoop
         end
 
         # @api private
