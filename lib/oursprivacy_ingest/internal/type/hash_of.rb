@@ -61,9 +61,8 @@ module OursprivacyIngest
         #
         # @return [Boolean]
         def ==(other)
-          # rubocop:disable Layout/LineLength
+          # rubocop:disable-next Layout/LineLength
           other.is_a?(OursprivacyIngest::Internal::Type::HashOf) && other.nilable? == nilable? && other.item_type == item_type
-          # rubocop:enable Layout/LineLength
         end
 
         # @api public

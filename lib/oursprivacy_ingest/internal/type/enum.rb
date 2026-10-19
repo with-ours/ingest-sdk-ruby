@@ -37,9 +37,8 @@ module OursprivacyIngest
         #
         # @return [Boolean]
         def ==(other)
-          # rubocop:disable Style/CaseEquality
+          # rubocop:disable-next Style/CaseEquality
           OursprivacyIngest::Internal::Type::Enum === other && other.values.to_set == values.to_set
-          # rubocop:enable Style/CaseEquality
         end
 
         # @api public
