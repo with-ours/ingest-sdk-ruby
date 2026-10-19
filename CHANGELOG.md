@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.23.1 (2026-10-19)
+
+Full Changelog: [v1.23.0...v1.23.1](https://github.com/with-ours/ingest-sdk-ruby/compare/v1.23.0...v1.23.1)
+
+### Chores
+
+* Update shipped Sorbet namespace signatures for current type tooling.
 ## 1.23.0 (2026-10-16)
 
 Full Changelog: [v1.22.0...v1.23.0](https://github.com/with-ours/ingest-sdk-ruby/compare/v1.22.0...v1.23.0)
