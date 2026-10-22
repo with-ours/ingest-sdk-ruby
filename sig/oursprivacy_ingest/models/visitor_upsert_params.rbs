@@ -107,6 +107,7 @@ module OursprivacyIngest
           sid: String?,
           state: String?,
           ttclid: String?,
+          ttd_impression_id: String?,
           twclid: String?,
           user_agent: String?,
           user_agent_full_list: String?,
@@ -119,6 +120,7 @@ module OursprivacyIngest
           viant_click_id: String?,
           viant_impression_id: String?,
           wbraid: String?,
+          ylpcid: String?,
           zip: OursprivacyIngest::Models::VisitorUpsertParams::UserProperties::zip?
         }
 
@@ -229,6 +231,8 @@ module OursprivacyIngest
 
         attr_accessor ttclid: String?
 
+        attr_accessor ttd_impression_id: String?
+
         attr_accessor twclid: String?
 
         attr_accessor user_agent: String?
@@ -252,6 +256,8 @@ module OursprivacyIngest
         attr_accessor viant_impression_id: String?
 
         attr_accessor wbraid: String?
+
+        attr_accessor ylpcid: String?
 
         attr_accessor zip: OursprivacyIngest::Models::VisitorUpsertParams::UserProperties::zip?
 
@@ -309,6 +315,7 @@ module OursprivacyIngest
           ?sid: String?,
           ?state: String?,
           ?ttclid: String?,
+          ?ttd_impression_id: String?,
           ?twclid: String?,
           ?user_agent: String?,
           ?user_agent_full_list: String?,
@@ -321,6 +328,7 @@ module OursprivacyIngest
           ?viant_click_id: String?,
           ?viant_impression_id: String?,
           ?wbraid: String?,
+          ?ylpcid: String?,
           ?zip: OursprivacyIngest::Models::VisitorUpsertParams::UserProperties::zip?
         ) -> void
 
@@ -378,6 +386,7 @@ module OursprivacyIngest
           sid: String?,
           state: String?,
           ttclid: String?,
+          ttd_impression_id: String?,
           twclid: String?,
           user_agent: String?,
           user_agent_full_list: String?,
@@ -390,6 +399,7 @@ module OursprivacyIngest
           viant_click_id: String?,
           viant_impression_id: String?,
           wbraid: String?,
+          ylpcid: String?,
           zip: OursprivacyIngest::Models::VisitorUpsertParams::UserProperties::zip?
         }
 
@@ -802,6 +812,7 @@ module OursprivacyIngest
           sr: String?,
           title: String?,
           ttclid: String?,
+          ttd_impression_id: String?,
           twclid: String?,
           uafvl: String?,
           user_agent: String?,
@@ -815,7 +826,8 @@ module OursprivacyIngest
           viant_click_id: String?,
           viant_impression_id: String?,
           wbraid: String?,
-          webview: bool?
+          webview: bool?,
+          ylpcid: String?
         }
 
       class DefaultProperties < OursprivacyIngest::Internal::Type::BaseModel
@@ -951,6 +963,8 @@ module OursprivacyIngest
 
         attr_accessor ttclid: String?
 
+        attr_accessor ttd_impression_id: String?
+
         attr_accessor twclid: String?
 
         attr_accessor uafvl: String?
@@ -978,6 +992,8 @@ module OursprivacyIngest
         attr_accessor wbraid: String?
 
         attr_accessor webview: bool?
+
+        attr_accessor ylpcid: String?
 
         def initialize: (
           ?_ef_transaction_id: String?,
@@ -1046,6 +1062,7 @@ module OursprivacyIngest
           ?sr: String?,
           ?title: String?,
           ?ttclid: String?,
+          ?ttd_impression_id: String?,
           ?twclid: String?,
           ?uafvl: String?,
           ?user_agent: String?,
@@ -1059,7 +1076,8 @@ module OursprivacyIngest
           ?viant_click_id: String?,
           ?viant_impression_id: String?,
           ?wbraid: String?,
-          ?webview: bool?
+          ?webview: bool?,
+          ?ylpcid: String?
         ) -> void
 
         def to_hash: -> {
@@ -1129,6 +1147,7 @@ module OursprivacyIngest
           sr: String?,
           title: String?,
           ttclid: String?,
+          ttd_impression_id: String?,
           twclid: String?,
           uafvl: String?,
           user_agent: String?,
@@ -1142,7 +1161,8 @@ module OursprivacyIngest
           viant_click_id: String?,
           viant_impression_id: String?,
           wbraid: String?,
-          webview: bool?
+          webview: bool?,
+          ylpcid: String?
         }
 
         type is_bot =
