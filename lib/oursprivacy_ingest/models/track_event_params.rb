@@ -612,6 +612,14 @@ module OursprivacyIngest
         #   @return [String, nil]
         optional :ttclid, String, nil?: true
 
+        # @!attribute ttd_impression_id
+        #   The Trade Desk impression ID, captured from a configured ttd_impression_id URL
+        #   parameter using the %%TTD_IMPRESSIONID%% creative macro. Sent as imp on
+        #   conversions. Leading and trailing whitespace is removed before validation.
+        #
+        #   @return [String, nil]
+        optional :ttd_impression_id, String, nil?: true
+
         # @!attribute twclid
         #   The Twitter Click ID. Ex: twclid123 Leading and trailing whitespace is removed
         #   before validation.
@@ -712,7 +720,13 @@ module OursprivacyIngest
         #   @return [Boolean, nil]
         optional :webview, OursprivacyIngest::Internal::Type::Boolean, nil?: true
 
-        # @!method initialize(_ef_transaction_id: nil, active_duration: nil, ad_id: nil, admitad_uid: nil, adset_id: nil, alart: nil, aleid: nil, axwrt: nil, basis_cid: nil, beeswax_auction_id: nil, browser_language: nil, browser_name: nil, browser_version: nil, campaign_id: nil, clickid: nil, clid: nil, cpu_architecture: nil, current_url: nil, dclid: nil, device_model: nil, device_type: nil, device_vendor: nil, duration: nil, encoding: nil, engine_name: nil, engine_version: nil, epik: nil, fbc: nil, fbclid: nil, fbp: nil, fv: nil, gad_source: nil, gbraid: nil, gclid: nil, graid: nil, grclid: nil, host: nil, iframe: nil, im_ref: nil, ip: nil, irclickid: nil, is_bot: nil, li_fat_id: nil, msclkid: nil, ndclid: nil, new_s: nil, ob_click_id: nil, oppref: nil, os_name: nil, os_version: nil, page_hash: nil, pathname: nil, qclid: nil, rdt_cid: nil, received_at: nil, referrer: nil, referring_domain: nil, sacid: nil, sccid: nil, screen_height: nil, screen_width: nil, session_count: nil, sid: nil, sr: nil, title: nil, ttclid: nil, twclid: nil, uafvl: nil, user_agent: nil, utm_campaign: nil, utm_content: nil, utm_medium: nil, utm_name: nil, utm_source: nil, utm_term: nil, version: nil, viant_click_id: nil, viant_impression_id: nil, wbraid: nil, webview: nil)
+        # @!attribute ylpcid
+        #   The Yelp Click ID from the landing URL, sent unchanged and unhashed.
+        #
+        #   @return [String, nil]
+        optional :ylpcid, String, nil?: true
+
+        # @!method initialize(_ef_transaction_id: nil, active_duration: nil, ad_id: nil, admitad_uid: nil, adset_id: nil, alart: nil, aleid: nil, axwrt: nil, basis_cid: nil, beeswax_auction_id: nil, browser_language: nil, browser_name: nil, browser_version: nil, campaign_id: nil, clickid: nil, clid: nil, cpu_architecture: nil, current_url: nil, dclid: nil, device_model: nil, device_type: nil, device_vendor: nil, duration: nil, encoding: nil, engine_name: nil, engine_version: nil, epik: nil, fbc: nil, fbclid: nil, fbp: nil, fv: nil, gad_source: nil, gbraid: nil, gclid: nil, graid: nil, grclid: nil, host: nil, iframe: nil, im_ref: nil, ip: nil, irclickid: nil, is_bot: nil, li_fat_id: nil, msclkid: nil, ndclid: nil, new_s: nil, ob_click_id: nil, oppref: nil, os_name: nil, os_version: nil, page_hash: nil, pathname: nil, qclid: nil, rdt_cid: nil, received_at: nil, referrer: nil, referring_domain: nil, sacid: nil, sccid: nil, screen_height: nil, screen_width: nil, session_count: nil, sid: nil, sr: nil, title: nil, ttclid: nil, ttd_impression_id: nil, twclid: nil, uafvl: nil, user_agent: nil, utm_campaign: nil, utm_content: nil, utm_medium: nil, utm_name: nil, utm_source: nil, utm_term: nil, version: nil, viant_click_id: nil, viant_impression_id: nil, wbraid: nil, webview: nil, ylpcid: nil)
         #   Some parameter documentations has been truncated, see
         #   {OursprivacyIngest::Models::TrackEventParams::DefaultProperties} for more
         #   details.
@@ -854,6 +868,8 @@ module OursprivacyIngest
         #
         #   @param ttclid [String, nil] The TikTok Click ID. Ex: ttclid123 Leading and trailing whitespace is removed be
         #
+        #   @param ttd_impression_id [String, nil] The Trade Desk impression ID, captured from a configured ttd_impression_id URL p
+        #
         #   @param twclid [String, nil] The Twitter Click ID. Ex: twclid123 Leading and trailing whitespace is removed b
         #
         #   @param uafvl [String, nil] User agent as a full list of strings. Leading and trailing whitespace is removed
@@ -882,6 +898,8 @@ module OursprivacyIngest
         #   @param wbraid [String, nil] The WBRAID Identifier. The web SDK automatically captures this from the query pa
         #
         #   @param webview [Boolean, nil] Whether the user is in a webview. Ex: true
+        #
+        #   @param ylpcid [String, nil] The Yelp Click ID from the landing URL, sent unchanged and unhashed.
 
         # Any JSON value: string, number, boolean, array, object, or null.
         #
@@ -1538,6 +1556,12 @@ module OursprivacyIngest
         #   @return [String, nil]
         optional :ttclid, String, nil?: true
 
+        # @!attribute ttd_impression_id
+        #   Leading and trailing whitespace is removed before validation.
+        #
+        #   @return [String, nil]
+        optional :ttd_impression_id, String, nil?: true
+
         # @!attribute twclid
         #
         #   @return [String, nil]
@@ -1612,13 +1636,18 @@ module OursprivacyIngest
         #   @return [String, nil]
         optional :wbraid, String, nil?: true
 
+        # @!attribute ylpcid
+        #
+        #   @return [String, nil]
+        optional :ylpcid, String, nil?: true
+
         # @!attribute zip
         #   Any JSON value: string, number, boolean, array, object, or null.
         #
         #   @return [String, Float, Boolean, Array<Object>, Hash{Symbol=>Object}, nil]
         optional :zip, union: -> { OursprivacyIngest::TrackEventParams::UserProperties::Zip }, nil?: true
 
-        # @!method initialize(_ef_transaction_id: nil, ad_id: nil, admitad_uid: nil, adset_id: nil, alart: nil, aleid: nil, axwrt: nil, basis_cid: nil, beeswax_auction_id: nil, campaign_id: nil, city: nil, clickid: nil, clid: nil, company_name: nil, consent: nil, country: nil, custom_properties: nil, date_of_birth: nil, dclid: nil, email: nil, epik: nil, external_id: nil, fbc: nil, fbclid: nil, fbp: nil, first_name: nil, gad_source: nil, gbraid: nil, gclid: nil, gender: nil, graid: nil, grclid: nil, im_ref: nil, ip: nil, irclickid: nil, is_bot: nil, job_title: nil, last_name: nil, li_fat_id: nil, msclkid: nil, ndclid: nil, ob_click_id: nil, oppref: nil, phone_number: nil, qclid: nil, rdt_cid: nil, referrer: nil, referring_domain: nil, sacid: nil, sccid: nil, sid: nil, state: nil, ttclid: nil, twclid: nil, user_agent: nil, user_agent_full_list: nil, utm_campaign: nil, utm_content: nil, utm_medium: nil, utm_name: nil, utm_source: nil, utm_term: nil, viant_click_id: nil, viant_impression_id: nil, wbraid: nil, zip: nil)
+        # @!method initialize(_ef_transaction_id: nil, ad_id: nil, admitad_uid: nil, adset_id: nil, alart: nil, aleid: nil, axwrt: nil, basis_cid: nil, beeswax_auction_id: nil, campaign_id: nil, city: nil, clickid: nil, clid: nil, company_name: nil, consent: nil, country: nil, custom_properties: nil, date_of_birth: nil, dclid: nil, email: nil, epik: nil, external_id: nil, fbc: nil, fbclid: nil, fbp: nil, first_name: nil, gad_source: nil, gbraid: nil, gclid: nil, gender: nil, graid: nil, grclid: nil, im_ref: nil, ip: nil, irclickid: nil, is_bot: nil, job_title: nil, last_name: nil, li_fat_id: nil, msclkid: nil, ndclid: nil, ob_click_id: nil, oppref: nil, phone_number: nil, qclid: nil, rdt_cid: nil, referrer: nil, referring_domain: nil, sacid: nil, sccid: nil, sid: nil, state: nil, ttclid: nil, ttd_impression_id: nil, twclid: nil, user_agent: nil, user_agent_full_list: nil, utm_campaign: nil, utm_content: nil, utm_medium: nil, utm_name: nil, utm_source: nil, utm_term: nil, viant_click_id: nil, viant_impression_id: nil, wbraid: nil, ylpcid: nil, zip: nil)
         #   Some parameter documentations has been truncated, see
         #   {OursprivacyIngest::Models::TrackEventParams::UserProperties} for more details.
         #
@@ -1731,6 +1760,8 @@ module OursprivacyIngest
         #
         #   @param ttclid [String, nil]
         #
+        #   @param ttd_impression_id [String, nil] Leading and trailing whitespace is removed before validation.
+        #
         #   @param twclid [String, nil]
         #
         #   @param user_agent [String, nil]
@@ -1754,6 +1785,8 @@ module OursprivacyIngest
         #   @param viant_impression_id [String, nil] Leading and trailing whitespace is removed before validation.
         #
         #   @param wbraid [String, nil]
+        #
+        #   @param ylpcid [String, nil]
         #
         #   @param zip [String, Float, Boolean, Array<Object>, Hash{Symbol=>Object}, nil] Any JSON value: string, number, boolean, array, object, or null.
 

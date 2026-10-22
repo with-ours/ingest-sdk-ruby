@@ -603,6 +603,12 @@ module OursprivacyIngest
         sig { returns(T.nilable(String)) }
         attr_accessor :ttclid
 
+        # The Trade Desk impression ID, captured from a configured ttd_impression_id URL
+        # parameter using the %%TTD_IMPRESSIONID%% creative macro. Sent as imp on
+        # conversions. Leading and trailing whitespace is removed before validation.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :ttd_impression_id
+
         # The Twitter Click ID. Ex: twclid123 Leading and trailing whitespace is removed
         # before validation.
         sig { returns(T.nilable(String)) }
@@ -674,6 +680,10 @@ module OursprivacyIngest
         # Whether the user is in a webview. Ex: true
         sig { returns(T.nilable(T::Boolean)) }
         attr_accessor :webview
+
+        # The Yelp Click ID from the landing URL, sent unchanged and unhashed.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :ylpcid
 
         # These properties are used throughout the Ours app to pass known values onto
         # destinations
@@ -748,6 +758,7 @@ module OursprivacyIngest
             sr: T.nilable(String),
             title: T.nilable(String),
             ttclid: T.nilable(String),
+            ttd_impression_id: T.nilable(String),
             twclid: T.nilable(String),
             uafvl: T.nilable(String),
             user_agent: T.nilable(String),
@@ -761,7 +772,8 @@ module OursprivacyIngest
             viant_click_id: T.nilable(String),
             viant_impression_id: T.nilable(String),
             wbraid: T.nilable(String),
-            webview: T.nilable(T::Boolean)
+            webview: T.nilable(T::Boolean),
+            ylpcid: T.nilable(String)
           ).returns(T.attached_class)
         end
         def self.new(
@@ -962,6 +974,10 @@ module OursprivacyIngest
           # The TikTok Click ID. Ex: ttclid123 Leading and trailing whitespace is removed
           # before validation.
           ttclid: nil,
+          # The Trade Desk impression ID, captured from a configured ttd_impression_id URL
+          # parameter using the %%TTD_IMPRESSIONID%% creative macro. Sent as imp on
+          # conversions. Leading and trailing whitespace is removed before validation.
+          ttd_impression_id: nil,
           # The Twitter Click ID. Ex: twclid123 Leading and trailing whitespace is removed
           # before validation.
           twclid: nil,
@@ -1005,7 +1021,9 @@ module OursprivacyIngest
           # params. Leading and trailing whitespace is removed before validation.
           wbraid: nil,
           # Whether the user is in a webview. Ex: true
-          webview: nil
+          webview: nil,
+          # The Yelp Click ID from the landing URL, sent unchanged and unhashed.
+          ylpcid: nil
         )
         end
 
@@ -1081,6 +1099,7 @@ module OursprivacyIngest
               sr: T.nilable(String),
               title: T.nilable(String),
               ttclid: T.nilable(String),
+              ttd_impression_id: T.nilable(String),
               twclid: T.nilable(String),
               uafvl: T.nilable(String),
               user_agent: T.nilable(String),
@@ -1094,7 +1113,8 @@ module OursprivacyIngest
               viant_click_id: T.nilable(String),
               viant_impression_id: T.nilable(String),
               wbraid: T.nilable(String),
-              webview: T.nilable(T::Boolean)
+              webview: T.nilable(T::Boolean),
+              ylpcid: T.nilable(String)
             }
           )
         end
@@ -1911,6 +1931,10 @@ module OursprivacyIngest
         sig { returns(T.nilable(String)) }
         attr_accessor :ttclid
 
+        # Leading and trailing whitespace is removed before validation.
+        sig { returns(T.nilable(String)) }
+        attr_accessor :ttd_impression_id
+
         sig { returns(T.nilable(String)) }
         attr_accessor :twclid
 
@@ -1960,6 +1984,9 @@ module OursprivacyIngest
 
         sig { returns(T.nilable(String)) }
         attr_accessor :wbraid
+
+        sig { returns(T.nilable(String)) }
+        attr_accessor :ylpcid
 
         # Any JSON value: string, number, boolean, array, object, or null.
         sig do
@@ -2050,6 +2077,7 @@ module OursprivacyIngest
             sid: T.nilable(String),
             state: T.nilable(String),
             ttclid: T.nilable(String),
+            ttd_impression_id: T.nilable(String),
             twclid: T.nilable(String),
             user_agent: T.nilable(String),
             user_agent_full_list: T.nilable(String),
@@ -2062,6 +2090,7 @@ module OursprivacyIngest
             viant_click_id: T.nilable(String),
             viant_impression_id: T.nilable(String),
             wbraid: T.nilable(String),
+            ylpcid: T.nilable(String),
             zip:
               T.nilable(
                 OursprivacyIngest::TrackEventParams::UserProperties::Zip::Variants
@@ -2167,6 +2196,8 @@ module OursprivacyIngest
           # string. Leading and trailing whitespace is removed before validation.
           state: nil,
           ttclid: nil,
+          # Leading and trailing whitespace is removed before validation.
+          ttd_impression_id: nil,
           twclid: nil,
           user_agent: nil,
           user_agent_full_list: nil,
@@ -2193,6 +2224,7 @@ module OursprivacyIngest
           # Leading and trailing whitespace is removed before validation.
           viant_impression_id: nil,
           wbraid: nil,
+          ylpcid: nil,
           # Any JSON value: string, number, boolean, array, object, or null.
           zip: nil
         )
@@ -2276,6 +2308,7 @@ module OursprivacyIngest
               sid: T.nilable(String),
               state: T.nilable(String),
               ttclid: T.nilable(String),
+              ttd_impression_id: T.nilable(String),
               twclid: T.nilable(String),
               user_agent: T.nilable(String),
               user_agent_full_list: T.nilable(String),
@@ -2288,6 +2321,7 @@ module OursprivacyIngest
               viant_click_id: T.nilable(String),
               viant_impression_id: T.nilable(String),
               wbraid: T.nilable(String),
+              ylpcid: T.nilable(String),
               zip:
                 T.nilable(
                   OursprivacyIngest::TrackEventParams::UserProperties::Zip::Variants
