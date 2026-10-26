@@ -16,6 +16,9 @@ on:
 
 permissions: {}
 
+env:
+  BUNDLE_FROZEN: "true"
+
 concurrency:
   group: release-${{ github.repository }}
   cancel-in-progress: false
