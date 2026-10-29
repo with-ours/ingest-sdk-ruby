@@ -192,6 +192,9 @@ Style/ClassAndModuleChildren:
 Style/CommentAnnotation:
   Enabled: false
 
+Style/DirectiveScope:
+  Enabled: false
+
 # We should go back and add these docs, but ignore for now.
 Style/Documentation:
   Enabled: false
@@ -220,6 +223,9 @@ Style/IfUnlessModifier:
 
 # Rubocop is pretty bad about mangling single line lambdas.
 Style/Lambda:
+  Enabled: false
+
+Style/MapJoin:
   Enabled: false
 
 # Prefer consistency in method calling syntax.
