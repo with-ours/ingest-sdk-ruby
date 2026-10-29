@@ -36,11 +36,15 @@ module OursprivacyIngest
                                    .lazy
                                    .grep(OursprivacyIngest::Internal::Type::Union)
                                    .each do |mod|
-    const = :Variants
-    next if mod.sorbet_constant_defined?(const)
+                                     const = :Variants
+                                     next if mod.sorbet_constant_defined?(const)
 
-    mod.define_sorbet_constant!(const) { T.type_alias { mod.to_sorbet_type } }
-  end
+                                     mod.define_sorbet_constant!(const) do
+                                       T.type_alias do
+                                         mod.to_sorbet_type
+                                       end
+                                     end
+                                   end
 
   BatchCreateParams = OursprivacyIngest::Models::BatchCreateParams
 
