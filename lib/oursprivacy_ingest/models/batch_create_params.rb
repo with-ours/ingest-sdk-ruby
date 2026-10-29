@@ -170,13 +170,13 @@ module OursprivacyIngest
           optional :_ef_transaction_id, String, nil?: true
 
           # @!attribute active_duration
-          #   The active time in milliseconds that the user had this tab active
+          #   The total time in milliseconds this tab has been visible since the page loaded
           #
           #   @return [Float, nil]
           optional :active_duration, Float, api_name: :activeDuration, nil?: true
 
           # @!attribute ad_id
-          #   The ad id for detected in the session. This is set by the web sdk automatically.
+          #   The ad id detected in the session. This is set by the web sdk automatically.
           #   Leading and trailing whitespace is removed before validation.
           #
           #   @return [String, nil]
@@ -190,8 +190,8 @@ module OursprivacyIngest
           optional :admitad_uid, String, nil?: true
 
           # @!attribute adset_id
-          #   The adset id for detected in the session. This is set by the web sdk
-          #   automatically. Leading and trailing whitespace is removed before validation.
+          #   The adset id detected in the session. This is set by the web sdk automatically.
+          #   Leading and trailing whitespace is removed before validation.
           #
           #   @return [String, nil]
           optional :adset_id, String, nil?: true
@@ -233,8 +233,8 @@ module OursprivacyIngest
           optional :beeswax_auction_id, String, nil?: true
 
           # @!attribute browser_language
-          #   The language of the browser. Ex: en-US Leading and trailing whitespace is
-          #   removed before validation.
+          #   The language of the browser, lowercased. Ex: en-us Leading and trailing
+          #   whitespace is removed before validation.
           #
           #   @return [String, nil]
           optional :browser_language, String, nil?: true
@@ -254,7 +254,7 @@ module OursprivacyIngest
           optional :browser_version, String, nil?: true
 
           # @!attribute campaign_id
-          #   The campaign id for detected in the session. This is set by the web sdk
+          #   The campaign id detected in the session. This is set by the web sdk
           #   automatically. Leading and trailing whitespace is removed before validation.
           #
           #   @return [String, nil]
@@ -275,8 +275,8 @@ module OursprivacyIngest
           optional :clid, String, nil?: true
 
           # @!attribute cpu_architecture
-          #   The architecture of the CPU. Ex: x64 Leading and trailing whitespace is removed
-          #   before validation.
+          #   The architecture of the CPU. Ex: amd64 Leading and trailing whitespace is
+          #   removed before validation.
           #
           #   @return [String, nil]
           optional :cpu_architecture, String, nil?: true
@@ -296,8 +296,8 @@ module OursprivacyIngest
           optional :dclid, String, nil?: true
 
           # @!attribute device_model
-          #   The model of the device. Ex: iPhone 13 Leading and trailing whitespace is
-          #   removed before validation.
+          #   The model of the device. Ex: iPhone Leading and trailing whitespace is removed
+          #   before validation.
           #
           #   @return [String, nil]
           optional :device_model, String, nil?: true
@@ -317,13 +317,15 @@ module OursprivacyIngest
           optional :device_vendor, String, nil?: true
 
           # @!attribute duration
-          #   The time in milliseconds since the page was loaded // script was loaded
+          #   The time in milliseconds since the previous event on this page, or since the web
+          #   SDK loaded for the first event. Restarts when a hidden tab becomes visible
+          #   again.
           #
           #   @return [Float, nil]
           optional :duration, Float, nil?: true
 
           # @!attribute encoding
-          #   The browsers encoding. Ex: UTF-8 Leading and trailing whitespace is removed
+          #   The browser's encoding. Ex: UTF-8 Leading and trailing whitespace is removed
           #   before validation.
           #
           #   @return [String, nil]
@@ -546,7 +548,7 @@ module OursprivacyIngest
           optional :rdt_cid, String, nil?: true
 
           # @!attribute received_at
-          #   The time the event was received by an Ours server in ISO format
+          #   The time an Ours server received the event, in ISO 8601 UTC
           #
           #   @return [String, nil]
           optional :received_at, String, nil?: true
@@ -573,7 +575,7 @@ module OursprivacyIngest
           optional :sacid, String, nil?: true
 
           # @!attribute sccid
-          #   The SnapChat Click ID. Ex: sccid123 Leading and trailing whitespace is removed
+          #   The Snapchat Click ID. Ex: sccid123 Leading and trailing whitespace is removed
           #   before validation.
           #
           #   @return [String, nil]
@@ -605,7 +607,8 @@ module OursprivacyIngest
           optional :sid, String, nil?: true
 
           # @!attribute sr
-          #   Leading and trailing whitespace is removed before validation.
+          #   The screen resolution as width x height in pixels. Ex: 1920x1080 Leading and
+          #   trailing whitespace is removed before validation.
           #
           #   @return [String, nil]
           optional :sr, String, nil?: true
@@ -640,7 +643,8 @@ module OursprivacyIngest
           optional :twclid, String, nil?: true
 
           # @!attribute uafvl
-          #   User agent as a full list of strings. Leading and trailing whitespace is removed
+          #   The browser brands and full versions from User-Agent Client Hints, as
+          #   brand;version pairs separated by |. Leading and trailing whitespace is removed
           #   before validation.
           #
           #   @return [String, nil]
@@ -749,13 +753,13 @@ module OursprivacyIngest
           #   @param _ef_transaction_id [String, nil] The Everflow affiliate Click (Transaction) ID, captured from the
           #   `\_ef_transactio
           #
-          #   @param active_duration [Float, nil] The active time in milliseconds that the user had this tab active
+          #   @param active_duration [Float, nil] The total time in milliseconds this tab has been visible since the page loaded
           #
-          #   @param ad_id [String, nil] The ad id for detected in the session. This is set by the web sdk automatically.
+          #   @param ad_id [String, nil] The ad id detected in the session. This is set by the web sdk automatically. Lea
           #
           #   @param admitad_uid [String, nil] The Admitad (Mitgo) affiliate Click ID. Ex: admitad_uid_abc123 Leading and trail
           #
-          #   @param adset_id [String, nil] The adset id for detected in the session. This is set by the web sdk automatical
+          #   @param adset_id [String, nil] The adset id detected in the session. This is set by the web sdk automatically.
           #
           #   @param alart [String, nil] The AppLovin alart query parameter. Ex: alart123 Leading and trailing whitespace
           #
@@ -768,33 +772,33 @@ module OursprivacyIngest
           #
           #   @param beeswax_auction_id [String, nil] The Beeswax (FreeWheel Buyer Cloud) auction ID, captured from the `{{AUCTION_ID}
           #
-          #   @param browser_language [String, nil] The language of the browser. Ex: en-US Leading and trailing whitespace is remove
+          #   @param browser_language [String, nil] The language of the browser, lowercased. Ex: en-us Leading and trailing whitespa
           #
           #   @param browser_name [String, nil] The name of the browser. Ex: Chrome Leading and trailing whitespace is removed b
           #
           #   @param browser_version [String, nil] The version of the browser. Ex: 114.0 Leading and trailing whitespace is removed
           #
-          #   @param campaign_id [String, nil] The campaign id for detected in the session. This is set by the web sdk automati
+          #   @param campaign_id [String, nil] The campaign id detected in the session. This is set by the web sdk automaticall
           #
           #   @param clickid [String, nil] The Click ID. Ex: clickid123 Leading and trailing whitespace is removed before v
           #
           #   @param clid [String, nil] The Generic Click ID. Ex: clid123 Leading and trailing whitespace is removed bef
           #
-          #   @param cpu_architecture [String, nil] The architecture of the CPU. Ex: x64 Leading and trailing whitespace is removed
+          #   @param cpu_architecture [String, nil] The architecture of the CPU. Ex: amd64 Leading and trailing whitespace is remove
           #
           #   @param current_url [String, nil] The full url (including query params) of the current page Leading and trailing w
           #
           #   @param dclid [String, nil] The DoubleClick Click ID. Ex: dclid123 Leading and trailing whitespace is remove
           #
-          #   @param device_model [String, nil] The model of the device. Ex: iPhone 13 Leading and trailing whitespace is remove
+          #   @param device_model [String, nil] The model of the device. Ex: iPhone Leading and trailing whitespace is removed b
           #
           #   @param device_type [String, nil] The type of device the user is using. Ex: mobile Leading and trailing whitespace
           #
           #   @param device_vendor [String, nil] The vendor of the device. Ex: Apple Leading and trailing whitespace is removed b
           #
-          #   @param duration [Float, nil] The time in milliseconds since the page was loaded // script was loaded
+          #   @param duration [Float, nil] The time in milliseconds since the previous event on this page, or since the web
           #
-          #   @param encoding [String, nil] The browsers encoding. Ex: UTF-8 Leading and trailing whitespace is removed befo
+          #   @param encoding [String, nil] The browser's encoding. Ex: UTF-8 Leading and trailing whitespace is removed bef
           #
           #   @param engine_name [String, nil] The name of the browser engine. Ex: Blink Leading and trailing whitespace is rem
           #
@@ -856,7 +860,7 @@ module OursprivacyIngest
           #
           #   @param rdt_cid [String, nil] The Reddit Click ID. Ex: rdt_cid123 Leading and trailing whitespace is removed b
           #
-          #   @param received_at [String, nil] The time the event was received by an Ours server in ISO format
+          #   @param received_at [String, nil] The time an Ours server received the event, in ISO 8601 UTC
           #
           #   @param referrer [String, nil] The referrer URL of the current page Leading and trailing whitespace is removed
           #
@@ -864,7 +868,7 @@ module OursprivacyIngest
           #
           #   @param sacid [String, nil] The StackAdapt Tracking ID. Ex: sacid123 Leading and trailing whitespace is remo
           #
-          #   @param sccid [String, nil] The SnapChat Click ID. Ex: sccid123 Leading and trailing whitespace is removed b
+          #   @param sccid [String, nil] The Snapchat Click ID. Ex: sccid123 Leading and trailing whitespace is removed b
           #
           #   @param screen_height [Float, nil] The height of the screen. Ex: 1080
           #
@@ -874,7 +878,7 @@ module OursprivacyIngest
           #
           #   @param sid [String, nil] The session ID as assigned automatically by the web SDK. This is required for se
           #
-          #   @param sr [String, nil] Leading and trailing whitespace is removed before validation.
+          #   @param sr [String, nil] The screen resolution as width x height in pixels. Ex: 1920x1080 Leading and tra
           #
           #   @param title [String, nil] The title of the current page Leading and trailing whitespace is removed before
           #
@@ -884,7 +888,7 @@ module OursprivacyIngest
           #
           #   @param twclid [String, nil] The Twitter Click ID. Ex: twclid123 Leading and trailing whitespace is removed b
           #
-          #   @param uafvl [String, nil] User agent as a full list of strings. Leading and trailing whitespace is removed
+          #   @param uafvl [String, nil] The browser brands and full versions from User-Agent Client Hints, as brand;vers
           #
           #   @param user_agent [String, nil] The user agent of the browser Leading and trailing whitespace is removed before
           #
