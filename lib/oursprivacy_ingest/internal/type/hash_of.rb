@@ -139,7 +139,7 @@ module OursprivacyIngest
         #
         # @return [Object]
         def to_sorbet_type
-          T::Hash[OursprivacyIngest::Internal::Util::SorbetRuntimeSupport.to_sorbet_type(item_type)]
+          T::Hash[Symbol, OursprivacyIngest::Internal::Util::SorbetRuntimeSupport.to_sorbet_type(item_type)]
         end
 
         # @api private
