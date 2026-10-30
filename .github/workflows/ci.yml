@@ -27,13 +27,14 @@ jobs:
 
       - name: Run lints
         run: ./scripts/lint
-  test:
+  test-matrix:
     permissions:
       contents: read
     timeout-minutes: 10
     name: test (${{ matrix.ruby }})
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         ruby: ["3.2.11", "3.4.11"]
     steps:
@@ -53,3 +54,19 @@ jobs:
 
       - name: Build gem
         run: bundle exec rake build:gem
+
+  # Stable required-check name; matrix legs above include versions in their names.
+  test:
+    name: test
+    needs: [test-matrix]
+    if: always()
+    permissions: {}
+    timeout-minutes: 5
+    runs-on: ubuntu-latest
+    steps:
+      - name: Require all matrix legs
+        env:
+          RESULT: ${{ needs.test-matrix.result }}
+        run: |
+          echo "test-matrix: $RESULT"
+          [ "$RESULT" = "success" ]
