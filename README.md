@@ -1,8 +1,6 @@
 # Ours Privacy Ruby API library
 
-The Ours Privacy Ruby library provides convenient access to the Ours Privacy REST API from any Ruby 3.2.0+ application. It ships with comprehensive types & docstrings in Yard, RBS, and RBI – [see below](https://github.com/with-ours/ingest-sdk-ruby#Sorbet) for usage with Sorbet. The standard library's `net/http` is used as the HTTP transport, with connection pooling via the `connection_pool` gem.
-
-It is generated with [Stainless](https://www.stainless.com/).
+The Ours Privacy Ruby library provides convenient access to the Ours Privacy REST API from any Ruby 3.3.0+ application. It ships with comprehensive types & docstrings in Yard, RBS, and RBI – [see below](https://github.com/with-ours/ingest-sdk-ruby#Sorbet) for usage with Sorbet. The standard library's `net/http` is used as the HTTP transport, with connection pooling via the `connection_pool` gem.
 
 ## Documentation
 
@@ -199,7 +197,7 @@ This package considers improvements to the (non-runtime) `*.rbi` and `*.rbs` typ
 
 ## Requirements
 
-Ruby 3.2.0 or higher.
+Ruby 3.3.0 or higher.
 
 ## Contributing
 
