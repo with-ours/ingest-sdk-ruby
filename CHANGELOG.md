@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.0.0 (2026-11-02)
+
+Full Changelog: [v1.26.0...v2.0.0](https://github.com/with-ours/ingest-sdk-ruby/compare/v1.26.0...v2.0.0)
+
+### Features
+
+* **ruby:** require Ruby 3.3.0 or later; Ruby 3.2 is no longer supported
 ## 1.26.0 (2026-10-30)
 
 Full Changelog: [v1.25.0...v1.26.0](https://github.com/with-ours/ingest-sdk-ruby/compare/v1.25.0...v1.26.0)
