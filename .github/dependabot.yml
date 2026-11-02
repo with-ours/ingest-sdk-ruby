@@ -1,5 +1,10 @@
 # Keep GitHub Actions and SDK dependencies up to date.
 # Match the weekly update policy used by the Node.js SDKs.
+#
+# Bundler updates resolve against the lowest Ruby allowed by the gemspec's
+# required_ruby_version, so raising that floor is what unblocks gems that
+# need a newer Ruby. Dependabot does not update Ruby itself: bump
+# .ruby-version and the CI test matrix by hand.
 version: 2
 updates:
 - package-ecosystem: github-actions
