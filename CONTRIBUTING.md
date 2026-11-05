@@ -66,6 +66,12 @@ $ bundle exec rake
 
 ## Running tests
 
+Most tests require you to [set up a mock server](https://github.com/dgellow/steady) against the OpenAPI spec to run the tests.
+
+```sh
+$ ./scripts/mock
+```
+
 ```bash
 $ bundle exec rake test
 ```

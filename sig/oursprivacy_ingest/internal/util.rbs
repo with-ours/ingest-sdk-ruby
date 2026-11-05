@@ -45,6 +45,10 @@ module OursprivacyIngest
         -> top?
       } -> top?
 
+      SENSITIVE_NAMES: ::Array[String]
+
+      def self?.redact_sensitive: (top input) -> top
+
       RFC_3986_NOT_PCHARS: Regexp
 
       def self?.uri_origin: (URI::Generic uri) -> String
