@@ -517,13 +517,18 @@ module OursprivacyIngest
         # @api public
         #
         # @return [String]
-        def to_s = deep_to_h.to_s
+        def to_s = OursprivacyIngest::Internal::Util.redact_sensitive(deep_to_h).to_s
 
         # @api private
         #
         # @return [String]
         def inspect
-          converted = self.class.recursively_to_h(self, convert: true)
+          converted = OursprivacyIngest::Internal::Util.redact_sensitive(
+            self.class.recursively_to_h(
+              self,
+              convert: true
+            )
+          )
           "#<#{self.class}:0x#{object_id.to_s(16)} #{converted}>"
         end
 

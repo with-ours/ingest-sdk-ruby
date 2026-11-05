@@ -95,6 +95,26 @@ class OursprivacyIngest::Test::UtilDataHandlingTest < Minitest::Test
 end
 
 class OursprivacyIngest::Test::UtilUriHandlingTest < Minitest::Test
+  def test_interpolate_path_encodes_params_as_one_segment
+    {
+      "../../track?x=1" => "a/..%2F..%2Ftrack%3Fx=1",
+      "a b" => "a/a%20b",
+      "a/b" => "a/a%2Fb",
+      "..." => "a/...",
+      "%2E%2E" => "a/%252E%252E"
+    }.each do |param, expected|
+      assert_equal(expected, OursprivacyIngest::Internal::Util.interpolate_path(["a/%1$s", param]))
+    end
+  end
+
+  def test_interpolate_path_rejects_dot_segments
+    %w[. ..].each do |param|
+      assert_raises(ArgumentError) do
+        OursprivacyIngest::Internal::Util.interpolate_path(["a/%1$s", param])
+      end
+    end
+  end
+
   def test_parsing
     %w[
       http://example.com

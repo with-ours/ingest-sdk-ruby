@@ -2,6 +2,10 @@
 
 The Ours Privacy Ruby library provides convenient access to the Ours Privacy REST API from any Ruby 3.3.0+ application. It ships with comprehensive types & docstrings in Yard, RBS, and RBI – [see below](https://github.com/with-ours/ingest-sdk-ruby#Sorbet) for usage with Sorbet. The standard library's `net/http` is used as the HTTP transport, with connection pooling via the `connection_pool` gem.
 
+`token` is the Source token from your Ours Privacy dashboard. Events must be allow-listed: an event that isn't on your [Event Allowlist](https://docs.oursprivacy.com/docs/allow-listing-events) isn't forwarded to your destinations.
+
+See the [SDK guide](https://docs.oursprivacy.com/docs/ruby) and the runnable code in [`examples`](examples).
+
 ## Documentation
 
 Documentation for releases of this gem can be found [on RubyDoc](https://gemdocs.org/gems/oursprivacy-ingest).
@@ -28,10 +32,88 @@ require "oursprivacy_ingest"
 
 ours_privacy = OursprivacyIngest::Client.new
 
-response = ours_privacy.track.event(token: "REPLACE_ME", event: "REPLACE_ME")
+response = ours_privacy.track.event(
+  token: "YOUR_SOURCE_TOKEN",
+  event: "signup_completed",
+  distinct_id: "evt_01J9ZK3Q7X",
+  event_properties: {plan: "pro", value: 49, currency: "USD"},
+  external_id: "crm_contact_1042",
+  identity_context: {ip: "203.0.113.10", userAgent: "Mozilla/5.0"}
+)
 
 puts(response.success)
 ```
+
+### Identify a visitor
+
+Set properties on a visitor, creating the visitor if there's no match.
+
+```ruby
+require "bundler/setup"
+require "oursprivacy_ingest"
+
+ours_privacy = OursprivacyIngest::Client.new
+
+response = ours_privacy.visitor.upsert(
+  token: "YOUR_SOURCE_TOKEN",
+  user_properties: {first_name: "Sample", last_name: "User"},
+  email: "user@example.com"
+)
+
+puts(response.success)
+```
+
+### Send a batch of events
+
+Send many events in one request, each with its own required `distinctId`.
+
+```ruby
+require "bundler/setup"
+require "oursprivacy_ingest"
+
+ours_privacy = OursprivacyIngest::Client.new
+
+batch = ours_privacy.batch.create(
+  token: "YOUR_SOURCE_TOKEN",
+  events: [
+    {event: "signup_completed", distinctId: "evt_01J9ZK3Q7X", externalId: "crm_contact_1042"},
+    {event: "plan_upgraded", distinctId: "evt_01J9ZK3Q8Y", externalId: "crm_contact_1042"}
+  ]
+)
+
+puts(batch.accepted)
+```
+
+A partial success returns HTTP 207 with a result for each row. Retry only the rows whose `code` is `queue_failed`, with the same `distinctId`. You can backfill events up to one year old; older `time` values are clamped.
+
+### Get an experiment assignment
+
+Look up a visitor's variant, using the experiment's `exp_*` token rather than the Source token.
+
+```ruby
+require "bundler/setup"
+require "oursprivacy_ingest"
+
+ours_privacy = OursprivacyIngest::Client.new
+
+response = ours_privacy.experiments.assignment(
+  "checkout_redesign",
+  token: "exp_YOUR_EXPERIMENT_TOKEN",
+  visitor_id: "visitor_1042"
+)
+
+puts(response)
+```
+
+### Further reading
+
+The docs cover each endpoint in full.
+
+- [Track](https://docs.oursprivacy.com/docs/reference/track)
+- [Identify](https://docs.oursprivacy.com/docs/reference/identify)
+- [Batch](https://docs.oursprivacy.com/docs/reference/batch)
+- [Rate limits](https://docs.oursprivacy.com/docs/reference/rate-limits)
+- [Server-side experimentation](https://docs.oursprivacy.com/docs/experimentation/server-side)
 
 ### Handling errors
 
@@ -175,17 +257,38 @@ This library provides comprehensive [RBI](https://sorbet.org/docs/rbi) definitio
 You can provide typesafe request parameters like so:
 
 ```ruby
-ours_privacy.track.event(token: "REPLACE_ME", event: "REPLACE_ME")
+ours_privacy.track.event(
+  token: "YOUR_SOURCE_TOKEN",
+  event: "signup_completed",
+  distinct_id: "evt_01J9ZK3Q7X",
+  event_properties: {plan: "pro", value: 49, currency: "USD"},
+  external_id: "crm_contact_1042",
+  identity_context: OursprivacyIngest::TrackEventParams::IdentityContext.new(ip: "203.0.113.10", user_agent: "Mozilla/5.0")
+)
 ```
 
 Or, equivalently:
 
 ```ruby
 # Hashes work, but are not typesafe:
-ours_privacy.track.event(token: "REPLACE_ME", event: "REPLACE_ME")
+ours_privacy.track.event(
+  token: "YOUR_SOURCE_TOKEN",
+  event: "signup_completed",
+  distinct_id: "evt_01J9ZK3Q7X",
+  event_properties: {plan: "pro", value: 49, currency: "USD"},
+  external_id: "crm_contact_1042",
+  identity_context: {ip: "203.0.113.10", userAgent: "Mozilla/5.0"}
+)
 
 # You can also splat a full Params class:
-params = OursprivacyIngest::TrackEventParams.new(token: "REPLACE_ME", event: "REPLACE_ME")
+params = OursprivacyIngest::TrackEventParams.new(
+  token: "YOUR_SOURCE_TOKEN",
+  event: "signup_completed",
+  distinct_id: "evt_01J9ZK3Q7X",
+  event_properties: {plan: "pro", value: 49, currency: "USD"},
+  external_id: "crm_contact_1042",
+  identity_context: OursprivacyIngest::TrackEventParams::IdentityContext.new(ip: "203.0.113.10", user_agent: "Mozilla/5.0")
+)
 ours_privacy.track.event(**params)
 ```
 
