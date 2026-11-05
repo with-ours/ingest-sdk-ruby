@@ -180,7 +180,13 @@ module OursprivacyIngest
       # @param response [nil]
       # @param message [String, nil]
       def initialize(url:, status:, headers:, body:, request:, response:, message: nil)
-        message ||= {url: url.to_s, status: status, body: body}
+        message ||= OursprivacyIngest::Internal::Util.redact_sensitive(
+          {
+            url: url.to_s,
+            status: status,
+            body: body
+          }
+        )
         super(
           url: url,
           status: status,

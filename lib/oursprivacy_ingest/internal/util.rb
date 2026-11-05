@@ -237,6 +237,45 @@ module OursprivacyIngest
         end
       end
 
+      # @type [Array<String>]
+      #
+      # Names whose values never reach string representations, ignoring case,
+      # underscores and hyphens.
+      SENSITIVE_NAMES =
+        %w[
+          accesstoken
+          apikey
+          authorization
+          clientsecret
+          cookie
+          password
+          refreshtoken
+          setcookie
+          token
+          xapikey
+        ].freeze
+
+      class << self
+        # @api private
+        #
+        # @param input [Object]
+        #
+        # @return [Object]
+        def redact_sensitive(input)
+          case input
+          in Hash
+            input.to_h do |key, value|
+              name = key.to_s.downcase.delete("_-")
+              [key, SENSITIVE_NAMES.include?(name) ? "***" : redact_sensitive(value)]
+            end
+          in Array
+            input.map { redact_sensitive(_1) }
+          else
+            input
+          end
+        end
+      end
+
       # @type [Regexp]
       #
       # https://www.rfc-editor.org/rfc/rfc3986.html#section-3.3
@@ -274,7 +313,11 @@ module OursprivacyIngest
             ""
           in [String => p, *interpolations]
             encoded = interpolations.map { encode_path(_1) }
-            format(p, *encoded)
+            formatted = format(p, *encoded)
+            dot_segment = formatted.split("?", 2).first.to_s.split("/").find { [".", ".."].include?(_1) }
+            raise ArgumentError, "Path parameter can't be the dot segment '#{dot_segment}'" if dot_segment
+
+            formatted
           end
         end
       end
