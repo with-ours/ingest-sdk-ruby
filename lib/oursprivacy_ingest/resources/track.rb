@@ -37,7 +37,7 @@ module OursprivacyIngest
       #
       # @param identity_context [OursprivacyIngest::Models::TrackEventParams::IdentityContext, nil] End-user network context for server-side calls. Required for probabilistic ident
       #
-      # @param time [Float, nil] The time at which the event occurred in milliseconds since UTC epoch. The time m
+      # @param time [Float, nil] The time at which the event occurred in milliseconds since UTC epoch. Times olde
       #
       # @param user_id [String, nil] The Ours Visitor ID stored in local storage and cookies on your web properties.
       #
