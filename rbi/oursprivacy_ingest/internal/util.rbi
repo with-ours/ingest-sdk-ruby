@@ -148,6 +148,32 @@ module OursprivacyIngest
         end
       end
 
+      # Names whose values never reach string representations, ignoring case,
+      # underscores and hyphens.
+      SENSITIVE_NAMES =
+        T.let(
+          %w[
+            accesstoken
+            apikey
+            authorization
+            clientsecret
+            cookie
+            password
+            refreshtoken
+            setcookie
+            token
+            xapikey
+          ].freeze,
+          T::Array[String]
+        )
+
+      class << self
+        # @api private
+        sig { params(input: T.anything).returns(T.anything) }
+        def redact_sensitive(input)
+        end
+      end
+
       # https://www.rfc-editor.org/rfc/rfc3986.html#section-3.3
       RFC_3986_NOT_PCHARS = T.let(/[^A-Za-z0-9\-._~!$&'()*+,;=:@]+/, Regexp)
 
