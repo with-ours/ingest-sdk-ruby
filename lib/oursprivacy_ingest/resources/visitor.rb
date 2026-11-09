@@ -8,7 +8,7 @@ module OursprivacyIngest
       #
       # Set or update properties on an existing visitor, or create a new visitor if no
       # match is found. This fires a $identify event, making the call visible in the
-      # event stream. Identity resolution runs in priority order: userId (direct, no
+      # event stream. Identity resolution runs in priority order: visitorId (direct, no
       # lookup) → externalId → email → userProperties.phone_number. Each lookup runs
       # only if earlier identifiers did not resolve a visitor. Phone matching ignores
       # common formatting and an international + or 00 prefix, but does not infer a
@@ -20,7 +20,7 @@ module OursprivacyIngest
       # semantics). See https://docs.oursprivacy.com/docs/data-types for details and
       # common pitfalls.
       #
-      # @overload upsert(token:, user_properties:, default_properties: nil, email: nil, external_id: nil, identity_context: nil, user_id: nil, request_options: {})
+      # @overload upsert(token:, user_properties:, default_properties: nil, email: nil, external_id: nil, identity_context: nil, user_id: nil, visitor_id: nil, request_options: {})
       #
       # @param token [String] The token for your Source. You can find this in the dashboard. Leading and trail
       #
@@ -28,13 +28,15 @@ module OursprivacyIngest
       #
       # @param default_properties [OursprivacyIngest::Models::VisitorUpsertParams::DefaultProperties, nil] These properties are used throughout the Ours app to pass known values onto dest
       #
-      # @param email [String, nil] The email address of a user. When userId is absent and externalId does not resol
+      # @param email [String, nil] The email address of a user. When visitorId is absent and externalId does not re
       #
-      # @param external_id [String, nil] Your system's unique identifier for this user. When userId is absent, we search
+      # @param external_id [String, nil] Your system's unique identifier for this user. When visitorId is absent, we sear
       #
       # @param identity_context [OursprivacyIngest::Models::VisitorUpsertParams::IdentityContext, nil] End-user network context for server-side calls. Required for probabilistic ident
       #
       # @param user_id [String, nil] The Ours Visitor ID stored in local storage and cookies on your web properties.
+      #
+      # @param visitor_id [String, nil] The Ours Visitor ID stored in local storage and cookies on your web properties.
       #
       # @param request_options [OursprivacyIngest::RequestOptions, Hash{Symbol=>Object}, nil]
       #
