@@ -4,8 +4,6 @@ require_relative "../test_helper"
 
 class OursprivacyIngest::Test::Resources::ExperimentsTest < OursprivacyIngest::Test::ResourceTest
   def test_assignment_required_params
-    skip("Mock server tests are disabled")
-
     response = @ours_privacy.experiments.assignment("experiment_key", token: "token", visitor_id: "x")
 
     assert_pattern do
@@ -21,8 +19,6 @@ class OursprivacyIngest::Test::Resources::ExperimentsTest < OursprivacyIngest::T
   end
 
   def test_personalization_required_params
-    skip("Mock server tests are disabled")
-
     response = @ours_privacy.experiments.personalization(token: "token", visitor_id: "x")
 
     assert_pattern do

@@ -95,6 +95,7 @@ module OursprivacyIngest
             ad_id: String?,
             admitad_uid: String?,
             adset_id: String?,
+            :affiliatly_v3 => String?,
             alart: String?,
             aleid: String?,
             axwrt: String?,
@@ -184,6 +185,8 @@ module OursprivacyIngest
           attr_accessor admitad_uid: String?
 
           attr_accessor adset_id: String?
+
+          attr_accessor affiliatly_v3: String?
 
           attr_accessor alart: String?
 
@@ -345,6 +348,7 @@ module OursprivacyIngest
             ?ad_id: String?,
             ?admitad_uid: String?,
             ?adset_id: String?,
+            ?affiliatly_v3: String?,
             ?alart: String?,
             ?aleid: String?,
             ?axwrt: String?,
@@ -430,6 +434,7 @@ module OursprivacyIngest
             ad_id: String?,
             admitad_uid: String?,
             adset_id: String?,
+            :affiliatly_v3 => String?,
             alart: String?,
             aleid: String?,
             axwrt: String?,
@@ -692,6 +697,7 @@ module OursprivacyIngest
             ad_id: String?,
             admitad_uid: String?,
             adset_id: String?,
+            :affiliatly_v3 => String?,
             alart: String?,
             aleid: String?,
             axwrt: String?,
@@ -766,6 +772,8 @@ module OursprivacyIngest
           attr_accessor admitad_uid: String?
 
           attr_accessor adset_id: String?
+
+          attr_accessor affiliatly_v3: String?
 
           attr_accessor alart: String?
 
@@ -900,6 +908,7 @@ module OursprivacyIngest
             ?ad_id: String?,
             ?admitad_uid: String?,
             ?adset_id: String?,
+            ?affiliatly_v3: String?,
             ?alart: String?,
             ?aleid: String?,
             ?axwrt: String?,
@@ -971,6 +980,7 @@ module OursprivacyIngest
             ad_id: String?,
             admitad_uid: String?,
             adset_id: String?,
+            :affiliatly_v3 => String?,
             alart: String?,
             aleid: String?,
             axwrt: String?,

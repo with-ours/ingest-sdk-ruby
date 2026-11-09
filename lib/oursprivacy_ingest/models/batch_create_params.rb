@@ -109,8 +109,9 @@ module OursprivacyIngest
                  nil?: true
 
         # @!attribute time
-        #   The time at which the event occurred in milliseconds since UTC epoch. The time
-        #   must be in the past and within the last 7 days.
+        #   The time at which the event occurred in milliseconds since UTC epoch. Times
+        #   older than one year are recorded as exactly one year ago, and future times as
+        #   now.
         #
         #   @return [Float, nil]
         optional :time, Float, nil?: true
@@ -153,7 +154,7 @@ module OursprivacyIngest
         #
         #   @param identity_context [OursprivacyIngest::Models::BatchCreateParams::Event::IdentityContext, nil] End-user network context for server-side calls. Required for probabilistic ident
         #
-        #   @param time [Float, nil] The time at which the event occurred in milliseconds since UTC epoch. The time m
+        #   @param time [Float, nil] The time at which the event occurred in milliseconds since UTC epoch. Times olde
         #
         #   @param user_id [String, nil] The Ours Visitor ID stored in local storage and cookies on your web properties.
         #
@@ -195,6 +196,15 @@ module OursprivacyIngest
           #
           #   @return [String, nil]
           optional :adset_id, String, nil?: true
+
+          # @!attribute affiliatly_v3
+          #   The raw Affiliatly tracking cookie value (affiliatly_v3), set by the Affiliatly
+          #   script when a visitor lands from an affiliate link. Web-only. Ex:
+          #   id_hash=abc&id_user=123&aff_uid=45 Leading and trailing whitespace is removed
+          #   before validation.
+          #
+          #   @return [String, nil]
+          optional :affiliatly_v3, String, nil?: true
 
           # @!attribute alart
           #   The AppLovin alart query parameter. Ex: alart123 Leading and trailing whitespace
@@ -742,7 +752,7 @@ module OursprivacyIngest
           #   @return [String, nil]
           optional :ylpcid, String, nil?: true
 
-          # @!method initialize(_ef_transaction_id: nil, active_duration: nil, ad_id: nil, admitad_uid: nil, adset_id: nil, alart: nil, aleid: nil, axwrt: nil, basis_cid: nil, beeswax_auction_id: nil, browser_language: nil, browser_name: nil, browser_version: nil, campaign_id: nil, clickid: nil, clid: nil, cpu_architecture: nil, current_url: nil, dclid: nil, device_model: nil, device_type: nil, device_vendor: nil, duration: nil, encoding: nil, engine_name: nil, engine_version: nil, epik: nil, fbc: nil, fbclid: nil, fbp: nil, fv: nil, gad_source: nil, gbraid: nil, gclid: nil, graid: nil, grclid: nil, host: nil, iframe: nil, im_ref: nil, ip: nil, irclickid: nil, is_bot: nil, li_fat_id: nil, msclkid: nil, ndclid: nil, new_s: nil, ob_click_id: nil, oppref: nil, os_name: nil, os_version: nil, page_hash: nil, pathname: nil, qclid: nil, rdt_cid: nil, received_at: nil, referrer: nil, referring_domain: nil, sacid: nil, sccid: nil, screen_height: nil, screen_width: nil, session_count: nil, sid: nil, sr: nil, title: nil, ttclid: nil, ttd_impression_id: nil, twclid: nil, uafvl: nil, user_agent: nil, utm_campaign: nil, utm_content: nil, utm_medium: nil, utm_name: nil, utm_source: nil, utm_term: nil, version: nil, viant_click_id: nil, viant_impression_id: nil, wbraid: nil, webview: nil, ylpcid: nil)
+          # @!method initialize(_ef_transaction_id: nil, active_duration: nil, ad_id: nil, admitad_uid: nil, adset_id: nil, affiliatly_v3: nil, alart: nil, aleid: nil, axwrt: nil, basis_cid: nil, beeswax_auction_id: nil, browser_language: nil, browser_name: nil, browser_version: nil, campaign_id: nil, clickid: nil, clid: nil, cpu_architecture: nil, current_url: nil, dclid: nil, device_model: nil, device_type: nil, device_vendor: nil, duration: nil, encoding: nil, engine_name: nil, engine_version: nil, epik: nil, fbc: nil, fbclid: nil, fbp: nil, fv: nil, gad_source: nil, gbraid: nil, gclid: nil, graid: nil, grclid: nil, host: nil, iframe: nil, im_ref: nil, ip: nil, irclickid: nil, is_bot: nil, li_fat_id: nil, msclkid: nil, ndclid: nil, new_s: nil, ob_click_id: nil, oppref: nil, os_name: nil, os_version: nil, page_hash: nil, pathname: nil, qclid: nil, rdt_cid: nil, received_at: nil, referrer: nil, referring_domain: nil, sacid: nil, sccid: nil, screen_height: nil, screen_width: nil, session_count: nil, sid: nil, sr: nil, title: nil, ttclid: nil, ttd_impression_id: nil, twclid: nil, uafvl: nil, user_agent: nil, utm_campaign: nil, utm_content: nil, utm_medium: nil, utm_name: nil, utm_source: nil, utm_term: nil, version: nil, viant_click_id: nil, viant_impression_id: nil, wbraid: nil, webview: nil, ylpcid: nil)
           #   Some parameter documentations has been truncated, see
           #   {OursprivacyIngest::Models::BatchCreateParams::Event::DefaultProperties} for
           #   more details.
@@ -760,6 +770,8 @@ module OursprivacyIngest
           #   @param admitad_uid [String, nil] The Admitad (Mitgo) affiliate Click ID. Ex: admitad_uid_abc123 Leading and trail
           #
           #   @param adset_id [String, nil] The adset id detected in the session. This is set by the web sdk automatically.
+          #
+          #   @param affiliatly_v3 [String, nil] The raw Affiliatly tracking cookie value (affiliatly_v3), set by the Affiliatly
           #
           #   @param alart [String, nil] The AppLovin alart query parameter. Ex: alart123 Leading and trailing whitespace
           #
@@ -1278,6 +1290,11 @@ module OursprivacyIngest
           #   @return [String, nil]
           optional :adset_id, String, nil?: true
 
+          # @!attribute affiliatly_v3
+          #
+          #   @return [String, nil]
+          optional :affiliatly_v3, String, nil?: true
+
           # @!attribute alart
           #
           #   @return [String, nil]
@@ -1675,7 +1692,7 @@ module OursprivacyIngest
                    },
                    nil?: true
 
-          # @!method initialize(_ef_transaction_id: nil, ad_id: nil, admitad_uid: nil, adset_id: nil, alart: nil, aleid: nil, axwrt: nil, basis_cid: nil, beeswax_auction_id: nil, campaign_id: nil, city: nil, clickid: nil, clid: nil, company_name: nil, consent: nil, country: nil, custom_properties: nil, date_of_birth: nil, dclid: nil, email: nil, epik: nil, external_id: nil, fbc: nil, fbclid: nil, fbp: nil, first_name: nil, gad_source: nil, gbraid: nil, gclid: nil, gender: nil, graid: nil, grclid: nil, im_ref: nil, ip: nil, irclickid: nil, is_bot: nil, job_title: nil, last_name: nil, li_fat_id: nil, msclkid: nil, ndclid: nil, ob_click_id: nil, oppref: nil, phone_number: nil, qclid: nil, rdt_cid: nil, referrer: nil, referring_domain: nil, sacid: nil, sccid: nil, sid: nil, state: nil, ttclid: nil, ttd_impression_id: nil, twclid: nil, user_agent: nil, user_agent_full_list: nil, utm_campaign: nil, utm_content: nil, utm_medium: nil, utm_name: nil, utm_source: nil, utm_term: nil, viant_click_id: nil, viant_impression_id: nil, wbraid: nil, ylpcid: nil, zip: nil)
+          # @!method initialize(_ef_transaction_id: nil, ad_id: nil, admitad_uid: nil, adset_id: nil, affiliatly_v3: nil, alart: nil, aleid: nil, axwrt: nil, basis_cid: nil, beeswax_auction_id: nil, campaign_id: nil, city: nil, clickid: nil, clid: nil, company_name: nil, consent: nil, country: nil, custom_properties: nil, date_of_birth: nil, dclid: nil, email: nil, epik: nil, external_id: nil, fbc: nil, fbclid: nil, fbp: nil, first_name: nil, gad_source: nil, gbraid: nil, gclid: nil, gender: nil, graid: nil, grclid: nil, im_ref: nil, ip: nil, irclickid: nil, is_bot: nil, job_title: nil, last_name: nil, li_fat_id: nil, msclkid: nil, ndclid: nil, ob_click_id: nil, oppref: nil, phone_number: nil, qclid: nil, rdt_cid: nil, referrer: nil, referring_domain: nil, sacid: nil, sccid: nil, sid: nil, state: nil, ttclid: nil, ttd_impression_id: nil, twclid: nil, user_agent: nil, user_agent_full_list: nil, utm_campaign: nil, utm_content: nil, utm_medium: nil, utm_name: nil, utm_source: nil, utm_term: nil, viant_click_id: nil, viant_impression_id: nil, wbraid: nil, ylpcid: nil, zip: nil)
           #   Some parameter documentations has been truncated, see
           #   {OursprivacyIngest::Models::BatchCreateParams::Event::UserProperties} for more
           #   details.
@@ -1690,6 +1707,8 @@ module OursprivacyIngest
           #   @param admitad_uid [String, nil] Leading and trailing whitespace is removed before validation.
           #
           #   @param adset_id [String, nil]
+          #
+          #   @param affiliatly_v3 [String, nil]
           #
           #   @param alart [String, nil]
           #

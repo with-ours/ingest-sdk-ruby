@@ -154,8 +154,9 @@ module OursprivacyIngest
         end
         attr_writer :identity_context
 
-        # The time at which the event occurred in milliseconds since UTC epoch. The time
-        # must be in the past and within the last 7 days.
+        # The time at which the event occurred in milliseconds since UTC epoch. Times
+        # older than one year are recorded as exactly one year ago, and future times as
+        # now.
         sig { returns(T.nilable(Float)) }
         attr_accessor :time
 
@@ -256,8 +257,9 @@ module OursprivacyIngest
           # identity resolution when the caller is a backend server rather than an end-user
           # browser.
           identity_context: nil,
-          # The time at which the event occurred in milliseconds since UTC epoch. The time
-          # must be in the past and within the last 7 days.
+          # The time at which the event occurred in milliseconds since UTC epoch. Times
+          # older than one year are recorded as exactly one year ago, and future times as
+          # now.
           time: nil,
           # The Ours Visitor ID stored in local storage and cookies on your web properties.
           # When present, this is used directly — no lookup by externalId, email, or phone
@@ -340,6 +342,13 @@ module OursprivacyIngest
           # Leading and trailing whitespace is removed before validation.
           sig { returns(T.nilable(String)) }
           attr_accessor :adset_id
+
+          # The raw Affiliatly tracking cookie value (affiliatly_v3), set by the Affiliatly
+          # script when a visitor lands from an affiliate link. Web-only. Ex:
+          # id_hash=abc&id_user=123&aff_uid=45 Leading and trailing whitespace is removed
+          # before validation.
+          sig { returns(T.nilable(String)) }
+          attr_accessor :affiliatly_v3
 
           # The AppLovin alart query parameter. Ex: alart123 Leading and trailing whitespace
           # is removed before validation.
@@ -746,6 +755,7 @@ module OursprivacyIngest
               ad_id: T.nilable(String),
               admitad_uid: T.nilable(String),
               adset_id: T.nilable(String),
+              affiliatly_v3: T.nilable(String),
               alart: T.nilable(String),
               aleid: T.nilable(String),
               axwrt: T.nilable(String),
@@ -844,6 +854,11 @@ module OursprivacyIngest
             # The adset id detected in the session. This is set by the web sdk automatically.
             # Leading and trailing whitespace is removed before validation.
             adset_id: nil,
+            # The raw Affiliatly tracking cookie value (affiliatly_v3), set by the Affiliatly
+            # script when a visitor lands from an affiliate link. Web-only. Ex:
+            # id_hash=abc&id_user=123&aff_uid=45 Leading and trailing whitespace is removed
+            # before validation.
+            affiliatly_v3: nil,
             # The AppLovin alart query parameter. Ex: alart123 Leading and trailing whitespace
             # is removed before validation.
             alart: nil,
@@ -1091,6 +1106,7 @@ module OursprivacyIngest
                 ad_id: T.nilable(String),
                 admitad_uid: T.nilable(String),
                 adset_id: T.nilable(String),
+                affiliatly_v3: T.nilable(String),
                 alart: T.nilable(String),
                 aleid: T.nilable(String),
                 axwrt: T.nilable(String),
@@ -1766,6 +1782,9 @@ module OursprivacyIngest
           attr_accessor :adset_id
 
           sig { returns(T.nilable(String)) }
+          attr_accessor :affiliatly_v3
+
+          sig { returns(T.nilable(String)) }
           attr_accessor :alart
 
           sig { returns(T.nilable(String)) }
@@ -2064,6 +2083,7 @@ module OursprivacyIngest
               ad_id: T.nilable(String),
               admitad_uid: T.nilable(String),
               adset_id: T.nilable(String),
+              affiliatly_v3: T.nilable(String),
               alart: T.nilable(String),
               aleid: T.nilable(String),
               axwrt: T.nilable(String),
@@ -2162,6 +2182,7 @@ module OursprivacyIngest
             # Leading and trailing whitespace is removed before validation.
             admitad_uid: nil,
             adset_id: nil,
+            affiliatly_v3: nil,
             alart: nil,
             aleid: nil,
             axwrt: nil,
@@ -2295,6 +2316,7 @@ module OursprivacyIngest
                 ad_id: T.nilable(String),
                 admitad_uid: T.nilable(String),
                 adset_id: T.nilable(String),
+                affiliatly_v3: T.nilable(String),
                 alart: T.nilable(String),
                 aleid: T.nilable(String),
                 axwrt: T.nilable(String),

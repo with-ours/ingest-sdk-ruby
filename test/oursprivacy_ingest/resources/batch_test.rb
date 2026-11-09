@@ -4,8 +4,6 @@ require_relative "../test_helper"
 
 class OursprivacyIngest::Test::Resources::BatchTest < OursprivacyIngest::Test::ResourceTest
   def test_create_required_params
-    skip("Mock server tests are disabled")
-
     response = @ours_privacy.batch.create(token: "P", events: [{distinctId: "P", event: "P"}])
 
     assert_pattern do
