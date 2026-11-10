@@ -66,11 +66,12 @@ jobs:
       sha256: ${{ steps.build.outputs.sha256 }}
 
     steps:
+      # Checks out the default branch. The requested commit is only checked out
+      # below, after it is confirmed to be on the default branch.
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
           fetch-depth: 0
-          ref: ${{ inputs.commit }}
 
       - name: Validate release version and commit
         id: validate
@@ -89,8 +90,9 @@ jobs:
             echo "Expected a full release commit SHA" >&2
             exit 1
           fi
-          test "$(git rev-parse HEAD)" = "$RELEASE_COMMIT"
           git merge-base --is-ancestor "$RELEASE_COMMIT" "origin/$DEFAULT_BRANCH"
+          git checkout --quiet --detach "$RELEASE_COMMIT"
+          test "$(git rev-parse HEAD)" = "$RELEASE_COMMIT"
           test "$(jq -er '.["."]' .release-please-manifest.json)" = "$RELEASE_VERSION"
           TAG="v${RELEASE_VERSION}"
           if git show-ref --verify --quiet "refs/tags/$TAG"; then
