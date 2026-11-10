@@ -17,12 +17,7 @@ on:
 permissions: {}
 
 jobs:
-  # Starts the release when a release PR merges. The merged-PR run cannot publish
-  # itself: for pull_request events GitHub checks the `release` environment's
-  # branch policy against refs/pull/N/merge, even after the merge, so a
-  # default-branch-only policy rejects it. Allowing refs/pull/*/merge instead
-  # would admit a workflow edited on any branch, so this job re-runs the workflow
-  # on the default branch, which the policy accepts.
+  # Starts this workflow on the default branch when a release PR merges.
   dispatch:
     if: >-
       github.event_name == 'pull_request' &&
@@ -50,8 +45,7 @@ jobs:
             -f "inputs[commit]=$RELEASE_COMMIT"
           echo "Dispatched publish-gem.yml on $DEFAULT_BRANCH for $RELEASE_VERSION at $RELEASE_COMMIT"
 
-  # Builds the gem with read-only permissions. This job cannot mint an OIDC token,
-  # so nothing that runs here can reach the RubyGems credential.
+  # Validates the release and builds the gem.
   build:
     if: github.event_name == 'workflow_dispatch' && github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
     name: build
@@ -66,8 +60,6 @@ jobs:
       sha256: ${{ steps.build.outputs.sha256 }}
 
     steps:
-      # Checks out the default branch. The requested commit is only checked out
-      # below, after it is confirmed to be on the default branch.
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
@@ -107,11 +99,7 @@ jobs:
           bundler: none
           bundler-cache: false
 
-      # No `bundle install` anywhere in this workflow: the gemspec needs no
-      # development gems, so no third-party gem code (extconf.rb, Rakefile
-      # requires) runs on the release path. This step produces the same gem as
-      # `rake build:gem`, which cannot be used here because the Rakefile
-      # requires development gems.
+      # Same output as `rake build:gem`.
       - name: Build gem
         id: build
         run: |
@@ -135,9 +123,7 @@ jobs:
           if-no-files-found: error
           retention-days: 7
 
-  # Pushes the gem built above. The `release` environment only accepts runs from
-  # the default branch. Once the RubyGems trusted publisher is registered against
-  # that environment, a workflow edited on any other branch cannot publish.
+  # Pushes the built gem, then tags and creates the GitHub Release.
   publish:
     name: publish
     needs: build
@@ -155,7 +141,7 @@ jobs:
       RELEASE_COMMIT: ${{ needs.build.outputs.commit }}
 
     steps:
-      # Needed for tagging only. Nothing from the checkout is executed.
+      # Needed for tagging.
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
@@ -182,15 +168,10 @@ jobs:
           set -euo pipefail
           echo "$GEM_SHA256  $GEM_FILE" | sha256sum --check --strict
 
-      # Trusted publishing: RubyGems.org exchanges this job's OIDC token for a
-      # short-lived API key under the publisher registered for this repository,
-      # workflow and environment.
       - name: Configure RubyGems credentials
         uses: rubygems/configure-rubygems-credentials@dc5a8d8553e6ee01fc26761a49e99e733d17954a # v2.1.0
 
-      # RubyGems.org rejects a second push of a version, so a re-run after the
-      # push succeeded but tagging failed would stop here. Skip the push when the
-      # registry already serves this exact file and carry on to tagging.
+      # Skips the push when RubyGems.org already serves this exact file, so the job can be re-run.
       - name: Publish to RubyGems.org
         env:
           GEM_FILE: ${{ runner.temp }}/gem/${{ needs.build.outputs.gem }}
