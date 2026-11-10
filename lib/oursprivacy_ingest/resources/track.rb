@@ -6,20 +6,20 @@ module OursprivacyIngest
       # Some parameter documentations has been truncated, see
       # {OursprivacyIngest::Models::TrackEventParams} for more details.
       #
-      # Track events from your server. Include userId, externalId, email, or
+      # Track events from your server. Include visitorId, externalId, email, or
       # userProperties.phone_number to associate the event with an existing visitor.
-      # Identity resolution runs in priority order: userId (direct, no lookup) →
+      # Identity resolution runs in priority order: visitorId (direct, no lookup) →
       # externalId → email → userProperties.phone_number. Each lookup runs only if
       # earlier identifiers did not resolve a visitor. Phone matching ignores common
       # formatting and an international + or 00 prefix, but does not infer a country
-      # code. If you know both userId and externalId, send both. For top-level visitor
-      # properties: null clears the existing value, while undefined, omitted fields, and
-      # empty strings are ignored. For entries inside custom_properties: null,
-      # undefined, and empty strings are all ignored (custom_properties use merge
+      # code. If you know both visitorId and externalId, send both. For top-level
+      # visitor properties: null clears the existing value, while undefined, omitted
+      # fields, and empty strings are ignored. For entries inside custom_properties:
+      # null, undefined, and empty strings are all ignored (custom_properties use merge
       # semantics). See https://docs.oursprivacy.com/docs/data-types for details and
       # common pitfalls.
       #
-      # @overload event(token:, event:, default_properties: nil, distinct_id: nil, email: nil, event_properties: nil, external_id: nil, identity_context: nil, time: nil, user_id: nil, user_properties: nil, request_options: {})
+      # @overload event(token:, event:, default_properties: nil, distinct_id: nil, email: nil, event_properties: nil, external_id: nil, identity_context: nil, time: nil, user_id: nil, user_properties: nil, visitor_id: nil, request_options: {})
       #
       # @param token [String] The token for your Source. You can find this in the dashboard. Leading and trail
       #
@@ -29,11 +29,11 @@ module OursprivacyIngest
       #
       # @param distinct_id [String, nil] A unique identifier for this event used for deduplication. Highly recommended —
       #
-      # @param email [String, nil] The email address of a user. When userId is absent and externalId does not resol
+      # @param email [String, nil] The email address of a user. When visitorId is absent and externalId does not re
       #
       # @param event_properties [Hash{Symbol=>String, Float, Boolean, Array<String, Float, Boolean, Array<Object>, Hash{Symbol=>Object}, nil>, Hash{Symbol=>String, Float, Boolean, Array<String, Float, Boolean, Array<Object>, Hash{Symbol=>Object}, nil>, Hash{Symbol=>String, Float, Boolean, Array<String, Float, Boolean, Array<Object>, Hash{Symbol=>Object}, nil>, Hash{Symbol=>String, Float, Boolean, Array<String, Float, Boolean, Array<Object>, Hash{Symbol=>Object}, nil>, Hash{Symbol=>String, Float, Boolean, Array<String, Float, Boolean, Array<Object>, Hash{Symbol=>Object}, nil>, nil}, nil}, nil}, nil}, nil}, nil] Any additional event properties you want to pass along. Use at most 200 nonempty
       #
-      # @param external_id [String, nil] Your system's unique identifier for this user. When userId is absent, we search
+      # @param external_id [String, nil] Your system's unique identifier for this user. When visitorId is absent, we sear
       #
       # @param identity_context [OursprivacyIngest::Models::TrackEventParams::IdentityContext, nil] End-user network context for server-side calls. Required for probabilistic ident
       #
@@ -42,6 +42,8 @@ module OursprivacyIngest
       # @param user_id [String, nil] The Ours Visitor ID stored in local storage and cookies on your web properties.
       #
       # @param user_properties [OursprivacyIngest::Models::TrackEventParams::UserProperties, nil] Properties to set on the visitor. (optional) You can also update these propertie
+      #
+      # @param visitor_id [String, nil] The Ours Visitor ID stored in local storage and cookies on your web properties.
       #
       # @param request_options [OursprivacyIngest::RequestOptions, Hash{Symbol=>Object}, nil]
       #

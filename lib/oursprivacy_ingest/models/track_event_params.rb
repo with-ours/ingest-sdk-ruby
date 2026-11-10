@@ -43,7 +43,7 @@ module OursprivacyIngest
       optional :distinct_id, String, api_name: :distinctId, nil?: true
 
       # @!attribute email
-      #   The email address of a user. When userId is absent and externalId does not
+      #   The email address of a user. When visitorId is absent and externalId does not
       #   resolve a visitor, we search your account for a visitor with this email. If no
       #   match is found, we try userProperties.phone_number before creating a new
       #   visitor. Leading and trailing whitespace is removed before validation.
@@ -69,11 +69,11 @@ module OursprivacyIngest
                nil?: true
 
       # @!attribute external_id
-      #   Your system's unique identifier for this user. When userId is absent, we search
-      #   your account for an existing visitor with this externalId. If no match is found,
-      #   we try email and then userProperties.phone_number before creating a new visitor.
-      #   If you also have the userId from cookies or local storage, send both — it
-      #   removes the lookup round-trip. Non-string input is converted to text before
+      #   Your system's unique identifier for this user. When visitorId is absent, we
+      #   search your account for an existing visitor with this externalId. If no match is
+      #   found, we try email and then userProperties.phone_number before creating a new
+      #   visitor. If you also have the visitorId from cookies or local storage, send both
+      #   — it removes the lookup round-trip. Non-string input is converted to text before
       #   validation; clients should send a string. Leading and trailing whitespace is
       #   removed before validation.
       #
@@ -100,11 +100,14 @@ module OursprivacyIngest
       optional :time, Float, nil?: true
 
       # @!attribute user_id
+      #   @deprecated
+      #
       #   The Ours Visitor ID stored in local storage and cookies on your web properties.
       #   When present, this is used directly — no lookup by externalId, email, or phone
-      #   is performed. If you have both a userId and an externalId, send both so the
-      #   event is attached to the right visitor without any lookup overhead. Leading and
-      #   trailing whitespace is removed before validation.
+      #   is performed. If you have both a visitorId and an externalId, send both so the
+      #   event is attached to the right visitor without any lookup overhead. visitorId
+      #   takes precedence over the deprecated userId alias. Leading and trailing
+      #   whitespace is removed before validation.
       #
       #   @return [String, nil]
       optional :user_id, String, api_name: :userId, nil?: true
@@ -119,7 +122,18 @@ module OursprivacyIngest
                api_name: :userProperties,
                nil?: true
 
-      # @!method initialize(token:, event:, default_properties: nil, distinct_id: nil, email: nil, event_properties: nil, external_id: nil, identity_context: nil, time: nil, user_id: nil, user_properties: nil, request_options: {})
+      # @!attribute visitor_id
+      #   The Ours Visitor ID stored in local storage and cookies on your web properties.
+      #   When present, this is used directly — no lookup by externalId, email, or phone
+      #   is performed. If you have both a visitorId and an externalId, send both so the
+      #   event is attached to the right visitor without any lookup overhead. visitorId
+      #   takes precedence over the deprecated userId alias. Leading and trailing
+      #   whitespace is removed before validation.
+      #
+      #   @return [String, nil]
+      optional :visitor_id, String, api_name: :visitorId, nil?: true
+
+      # @!method initialize(token:, event:, default_properties: nil, distinct_id: nil, email: nil, event_properties: nil, external_id: nil, identity_context: nil, time: nil, user_id: nil, user_properties: nil, visitor_id: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {OursprivacyIngest::Models::TrackEventParams} for more details.
       #
@@ -131,11 +145,11 @@ module OursprivacyIngest
       #
       #   @param distinct_id [String, nil] A unique identifier for this event used for deduplication. Highly recommended —
       #
-      #   @param email [String, nil] The email address of a user. When userId is absent and externalId does not resol
+      #   @param email [String, nil] The email address of a user. When visitorId is absent and externalId does not re
       #
       #   @param event_properties [Hash{Symbol=>String, Float, Boolean, Array<String, Float, Boolean, Array<Object>, Hash{Symbol=>Object}, nil>, Hash{Symbol=>String, Float, Boolean, Array<String, Float, Boolean, Array<Object>, Hash{Symbol=>Object}, nil>, Hash{Symbol=>String, Float, Boolean, Array<String, Float, Boolean, Array<Object>, Hash{Symbol=>Object}, nil>, Hash{Symbol=>String, Float, Boolean, Array<String, Float, Boolean, Array<Object>, Hash{Symbol=>Object}, nil>, Hash{Symbol=>String, Float, Boolean, Array<String, Float, Boolean, Array<Object>, Hash{Symbol=>Object}, nil>, nil}, nil}, nil}, nil}, nil}, nil] Any additional event properties you want to pass along. Use at most 200 nonempty
       #
-      #   @param external_id [String, nil] Your system's unique identifier for this user. When userId is absent, we search
+      #   @param external_id [String, nil] Your system's unique identifier for this user. When visitorId is absent, we sear
       #
       #   @param identity_context [OursprivacyIngest::Models::TrackEventParams::IdentityContext, nil] End-user network context for server-side calls. Required for probabilistic ident
       #
@@ -144,6 +158,8 @@ module OursprivacyIngest
       #   @param user_id [String, nil] The Ours Visitor ID stored in local storage and cookies on your web properties.
       #
       #   @param user_properties [OursprivacyIngest::Models::TrackEventParams::UserProperties, nil] Properties to set on the visitor. (optional) You can also update these propertie
+      #
+      #   @param visitor_id [String, nil] The Ours Visitor ID stored in local storage and cookies on your web properties.
       #
       #   @param request_options [OursprivacyIngest::RequestOptions, Hash{Symbol=>Object}]
 
