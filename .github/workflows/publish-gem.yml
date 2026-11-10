@@ -16,19 +16,44 @@ on:
 
 permissions: {}
 
-concurrency:
-  group: release-${{ github.repository }}
-  cancel-in-progress: false
-
 jobs:
+  # Starts the release when a release PR merges. The merged-PR run cannot publish
+  # itself: for pull_request events GitHub checks the `release` environment's
+  # branch policy against refs/pull/N/merge, even after the merge, so a
+  # default-branch-only policy rejects it. Allowing refs/pull/*/merge instead
+  # would admit a workflow edited on any branch, so this job re-runs the workflow
+  # on the default branch, which the policy accepts.
+  dispatch:
+    if: >-
+      github.event_name == 'pull_request' &&
+      github.event.pull_request.merged == true &&
+      github.event.pull_request.base.ref == github.event.repository.default_branch &&
+      startsWith(github.event.pull_request.title, 'release: ')
+    name: dispatch release
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      actions: write
+    steps:
+      - name: Run this workflow on the default branch
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_TITLE: ${{ github.event.pull_request.title }}
+          RELEASE_COMMIT: ${{ github.event.pull_request.merge_commit_sha }}
+          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+        run: |
+          set -euo pipefail
+          RELEASE_VERSION="${PR_TITLE#release: }"
+          gh api --method POST "repos/$GITHUB_REPOSITORY/actions/workflows/publish-gem.yml/dispatches" \
+            -f "ref=$DEFAULT_BRANCH" \
+            -f "inputs[version]=$RELEASE_VERSION" \
+            -f "inputs[commit]=$RELEASE_COMMIT"
+          echo "Dispatched publish-gem.yml on $DEFAULT_BRANCH for $RELEASE_VERSION at $RELEASE_COMMIT"
+
   # Builds the gem with read-only permissions. This job cannot mint an OIDC token,
   # so nothing that runs here can reach the RubyGems credential.
   build:
-    if: >-
-      (github.event_name == 'workflow_dispatch' && github.ref == format('refs/heads/{0}', github.event.repository.default_branch)) ||
-      (github.event.pull_request.merged == true &&
-      github.event.pull_request.base.ref == github.event.repository.default_branch &&
-      startsWith(github.event.pull_request.title, 'release: '))
+    if: github.event_name == 'workflow_dispatch' && github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
     name: build
     runs-on: ubuntu-latest
     timeout-minutes: 10
@@ -45,23 +70,17 @@ jobs:
         with:
           persist-credentials: false
           fetch-depth: 0
-          ref: ${{ github.event.pull_request.merge_commit_sha || inputs.commit }}
+          ref: ${{ inputs.commit }}
 
       - name: Validate release version and commit
         id: validate
         env:
-          PR_TITLE: ${{ github.event.pull_request.title }}
           INPUT_VERSION: ${{ inputs.version }}
-          RELEASE_COMMIT: ${{ github.event.pull_request.merge_commit_sha || inputs.commit }}
+          RELEASE_COMMIT: ${{ inputs.commit }}
           DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
         run: |
           set -euo pipefail
-          if [[ "$GITHUB_EVENT_NAME" == 'pull_request' ]]; then
-            RELEASE_VERSION="${PR_TITLE#release: }"
-          else
-            RELEASE_VERSION="$INPUT_VERSION"
-          fi
-          RELEASE_VERSION="${RELEASE_VERSION#v}"
+          RELEASE_VERSION="${INPUT_VERSION#v}"
           if ! [[ "$RELEASE_VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z.-]+)?(\+[0-9A-Za-z.-]+)?$ ]]; then
             echo "Expected a semantic release version" >&2
             exit 1
@@ -83,6 +102,7 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@de492cf36cbab201753d720ce4f4e336cd688c94 # v1.336.0
         with:
+          bundler: none
           bundler-cache: false
 
       # No `bundle install` anywhere in this workflow: the gemspec needs no
@@ -114,14 +134,17 @@ jobs:
           retention-days: 7
 
   # Pushes the gem built above. The `release` environment only accepts runs from
-  # the default branch, and the RubyGems trusted publisher is registered against
-  # that environment, so a workflow edited on any other branch cannot publish.
+  # the default branch. Once the RubyGems trusted publisher is registered against
+  # that environment, a workflow edited on any other branch cannot publish.
   publish:
     name: publish
     needs: build
     runs-on: ubuntu-latest
     timeout-minutes: 15
     environment: release
+    concurrency:
+      group: release-${{ github.repository }}
+      cancel-in-progress: false
     permissions:
       contents: write
       id-token: write
@@ -140,6 +163,7 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@de492cf36cbab201753d720ce4f4e336cd688c94 # v1.336.0
         with:
+          bundler: none
           bundler-cache: false
 
       - name: Download gem
@@ -162,12 +186,21 @@ jobs:
       - name: Configure RubyGems credentials
         uses: rubygems/configure-rubygems-credentials@dc5a8d8553e6ee01fc26761a49e99e733d17954a # v2.1.0
 
+      # RubyGems.org rejects a second push of a version, so a re-run after the
+      # push succeeded but tagging failed would stop here. Skip the push when the
+      # registry already serves this exact file and carry on to tagging.
       - name: Publish to RubyGems.org
         env:
           GEM_FILE: ${{ runner.temp }}/gem/${{ needs.build.outputs.gem }}
+          GEM_SHA256: ${{ needs.build.outputs.sha256 }}
         run: |
           set -euo pipefail
-          gem push "$GEM_FILE"
+          published="$(curl -fsS --retry 3 https://rubygems.org/api/v1/versions/oursprivacy-ingest.json || echo '[]')"
+          if jq -e --arg sha "$GEM_SHA256" 'any(.[]; .sha == $sha)' <<<"$published" >/dev/null; then
+            echo "RubyGems.org already serves this gem (sha256 $GEM_SHA256); skipping push"
+          else
+            gem push "$GEM_FILE"
+          fi
 
       - name: Tag and create GitHub Release
         env:
