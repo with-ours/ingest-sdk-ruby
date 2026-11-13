@@ -69,9 +69,7 @@ module OursprivacyIngest
       sig { returns(T.nilable(String)) }
       attr_accessor :external_id
 
-      # End-user network context for server-side calls. Required for probabilistic
-      # identity resolution when the caller is a backend server rather than an end-user
-      # browser.
+      # Deprecated and ignored. Accepted so existing clients keep working.
       sig do
         returns(
           T.nilable(OursprivacyIngest::VisitorUpsertParams::IdentityContext)
@@ -151,9 +149,7 @@ module OursprivacyIngest
         # validation; clients should send a string. Leading and trailing whitespace is
         # removed before validation.
         external_id: nil,
-        # End-user network context for server-side calls. Required for probabilistic
-        # identity resolution when the caller is a backend server rather than an end-user
-        # browser.
+        # Deprecated and ignored. Accepted so existing clients keep working.
         identity_context: nil,
         # The Ours Visitor ID stored in local storage and cookies on your web properties.
         # When present, this is used directly — no lookup by externalId, email, or phone
@@ -2918,9 +2914,7 @@ module OursprivacyIngest
         sig { returns(String) }
         attr_accessor :user_agent
 
-        # End-user network context for server-side calls. Required for probabilistic
-        # identity resolution when the caller is a backend server rather than an end-user
-        # browser.
+        # Deprecated and ignored. Accepted so existing clients keep working.
         sig { params(ip: String, user_agent: String).returns(T.attached_class) }
         def self.new(
           # The end-user IP address (not the server IP).
