@@ -124,6 +124,12 @@ module OursprivacyIngest
         #   @return [String, nil]
         optional :ad_id, String, nil?: true
 
+        # @!attribute adct
+        #   Leading and trailing whitespace is removed before validation.
+        #
+        #   @return [String, nil]
+        optional :adct, String, nil?: true
+
         # @!attribute admitad_uid
         #   Leading and trailing whitespace is removed before validation.
         #
@@ -535,7 +541,7 @@ module OursprivacyIngest
         #   @return [String, Float, Boolean, Array<Object>, Hash{Symbol=>Object}, nil]
         optional :zip, union: -> { OursprivacyIngest::VisitorUpsertParams::UserProperties::Zip }, nil?: true
 
-        # @!method initialize(_ef_transaction_id: nil, ad_id: nil, admitad_uid: nil, adset_id: nil, affiliatly_v3: nil, alart: nil, aleid: nil, axwrt: nil, basis_cid: nil, beeswax_auction_id: nil, campaign_id: nil, city: nil, clickid: nil, clid: nil, company_name: nil, consent: nil, country: nil, custom_properties: nil, date_of_birth: nil, dclid: nil, email: nil, epik: nil, external_id: nil, fbc: nil, fbclid: nil, fbp: nil, first_name: nil, gad_source: nil, gbraid: nil, gclid: nil, gender: nil, graid: nil, grclid: nil, im_ref: nil, ip: nil, irclickid: nil, is_bot: nil, job_title: nil, last_name: nil, li_fat_id: nil, msclkid: nil, ndclid: nil, ob_click_id: nil, oppref: nil, phone_number: nil, qclid: nil, rdt_cid: nil, referrer: nil, referring_domain: nil, sacid: nil, sccid: nil, sid: nil, state: nil, ttclid: nil, ttd_impression_id: nil, twclid: nil, user_agent: nil, user_agent_full_list: nil, utm_campaign: nil, utm_content: nil, utm_medium: nil, utm_name: nil, utm_source: nil, utm_term: nil, viant_click_id: nil, viant_impression_id: nil, wbraid: nil, ylpcid: nil, zip: nil)
+        # @!method initialize(_ef_transaction_id: nil, ad_id: nil, adct: nil, admitad_uid: nil, adset_id: nil, affiliatly_v3: nil, alart: nil, aleid: nil, axwrt: nil, basis_cid: nil, beeswax_auction_id: nil, campaign_id: nil, city: nil, clickid: nil, clid: nil, company_name: nil, consent: nil, country: nil, custom_properties: nil, date_of_birth: nil, dclid: nil, email: nil, epik: nil, external_id: nil, fbc: nil, fbclid: nil, fbp: nil, first_name: nil, gad_source: nil, gbraid: nil, gclid: nil, gender: nil, graid: nil, grclid: nil, im_ref: nil, ip: nil, irclickid: nil, is_bot: nil, job_title: nil, last_name: nil, li_fat_id: nil, msclkid: nil, ndclid: nil, ob_click_id: nil, oppref: nil, phone_number: nil, qclid: nil, rdt_cid: nil, referrer: nil, referring_domain: nil, sacid: nil, sccid: nil, sid: nil, state: nil, ttclid: nil, ttd_impression_id: nil, twclid: nil, user_agent: nil, user_agent_full_list: nil, utm_campaign: nil, utm_content: nil, utm_medium: nil, utm_name: nil, utm_source: nil, utm_term: nil, viant_click_id: nil, viant_impression_id: nil, wbraid: nil, ylpcid: nil, zip: nil)
         #   Some parameter documentations has been truncated, see
         #   {OursprivacyIngest::Models::VisitorUpsertParams::UserProperties} for more
         #   details.
@@ -547,6 +553,8 @@ module OursprivacyIngest
         #   @param _ef_transaction_id [String, nil] Leading and trailing whitespace is removed before validation.
         #
         #   @param ad_id [String, nil]
+        #
+        #   @param adct [String, nil] Leading and trailing whitespace is removed before validation.
         #
         #   @param admitad_uid [String, nil] Leading and trailing whitespace is removed before validation.
         #
@@ -1360,6 +1368,13 @@ module OursprivacyIngest
         #   @return [String, nil]
         optional :ad_id, String, nil?: true
 
+        # @!attribute adct
+        #   The AdRoll Click ID (adct) from the landing URL. Ex: adct123 Leading and
+        #   trailing whitespace is removed before validation.
+        #
+        #   @return [String, nil]
+        optional :adct, String, nil?: true
+
         # @!attribute admitad_uid
         #   The Admitad (Mitgo) affiliate Click ID. Ex: admitad_uid_abc123 Leading and
         #   trailing whitespace is removed before validation.
@@ -1929,7 +1944,7 @@ module OursprivacyIngest
         #   @return [String, nil]
         optional :ylpcid, String, nil?: true
 
-        # @!method initialize(_ef_transaction_id: nil, active_duration: nil, ad_id: nil, admitad_uid: nil, adset_id: nil, affiliatly_v3: nil, alart: nil, aleid: nil, axwrt: nil, basis_cid: nil, beeswax_auction_id: nil, browser_language: nil, browser_name: nil, browser_version: nil, campaign_id: nil, clickid: nil, clid: nil, cpu_architecture: nil, current_url: nil, dclid: nil, device_model: nil, device_type: nil, device_vendor: nil, duration: nil, encoding: nil, engine_name: nil, engine_version: nil, epik: nil, fbc: nil, fbclid: nil, fbp: nil, fv: nil, gad_source: nil, gbraid: nil, gclid: nil, graid: nil, grclid: nil, host: nil, iframe: nil, im_ref: nil, ip: nil, irclickid: nil, is_bot: nil, li_fat_id: nil, msclkid: nil, ndclid: nil, new_s: nil, ob_click_id: nil, oppref: nil, os_name: nil, os_version: nil, page_hash: nil, pathname: nil, qclid: nil, rdt_cid: nil, received_at: nil, referrer: nil, referring_domain: nil, sacid: nil, sccid: nil, screen_height: nil, screen_width: nil, session_count: nil, sid: nil, sr: nil, title: nil, ttclid: nil, ttd_impression_id: nil, twclid: nil, uafvl: nil, user_agent: nil, utm_campaign: nil, utm_content: nil, utm_medium: nil, utm_name: nil, utm_source: nil, utm_term: nil, version: nil, viant_click_id: nil, viant_impression_id: nil, wbraid: nil, webview: nil, ylpcid: nil)
+        # @!method initialize(_ef_transaction_id: nil, active_duration: nil, ad_id: nil, adct: nil, admitad_uid: nil, adset_id: nil, affiliatly_v3: nil, alart: nil, aleid: nil, axwrt: nil, basis_cid: nil, beeswax_auction_id: nil, browser_language: nil, browser_name: nil, browser_version: nil, campaign_id: nil, clickid: nil, clid: nil, cpu_architecture: nil, current_url: nil, dclid: nil, device_model: nil, device_type: nil, device_vendor: nil, duration: nil, encoding: nil, engine_name: nil, engine_version: nil, epik: nil, fbc: nil, fbclid: nil, fbp: nil, fv: nil, gad_source: nil, gbraid: nil, gclid: nil, graid: nil, grclid: nil, host: nil, iframe: nil, im_ref: nil, ip: nil, irclickid: nil, is_bot: nil, li_fat_id: nil, msclkid: nil, ndclid: nil, new_s: nil, ob_click_id: nil, oppref: nil, os_name: nil, os_version: nil, page_hash: nil, pathname: nil, qclid: nil, rdt_cid: nil, received_at: nil, referrer: nil, referring_domain: nil, sacid: nil, sccid: nil, screen_height: nil, screen_width: nil, session_count: nil, sid: nil, sr: nil, title: nil, ttclid: nil, ttd_impression_id: nil, twclid: nil, uafvl: nil, user_agent: nil, utm_campaign: nil, utm_content: nil, utm_medium: nil, utm_name: nil, utm_source: nil, utm_term: nil, version: nil, viant_click_id: nil, viant_impression_id: nil, wbraid: nil, webview: nil, ylpcid: nil)
         #   Some parameter documentations has been truncated, see
         #   {OursprivacyIngest::Models::VisitorUpsertParams::DefaultProperties} for more
         #   details.
@@ -1943,6 +1958,8 @@ module OursprivacyIngest
         #   @param active_duration [Float, nil] The total time in milliseconds this tab has been visible since the page loaded
         #
         #   @param ad_id [String, nil] The ad id detected in the session. This is set by the web sdk automatically. Lea
+        #
+        #   @param adct [String, nil] The AdRoll Click ID (adct) from the landing URL. Ex: adct123 Leading and trailin
         #
         #   @param admitad_uid [String, nil] The Admitad (Mitgo) affiliate Click ID. Ex: admitad_uid_abc123 Leading and trail
         #

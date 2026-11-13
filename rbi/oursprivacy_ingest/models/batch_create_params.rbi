@@ -353,6 +353,11 @@ module OursprivacyIngest
           sig { returns(T.nilable(String)) }
           attr_accessor :ad_id
 
+          # The AdRoll Click ID (adct) from the landing URL. Ex: adct123 Leading and
+          # trailing whitespace is removed before validation.
+          sig { returns(T.nilable(String)) }
+          attr_accessor :adct
+
           # The Admitad (Mitgo) affiliate Click ID. Ex: admitad_uid_abc123 Leading and
           # trailing whitespace is removed before validation.
           sig { returns(T.nilable(String)) }
@@ -773,6 +778,7 @@ module OursprivacyIngest
               _ef_transaction_id: T.nilable(String),
               active_duration: T.nilable(Float),
               ad_id: T.nilable(String),
+              adct: T.nilable(String),
               admitad_uid: T.nilable(String),
               adset_id: T.nilable(String),
               affiliatly_v3: T.nilable(String),
@@ -868,6 +874,9 @@ module OursprivacyIngest
             # The ad id detected in the session. This is set by the web sdk automatically.
             # Leading and trailing whitespace is removed before validation.
             ad_id: nil,
+            # The AdRoll Click ID (adct) from the landing URL. Ex: adct123 Leading and
+            # trailing whitespace is removed before validation.
+            adct: nil,
             # The Admitad (Mitgo) affiliate Click ID. Ex: admitad_uid_abc123 Leading and
             # trailing whitespace is removed before validation.
             admitad_uid: nil,
@@ -1124,6 +1133,7 @@ module OursprivacyIngest
                 _ef_transaction_id: T.nilable(String),
                 active_duration: T.nilable(Float),
                 ad_id: T.nilable(String),
+                adct: T.nilable(String),
                 admitad_uid: T.nilable(String),
                 adset_id: T.nilable(String),
                 affiliatly_v3: T.nilable(String),
@@ -1796,6 +1806,10 @@ module OursprivacyIngest
 
           # Leading and trailing whitespace is removed before validation.
           sig { returns(T.nilable(String)) }
+          attr_accessor :adct
+
+          # Leading and trailing whitespace is removed before validation.
+          sig { returns(T.nilable(String)) }
           attr_accessor :admitad_uid
 
           sig { returns(T.nilable(String)) }
@@ -2101,6 +2115,7 @@ module OursprivacyIngest
             params(
               _ef_transaction_id: T.nilable(String),
               ad_id: T.nilable(String),
+              adct: T.nilable(String),
               admitad_uid: T.nilable(String),
               adset_id: T.nilable(String),
               affiliatly_v3: T.nilable(String),
@@ -2199,6 +2214,8 @@ module OursprivacyIngest
             # Leading and trailing whitespace is removed before validation.
             _ef_transaction_id: nil,
             ad_id: nil,
+            # Leading and trailing whitespace is removed before validation.
+            adct: nil,
             # Leading and trailing whitespace is removed before validation.
             admitad_uid: nil,
             adset_id: nil,
@@ -2334,6 +2351,7 @@ module OursprivacyIngest
               {
                 _ef_transaction_id: T.nilable(String),
                 ad_id: T.nilable(String),
+                adct: T.nilable(String),
                 admitad_uid: T.nilable(String),
                 adset_id: T.nilable(String),
                 affiliatly_v3: T.nilable(String),

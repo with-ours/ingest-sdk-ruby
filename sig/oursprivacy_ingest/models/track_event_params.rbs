@@ -82,6 +82,7 @@ module OursprivacyIngest
           _ef_transaction_id: String?,
           active_duration: Float?,
           ad_id: String?,
+          adct: String?,
           admitad_uid: String?,
           adset_id: String?,
           :affiliatly_v3 => String?,
@@ -170,6 +171,8 @@ module OursprivacyIngest
         attr_accessor active_duration: Float?
 
         attr_accessor ad_id: String?
+
+        attr_accessor adct: String?
 
         attr_accessor admitad_uid: String?
 
@@ -335,6 +338,7 @@ module OursprivacyIngest
           ?_ef_transaction_id: String?,
           ?active_duration: Float?,
           ?ad_id: String?,
+          ?adct: String?,
           ?admitad_uid: String?,
           ?adset_id: String?,
           ?affiliatly_v3: String?,
@@ -421,6 +425,7 @@ module OursprivacyIngest
           _ef_transaction_id: String?,
           active_duration: Float?,
           ad_id: String?,
+          adct: String?,
           admitad_uid: String?,
           adset_id: String?,
           :affiliatly_v3 => String?,
@@ -680,6 +685,7 @@ module OursprivacyIngest
         {
           _ef_transaction_id: String?,
           ad_id: String?,
+          adct: String?,
           admitad_uid: String?,
           adset_id: String?,
           :affiliatly_v3 => String?,
@@ -753,6 +759,8 @@ module OursprivacyIngest
         attr_accessor _ef_transaction_id: String?
 
         attr_accessor ad_id: String?
+
+        attr_accessor adct: String?
 
         attr_accessor admitad_uid: String?
 
@@ -891,6 +899,7 @@ module OursprivacyIngest
         def initialize: (
           ?_ef_transaction_id: String?,
           ?ad_id: String?,
+          ?adct: String?,
           ?admitad_uid: String?,
           ?adset_id: String?,
           ?affiliatly_v3: String?,
@@ -963,6 +972,7 @@ module OursprivacyIngest
         def to_hash: -> {
           _ef_transaction_id: String?,
           ad_id: String?,
+          adct: String?,
           admitad_uid: String?,
           adset_id: String?,
           :affiliatly_v3 => String?,
