@@ -35,7 +35,7 @@ module OursprivacyIngest
       #
       # @param external_id [String, nil] Your system's unique identifier for this user. When visitorId is absent, we sear
       #
-      # @param identity_context [OursprivacyIngest::Models::TrackEventParams::IdentityContext, nil] End-user network context for server-side calls. Required for probabilistic ident
+      # @param identity_context [OursprivacyIngest::Models::TrackEventParams::IdentityContext, nil] Deprecated and ignored. Accepted so existing clients keep working.
       #
       # @param time [Float, nil] The time at which the event occurred in milliseconds since UTC epoch. Times olde
       #
