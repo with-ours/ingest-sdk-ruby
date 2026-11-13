@@ -56,9 +56,9 @@ module OursprivacyIngest
       optional :external_id, String, api_name: :externalId, nil?: true
 
       # @!attribute identity_context
-      #   End-user network context for server-side calls. Required for probabilistic
-      #   identity resolution when the caller is a backend server rather than an end-user
-      #   browser.
+      #   @deprecated
+      #
+      #   Deprecated and ignored. Accepted so existing clients keep working.
       #
       #   @return [OursprivacyIngest::Models::VisitorUpsertParams::IdentityContext, nil]
       optional :identity_context,
@@ -104,7 +104,7 @@ module OursprivacyIngest
       #
       #   @param external_id [String, nil] Your system's unique identifier for this user. When visitorId is absent, we sear
       #
-      #   @param identity_context [OursprivacyIngest::Models::VisitorUpsertParams::IdentityContext, nil] End-user network context for server-side calls. Required for probabilistic ident
+      #   @param identity_context [OursprivacyIngest::Models::VisitorUpsertParams::IdentityContext, nil] Deprecated and ignored. Accepted so existing clients keep working.
       #
       #   @param user_id [String, nil] The Ours Visitor ID stored in local storage and cookies on your web properties.
       #
@@ -2151,6 +2151,7 @@ module OursprivacyIngest
         end
       end
 
+      # @deprecated
       class IdentityContext < OursprivacyIngest::Internal::Type::BaseModel
         # @!attribute ip
         #   The end-user IP address (not the server IP).
@@ -2165,9 +2166,7 @@ module OursprivacyIngest
         required :user_agent, String, api_name: :userAgent
 
         # @!method initialize(ip:, user_agent:)
-        #   End-user network context for server-side calls. Required for probabilistic
-        #   identity resolution when the caller is a backend server rather than an end-user
-        #   browser.
+        #   Deprecated and ignored. Accepted so existing clients keep working.
         #
         #   @param ip [String] The end-user IP address (not the server IP).
         #
