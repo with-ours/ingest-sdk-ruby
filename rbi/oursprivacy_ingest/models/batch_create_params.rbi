@@ -349,6 +349,33 @@ module OursprivacyIngest
           sig { returns(T.nilable(String)) }
           attr_accessor :ad_id
 
+          # The platform ad id resolved by the Ours server for this event. Ex: 120212
+          # Leading and trailing whitespace is removed before validation.
+          sig { returns(T.nilable(String)) }
+          attr_accessor :ad_touch_ad_id
+
+          # The platform ad set or ad group id resolved by the Ours server for this event.
+          # Ex: 120211 Leading and trailing whitespace is removed before validation.
+          sig { returns(T.nilable(String)) }
+          attr_accessor :ad_touch_adset_id
+
+          # The platform campaign id resolved by the Ours server for this event. Ex: 120210
+          # Leading and trailing whitespace is removed before validation.
+          sig { returns(T.nilable(String)) }
+          attr_accessor :ad_touch_campaign_id
+
+          # The ad platform resolved by the Ours server from the ad tag, ad ids, and click
+          # ids on this event. Ex: meta, google Leading and trailing whitespace is removed
+          # before validation.
+          sig { returns(T.nilable(String)) }
+          attr_accessor :ad_touch_platform
+
+          # Which signal the Ours server used to resolve the ad touch: ours_ad, url_ids,
+          # gad_campaignid, utm_id, or click_id. Leading and trailing whitespace is removed
+          # before validation.
+          sig { returns(T.nilable(String)) }
+          attr_accessor :ad_touch_source
+
           # The AdRoll Click ID (adct) from the landing URL. Ex: adct123 Leading and
           # trailing whitespace is removed before validation.
           sig { returns(T.nilable(String)) }
@@ -505,6 +532,11 @@ module OursprivacyIngest
           sig { returns(T.nilable(T::Boolean)) }
           attr_accessor :fv
 
+          # The Google Ads campaign id that Google auto-tagging appends to ad clicks. Ex:
+          # 21780011223 Leading and trailing whitespace is removed before validation.
+          sig { returns(T.nilable(String)) }
+          attr_accessor :gad_campaignid
+
           # The Google Ad Source. Ex: google Leading and trailing whitespace is removed
           # before validation.
           sig { returns(T.nilable(String)) }
@@ -608,6 +640,12 @@ module OursprivacyIngest
           # removed before validation.
           sig { returns(T.nilable(String)) }
           attr_accessor :os_version
+
+          # The Ours ad tag from the ours_ad query parameter, as platform.campaign.adset.ad.
+          # Ex: meta.120210.120211.120212 Leading and trailing whitespace is removed before
+          # validation.
+          sig { returns(T.nilable(String)) }
+          attr_accessor :ours_ad
 
           # A random set of numbers for the page load
           sig { returns(T.nilable(Float)) }
@@ -716,6 +754,11 @@ module OursprivacyIngest
           sig { returns(T.nilable(String)) }
           attr_accessor :utm_content
 
+          # The UTM ID. The web SDK automatically captures this from the query params.
+          # Leading and trailing whitespace is removed before validation.
+          sig { returns(T.nilable(String)) }
+          attr_accessor :utm_id
+
           # The UTM Medium. The web SDK automatically captures this from the query params.
           # Leading and trailing whitespace is removed before validation.
           sig { returns(T.nilable(String)) }
@@ -774,6 +817,11 @@ module OursprivacyIngest
               _ef_transaction_id: T.nilable(String),
               active_duration: T.nilable(Float),
               ad_id: T.nilable(String),
+              ad_touch_ad_id: T.nilable(String),
+              ad_touch_adset_id: T.nilable(String),
+              ad_touch_campaign_id: T.nilable(String),
+              ad_touch_platform: T.nilable(String),
+              ad_touch_source: T.nilable(String),
               adct: T.nilable(String),
               admitad_uid: T.nilable(String),
               adset_id: T.nilable(String),
@@ -804,6 +852,7 @@ module OursprivacyIngest
               fbclid: T.nilable(String),
               fbp: T.nilable(String),
               fv: T.nilable(T::Boolean),
+              gad_campaignid: T.nilable(String),
               gad_source: T.nilable(String),
               gbraid: T.nilable(String),
               gclid: T.nilable(String),
@@ -826,6 +875,7 @@ module OursprivacyIngest
               oppref: T.nilable(String),
               os_name: T.nilable(String),
               os_version: T.nilable(String),
+              ours_ad: T.nilable(String),
               page_hash: T.nilable(Float),
               pathname: T.nilable(String),
               qclid: T.nilable(String),
@@ -848,6 +898,7 @@ module OursprivacyIngest
               user_agent: T.nilable(String),
               utm_campaign: T.nilable(String),
               utm_content: T.nilable(String),
+              utm_id: T.nilable(String),
               utm_medium: T.nilable(String),
               utm_name: T.nilable(String),
               utm_source: T.nilable(String),
@@ -870,6 +921,23 @@ module OursprivacyIngest
             # The ad id detected in the session. This is set by the web sdk automatically.
             # Leading and trailing whitespace is removed before validation.
             ad_id: nil,
+            # The platform ad id resolved by the Ours server for this event. Ex: 120212
+            # Leading and trailing whitespace is removed before validation.
+            ad_touch_ad_id: nil,
+            # The platform ad set or ad group id resolved by the Ours server for this event.
+            # Ex: 120211 Leading and trailing whitespace is removed before validation.
+            ad_touch_adset_id: nil,
+            # The platform campaign id resolved by the Ours server for this event. Ex: 120210
+            # Leading and trailing whitespace is removed before validation.
+            ad_touch_campaign_id: nil,
+            # The ad platform resolved by the Ours server from the ad tag, ad ids, and click
+            # ids on this event. Ex: meta, google Leading and trailing whitespace is removed
+            # before validation.
+            ad_touch_platform: nil,
+            # Which signal the Ours server used to resolve the ad touch: ours_ad, url_ids,
+            # gad_campaignid, utm_id, or click_id. Leading and trailing whitespace is removed
+            # before validation.
+            ad_touch_source: nil,
             # The AdRoll Click ID (adct) from the landing URL. Ex: adct123 Leading and
             # trailing whitespace is removed before validation.
             adct: nil,
@@ -966,6 +1034,9 @@ module OursprivacyIngest
             fbp: nil,
             # Deprecated
             fv: nil,
+            # The Google Ads campaign id that Google auto-tagging appends to ad clicks. Ex:
+            # 21780011223 Leading and trailing whitespace is removed before validation.
+            gad_campaignid: nil,
             # The Google Ad Source. Ex: google Leading and trailing whitespace is removed
             # before validation.
             gad_source: nil,
@@ -1026,6 +1097,10 @@ module OursprivacyIngest
             # The version of the operating system. Ex: 10.0 Leading and trailing whitespace is
             # removed before validation.
             os_version: nil,
+            # The Ours ad tag from the ours_ad query parameter, as platform.campaign.adset.ad.
+            # Ex: meta.120210.120211.120212 Leading and trailing whitespace is removed before
+            # validation.
+            ours_ad: nil,
             # A random set of numbers for the page load
             page_hash: nil,
             # The pathname of the current page. Ex: /home Leading and trailing whitespace is
@@ -1089,6 +1164,9 @@ module OursprivacyIngest
             # The UTM Content. The web SDK automatically captures this from the query params.
             # Leading and trailing whitespace is removed before validation.
             utm_content: nil,
+            # The UTM ID. The web SDK automatically captures this from the query params.
+            # Leading and trailing whitespace is removed before validation.
+            utm_id: nil,
             # The UTM Medium. The web SDK automatically captures this from the query params.
             # Leading and trailing whitespace is removed before validation.
             utm_medium: nil,
@@ -1129,6 +1207,11 @@ module OursprivacyIngest
                 _ef_transaction_id: T.nilable(String),
                 active_duration: T.nilable(Float),
                 ad_id: T.nilable(String),
+                ad_touch_ad_id: T.nilable(String),
+                ad_touch_adset_id: T.nilable(String),
+                ad_touch_campaign_id: T.nilable(String),
+                ad_touch_platform: T.nilable(String),
+                ad_touch_source: T.nilable(String),
                 adct: T.nilable(String),
                 admitad_uid: T.nilable(String),
                 adset_id: T.nilable(String),
@@ -1159,6 +1242,7 @@ module OursprivacyIngest
                 fbclid: T.nilable(String),
                 fbp: T.nilable(String),
                 fv: T.nilable(T::Boolean),
+                gad_campaignid: T.nilable(String),
                 gad_source: T.nilable(String),
                 gbraid: T.nilable(String),
                 gclid: T.nilable(String),
@@ -1181,6 +1265,7 @@ module OursprivacyIngest
                 oppref: T.nilable(String),
                 os_name: T.nilable(String),
                 os_version: T.nilable(String),
+                ours_ad: T.nilable(String),
                 page_hash: T.nilable(Float),
                 pathname: T.nilable(String),
                 qclid: T.nilable(String),
@@ -1203,6 +1288,7 @@ module OursprivacyIngest
                 user_agent: T.nilable(String),
                 utm_campaign: T.nilable(String),
                 utm_content: T.nilable(String),
+                utm_id: T.nilable(String),
                 utm_medium: T.nilable(String),
                 utm_name: T.nilable(String),
                 utm_source: T.nilable(String),

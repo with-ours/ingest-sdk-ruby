@@ -185,6 +185,43 @@ module OursprivacyIngest
         #   @return [String, nil]
         optional :ad_id, String, nil?: true
 
+        # @!attribute ad_touch_ad_id
+        #   The platform ad id resolved by the Ours server for this event. Ex: 120212
+        #   Leading and trailing whitespace is removed before validation.
+        #
+        #   @return [String, nil]
+        optional :ad_touch_ad_id, String, nil?: true
+
+        # @!attribute ad_touch_adset_id
+        #   The platform ad set or ad group id resolved by the Ours server for this event.
+        #   Ex: 120211 Leading and trailing whitespace is removed before validation.
+        #
+        #   @return [String, nil]
+        optional :ad_touch_adset_id, String, nil?: true
+
+        # @!attribute ad_touch_campaign_id
+        #   The platform campaign id resolved by the Ours server for this event. Ex: 120210
+        #   Leading and trailing whitespace is removed before validation.
+        #
+        #   @return [String, nil]
+        optional :ad_touch_campaign_id, String, nil?: true
+
+        # @!attribute ad_touch_platform
+        #   The ad platform resolved by the Ours server from the ad tag, ad ids, and click
+        #   ids on this event. Ex: meta, google Leading and trailing whitespace is removed
+        #   before validation.
+        #
+        #   @return [String, nil]
+        optional :ad_touch_platform, String, nil?: true
+
+        # @!attribute ad_touch_source
+        #   Which signal the Ours server used to resolve the ad touch: ours_ad, url_ids,
+        #   gad_campaignid, utm_id, or click_id. Leading and trailing whitespace is removed
+        #   before validation.
+        #
+        #   @return [String, nil]
+        optional :ad_touch_source, String, nil?: true
+
         # @!attribute adct
         #   The AdRoll Click ID (adct) from the landing URL. Ex: adct123 Leading and
         #   trailing whitespace is removed before validation.
@@ -401,6 +438,13 @@ module OursprivacyIngest
         #   @return [Boolean, nil]
         optional :fv, OursprivacyIngest::Internal::Type::Boolean, nil?: true
 
+        # @!attribute gad_campaignid
+        #   The Google Ads campaign id that Google auto-tagging appends to ad clicks. Ex:
+        #   21780011223 Leading and trailing whitespace is removed before validation.
+        #
+        #   @return [String, nil]
+        optional :gad_campaignid, String, nil?: true
+
         # @!attribute gad_source
         #   The Google Ad Source. Ex: google Leading and trailing whitespace is removed
         #   before validation.
@@ -540,6 +584,14 @@ module OursprivacyIngest
         #
         #   @return [String, nil]
         optional :os_version, String, nil?: true
+
+        # @!attribute ours_ad
+        #   The Ours ad tag from the ours_ad query parameter, as platform.campaign.adset.ad.
+        #   Ex: meta.120210.120211.120212 Leading and trailing whitespace is removed before
+        #   validation.
+        #
+        #   @return [String, nil]
+        optional :ours_ad, String, nil?: true
 
         # @!attribute page_hash
         #   A random set of numbers for the page load
@@ -692,6 +744,13 @@ module OursprivacyIngest
         #   @return [String, nil]
         optional :utm_content, String, nil?: true
 
+        # @!attribute utm_id
+        #   The UTM ID. The web SDK automatically captures this from the query params.
+        #   Leading and trailing whitespace is removed before validation.
+        #
+        #   @return [String, nil]
+        optional :utm_id, String, nil?: true
+
         # @!attribute utm_medium
         #   The UTM Medium. The web SDK automatically captures this from the query params.
         #   Leading and trailing whitespace is removed before validation.
@@ -763,7 +822,7 @@ module OursprivacyIngest
         #   @return [String, nil]
         optional :ylpcid, String, nil?: true
 
-        # @!method initialize(_ef_transaction_id: nil, active_duration: nil, ad_id: nil, adct: nil, admitad_uid: nil, adset_id: nil, affiliatly_v3: nil, alart: nil, aleid: nil, axwrt: nil, basis_cid: nil, beeswax_auction_id: nil, browser_language: nil, browser_name: nil, browser_version: nil, campaign_id: nil, clickid: nil, clid: nil, cpu_architecture: nil, current_url: nil, dclid: nil, device_model: nil, device_type: nil, device_vendor: nil, duration: nil, encoding: nil, engine_name: nil, engine_version: nil, epik: nil, fbc: nil, fbclid: nil, fbp: nil, fv: nil, gad_source: nil, gbraid: nil, gclid: nil, graid: nil, grclid: nil, host: nil, iframe: nil, im_ref: nil, ip: nil, irclickid: nil, is_bot: nil, li_fat_id: nil, msclkid: nil, ndclid: nil, new_s: nil, ob_click_id: nil, oppref: nil, os_name: nil, os_version: nil, page_hash: nil, pathname: nil, qclid: nil, rdt_cid: nil, received_at: nil, referrer: nil, referring_domain: nil, sacid: nil, sccid: nil, screen_height: nil, screen_width: nil, session_count: nil, sid: nil, sr: nil, title: nil, ttclid: nil, ttd_impression_id: nil, twclid: nil, uafvl: nil, user_agent: nil, utm_campaign: nil, utm_content: nil, utm_medium: nil, utm_name: nil, utm_source: nil, utm_term: nil, version: nil, viant_click_id: nil, viant_impression_id: nil, wbraid: nil, webview: nil, ylpcid: nil)
+        # @!method initialize(_ef_transaction_id: nil, active_duration: nil, ad_id: nil, ad_touch_ad_id: nil, ad_touch_adset_id: nil, ad_touch_campaign_id: nil, ad_touch_platform: nil, ad_touch_source: nil, adct: nil, admitad_uid: nil, adset_id: nil, affiliatly_v3: nil, alart: nil, aleid: nil, axwrt: nil, basis_cid: nil, beeswax_auction_id: nil, browser_language: nil, browser_name: nil, browser_version: nil, campaign_id: nil, clickid: nil, clid: nil, cpu_architecture: nil, current_url: nil, dclid: nil, device_model: nil, device_type: nil, device_vendor: nil, duration: nil, encoding: nil, engine_name: nil, engine_version: nil, epik: nil, fbc: nil, fbclid: nil, fbp: nil, fv: nil, gad_campaignid: nil, gad_source: nil, gbraid: nil, gclid: nil, graid: nil, grclid: nil, host: nil, iframe: nil, im_ref: nil, ip: nil, irclickid: nil, is_bot: nil, li_fat_id: nil, msclkid: nil, ndclid: nil, new_s: nil, ob_click_id: nil, oppref: nil, os_name: nil, os_version: nil, ours_ad: nil, page_hash: nil, pathname: nil, qclid: nil, rdt_cid: nil, received_at: nil, referrer: nil, referring_domain: nil, sacid: nil, sccid: nil, screen_height: nil, screen_width: nil, session_count: nil, sid: nil, sr: nil, title: nil, ttclid: nil, ttd_impression_id: nil, twclid: nil, uafvl: nil, user_agent: nil, utm_campaign: nil, utm_content: nil, utm_id: nil, utm_medium: nil, utm_name: nil, utm_source: nil, utm_term: nil, version: nil, viant_click_id: nil, viant_impression_id: nil, wbraid: nil, webview: nil, ylpcid: nil)
         #   Some parameter documentations has been truncated, see
         #   {OursprivacyIngest::Models::TrackEventParams::DefaultProperties} for more
         #   details.
@@ -777,6 +836,16 @@ module OursprivacyIngest
         #   @param active_duration [Float, nil] The total time in milliseconds this tab has been visible since the page loaded
         #
         #   @param ad_id [String, nil] The ad id detected in the session. This is set by the web sdk automatically. Lea
+        #
+        #   @param ad_touch_ad_id [String, nil] The platform ad id resolved by the Ours server for this event. Ex: 120212 Leadin
+        #
+        #   @param ad_touch_adset_id [String, nil] The platform ad set or ad group id resolved by the Ours server for this event. E
+        #
+        #   @param ad_touch_campaign_id [String, nil] The platform campaign id resolved by the Ours server for this event. Ex: 120210
+        #
+        #   @param ad_touch_platform [String, nil] The ad platform resolved by the Ours server from the ad tag, ad ids, and click i
+        #
+        #   @param ad_touch_source [String, nil] Which signal the Ours server used to resolve the ad touch: ours_ad, url_ids, gad
         #
         #   @param adct [String, nil] The AdRoll Click ID (adct) from the landing URL. Ex: adct123 Leading and trailin
         #
@@ -839,6 +908,8 @@ module OursprivacyIngest
         #
         #   @param fv [Boolean, nil] Deprecated
         #
+        #   @param gad_campaignid [String, nil] The Google Ads campaign id that Google auto-tagging appends to ad clicks. Ex: 21
+        #
         #   @param gad_source [String, nil] The Google Ad Source. Ex: google Leading and trailing whitespace is removed befo
         #
         #   @param gbraid [String, nil] The Google Braid ID. Ex: gbraid123 Leading and trailing whitespace is removed be
@@ -876,6 +947,8 @@ module OursprivacyIngest
         #   @param os_name [String, nil] The name of the operating system. Ex: Windows Leading and trailing whitespace is
         #
         #   @param os_version [String, nil] The version of the operating system. Ex: 10.0 Leading and trailing whitespace is
+        #
+        #   @param ours_ad [String, nil] The Ours ad tag from the ours_ad query parameter, as platform.campaign.adset.ad.
         #
         #   @param page_hash [Float, nil] A random set of numbers for the page load
         #
@@ -920,6 +993,8 @@ module OursprivacyIngest
         #   @param utm_campaign [String, nil] The UTM Campaign. The web SDK automatically captures this from the query params.
         #
         #   @param utm_content [String, nil] The UTM Content. The web SDK automatically captures this from the query params.
+        #
+        #   @param utm_id [String, nil] The UTM ID. The web SDK automatically captures this from the query params. Leadi
         #
         #   @param utm_medium [String, nil] The UTM Medium. The web SDK automatically captures this from the query params. L
         #
