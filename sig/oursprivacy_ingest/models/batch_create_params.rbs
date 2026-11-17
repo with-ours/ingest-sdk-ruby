@@ -98,6 +98,11 @@ module OursprivacyIngest
             _ef_transaction_id: String?,
             active_duration: Float?,
             ad_id: String?,
+            ad_touch_ad_id: String?,
+            ad_touch_adset_id: String?,
+            ad_touch_campaign_id: String?,
+            ad_touch_platform: String?,
+            ad_touch_source: String?,
             adct: String?,
             admitad_uid: String?,
             adset_id: String?,
@@ -128,6 +133,7 @@ module OursprivacyIngest
             fbclid: String?,
             fbp: String?,
             fv: bool?,
+            gad_campaignid: String?,
             gad_source: String?,
             gbraid: String?,
             gclid: String?,
@@ -147,6 +153,7 @@ module OursprivacyIngest
             oppref: String?,
             os_name: String?,
             os_version: String?,
+            ours_ad: String?,
             page_hash: Float?,
             pathname: String?,
             qclid: String?,
@@ -169,6 +176,7 @@ module OursprivacyIngest
             user_agent: String?,
             utm_campaign: String?,
             utm_content: String?,
+            utm_id: String?,
             utm_medium: String?,
             utm_name: String?,
             utm_source: String?,
@@ -187,6 +195,16 @@ module OursprivacyIngest
           attr_accessor active_duration: Float?
 
           attr_accessor ad_id: String?
+
+          attr_accessor ad_touch_ad_id: String?
+
+          attr_accessor ad_touch_adset_id: String?
+
+          attr_accessor ad_touch_campaign_id: String?
+
+          attr_accessor ad_touch_platform: String?
+
+          attr_accessor ad_touch_source: String?
 
           attr_accessor adct: String?
 
@@ -248,6 +266,8 @@ module OursprivacyIngest
 
           attr_accessor fv: bool?
 
+          attr_accessor gad_campaignid: String?
+
           attr_accessor gad_source: String?
 
           attr_accessor gbraid: String?
@@ -285,6 +305,8 @@ module OursprivacyIngest
           attr_accessor os_name: String?
 
           attr_accessor os_version: String?
+
+          attr_accessor ours_ad: String?
 
           attr_accessor page_hash: Float?
 
@@ -330,6 +352,8 @@ module OursprivacyIngest
 
           attr_accessor utm_content: String?
 
+          attr_accessor utm_id: String?
+
           attr_accessor utm_medium: String?
 
           attr_accessor utm_name: String?
@@ -354,6 +378,11 @@ module OursprivacyIngest
             ?_ef_transaction_id: String?,
             ?active_duration: Float?,
             ?ad_id: String?,
+            ?ad_touch_ad_id: String?,
+            ?ad_touch_adset_id: String?,
+            ?ad_touch_campaign_id: String?,
+            ?ad_touch_platform: String?,
+            ?ad_touch_source: String?,
             ?adct: String?,
             ?admitad_uid: String?,
             ?adset_id: String?,
@@ -384,6 +413,7 @@ module OursprivacyIngest
             ?fbclid: String?,
             ?fbp: String?,
             ?fv: bool?,
+            ?gad_campaignid: String?,
             ?gad_source: String?,
             ?gbraid: String?,
             ?gclid: String?,
@@ -403,6 +433,7 @@ module OursprivacyIngest
             ?oppref: String?,
             ?os_name: String?,
             ?os_version: String?,
+            ?ours_ad: String?,
             ?page_hash: Float?,
             ?pathname: String?,
             ?qclid: String?,
@@ -425,6 +456,7 @@ module OursprivacyIngest
             ?user_agent: String?,
             ?utm_campaign: String?,
             ?utm_content: String?,
+            ?utm_id: String?,
             ?utm_medium: String?,
             ?utm_name: String?,
             ?utm_source: String?,
@@ -441,6 +473,11 @@ module OursprivacyIngest
             _ef_transaction_id: String?,
             active_duration: Float?,
             ad_id: String?,
+            ad_touch_ad_id: String?,
+            ad_touch_adset_id: String?,
+            ad_touch_campaign_id: String?,
+            ad_touch_platform: String?,
+            ad_touch_source: String?,
             adct: String?,
             admitad_uid: String?,
             adset_id: String?,
@@ -471,6 +508,7 @@ module OursprivacyIngest
             fbclid: String?,
             fbp: String?,
             fv: bool?,
+            gad_campaignid: String?,
             gad_source: String?,
             gbraid: String?,
             gclid: String?,
@@ -490,6 +528,7 @@ module OursprivacyIngest
             oppref: String?,
             os_name: String?,
             os_version: String?,
+            ours_ad: String?,
             page_hash: Float?,
             pathname: String?,
             qclid: String?,
@@ -512,6 +551,7 @@ module OursprivacyIngest
             user_agent: String?,
             utm_campaign: String?,
             utm_content: String?,
+            utm_id: String?,
             utm_medium: String?,
             utm_name: String?,
             utm_source: String?,
