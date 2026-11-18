@@ -201,37 +201,43 @@ module OursprivacyIngest
 
           # @!attribute ad_touch_ad_id
           #   The platform ad id resolved by the Ours server for this event. Ex: 120212
-          #   Leading and trailing whitespace is removed before validation.
+          #   Non-string input is converted to text before validation; clients should send a
+          #   string. Leading and trailing whitespace is removed before validation.
           #
           #   @return [String, nil]
           optional :ad_touch_ad_id, String, nil?: true
 
           # @!attribute ad_touch_adset_id
           #   The platform ad set or ad group id resolved by the Ours server for this event.
-          #   Ex: 120211 Leading and trailing whitespace is removed before validation.
+          #   Ex: 120211 Non-string input is converted to text before validation; clients
+          #   should send a string. Leading and trailing whitespace is removed before
+          #   validation.
           #
           #   @return [String, nil]
           optional :ad_touch_adset_id, String, nil?: true
 
           # @!attribute ad_touch_campaign_id
           #   The platform campaign id resolved by the Ours server for this event. Ex: 120210
-          #   Leading and trailing whitespace is removed before validation.
+          #   Non-string input is converted to text before validation; clients should send a
+          #   string. Leading and trailing whitespace is removed before validation.
           #
           #   @return [String, nil]
           optional :ad_touch_campaign_id, String, nil?: true
 
           # @!attribute ad_touch_platform
           #   The ad platform resolved by the Ours server from the ad tag, ad ids, and click
-          #   ids on this event. Ex: meta, google Leading and trailing whitespace is removed
-          #   before validation.
+          #   ids on this event. Ex: meta, google Non-string input is converted to text before
+          #   validation; clients should send a string. Leading and trailing whitespace is
+          #   removed before validation.
           #
           #   @return [String, nil]
           optional :ad_touch_platform, String, nil?: true
 
           # @!attribute ad_touch_source
           #   Which signal the Ours server used to resolve the ad touch: ours_ad, url_ids,
-          #   gad_campaignid, utm_id, or click_id. Leading and trailing whitespace is removed
-          #   before validation.
+          #   gad_campaignid, utm_id, or click_id. Non-string input is converted to text
+          #   before validation; clients should send a string. Leading and trailing whitespace
+          #   is removed before validation.
           #
           #   @return [String, nil]
           optional :ad_touch_source, String, nil?: true
@@ -454,7 +460,9 @@ module OursprivacyIngest
 
           # @!attribute gad_campaignid
           #   The Google Ads campaign id that Google auto-tagging appends to ad clicks. Ex:
-          #   21780011223 Leading and trailing whitespace is removed before validation.
+          #   21780011223 Non-string input is converted to text before validation; clients
+          #   should send a string. Leading and trailing whitespace is removed before
+          #   validation.
           #
           #   @return [String, nil]
           optional :gad_campaignid, String, nil?: true
@@ -599,8 +607,9 @@ module OursprivacyIngest
 
           # @!attribute ours_ad
           #   The Ours ad tag from the ours_ad query parameter, as platform.campaign.adset.ad.
-          #   Ex: meta.120210.120211.120212 Leading and trailing whitespace is removed before
-          #   validation.
+          #   Ex: meta.120210.120211.120212 Non-string input is converted to text before
+          #   validation; clients should send a string. Leading and trailing whitespace is
+          #   removed before validation.
           #
           #   @return [String, nil]
           optional :ours_ad, String, nil?: true
@@ -758,7 +767,8 @@ module OursprivacyIngest
 
           # @!attribute utm_id
           #   The UTM ID. The web SDK automatically captures this from the query params.
-          #   Leading and trailing whitespace is removed before validation.
+          #   Non-string input is converted to text before validation; clients should send a
+          #   string. Leading and trailing whitespace is removed before validation.
           #
           #   @return [String, nil]
           optional :utm_id, String, nil?: true
@@ -849,7 +859,7 @@ module OursprivacyIngest
           #
           #   @param ad_id [String, nil] The ad id detected in the session. This is set by the web sdk automatically. Lea
           #
-          #   @param ad_touch_ad_id [String, nil] The platform ad id resolved by the Ours server for this event. Ex: 120212 Leadin
+          #   @param ad_touch_ad_id [String, nil] The platform ad id resolved by the Ours server for this event. Ex: 120212 Non-st
           #
           #   @param ad_touch_adset_id [String, nil] The platform ad set or ad group id resolved by the Ours server for this event. E
           #
@@ -1006,7 +1016,7 @@ module OursprivacyIngest
           #
           #   @param utm_content [String, nil] The UTM Content. The web SDK automatically captures this from the query params.
           #
-          #   @param utm_id [String, nil] The UTM ID. The web SDK automatically captures this from the query params. Leadi
+          #   @param utm_id [String, nil] The UTM ID. The web SDK automatically captures this from the query params. Non-s
           #
           #   @param utm_medium [String, nil] The UTM Medium. The web SDK automatically captures this from the query params. L
           #
